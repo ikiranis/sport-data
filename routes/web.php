@@ -12,13 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'The Site';
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('paok', function () {
-    return 'paok';
+Route::get('/admin', function () {
+    return view('admin.index');
 });
+
