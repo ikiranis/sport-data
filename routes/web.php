@@ -23,5 +23,7 @@ Route::get('/admin', function () {
     return view('admin.index');
 })->middleware('auth');
 
-Route::resource('admin/users', 'AdminUsersController');
-
+// If user is admin
+Route::group(['middleware' => 'admin'], function() {
+    Route::resource('admin/users', 'AdminUsersController');
+});
