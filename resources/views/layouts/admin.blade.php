@@ -17,7 +17,8 @@
 
 <body>
 
-    <div id="app">
+    <div id="app" class="container-fluid">
+
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -66,12 +67,10 @@
         </nav>
 
         {{--Main Page--}}
-        <div class="container-fluid">
             <div class="row no-gutters">
 
-                <div class="col-lg-2 col-12 h-100 bg-info">
+                <nav class="col-lg-2 col-12 navbar h-100 navbar-dark bg-primary">
 
-                    <nav class="navbar navbar-dark bg-primary">
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a href="" class="nav-link">Χρήστες</a>
@@ -80,16 +79,14 @@
                                 <a href="" class="nav-link">Αγώνες</a>
                             </li>
                         </ul>
-                    </nav>
 
-                </div>
+                </nav>
 
-                <div class="col-lg-10 col-12">
+                <div class="col-lg-10 col-12 h-100">
                     @yield('content')
                 </div>
 
             </div>
-        </div>
 
     </div>
 
