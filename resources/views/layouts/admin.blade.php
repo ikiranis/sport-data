@@ -69,17 +69,17 @@
     {{--Main Page--}}
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar py-5">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <span data-feather="home"></span>
+                            <a class="nav-link active" href="{{ route('admin') }}">
+                                <span class="mdi mdi-home"></span>
                                 Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('users.index') }}">
                                 <span class="mdi mdi-account-multiple-outline"></span>
                                 Χρήστες
                             </a>
