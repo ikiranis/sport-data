@@ -22,10 +22,6 @@ mix.js('resources/assets/js/app.js', 'public/js').version()
 //     'resources/assets/css/admin.css'
 // ], 'public/css/style.css');
 
-
-
-
-
 //
 // mix.scripts([
 //     'resources/assets/js/libs/jquery.js',
