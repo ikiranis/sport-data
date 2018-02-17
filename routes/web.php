@@ -23,3 +23,5 @@ Route::get('/admin', function () {
     return view('admin.index');
 })->middleware('auth');
 
+Route::resource('admin/users', 'AdminUsersController');
+
