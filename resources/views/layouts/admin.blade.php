@@ -91,6 +91,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('stadium.index') }}">
+                                <span class="mdi mdi-stadium"></span>
+                                Γήπεδα
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span class="mdi mdi-basketball"></span>
                                 Αγώνες
