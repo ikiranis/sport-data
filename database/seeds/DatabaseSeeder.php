@@ -16,8 +16,10 @@ class DatabaseSeeder extends Seeder
         // First, clear tables
         DB::table('stadia')->truncate();
         DB::table('athletes')->truncate();
+        DB::table('teams')->truncate();
 
         factory(App\Athlete::class, 50)->create();
         factory(App\Stadium::class, 50)->create();
+        factory(App\Team::class, 50)->create();
     }
 }

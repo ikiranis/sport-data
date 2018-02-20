@@ -97,6 +97,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('teams.index') }}">
+                                <span class="mdi mdi-stadium"></span>
+                                Ομάδες
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span class="mdi mdi-basketball"></span>
                                 Αγώνες
