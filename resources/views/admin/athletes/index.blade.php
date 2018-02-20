@@ -30,6 +30,14 @@
 
             </tbody>
         </table>
+
+        <div class="row text-center">
+            <div class="col-6 offset-5">
+                {{ $athletes->links() }}
+            </div>
+        </div>
+
+
     @else
         <h1>Δεν υπάρχουν αθλητές</h1>
     @endif

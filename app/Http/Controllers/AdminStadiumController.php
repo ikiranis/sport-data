@@ -14,7 +14,7 @@ class AdminStadiumController extends Controller
      */
     public function index()
     {
-        $stadia = Stadium::all();
+        $stadia = Stadium::paginate(5);
 
         return view('admin.stadium.index', compact('stadia'));
     }

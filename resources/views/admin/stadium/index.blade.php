@@ -24,6 +24,13 @@
 
             </tbody>
         </table>
+
+        <div class="row text-center">
+            <div class="col-6 offset-5">
+                {{ $stadia->links() }}
+            </div>
+        </div>
+
     @else
         <h1>Δεν υπάρχουν γήπεδα</h1>
     @endif

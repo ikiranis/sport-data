@@ -14,7 +14,7 @@ class AdminAthletesController extends Controller
      */
     public function index()
     {
-        $athletes = Athlete::all();
+        $athletes = Athlete::paginate(5);
 
         return view('admin/athletes/index', compact('athletes'));
     }
