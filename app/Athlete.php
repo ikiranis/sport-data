@@ -18,6 +18,9 @@ class Athlete extends Model
         'height'
     ];
 
+    // Don't write timestamps at factory
+    public $timestamps  = false;
+
     /**
      * Relation to sports
      */
