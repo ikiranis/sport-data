@@ -397,6 +397,7 @@ class ComposerStaticInit9e7e50567546bc41b735f35169d669f6
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Logo' => __DIR__ . '/../..' . '/app/Logo.php',
         'App\\Match' => __DIR__ . '/../..' . '/app/Match.php',
         'App\\Matchday' => __DIR__ . '/../..' . '/app/Matchday.php',
         'App\\Photo' => __DIR__ . '/../..' . '/app/Photo.php',
