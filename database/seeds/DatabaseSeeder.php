@@ -13,6 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         //$this->call(RolesTableSeeder::class);
 
+        // First, clear tables
+        DB::table('stadia')->truncate();
+        DB::table('athletes')->truncate();
+
         factory(App\Athlete::class, 10)->create();
+        factory(App\Stadium::class, 10)->create();
     }
 }
