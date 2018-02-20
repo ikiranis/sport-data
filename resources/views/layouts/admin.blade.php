@@ -85,6 +85,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('athletes.index') }}">
+                                <span class="mdi mdi-account-multiple-outline"></span>
+                                Αθλητές
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span class="mdi mdi-basketball"></span>
                                 Αγώνες

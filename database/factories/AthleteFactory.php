@@ -18,10 +18,10 @@ $factory->define(App\Athlete::class, function (Faker $faker) {
     return [
         'fname' => $faker->firstName,
         'lname' => $faker->lastName,
-        'birthday' => $faker->dateTimeBetween('-30 years', '-20 years'),
+        'birthday' => $faker->dateTimeBetween('-50 years', '-10 years'),
         'city' => $faker->city,
         'country' => $faker->country,
-        'height' => random_int(170,220)
+        'height' => random_int(120,220)
     ];
 });
 

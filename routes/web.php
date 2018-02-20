@@ -26,4 +26,5 @@ Route::get('/admin', function () {
 // If user is admin
 Route::group(['middleware' => 'admin'], function() {
     Route::resource('admin/users', 'AdminUsersController');
+    Route::resource('admin/athletes', 'AdminAthletesController');
 });
