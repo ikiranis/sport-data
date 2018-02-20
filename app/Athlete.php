@@ -6,5 +6,30 @@ use Illuminate\Database\Eloquent\Model;
 
 class Athlete extends Model
 {
-    //
+    // The attributes that are mass assignable
+    protected $fillable = [
+        'sport_id',
+        'photo_id',
+        'fname',
+        'lname',
+        'birthday',
+        'city',
+        'country',
+        'height'
+    ];
+
+    /**
+     * Relation to sports
+     */
+    public function sport() {
+        return $this->belongsTo('App\Sport');
+    }
+
+    /**
+     * Relation to photos
+     */
+    public function photo() {
+        return $this->belongsTo('App\Photo');
+    }
+
 }

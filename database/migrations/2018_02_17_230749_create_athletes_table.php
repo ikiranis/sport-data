@@ -22,7 +22,7 @@ class CreateAthletesTable extends Migration
             $table->date('birthday');
             $table->string('city');
             $table->string('country');
-            $table->string('height');
+            $table->smallInteger('height');
         });
     }
 
