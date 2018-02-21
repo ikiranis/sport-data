@@ -25,8 +25,8 @@
             </tbody>
         </table>
 
-        <div class="row text-center">
-            <div class="col-6 offset-5">
+        <div class="row">
+            <div class="ml-auto mr-auto">
                 {{ $stadia->links() }}
             </div>
         </div>

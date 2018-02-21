@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Season;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AdminUsersController extends Controller
+class AdminSeasonsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,9 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(15);
+        $seasons = Season::paginate(15);
 
-
-        return view('admin/users/index', compact('users'));
+        return view('admin/seasons/index', compact('seasons'));
     }
 
     /**

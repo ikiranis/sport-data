@@ -29,4 +29,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('admin/athletes', 'AdminAthletesController');
     Route::resource('admin/stadium', 'AdminStadiumController');
     Route::resource('admin/teams', 'AdminTeamsController');
+    Route::resource('admin/sports', 'AdminSportsController');
+    Route::resource('admin/seasons', 'AdminSeasonsController');
+    Route::resource('admin/matchdays', 'AdminMatchdaysController');
+    Route::resource('admin/championships', 'AdminChampionshipsController');
 });

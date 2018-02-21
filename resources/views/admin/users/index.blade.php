@@ -28,6 +28,13 @@
 
             </tbody>
         </table>
+
+        <div class="row">
+            <div class="ml-auto mr-auto">
+                {{ $users->links() }}
+            </div>
+        </div>
+
     @else
         <h1>Δεν υπάρχουν χρήστες</h1>
     @endif

@@ -1,24 +1,22 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Ομάδες</h1>
+    <h1>Αθλήματα</h1>
 
-    @if($teams)
+    @if($sports)
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Όνομα</th>
-                <th scope="col">Πόλη</th>
             </tr>
             </thead>
             <tbody>
 
-            @foreach($teams as $team)
+            @foreach($sports as $sport)
                 <tr>
-                    <th scope="row">{{$team->id}}</th>
-                    <td>{{$team->name}}</td>
-                    <td>{{$team->city}}</td>
+                    <th scope="row">{{$sport->id}}</th>
+                    <td>{{$sport->name}}</td>
                 </tr>
             @endforeach
 
@@ -27,12 +25,12 @@
 
         <div class="row">
             <div class="ml-auto mr-auto">
-                {{ $teams->links() }}
+                {{ $sports->links() }}
             </div>
         </div>
 
 
     @else
-        <h1>Δεν υπάρχουν ομάδες</h1>
+        <h1>Δεν υπάρχουν αθλήματα</h1>
     @endif
 @endsection

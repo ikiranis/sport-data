@@ -45,7 +45,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="mdi mdi-account-outline"></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -98,7 +98,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('teams.index') }}">
-                                <span class="mdi mdi-stadium"></span>
+                                <span class="mdi mdi-soccer"></span>
                                 Ομάδες
                             </a>
                         </li>
@@ -106,6 +106,30 @@
                             <a class="nav-link" href="#">
                                 <span class="mdi mdi-basketball"></span>
                                 Αγώνες
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('sports.index') }}">
+                                <span class="mdi mdi-tennis"></span>
+                                Αθλήματα
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('seasons.index') }}">
+                                <span class="mdi mdi-timer-sand"></span>
+                                Seasons
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('championships.index') }}">
+                                <span class="mdi mdi-trophy-award"></span>
+                                Πρωταθλήματα
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('matchdays.index') }}">
+                                <span class="mdi mdi-calendar-multiple"></span>
+                                Αγωνιστικές
                             </a>
                         </li>
                     </ul>
