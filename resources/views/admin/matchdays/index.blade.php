@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Αγωνιστικές</h1>
+    <h1>{{__('messages.matchdays')}}</h1>
 
     <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
         <a href="{{route('matchdays.create')}}">
-            <button class="btn btn-info w-100">Προσθήκη αγωνιστικής</button>
+            <button class="btn btn-info w-100">{{__('messages.insert matchday')}}</button>
         </a>
     </div>
 

@@ -11,23 +11,30 @@
 |
 */
 
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    ],
+    function () {
+        Auth::routes();
 
-Auth::routes();
+        Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/', 'HomeController@index')->name('home');
+        Route::get('/admin', function () {
+            return view('admin.index');
+        })->middleware('auth')->name('admin');
 
-Route::get('/admin', function () {
-    return view('admin.index');
-})->middleware('auth')->name('admin');
+        // If user is admin
+        Route::group(['middleware' => 'admin'], function () {
+            Route::resource('admin/users', 'AdminUsersController');
+            Route::resource('admin/athletes', 'AdminAthletesController');
+            Route::resource('admin/stadium', 'AdminStadiumController');
+            Route::resource('admin/teams', 'AdminTeamsController');
+            Route::resource('admin/sports', 'AdminSportsController');
+            Route::resource('admin/seasons', 'AdminSeasonsController');
+            Route::resource('admin/matchdays', 'AdminMatchdaysController');
+            Route::resource('admin/championships', 'AdminChampionshipsController');
+        });
 
-// If user is admin
-Route::group(['middleware' => 'admin'], function() {
-    Route::resource('admin/users', 'AdminUsersController');
-    Route::resource('admin/athletes', 'AdminAthletesController');
-    Route::resource('admin/stadium', 'AdminStadiumController');
-    Route::resource('admin/teams', 'AdminTeamsController');
-    Route::resource('admin/sports', 'AdminSportsController');
-    Route::resource('admin/seasons', 'AdminSeasonsController');
-    Route::resource('admin/matchdays', 'AdminMatchdaysController');
-    Route::resource('admin/championships', 'AdminChampionshipsController');
-});
+    });
