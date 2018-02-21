@@ -3,6 +3,7 @@
 @section('content')
     <h1>Αθλήματα</h1>
 
+
     @if($sports)
         <table class="table">
             <thead>

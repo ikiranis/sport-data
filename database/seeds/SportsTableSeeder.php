@@ -18,7 +18,8 @@ class SportsTableSeeder extends Seeder
 
         foreach ($this->sports as $sport) {
             DB::table('sports')->insert([
-                'name' => $sport
+                'name' => $sport,
+                'slug' => str_slug($sport)
             ]);
         }
 
