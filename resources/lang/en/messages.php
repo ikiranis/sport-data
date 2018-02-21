@@ -20,6 +20,9 @@ return [
     'city' => 'City',
     'country' => 'Country',
     'height' => 'Height',
-    'athletes not exist', 'Athletes not exist'
+    'athletes not exist', 'Athletes not exist',
+    'championships' => 'Championships',
+    'insert championship' => 'Insert championship',
+    'championships not exist' => 'Championships not exist'
 
 ];
