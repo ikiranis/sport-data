@@ -10,7 +10,16 @@ return [
     |
     */
 
-    'matchdays' => 'Matchdays',
+    'matchdays' => '{2}Matchdays|{1}Matchday',
     'insert matchday' => 'Insert matchday',
+    'name' => 'Name',
+    'matchdays not exist' => 'Matchdays not exist',
+    'insert athlete' => 'Insert athlete',
+    'athletes' => 'Athletes',
+    'birthday' => 'Birthday',
+    'city' => 'City',
+    'country' => 'Country',
+    'height' => 'Height',
+    'athletes not exist', 'Athletes not exist'
 
 ];

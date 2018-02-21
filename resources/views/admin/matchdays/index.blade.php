@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>{{__('messages.matchdays')}}</h1>
+    <h1>{{trans_choice('messages.matchdays',2)}}</h1>
 
     <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
         <a href="{{route('matchdays.create')}}">
@@ -14,7 +14,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Όνομα</th>
+                <th scope="col">{{trans_choice('messages.matchdays',1)}}</th>
             </tr>
             </thead>
             <tbody>
@@ -37,6 +37,6 @@
 
 
     @else
-        <h1>Δεν υπάρχουν αγωνιστικές</h1>
+        <h1>{{__('messages.matchdays not exist')}}</h1>
     @endif
 @endsection

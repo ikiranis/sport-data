@@ -10,7 +10,16 @@ return [
     |
     */
 
-    'matchdays' => 'Αγωνιστικές',
+    'matchdays' => '{2}Αγωνιστικές|{1}Aγωνιστική',
     'insert matchday' => 'Προσθήκη αγωνιστικής',
+    'name' => 'Όνομα',
+    'matchdays not exist' => 'Δεν υπάρχουν αγωνιστικές',
+    'insert athlete' => 'Προσθήκη αθλητή',
+    'athletes' => 'Αθλητές',
+    'birthday' => 'Ημ. Γέννησης',
+    'city' => 'Πόλη',
+    'country' => 'Χώρα',
+    'height' => 'Ύψος',
+    'athletes not exist', 'Δεν υπάρχουν αθλητές'
 
 ];

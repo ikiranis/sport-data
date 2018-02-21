@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Αθλητές</h1>
+    <h1>{{__('messages.athletes')}}</h1>
 
     <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
         <a href="{{route('athletes.create')}}">
-            <button class="btn btn-info w-100">Προσθήκη Αθλητή</button>
+            <button class="btn btn-info w-100">{{__('messages.insert athlete')}}</button>
         </a>
     </div>
 
@@ -14,11 +14,11 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Όνομα</th>
-                <th scope="col">Ημ. Γέννησης</th>
-                <th scope="col">Πόλη</th>
-                <th scope="col">Χώρα</th>
-                <th scope="col">Ύψος</th>
+                <th scope="col">{{__('messages.name')}}</th>
+                <th scope="col">{{__('messages.birthday')}}</th>
+                <th scope="col">{{__('messages.city')}}</th>
+                <th scope="col">{{__('messages.country')}}</th>
+                <th scope="col">{{__('messages.height')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -45,6 +45,6 @@
 
 
     @else
-        <h1>Δεν υπάρχουν αθλητές</h1>
+        <h1>{{__('messages.athletes not exist')}}</h1>
     @endif
 @endsection
