@@ -3,6 +3,12 @@
 @section('content')
     <h1>Seasons</h1>
 
+    <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
+        <a href="{{route('seasons.create')}}">
+            <button class="btn btn-info w-100">Προσθήκη season</button>
+        </a>
+    </div>
+
     @if($seasons)
         <table class="table">
             <thead>

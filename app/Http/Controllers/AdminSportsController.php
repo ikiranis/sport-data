@@ -26,7 +26,7 @@ class AdminSportsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.sports.create');
     }
 
     /**

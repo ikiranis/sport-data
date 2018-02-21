@@ -3,6 +3,12 @@
 @section('content')
     <h1>Πρωταθλήματα</h1>
 
+    <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
+        <a href="{{route('championships.create')}}">
+            <button class="btn btn-info w-100">Προσθήκη πρωταθλήματος</button>
+        </a>
+    </div>
+
     @if($championships)
         <table class="table">
             <thead>

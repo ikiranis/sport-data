@@ -3,6 +3,12 @@
 @section('content')
     <h1>Αγωνιστικές</h1>
 
+    <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
+        <a href="{{route('matchdays.create')}}">
+            <button class="btn btn-info w-100">Προσθήκη αγωνιστικής</button>
+        </a>
+    </div>
+
     @if($matchdays)
         <table class="table">
             <thead>

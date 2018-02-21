@@ -26,7 +26,7 @@ class AdminSeasonsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.seasons.create');
     }
 
     /**

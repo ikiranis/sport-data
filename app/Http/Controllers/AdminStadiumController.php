@@ -26,7 +26,7 @@ class AdminStadiumController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.stadium.create');
     }
 
     /**

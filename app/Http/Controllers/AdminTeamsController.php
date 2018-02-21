@@ -26,7 +26,7 @@ class AdminTeamsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.teams.create');
     }
 
     /**

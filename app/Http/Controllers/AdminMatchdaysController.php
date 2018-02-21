@@ -26,7 +26,7 @@ class AdminMatchdaysController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.matchdays.create');
     }
 
     /**

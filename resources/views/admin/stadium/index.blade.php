@@ -3,6 +3,12 @@
 @section('content')
     <h1>Γήπεδα</h1>
 
+    <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
+        <a href="{{route('stadium.create')}}">
+            <button class="btn btn-info w-100">Προσθήκη γηπέδου</button>
+        </a>
+    </div>
+
     @if($stadia)
         <table class="table">
             <thead>
