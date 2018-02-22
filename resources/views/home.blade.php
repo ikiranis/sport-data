@@ -4,7 +4,6 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            @php $counter=5; @endphp
             @foreach($sports as $sport)
 
                 <div class="col-md-3">
@@ -12,12 +11,11 @@
                         <div class="card-header">{{$sport->name}}</div>
 
                         <div class="card-body">
-                            <img src="http://lorempixel.com/400/200/sports/{{$counter}}"
+                            <img src="/images/{{$sport->photo->path}}/{{$sport->photo->filename}}"
                                  class="img-fluid">
                         </div>
                     </div>
                 </div>
-                @php $counter++; @endphp
             @endforeach
 
         </div>
