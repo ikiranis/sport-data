@@ -16,7 +16,7 @@ class CreateSportsTable extends Migration
         Schema::create('sports', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('photo_id')->unsigned()->nullable();
-            $table->string('slug');
+            $table->string('slug')->default('');
             $table->string('name');
         });
     }

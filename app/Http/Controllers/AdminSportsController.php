@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Photo;
 use App\Sport;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AdminSportsController extends Controller
 {
@@ -37,7 +39,27 @@ class AdminSportsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        if ($file = $request->uploadFile->isValid()) {
+            $file = $request->uploadFile;
+
+            $imgName = time() . '.' . $file->extension();
+            $path = Carbon::now()->month;
+
+            $file->move('images/' . $path, $imgName);
+
+            $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => '']);
+
+            $input['photo_id'] = $photo->id;
+
+        } else {
+            return 'problem';
+        }
+
+        $sport = Sport::create($input);
+
+        return redirect(route('sports.index'));
     }
 
     /**

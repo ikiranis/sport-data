@@ -8,7 +8,7 @@ class Sport extends Model
 {
     // The attributes that are mass assignable
     protected $fillable = [
-        'name', 'photo_id'
+        'name', 'slug', 'photo_id'
     ];
 
     /**
