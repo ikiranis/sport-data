@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Γήπεδα</h1>
+    <h1>{{__('messages.stadia')}}</h1>
 
     <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
         <a href="{{route('stadium.create')}}">
-            <button class="btn btn-info w-100">Προσθήκη γηπέδου</button>
+            <button class="btn btn-info w-100">{{__('messages.insert stadium')}}</button>
         </a>
     </div>
 
@@ -14,8 +14,8 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Όνομα</th>
-                <th scope="col">Πόλη</th>
+                <th scope="col">{{__('messages.name')}}</th>
+                <th scope="col">{{__('messages.city')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -38,6 +38,6 @@
         </div>
 
     @else
-        <h1>Δεν υπάρχουν γήπεδα</h1>
+        <h1>{{__('messages.stadia not exist')}}</h1>
     @endif
 @endsection

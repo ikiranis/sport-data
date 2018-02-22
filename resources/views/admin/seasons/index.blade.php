@@ -5,7 +5,7 @@
 
     <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
         <a href="{{route('seasons.create')}}">
-            <button class="btn btn-info w-100">Προσθήκη season</button>
+            <button class="btn btn-info w-100">{{__('messages.insert season')}}</button>
         </a>
     </div>
 
@@ -14,7 +14,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Όνομα</th>
+                <th scope="col">{{__('messages.name')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -37,6 +37,6 @@
 
 
     @else
-        <h1>Δεν υπάρχουν seasons</h1>
+        <h1>{{__('messages.seasons not exist')}}</h1>
     @endif
 @endsection

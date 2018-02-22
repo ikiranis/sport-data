@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Προσθήκη season</h1>
+    <h1>{{__('messages.insert season}}</h1>
 
 
 @endsection

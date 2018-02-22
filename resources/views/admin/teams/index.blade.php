@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Ομάδες</h1>
+    <h1>{{__('messages.teams')}}</h1>
 
     <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
         <a href="{{route('teams.create')}}">
-            <button class="btn btn-info w-100">Προσθήκη ομάδας</button>
+            <button class="btn btn-info w-100">{{__('messages.insert team')}}</button>
         </a>
     </div>
 
@@ -14,8 +14,8 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Όνομα</th>
-                <th scope="col">Πόλη</th>
+                <th scope="col">{{__('messages.name')}}</th>
+                <th scope="col">{{__('messages.city')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -39,6 +39,6 @@
 
 
     @else
-        <h1>Δεν υπάρχουν ομάδες</h1>
+        <h1>{{__('messages.teams not exist')}}</h1>
     @endif
 @endsection

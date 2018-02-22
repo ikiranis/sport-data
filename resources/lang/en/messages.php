@@ -23,6 +23,24 @@ return [
     'athletes not exist', 'Athletes not exist',
     'championships' => 'Championships',
     'insert championship' => 'Insert championship',
-    'championships not exist' => 'Championships not exist'
+    'championships not exist' => 'Championships not exist',
+    'users' => 'Users',
+    'role' => 'Role',
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    'users not exist', 'Users not exist',
+    'insert user' => 'Insert user',
+    'insert season' => 'Insert season',
+    'seasons not exist' => 'Seasons not exist',
+    'insert sport' => 'Insert sport',
+    'sports' => 'Sports',
+    'sports not exist' => 'Δεν υπάρχουν αθλήματα',
+    'insert stadium' => 'Insert stadium',
+    'stadia' => 'Stadia',
+    'stadia not exist', 'Stadia not exist',
+    'insert team' => 'Insert team',
+    'teams' => 'Teams',
+    'teams not exist' => 'Teams not exist'
+
 
 ];

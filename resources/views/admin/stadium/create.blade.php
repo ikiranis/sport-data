@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Προσθήκη γηπέδου</h1>
+    <h1>{{__('messages.insert stadium'}}</h1>
 
 
 @endsection

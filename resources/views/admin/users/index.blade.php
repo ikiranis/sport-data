@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Χρήστες</h1>
+    <h1>{{__('messages.users')}}</h1>
 
     @if($users)
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Όνομα</th>
+                <th scope="col">{{__('messages.name')}}</th>
                 <th scope="col">E-mail</th>
-                <th scope="col">Ρόλος</th>
-                <th scope="col">Ενεργός</th>
+                <th scope="col">{{__('messages.role')}}</th>
+                <th scope="col">{{__('messages.active')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -22,7 +22,7 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>
-                    <td>{{$user->is_active==1 ? 'Ενεργός' : 'Ανενεργός'}}</td>
+                    <td>{{$user->is_active==1 ? __('messages.active') : __('messages.inactive')}}</td>
                 </tr>
             @endforeach
 
@@ -36,6 +36,6 @@
         </div>
 
     @else
-        <h1>Δεν υπάρχουν χρήστες</h1>
+        <h1>{{__('messages.users not exist')}}</h1>
     @endif
 @endsection

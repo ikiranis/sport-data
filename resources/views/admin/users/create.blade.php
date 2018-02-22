@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Εισαγωγή χρήστη</h1>
+    <h1>{{__('messages.insert user')}}</h1>
 
 
 @endsection

@@ -23,6 +23,23 @@ return [
     'athletes not exist', 'Δεν υπάρχουν αθλητές',
     'championships' => 'Πρωταθλήματα',
     'insert championship' => 'Προσθήκη πρωταθλήματος',
-    'championships not exist' => 'Δεν υπάρχουν πρωταθλήματα'
+    'championships not exist' => 'Δεν υπάρχουν πρωταθλήματα',
+    'users' => 'Χρήστες',
+    'role' => 'Ρόλος',
+    'active' => 'Ενεργός',
+    'inactive' => 'Ανενεργός',
+    'users not exist', 'Δεν υπάρχουν χρήστες',
+    'insert user' => 'Προσθήκη χρήστη',
+    'insert season' => 'Προσθήκη season',
+    'seasons not exist' => 'Δεν υπάρχουν seasons',
+    'insert sport' => 'Προσθήκη αθλήματος',
+    'sports' => 'Αθλήματα',
+    'sports not exist' => 'Δεν υπάρχουν αθλήματα',
+    'insert stadium' => 'Προσθήκη γηπέδου',
+    'stadia' => 'Γήπεδα',
+    'stadia not exist', 'Δεν υπάρχουν γήπεδα',
+    'insert team' => 'Προσθήκη ομάδας',
+    'teams' => 'Ομάδες',
+    'teams not exist' => 'Δεν υπάρχουν ομάδες'
 
 ];
