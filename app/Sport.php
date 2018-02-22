@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Sport extends Model
 {
+    use Sluggable;
+
     // The attributes that are mass assignable
     protected $fillable = [
         'name', 'slug', 'photo_id'
