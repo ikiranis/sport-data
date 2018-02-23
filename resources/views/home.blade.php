@@ -11,7 +11,7 @@
                         <div class="card-header">{{$sport->name}}</div>
 
                         <div class="card-body">
-                            <img src="/images/{{$sport->photo->path}}/{{$sport->photo->filename}}"
+                            <img src="{{$sport->photo->fullPathName}}"
                                  class="img-fluid">
                         </div>
                     </div>

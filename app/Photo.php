@@ -13,4 +13,25 @@ class Photo extends Model
         'reference'
     ];
 
+    /**
+     * Get the path with images folder
+     *
+     * @param $value
+     * @return string
+     */
+//    public function getPathAttribute($value)
+//    {
+//        return '/images/' . $value;
+//    }
+
+    /**
+     * Get full path/filename with images folder
+     *
+     * @return string
+     */
+    public function getFullPathNameAttribute()
+    {
+        return '/images/' . $this->path . '/' . $this->filename;
+    }
+
 }
