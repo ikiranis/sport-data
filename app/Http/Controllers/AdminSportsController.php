@@ -57,7 +57,7 @@ class AdminSportsController extends Controller
             return 'problem';
         }
 
-        $sport = Sport::create($input);
+        Sport::create($input);
 
         return redirect(route('sports.index'));
     }
@@ -104,6 +104,9 @@ class AdminSportsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sport = Sport::findOrFail($id);
+        $sport->delete();
+
+        return redirect(route('sports.index'));
     }
 }

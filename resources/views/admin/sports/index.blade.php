@@ -23,6 +23,16 @@
                 <tr>
                     <th scope="row">{{$sport->id}}</th>
                     <td>{{$sport->name}}</td>
+                    <td>
+                        <form method="POST" action="{{route('sports.destroy', $sport->id)}}">
+                            <input name="_method" type="hidden" value="DELETE">
+                            @csrf
+
+                            <button type="submit" class="btn btn-danger">
+                                Διαγραφή
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
 
