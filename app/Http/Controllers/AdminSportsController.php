@@ -49,9 +49,12 @@ class AdminSportsController extends Controller
 
             $file->move('images/' . $path, $imgName);
 
-            $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => '']);
+            $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->reference]);
 
             $input['photo_id'] = $photo->id;
+
+            // TODO σετάρισμα του nginx να δέχεται μεγαλύτερες φωτογραφίες
+            // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
 
         } else {
             return 'problem';

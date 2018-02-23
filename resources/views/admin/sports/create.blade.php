@@ -26,6 +26,12 @@
                                 </div>
                             </div>
 
+                            <div class="form-group my-3 col-md-8 col-12 ml-auto">
+                                <label class="form-check-label" for="reference">{{__('messages.reference')}}</label>
+                                <input type="text" class="form-control" id="reference" name="reference"
+                                       placeholder="{{__('messages.reference')}}">
+                            </div>
+
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     Προσθήκη

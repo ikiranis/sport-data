@@ -40,6 +40,7 @@ return [
     'stadia not exist', 'Δεν υπάρχουν γήπεδα',
     'insert team' => 'Προσθήκη ομάδας',
     'teams' => 'Ομάδες',
-    'teams not exist' => 'Δεν υπάρχουν ομάδες'
+    'teams not exist' => 'Δεν υπάρχουν ομάδες',
+    'reference' => 'Πηγή'
 
 ];

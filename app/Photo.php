@@ -26,6 +26,7 @@ class Photo extends Model
 
     /**
      * Get full path/filename with images folder
+     * Get it with $photo->fullPathName
      *
      * @return string
      */

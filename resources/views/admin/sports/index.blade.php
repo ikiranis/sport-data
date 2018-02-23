@@ -15,6 +15,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">{{__('messages.name')}}</th>
+                <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>

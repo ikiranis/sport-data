@@ -40,7 +40,8 @@ return [
     'stadia not exist', 'Stadia not exist',
     'insert team' => 'Insert team',
     'teams' => 'Teams',
-    'teams not exist' => 'Teams not exist'
+    'teams not exist' => 'Teams not exist',
+    'reference' => 'Reference'
 
 
 ];
