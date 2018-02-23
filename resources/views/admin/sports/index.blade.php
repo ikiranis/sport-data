@@ -23,7 +23,7 @@
             @foreach($sports as $sport)
                 <tr>
                     <th scope="row">{{$sport->id}}</th>
-                    <td>{{$sport->name}}</td>
+                    <td><a href="{{route('sports.edit', $sport->id)}}">{{$sport->name}}</a></td>
                     <td>
                         <form method="POST" action="{{route('sports.destroy', $sport->id)}}">
                             <input name="_method" type="hidden" value="DELETE">

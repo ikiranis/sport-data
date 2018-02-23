@@ -28,7 +28,7 @@ class AdminSportsController extends Controller
      */
     public function create()
     {
-        return view('admin.sports.create');
+        return view('admin/sports/create');
     }
 
     /**
@@ -84,7 +84,9 @@ class AdminSportsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sport = Sport::findOrFail($id);
+
+        return view ('admin/sports/edit', compact('sport'));
     }
 
     /**
@@ -96,7 +98,7 @@ class AdminSportsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $request;
     }
 
     /**

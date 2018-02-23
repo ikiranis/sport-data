@@ -33,6 +33,7 @@ return [
     'insert season' => 'Προσθήκη season',
     'seasons not exist' => 'Δεν υπάρχουν seasons',
     'insert sport' => 'Προσθήκη αθλήματος',
+    'edit sport' => 'Ενημέρωση αθλήματος',
     'sports' => 'Αθλήματα',
     'sports not exist' => 'Δεν υπάρχουν αθλήματα',
     'insert stadium' => 'Προσθήκη γηπέδου',
