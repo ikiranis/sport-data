@@ -98,7 +98,35 @@ class AdminSportsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return $request;
+        $input = $request->all();
+
+        $sport = Sport::findOrFail($id);
+
+        if($file = $request->uploadFile) {
+            if ($file->uploadFile->isValid()) {
+
+                $imgName = time() . '.' . $file->extension();
+                $path = Carbon::now()->month;
+
+                $file->move('images/' . $path, $imgName);
+
+                $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->reference]);
+
+                $input['photo_id'] = $photo->id;
+
+                // TODO σετάρισμα του nginx να δέχεται μεγαλύτερες φωτογραφίες
+                // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
+
+            } else {
+                return 'problem';
+            }
+        }
+
+
+
+        $sport->update($input);
+
+        return redirect(route('sports.index'));
     }
 
     /**

@@ -16,7 +16,7 @@
                             <div class="form-group my-3">
                                 <label class="form-check-label" for="name">{{__('messages.name')}}</label>
                                 <input type="text" class="form-control" id="name" name="name"
-                                       placeholder="{{$sport->name}}">
+                                       value="{{$sport->name}}">
                             </div>
 
                             <div class="form-group my-3 row px-3">
@@ -30,7 +30,7 @@
                             <div class="form-group my-3 col-md-8 col-12 ml-auto">
                                 <label class="form-check-label" for="reference">{{__('messages.reference')}}</label>
                                 <input type="text" class="form-control" id="reference" name="reference"
-                                       placeholder="{{$sport->photo->reference}}">
+                                       value="{{$sport->photo->reference}}">
                             </div>
 
                             <div class="form-group row">
