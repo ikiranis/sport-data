@@ -42,7 +42,9 @@ return [
     'insert team' => 'Insert team',
     'teams' => 'Teams',
     'teams not exist' => 'Teams not exist',
-    'reference' => 'Reference'
+    'reference' => 'Reference',
+    'update' => 'Update',
+    'insert' => 'Insert'
 
 
 ];

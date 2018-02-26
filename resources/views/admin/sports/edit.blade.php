@@ -13,29 +13,46 @@
                             <input name="_method" type="hidden" value="PUT">
                             @csrf
 
-                            <div class="form-group my-3">
-                                <label class="form-check-label" for="name">{{__('messages.name')}}</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                       value="{{$sport->name}}">
-                            </div>
-
-                            <div class="form-group my-3 row px-3">
-                                <div class="custom-file col-md-8 col-12 ml-auto">
-                                    <input type="file" class="custom-file-input" name="uploadFile" id="uploadFile"
-                                           accept='image/*'>
-                                    <label class="custom-file-label" for="customFile">Εικόνα</label>
+                            <div class="input-group mb-3">
+                                <label class="sr-only" for="name">{{__('messages.name')}}</label>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">{{__('messages.name')}}</span>
                                 </div>
+                                <input type="text" class="form-control" id="name" name="name" value="{{$sport->name}}">
                             </div>
 
-                            <div class="form-group my-3 col-md-8 col-12 ml-auto">
-                                <label class="form-check-label" for="reference">{{__('messages.reference')}}</label>
-                                <input type="text" class="form-control" id="reference" name="reference"
-                                       value="{{$sport->photo->reference}}">
+                            <div class="row">
+
+                                <div class="col-lg-5">
+                                    <img src="{{$sport->photo->fullPathName}}" class="img-fluid">
+                                </div>
+
+                                <div class="col-lg-7 col-12">
+
+                                    <div class="form-group my-3">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="uploadFile" id="uploadFile"
+                                                   accept='image/*'>
+                                            <label class="custom-file-label" for="customFile">Εικόνα</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group my-3">
+                                        <label class="sr-only" for="reference">{{__('messages.reference')}}</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">{{__('messages.reference')}}</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="reference" name="reference"
+                                               value="{{$sport->photo->reference}}">
+                                    </div>
+
+                                </div>
+
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row my-3">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
-                                    Ενημέρωση
+                                    {{__('messages.update')}}
                                 </button>
                             </div>
 

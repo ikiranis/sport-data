@@ -42,6 +42,8 @@ return [
     'insert team' => 'Προσθήκη ομάδας',
     'teams' => 'Ομάδες',
     'teams not exist' => 'Δεν υπάρχουν ομάδες',
-    'reference' => 'Πηγή'
+    'reference' => 'Πηγή',
+    'update' => 'Ενημέρωση',
+    'insert' => 'Προσθήκη'
 
 ];
