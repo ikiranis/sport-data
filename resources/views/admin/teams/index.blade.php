@@ -24,7 +24,7 @@
             @foreach($teams as $team)
                 <tr>
                     <th scope="row">{{$team->id}}</th>
-                    <td>{{$team->name}}</td>
+                    <td><a href="{{route('teams.edit', $team->id)}}">{{$team->name}}</a></td>
                     <td>{{$team->city}}</td>
                     <td>
                         <form method="POST" action="{{route('teams.destroy', $team->id)}}">

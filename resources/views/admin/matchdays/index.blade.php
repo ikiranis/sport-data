@@ -23,7 +23,7 @@
             @foreach($matchdays as $matchday)
                 <tr>
                     <th scope="row">{{$matchday->id}}</th>
-                    <td>{{$matchday->matchday}}</td>
+                    <td><a href="{{route('matchdays.edit', $matchday->id)}}">{{$matchday->matchday}}</a></td>
                     <td>
                         <form method="POST" action="{{route('matchdays.destroy', $matchday->id)}}">
                             <input name="_method" type="hidden" value="DELETE">

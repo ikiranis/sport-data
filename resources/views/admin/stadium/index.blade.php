@@ -24,7 +24,7 @@
             @foreach($stadia as $stadium)
                 <tr>
                     <th scope="row">{{$stadium->id}}</th>
-                    <td>{{$stadium->name}}</td>
+                    <td><a href="{{route('stadium.edit', $stadium->id)}}">{{$stadium->name}}</a></td>
                     <td>{{$stadium->city}}</td>
                     <td>
                         <form method="POST" action="{{route('stadium.destroy', $stadium->id)}}">
