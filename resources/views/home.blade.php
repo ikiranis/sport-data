@@ -7,7 +7,7 @@
 
                 @foreach($sports as $sport)
 
-                    <div class="col-md-3">
+                    <div class="col-lg-3 my-1">
                         <div class="card">
                             <div class="card-header">{{$sport->name}}</div>
 
