@@ -16,6 +16,7 @@
                 <th scope="col">#</th>
                 <th scope="col">{{__('messages.name')}}</th>
                 <th scope="col">{{__('messages.city')}}</th>
+                <th scope="col">{{__('messages.action')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -25,6 +26,16 @@
                     <th scope="row">{{$team->id}}</th>
                     <td>{{$team->name}}</td>
                     <td>{{$team->city}}</td>
+                    <td>
+                        <form method="POST" action="{{route('teams.destroy', $team->id)}}">
+                            <input name="_method" type="hidden" value="DELETE">
+                            @csrf
+
+                            <button type="submit" class="btn btn-danger">
+                                {{__('messages.delete')}}
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
 

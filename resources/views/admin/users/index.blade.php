@@ -12,6 +12,7 @@
                 <th scope="col">E-mail</th>
                 <th scope="col">{{__('messages.role')}}</th>
                 <th scope="col">{{__('messages.active')}}</th>
+                <th scope="col">{{__('messages.action')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -23,6 +24,16 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>
                     <td>{{$user->is_active==1 ? __('messages.active') : __('messages.inactive')}}</td>
+                    <td>
+                        <form method="POST" action="{{route('users.destroy', $user->id)}}">
+                            <input name="_method" type="hidden" value="DELETE">
+                            @csrf
+
+                            <button type="submit" class="btn btn-danger">
+                                {{__('messages.delete')}}
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
 

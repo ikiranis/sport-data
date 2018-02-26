@@ -15,6 +15,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">{{trans_choice('messages.matchdays',1)}}</th>
+                <th scope="col">{{__('messages.action')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -23,6 +24,16 @@
                 <tr>
                     <th scope="row">{{$matchday->id}}</th>
                     <td>{{$matchday->matchday}}</td>
+                    <td>
+                        <form method="POST" action="{{route('matchdays.destroy', $matchday->id)}}">
+                            <input name="_method" type="hidden" value="DELETE">
+                            @csrf
+
+                            <button type="submit" class="btn btn-danger">
+                                {{__('messages.delete')}}
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
 
