@@ -13,6 +13,7 @@ return [
     'matchdays' => '{2}Αγωνιστικές|{1}Aγωνιστική',
     'insert matchday' => 'Προσθήκη αγωνιστικής',
     'name' => 'Όνομα',
+    'lname' => 'Επίθετο',
     'matchdays not exist' => 'Δεν υπάρχουν αγωνιστικές',
     'insert athlete' => 'Προσθήκη αθλητή',
     'athletes' => 'Αθλητές',
