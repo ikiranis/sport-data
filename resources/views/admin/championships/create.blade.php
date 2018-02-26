@@ -9,7 +9,7 @@
                     <div class="card-header">{{__('messages.insert championship')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('championships.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('championships.store') }}">
                             @csrf
 
                             <div class="input-group mb-3 no-gutters">
