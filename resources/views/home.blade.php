@@ -3,21 +3,20 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div class="card-group">
 
-            @foreach($sports as $sport)
+                @foreach($sports as $sport)
 
-                <div class="col-md-3">
-                    <div class="card card-default">
-                        <div class="card-header">{{$sport->name}}</div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">{{$sport->name}}</div>
 
-                        <div class="card-body">
-                            <img src="{{$sport->photo->fullPathName}}"
-                                 class="img-fluid">
+                            <img src="{{$sport->photo->fullPathName}}" class="card-img-bottom">
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
 
+            </div>
         </div>
     </div>
 @endsection

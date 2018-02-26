@@ -44,6 +44,8 @@ return [
     'teams not exist' => 'Δεν υπάρχουν ομάδες',
     'reference' => 'Πηγή',
     'update' => 'Ενημέρωση',
-    'insert' => 'Προσθήκη'
+    'insert' => 'Προσθήκη',
+    'action' => 'Ενέργεια',
+    'delete' => 'Διαγραφή'
 
 ];

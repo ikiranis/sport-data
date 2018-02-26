@@ -15,7 +15,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">{{__('messages.name')}}</th>
-                <th scope="col">Action</th>
+                <th scope="col">{{__('messages.action')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -30,7 +30,7 @@
                             @csrf
 
                             <button type="submit" class="btn btn-danger">
-                                Διαγραφή
+                                {{__('messages.delete')}}
                             </button>
                         </form>
                     </td>

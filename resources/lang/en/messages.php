@@ -44,7 +44,9 @@ return [
     'teams not exist' => 'Teams not exist',
     'reference' => 'Reference',
     'update' => 'Update',
-    'insert' => 'Insert'
+    'insert' => 'Insert',
+    'action' => 'Action',
+    'delete' => 'Delete'
 
 
 ];
