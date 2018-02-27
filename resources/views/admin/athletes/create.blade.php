@@ -33,7 +33,7 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.birthyear')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="birthyear" name="birthyear">
+                                <input type="number" class="form-control col-9 px-2" id="birthyear" name="birthyear">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -58,6 +58,20 @@
                                     <span class="input-group-text w-100">{{__('messages.height')}}</span>
                                 </div>
                                 <input type="text" class="form-control col-9 px-2" id="height" name="height">
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
+                                <div class="input-group-prepend col-3">
+                                    <span class="input-group-text w-100">{{__('messages.sport')}}</span>
+                                </div>
+                                <select class="form-control col-9 px-2" id="sport_id" name="sport_id">
+                                    @foreach($sports as $sport)
+                                        <option value="{{$sport->id}}">
+                                            {{$sport->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="row my-3 border">

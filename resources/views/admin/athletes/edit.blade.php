@@ -9,7 +9,8 @@
                     <div class="card-header">{{__('messages.update athlete')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('athletes.update', $athlete->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('athletes.update', $athlete->id) }}"
+                              enctype="multipart/form-data">
                             <input name="_method" type="hidden" value="PUT">
                             @csrf
 
@@ -18,7 +19,8 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="fname" name="fname" value="{{$athlete->fname}}">
+                                <input type="text" class="form-control col-9 px-2" id="fname" name="fname"
+                                       value="{{$athlete->fname}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -26,7 +28,8 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.lname')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="lname" name="lname" value="{{$athlete->lname}}">
+                                <input type="text" class="form-control col-9 px-2" id="lname" name="lname"
+                                       value="{{$athlete->lname}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -34,7 +37,8 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.birthyear')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="birthyear" name="birthyear" value="{{$athlete->birthyear}}">
+                                <input type="text" class="form-control col-9 px-2" id="birthyear" name="birthyear"
+                                       value="{{$athlete->birthyear}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -42,7 +46,8 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.city')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="city" name="city" value="{{$athlete->city}}">
+                                <input type="text" class="form-control col-9 px-2" id="city" name="city"
+                                       value="{{$athlete->city}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -50,7 +55,8 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.country')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="country" name="country" value="{{$athlete->country}}">
+                                <input type="text" class="form-control col-9 px-2" id="country" name="country"
+                                       value="{{$athlete->country}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -58,22 +64,40 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.height')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="height" name="height" value="{{$athlete->height}}">
+                                <input type="text" class="form-control col-9 px-2" id="height" name="height"
+                                       value="{{$athlete->height}}">
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
+                                <div class="input-group-prepend col-3">
+                                    <span class="input-group-text w-100">{{__('messages.sport')}}</span>
+                                </div>
+                                <select class="form-control col-9 px-2" id="sport_id" name="sport_id">
+                                    @foreach($sports as $sport)
+                                        <option value="{{$sport->id}}" {{$sport->id==$athlete->sport_id ? 'selected' : ''}}>
+                                            {{$sport->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="row border p-2">
 
                                 <div class="col-lg-5">
-                                    <img src="{{$athlete->photo ? $athlete->photo->fullPathName : 'http://via.placeholder.com/350x350'}}" class="img-fluid">
+                                    <img src="{{$athlete->photo ? $athlete->photo->fullPathName : 'http://via.placeholder.com/350x350'}}"
+                                         class="img-fluid">
                                 </div>
 
                                 <div class="col-lg-7 col-12 my-auto">
 
                                     <div class="form-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="uploadFile" id="uploadFile"
+                                            <input type="file" class="custom-file-input" name="uploadFile"
+                                                   id="uploadFile"
                                                    accept='image/*'>
-                                            <label class="custom-file-label" for="customFile">{{__('messages.picture')}}</label>
+                                            <label class="custom-file-label"
+                                                   for="customFile">{{__('messages.picture')}}</label>
                                         </div>
                                     </div>
 

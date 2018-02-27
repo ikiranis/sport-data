@@ -35,6 +35,7 @@ return [
     'insert user' => 'Insert user',
     'insert season' => 'Insert season',
     'seasons not exist' => 'Seasons not exist',
+    'sport' => 'Sport',
     'insert sport' => 'Insert sport',
     'edit sport' => 'Edit sport',
     'sports' => 'Sports',

@@ -12,7 +12,7 @@ class Athlete extends Model
         'photo_id',
         'fname',
         'lname',
-        'birthday',
+        'birthyear',
         'city',
         'country',
         'height'

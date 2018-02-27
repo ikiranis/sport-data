@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Athlete;
 use App\Photo;
+use App\Sport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,9 @@ class AdminAthletesController extends Controller
      */
     public function create()
     {
-        return view('admin.athletes.create');
+        $sports = Sport::all();
+
+        return view('admin.athletes.create', compact('sports'));
     }
 
     /**
@@ -86,8 +89,9 @@ class AdminAthletesController extends Controller
     public function edit($id)
     {
         $athlete = Athlete::findOrFail($id);
+        $sports = Sport::all();
 
-        return view ('admin/athletes/edit', compact('athlete'));
+        return view ('admin/athletes/edit', compact('athlete', 'sports'));
     }
 
     /**

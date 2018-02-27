@@ -35,6 +35,7 @@ return [
     'insert user' => 'Προσθήκη χρήστη',
     'insert season' => 'Προσθήκη season',
     'seasons not exist' => 'Δεν υπάρχουν seasons',
+    'sport' => 'Άθλημα',
     'insert sport' => 'Προσθήκη αθλήματος',
     'edit sport' => 'Ενημέρωση αθλήματος',
     'sports' => 'Αθλήματα',
