@@ -37,7 +37,11 @@ class AdminStadiumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Stadium::create($input);
+
+        return redirect(route('stadium.index'));
     }
 
     /**
@@ -59,7 +63,9 @@ class AdminStadiumController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stadium = Stadium::findOrFail($id);
+
+        return view ('admin/stadium/edit', compact('stadium'));
     }
 
     /**
@@ -71,7 +77,13 @@ class AdminStadiumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $stadium = Stadium::findOrFail($id);
+
+        $stadium->update($input);
+
+        return redirect(route('stadium.index'));
     }
 
     /**
@@ -82,6 +94,9 @@ class AdminStadiumController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $stadium = Stadium::whereId($id);
+        $stadium->delete();
+
+        return redirect(route('stadium.index'));
     }
 }

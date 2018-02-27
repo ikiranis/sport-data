@@ -140,6 +140,9 @@ class AdminAthletesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $athlete = Athlete::whereId($id);
+        $athlete->delete();
+
+        return redirect(route('athletes.index'));
     }
 }

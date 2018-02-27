@@ -138,7 +138,7 @@ class AdminSportsController extends Controller
      */
     public function destroy($id)
     {
-        $sport = Sport::findOrFail($id);
+        $sport = Sport::whereId($id);
         $sport->delete();
 
         return redirect(route('sports.index'));
