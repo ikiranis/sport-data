@@ -9,7 +9,8 @@
                     <div class="card-header">{{__('messages.insert season')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('seasons.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('seasons.update', $season->id) }}">
+                            <input name="_method" type="hidden" value="PUT">
                             @csrf
 
                             <div class="input-group mb-3 no-gutters">
@@ -17,7 +18,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10" id="name" name="name">
+                                <input type="text" class="form-control col-10 px-2" id="name" name="name" value="{{$season->name}}">
                             </div>
 
                             <div class="form-group row">

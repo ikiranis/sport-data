@@ -37,7 +37,11 @@ class AdminSeasonsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Season::create($input);
+
+        return redirect(route('seasons.index'));
     }
 
     /**
@@ -59,7 +63,9 @@ class AdminSeasonsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $season = Season::findOrFail($id);
+
+        return view ('admin/seasons/edit', compact('season'));
     }
 
     /**
@@ -71,7 +77,13 @@ class AdminSeasonsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $season = Season::findOrFail($id);
+
+        $season->update($input);
+
+        return redirect(route('seasons.index'));
     }
 
     /**
@@ -82,6 +94,9 @@ class AdminSeasonsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $season = Season::whereId($id);
+        $season->delete();
+
+        return redirect(route('seasons.index'));
     }
 }
