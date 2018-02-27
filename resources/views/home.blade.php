@@ -10,7 +10,7 @@
                         <div class="card">
                             <div class="card-header">{{$sport->name}}</div>
 
-                            <img src="{{$sport->photo ? $sport->photo->fullPathName : ''}}" class="card-img-bottom">
+                            <img src="{{$sport->photo ? $sport->photo->fullPathName : 'http://via.placeholder.com/350x150'}}" class="card-img-bottom">
                         </div>
                     </div>
                 @endforeach

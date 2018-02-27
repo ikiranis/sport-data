@@ -64,7 +64,7 @@
                             <div class="row">
 
                                 <div class="col-lg-5">
-                                    <img src="{{$athlete->photo ? $athlete->photo->fullPathName : ''}}" class="img-fluid">
+                                    <img src="{{$athlete->photo ? $athlete->photo->fullPathName : 'http://via.placeholder.com/350x350'}}" class="img-fluid">
                                 </div>
 
                                 <div class="col-lg-7 col-12">
