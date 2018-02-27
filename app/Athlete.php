@@ -4,6 +4,31 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Athlete
+ *
+ * @property int $id
+ * @property int|null $sport_id
+ * @property int|null $photo_id
+ * @property string $fname
+ * @property string $lname
+ * @property int $birthyear
+ * @property string $city
+ * @property string $country
+ * @property int $height
+ * @property-read \App\Photo|null $photo
+ * @property-read \App\Sport|null $sport
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete whereBirthyear($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete whereFname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete whereHeight($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete whereLname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete wherePhotoId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete whereSportId($value)
+ * @mixin \Eloquent
+ */
 class Athlete extends Model
 {
     // The attributes that are mass assignable

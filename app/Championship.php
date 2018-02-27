@@ -4,6 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Championship
+ *
+ * @property int $id
+ * @property string $name
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Championship whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Championship whereName($value)
+ * @mixin \Eloquent
+ */
 class Championship extends Model
 {
     // The attributes that are mass assignable

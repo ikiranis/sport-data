@@ -4,6 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Stadium
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $city
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Stadium whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Stadium whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Stadium whereName($value)
+ * @mixin \Eloquent
+ */
 class Stadium extends Model
 {
     // The attributes that are mass assignable

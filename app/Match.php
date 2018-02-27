@@ -4,6 +4,40 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Match
+ *
+ * @property int $id
+ * @property int|null $sport_id
+ * @property int|null $championship_id
+ * @property string $match_date
+ * @property int|null $matchday_id
+ * @property int|null $stadium_id
+ * @property int|null $first_team_id
+ * @property int|null $second_team_id
+ * @property int|null $first_team_score
+ * @property int|null $second_team_score
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \App\Championship|null $championship
+ * @property-read \App\Matchday|null $matchday
+ * @property-read \App\Sport|null $sport
+ * @property-read \App\Stadium|null $stadium
+ * @property-read \App\Team $team
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereChampionshipId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereFirstTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereFirstTeamScore($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereMatchDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereMatchdayId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereSecondTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereSecondTeamScore($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereSportId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereStadiumId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Match extends Model
 {
     // The attributes that are mass assignable

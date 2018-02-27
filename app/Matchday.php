@@ -4,6 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Matchday
+ *
+ * @property int $id
+ * @property int|null $season_id
+ * @property int $matchday
+ * @property-read \App\Season|null $season
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Matchday whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Matchday whereMatchday($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Matchday whereSeasonId($value)
+ * @mixin \Eloquent
+ */
 class Matchday extends Model
 {
     // The attributes that are mass assignable

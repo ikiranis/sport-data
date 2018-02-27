@@ -5,6 +5,21 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
+/**
+ * App\Sport
+ *
+ * @property int $id
+ * @property int|null $photo_id
+ * @property string $slug
+ * @property string $name
+ * @property-read \App\Photo|null $photo
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Sport findSimilarSlugs($attribute, $config, $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Sport whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Sport whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Sport wherePhotoId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Sport whereSlug($value)
+ * @mixin \Eloquent
+ */
 class Sport extends Model
 {
     use Sluggable;

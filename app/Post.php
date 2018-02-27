@@ -5,6 +5,43 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
+/**
+ * App\Post
+ *
+ * @property int $id
+ * @property string $slug
+ * @property int|null $team_id
+ * @property int|null $photo_id
+ * @property int|null $user_id
+ * @property int|null $athlete_id
+ * @property int|null $match_id
+ * @property string $title
+ * @property string $description
+ * @property string $body
+ * @property string $reference
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \App\Athlete|null $athlete
+ * @property-read \App\Match|null $match
+ * @property-read \App\Photo|null $photo
+ * @property-read \App\Team|null $team
+ * @property-read \App\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post findSimilarSlugs($attribute, $config, $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereAthleteId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereMatchId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post wherePhotoId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereReference($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Post extends Model
 {
     use Sluggable;

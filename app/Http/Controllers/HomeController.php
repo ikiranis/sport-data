@@ -17,7 +17,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the public page
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,9 +28,15 @@ class HomeController extends Controller
         return view('home', compact('sports'));
     }
 
+    /**
+     * Display public sport page
+     *
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function sport($slug)
     {
-        $sport = Sport::where('slug', $slug)->first();
+        $sport = Sport::whereSlug($slug)->firstOrFail();
 
         return view('public.sport', compact('sport'));
     }
