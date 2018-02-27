@@ -17,7 +17,7 @@ class CreatePhotosTable extends Migration
             $table->increments('id');
             $table->string('path');
             $table->string('filename');
-            $table->string('reference');
+            $table->string('reference')->nullable();
             $table->timestamps();
         });
     }

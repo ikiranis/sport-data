@@ -49,7 +49,8 @@ return [
     'update' => 'Update',
     'insert' => 'Insert',
     'action' => 'Action',
-    'delete' => 'Delete'
+    'delete' => 'Delete',
+    'picture' => 'Picture'
 
 
 ];

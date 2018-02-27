@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Athlete;
+use App\Photo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminAthletesController extends Controller
@@ -37,7 +39,30 @@ class AdminAthletesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        if ($file = $request->uploadFile->isValid()) {
+            $file = $request->uploadFile;
+
+            $imgName = time() . '.' . $file->extension();
+            $path = Carbon::now()->month;
+
+            $file->move('images/' . $path, $imgName);
+
+            $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->reference]);
+
+            $input['photo_id'] = $photo->id;
+
+            // TODO σετάρισμα του nginx να δέχεται μεγαλύτερες φωτογραφίες
+            // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
+
+        } else {
+            return 'problem';
+        }
+
+        Athlete::create($input);
+
+        return redirect(route('athletes.index'));
     }
 
     /**

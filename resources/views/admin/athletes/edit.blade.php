@@ -61,6 +61,35 @@
                                 <input type="text" class="form-control col-10 px-2" id="height" name="height" value="{{$athlete->height}}">
                             </div>
 
+                            <div class="row">
+
+                                <div class="col-lg-5">
+                                    <img src="{{$athlete->photo ? $athlete->photo->fullPathName : ''}}" class="img-fluid">
+                                </div>
+
+                                <div class="col-lg-7 col-12">
+
+                                    <div class="form-group my-3">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="uploadFile" id="uploadFile"
+                                                   accept='image/*'>
+                                            <label class="custom-file-label" for="customFile">{{__('messages.picture')}}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group my-3">
+                                        <label class="sr-only" for="reference">{{__('messages.reference')}}</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">{{__('messages.reference')}}</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="reference" name="reference"
+                                               value="{{$athlete->photo->reference}}">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     {{__('messages.update')}}

@@ -24,7 +24,7 @@
                             <div class="row">
 
                                 <div class="col-lg-5">
-                                    <img src="{{$sport->photo->fullPathName}}" class="img-fluid">
+                                    <img src="{{$sport->photo ? $sport->photo->fullPathName : ''}}" class="img-fluid">
                                 </div>
 
                                 <div class="col-lg-7 col-12">
@@ -33,7 +33,7 @@
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="uploadFile" id="uploadFile"
                                                    accept='image/*'>
-                                            <label class="custom-file-label" for="customFile">Εικόνα</label>
+                                            <label class="custom-file-label" for="customFile">{{__('messages.picture')}}</label>
                                         </div>
                                     </div>
 
@@ -43,7 +43,7 @@
                                             <span class="input-group-text">{{__('messages.reference')}}</span>
                                         </div>
                                         <input type="text" class="form-control" id="reference" name="reference"
-                                               value="{{$sport->photo->reference}}">
+                                               value="{{$sport->photo ? $sport->photo->reference : ''}}">
                                     </div>
 
                                 </div>

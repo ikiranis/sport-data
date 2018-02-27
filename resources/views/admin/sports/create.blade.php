@@ -27,7 +27,7 @@
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" name="uploadFile" id="uploadFile"
                                                accept='image/*'>
-                                        <label class="custom-file-label" for="customFile">Εικόνα</label>
+                                        <label class="custom-file-label" for="customFile">{{__('messages.picture')}}</label>
                                     </div>
                                 </div>
 

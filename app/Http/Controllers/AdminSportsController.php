@@ -41,23 +41,24 @@ class AdminSportsController extends Controller
     {
         $input = $request->all();
 
-        if ($file = $request->uploadFile->isValid()) {
-            $file = $request->uploadFile;
+        if ($file = $request->uploadFile) {
+            if ($file->isValid()) {
 
-            $imgName = time() . '.' . $file->extension();
-            $path = Carbon::now()->month;
+                $imgName = time() . '.' . $file->extension();
+                $path = Carbon::now()->month;
 
-            $file->move('images/' . $path, $imgName);
+                $file->move('images/' . $path, $imgName);
 
-            $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->reference]);
+                $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->reference]);
 
-            $input['photo_id'] = $photo->id;
+                $input['photo_id'] = $photo->id;
 
-            // TODO σετάρισμα του nginx να δέχεται μεγαλύτερες φωτογραφίες
-            // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
+                // TODO σετάρισμα του nginx να δέχεται μεγαλύτερες φωτογραφίες
+                // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
 
-        } else {
-            return 'problem';
+            } else {
+                return 'problem';
+            }
         }
 
         Sport::create($input);
@@ -103,7 +104,7 @@ class AdminSportsController extends Controller
         $sport = Sport::findOrFail($id);
 
         if($file = $request->uploadFile) {
-            if ($file->uploadFile->isValid()) {
+            if ($file->isValid()) {
 
                 $imgName = time() . '.' . $file->extension();
                 $path = Carbon::now()->month;
