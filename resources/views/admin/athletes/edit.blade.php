@@ -61,15 +61,15 @@
                                 <input type="text" class="form-control col-9 px-2" id="height" name="height" value="{{$athlete->height}}">
                             </div>
 
-                            <div class="row">
+                            <div class="row border p-2">
 
                                 <div class="col-lg-5">
                                     <img src="{{$athlete->photo ? $athlete->photo->fullPathName : 'http://via.placeholder.com/350x350'}}" class="img-fluid">
                                 </div>
 
-                                <div class="col-lg-7 col-12">
+                                <div class="col-lg-7 col-12 my-auto">
 
-                                    <div class="form-group my-3">
+                                    <div class="form-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="uploadFile" id="uploadFile"
                                                    accept='image/*'>
@@ -77,7 +77,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="input-group my-3">
+                                    <div class="input-group">
                                         <label class="sr-only" for="reference">{{__('messages.reference')}}</label>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">{{__('messages.reference')}}</span>

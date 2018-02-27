@@ -60,7 +60,7 @@
                                 <input type="text" class="form-control col-9 px-2" id="height" name="height">
                             </div>
 
-                            <div class="row my-3">
+                            <div class="row my-3 border">
 
                                 <div class="form-group my-3 col-lg-6 col-12">
                                     <div class="custom-file">
