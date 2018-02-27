@@ -9,7 +9,7 @@
                     <div class="card-header">{{__('messages.update championship')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('championships.update') }}">
+                        <form method="POST" action="{{ route('championships.update', $championship->id) }}">
                             <input name="_method" type="hidden" value="PUT">
                             @csrf
 
@@ -18,7 +18,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10" id="name" name="name" value="{{$championship->name}}">
+                                <input type="text" class="form-control col-10 px-2" id="name" name="name" value="{{$championship->name}}">
                             </div>
 
                             <div class="form-group row">

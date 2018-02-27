@@ -37,7 +37,11 @@ class AdminChampionshipsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Championship::create($input);
+
+        return redirect(route('championships.index'));
     }
 
     /**
@@ -59,7 +63,9 @@ class AdminChampionshipsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $championship = Championship::findOrFail($id);
+
+        return view ('admin/championships/edit', compact('championship'));
     }
 
     /**
@@ -71,7 +77,13 @@ class AdminChampionshipsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $championship = Championship::findOrFail($id);
+
+        $championship->update($input);
+
+        return redirect(route('championships.index'));
     }
 
     /**
@@ -82,6 +94,9 @@ class AdminChampionshipsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $championship = Championship::whereId($id);
+        $championship->delete();
+
+        return redirect(route('championships.index'));
     }
 }

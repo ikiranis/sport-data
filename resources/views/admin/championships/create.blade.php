@@ -17,7 +17,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10" id="name" name="name">
+                                <input type="text" class="form-control col-10 px-2" id="name" name="name">
                             </div>
 
                             <div class="form-group row">
