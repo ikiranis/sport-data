@@ -23,7 +23,7 @@ Route::group(
         Auth::routes();
 
         Route::get('/', 'HomeController@index')->name('home');
-        Route::get('/sport/{id}', 'HomeController@sport')->name('sport');
+        Route::get('/sport/{slug}', 'HomeController@sport')->name('sport');
 
         Route::get('/admin', function () {
             return view('admin.index');

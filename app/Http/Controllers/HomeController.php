@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Sport;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -29,9 +28,9 @@ class HomeController extends Controller
         return view('home', compact('sports'));
     }
 
-    public function sport($id)
+    public function sport($slug)
     {
-        $sport = Sport::findOrFail($id);
+        $sport = Sport::where('slug', $slug)->first();
 
         return view('public.sport', compact('sport'));
     }
