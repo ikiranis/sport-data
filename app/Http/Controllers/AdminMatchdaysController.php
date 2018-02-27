@@ -37,7 +37,11 @@ class AdminMatchdaysController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Matchday::create($input);
+
+        return redirect(route('matchdays.index'));
     }
 
     /**
@@ -59,7 +63,9 @@ class AdminMatchdaysController extends Controller
      */
     public function edit($id)
     {
-        //
+        $matchday = Matchday::findOrFail($id);
+
+        return view ('admin/matchdays/edit', compact('matchday'));
     }
 
     /**
@@ -71,7 +77,13 @@ class AdminMatchdaysController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $matchday = Matchday::findOrFail($id);
+
+        $matchday->update($input);
+
+        return redirect(route('matchdays.index'));
     }
 
     /**
@@ -82,6 +94,9 @@ class AdminMatchdaysController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $matchday = Matchday::whereId($id);
+        $matchday->delete();
+
+        return redirect(route('matchdays.index'));
     }
 }

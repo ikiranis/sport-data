@@ -10,7 +10,8 @@
                     <div class="card-header">{{__('messages.insert matchday')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('matchdays.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('matchdays.update', $matchday->id) }}">
+                            <input name="_method" type="hidden" value="PUT">
                             @csrf
 
                             <div class="input-group mb-3 no-gutters">
@@ -18,7 +19,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{trans_choice('messages.matchdays',1)}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10" id="matchday" name="matchday">
+                                <input type="text" class="form-control col-10 px-2" id="matchday" name="matchday" value="{{$matchday->matchday}}">
                             </div>
 
                             <div class="form-group row">
