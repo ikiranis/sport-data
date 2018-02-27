@@ -25,7 +25,7 @@ class HomeController extends Controller
     {
         $sports = Sport::all();
 
-        return view('home', compact('sports'));
+        return view('public.home', compact('sports'));
     }
 
     /**
