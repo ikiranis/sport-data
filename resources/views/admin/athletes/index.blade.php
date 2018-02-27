@@ -28,7 +28,7 @@
                 <tr>
                     <th scope="row">{{$athlete->id}}</th>
                     <td><a href="{{route('athletes.edit', $athlete->id)}}">{{$athlete->fname}} {{$athlete->lname}}</a></td>
-                    <td>{{$athlete->birthday}}</td>
+                    <td>{{$athlete->birthyear}}</td>
                     <td>{{$athlete->city}}</td>
                     <td>{{$athlete->country}}</td>
                     <td>{{$athlete->height}}</td>

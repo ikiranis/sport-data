@@ -18,7 +18,7 @@ return [
     'insert athlete' => 'Insert athlete',
     'update athlete' => 'Update athlete',
     'athletes' => 'Athletes',
-    'birthday' => 'Birthday',
+    'birthday' => 'Birth year',
     'city' => 'City',
     'country' => 'Country',
     'height' => 'Height',

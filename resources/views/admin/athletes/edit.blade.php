@@ -15,50 +15,50 @@
 
                             <div class="input-group mb-3 no-gutters">
                                 <label class="sr-only" for="fname">{{__('messages.name')}}</label>
-                                <div class="input-group-prepend col-2">
+                                <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="fname" name="fname" value="{{$athlete->fname}}">
+                                <input type="text" class="form-control col-9 px-2" id="fname" name="fname" value="{{$athlete->fname}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
                                 <label class="sr-only" for="lname">{{__('messages.lname')}}</label>
-                                <div class="input-group-prepend col-2">
+                                <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.lname')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="lname" name="lname" value="{{$athlete->lname}}">
+                                <input type="text" class="form-control col-9 px-2" id="lname" name="lname" value="{{$athlete->lname}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="birthday">{{__('messages.birthday')}}</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">{{__('messages.birthday')}}</span>
+                                <label class="sr-only" for="birthyear">{{__('messages.birthyear')}}</label>
+                                <div class="input-group-prepend col-3">
+                                    <span class="input-group-text w-100">{{__('messages.birthyear')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="birthday" name="birthday" value="{{$athlete->birthday}}">
+                                <input type="text" class="form-control col-9 px-2" id="birthyear" name="birthyear" value="{{$athlete->birthyear}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
                                 <label class="sr-only" for="city">{{__('messages.city')}}</label>
-                                <div class="input-group-prepend col-2">
+                                <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.city')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="city" name="city" value="{{$athlete->city}}">
+                                <input type="text" class="form-control col-9 px-2" id="city" name="city" value="{{$athlete->city}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
                                 <label class="sr-only" for="country">{{__('messages.country')}}</label>
-                                <div class="input-group-prepend col-2">
+                                <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.country')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="country" name="country" value="{{$athlete->country}}">
+                                <input type="text" class="form-control col-9 px-2" id="country" name="country" value="{{$athlete->country}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
                                 <label class="sr-only" for="height">{{__('messages.height')}}</label>
-                                <div class="input-group-prepend col-2">
+                                <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.height')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="height" name="height" value="{{$athlete->height}}">
+                                <input type="text" class="form-control col-9 px-2" id="height" name="height" value="{{$athlete->height}}">
                             </div>
 
                             <div class="row">
@@ -83,14 +83,14 @@
                                             <span class="input-group-text">{{__('messages.reference')}}</span>
                                         </div>
                                         <input type="text" class="form-control" id="reference" name="reference"
-                                               value="{{$athlete->photo->reference}}">
+                                               value="{{$athlete->photo ? $athlete->photo->reference : ''}}">
                                     </div>
 
                                 </div>
 
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row my-3">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     {{__('messages.update')}}
                                 </button>

@@ -19,7 +19,7 @@ class CreateAthletesTable extends Migration
             $table->integer('photo_id')->unsigned()->nullable();
             $table->string('fname');
             $table->string('lname');
-            $table->date('birthday');
+            $table->integer('birthyear');
             $table->string('city');
             $table->string('country');
             $table->smallInteger('height');

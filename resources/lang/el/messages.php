@@ -18,7 +18,7 @@ return [
     'insert athlete' => 'Προσθήκη αθλητή',
     'update athlete' => 'Ενημέρωση αθλητή',
     'athletes' => 'Αθλητές',
-    'birthday' => 'Ημ. Γέννησης',
+    'birthyear' => 'Έτος Γέννησης',
     'city' => 'Πόλη',
     'country' => 'Χώρα',
     'height' => 'Ύψος',

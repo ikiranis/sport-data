@@ -15,12 +15,13 @@ use Faker\Generator as Faker;
 
 
 $factory->define(App\Athlete::class, function (Faker $faker) {
+
     return [
         'fname' => $faker->firstName,
         'lname' => $faker->lastName,
         'sport_id' => 0,
         'photo_id' => 0,
-        'birthday' => $faker->dateTimeBetween('-50 years', '-10 years'),
+        'birthyear' => $faker->dateTimeBetween('-50 years', '-10 years')->format('Y'),
         'city' => $faker->city,
         'country' => $faker->country,
         'height' => random_int(120,220)
