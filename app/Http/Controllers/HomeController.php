@@ -28,4 +28,11 @@ class HomeController extends Controller
 
         return view('home', compact('sports'));
     }
+
+    public function sport($id)
+    {
+        $sport = Sport::findOrFail($id);
+
+        return view('public.sport', compact('sport'));
+    }
 }
