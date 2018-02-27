@@ -37,7 +37,11 @@ class AdminTeamsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Team::create($input);
+
+        return redirect(route('teams.index'));
     }
 
     /**
@@ -59,7 +63,9 @@ class AdminTeamsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $team = Team::findOrFail($id);
+
+        return view ('admin/teams/edit', compact('team'));
     }
 
     /**
@@ -71,7 +77,13 @@ class AdminTeamsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $team = Team::findOrFail($id);
+
+        $team->update($input);
+
+        return redirect(route('teams.index'));
     }
 
     /**
@@ -82,6 +94,9 @@ class AdminTeamsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team = Team::whereId($id);
+        $team->delete();
+
+        return redirect(route('teams.index'));
     }
 }

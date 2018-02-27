@@ -9,7 +9,7 @@
                     <div class="card-header">{{__('messages.insert team')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('teams.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('teams.store') }}">
                             @csrf
 
                             <div class="input-group mb-3 no-gutters">
@@ -17,7 +17,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10" id="name" name="name">
+                                <input type="text" class="form-control col-10 px-2" id="name" name="name">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -25,7 +25,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.city')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10" id="city" name="city">
+                                <input type="text" class="form-control col-10 px-2" id="city" name="city">
                             </div>
 
                             <div class="form-group row">
