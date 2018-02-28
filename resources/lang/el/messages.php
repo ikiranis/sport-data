@@ -12,6 +12,7 @@ return [
 
     'matchdays' => '{2}Αγωνιστικές|{1}Aγωνιστική',
     'insert matchday' => 'Προσθήκη αγωνιστικής',
+    'update matchday' => 'Ενημέρωση αγωνιστικής',
     'name' => 'Όνομα',
     'lname' => 'Επίθετο',
     'matchdays not exist' => 'Δεν υπάρχουν αγωνιστικές',

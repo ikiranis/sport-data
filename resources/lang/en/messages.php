@@ -12,6 +12,7 @@ return [
 
     'matchdays' => '{2}Matchdays|{1}Matchday',
     'insert matchday' => 'Insert matchday',
+    'update matchday' => 'Update matchday',
     'name' => 'Name',
     'lname' => 'Last name',
     'matchdays not exist' => 'Matchdays not exist',

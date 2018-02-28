@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Matchday;
+use App\Season;
 use Illuminate\Http\Request;
 
 class AdminMatchdaysController extends Controller
@@ -26,7 +27,9 @@ class AdminMatchdaysController extends Controller
      */
     public function create()
     {
-        return view('admin.matchdays.create');
+        $seasons = Season::all();
+
+        return view('admin.matchdays.create', compact('seasons'));
     }
 
     /**
@@ -64,8 +67,9 @@ class AdminMatchdaysController extends Controller
     public function edit($id)
     {
         $matchday = Matchday::findOrFail($id);
+        $seasons = Season::all();
 
-        return view ('admin/matchdays/edit', compact('matchday'));
+        return view ('admin/matchdays/edit', compact('matchday', 'seasons'));
     }
 
     /**

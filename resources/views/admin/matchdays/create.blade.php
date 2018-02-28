@@ -21,6 +21,20 @@
                                 <input type="text" class="form-control col-10 px-2" id="matchday" name="matchday">
                             </div>
 
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="season_id" class="sr-only">Season</label>
+                                <div class="input-group-prepend col-3">
+                                    <span class="input-group-text w-100">Season</span>
+                                </div>
+                                <select class="form-control col-9 px-2" id="season_id" name="season_id">
+                                    @foreach($seasons as $season)
+                                        <option value="{{$season->id}}">
+                                            {{$season->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     {{__('messages.insert')}}
