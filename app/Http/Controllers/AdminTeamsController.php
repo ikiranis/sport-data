@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Logo;
+use App\Photo;
 use App\Team;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminTeamsController extends Controller
@@ -38,6 +41,25 @@ class AdminTeamsController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+
+        if ($file = $request->uploadFile) {
+            if ($file->isValid()) {
+
+                $imgName = time() . '.' . $file->extension();
+                $path = Carbon::now()->month;
+
+                $file->move('images/' . $path, $imgName);
+
+                $logo = Logo::create(['path' => $path, 'filename' => $imgName]);
+
+                $input['logo_id'] = $logo->id;
+
+                // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
+
+            } else {
+                return 'problem';
+            }
+        }
 
         Team::create($input);
 
@@ -80,6 +102,25 @@ class AdminTeamsController extends Controller
         $input = $request->all();
 
         $team = Team::findOrFail($id);
+
+        if ($file = $request->uploadFile) {
+            if ($file->isValid()) {
+
+                $imgName = time() . '.' . $file->extension();
+                $path = Carbon::now()->month;
+
+                $file->move('images/' . $path, $imgName);
+
+                $logo = Logo::create(['path' => $path, 'filename' => $imgName]);
+
+                $input['logo_id'] = $logo->id;
+
+                // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
+
+            } else {
+                return 'problem';
+            }
+        }
 
         $team->update($input);
 

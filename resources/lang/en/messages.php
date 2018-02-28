@@ -44,6 +44,7 @@ return [
     'stadia' => 'Stadia',
     'stadia not exist', 'Stadia not exist',
     'insert team' => 'Insert team',
+    'update team' => 'Update team',
     'teams' => 'Teams',
     'teams not exist' => 'Teams not exist',
     'reference' => 'Reference',

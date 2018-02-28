@@ -56,7 +56,6 @@ class AdminAthletesController extends Controller
 
                 $input['photo_id'] = $photo->id;
 
-                // TODO σετάρισμα του nginx να δέχεται μεγαλύτερες φωτογραφίες
                 // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
 
             } else {
@@ -119,7 +118,6 @@ class AdminAthletesController extends Controller
 
                 $input['photo_id'] = $photo->id;
 
-                // TODO σετάρισμα του nginx να δέχεται μεγαλύτερες φωτογραφίες
                 // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
 
             } else {

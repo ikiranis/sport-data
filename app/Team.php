@@ -34,6 +34,6 @@ class Team extends Model
      * Relation to Logos
      */
     public function logo() {
-        return $this->hasOne('App\Logo');
+        return $this->belongsTo('App\Logo');
     }
 }

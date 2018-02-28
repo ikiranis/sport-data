@@ -44,6 +44,7 @@ return [
     'stadia' => 'Γήπεδα',
     'stadia not exist', 'Δεν υπάρχουν γήπεδα',
     'insert team' => 'Προσθήκη ομάδας',
+    'update team' => 'Ενημέρωση ομάδας',
     'teams' => 'Ομάδες',
     'teams not exist' => 'Δεν υπάρχουν ομάδες',
     'reference' => 'Πηγή',

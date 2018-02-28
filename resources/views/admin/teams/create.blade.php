@@ -9,7 +9,7 @@
                     <div class="card-header">{{__('messages.insert team')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('teams.store') }}">
+                        <form method="POST" action="{{ route('teams.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="input-group mb-3 no-gutters">
@@ -28,7 +28,19 @@
                                 <input type="text" class="form-control col-10 px-2" id="city" name="city">
                             </div>
 
-                            <div class="form-group row">
+                            <div class="row my-3 border">
+
+                                <div class="form-group my-3 col-lg-6 col-12 ml-auto mr-auto">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="uploadFile" id="uploadFile"
+                                               accept='image/*'>
+                                        <label class="custom-file-label" for="customFile">Logo</label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row my-3">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     {{__('messages.insert')}}
                                 </button>

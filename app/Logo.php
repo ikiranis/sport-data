@@ -27,4 +27,16 @@ class Logo extends Model
         'filename'
     ];
 
+    /**
+     * Get full path/filename with images folder
+     * Get it with $photo->fullPathName
+     *
+     * @return string
+     */
+    public function getFullPathNameAttribute()
+    {
+        return '/images/' . $this->path . '/' . $this->filename;
+    }
+
+
 }
