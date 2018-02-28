@@ -3,7 +3,7 @@
 @section('content')
     <h1>{{__('messages.users')}}</h1>
 
-    @if($users)
+    @if(count($users)>0)
         <table class="table">
             <thead>
             <tr>

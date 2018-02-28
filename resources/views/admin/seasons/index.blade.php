@@ -9,7 +9,7 @@
         </a>
     </div>
 
-    @if($seasons)
+    @if(count($seasons)>0)
         <table class="table">
             <thead>
             <tr>

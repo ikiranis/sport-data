@@ -9,7 +9,7 @@
         </a>
     </div>
 
-    @if($matchdays)
+    @if(count($matchdays)>0)
         <table class="table">
             <thead>
             <tr>

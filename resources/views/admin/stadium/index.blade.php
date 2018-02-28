@@ -9,7 +9,7 @@
         </a>
     </div>
 
-    @if($stadia)
+    @if(count($stadia)>0)
         <table class="table">
             <thead>
             <tr>

@@ -35,6 +35,7 @@ return [
     'users not exist', 'Δεν υπάρχουν χρήστες',
     'insert user' => 'Προσθήκη χρήστη',
     'insert season' => 'Προσθήκη season',
+    'update season' => 'Ενημέρωση season',
     'seasons not exist' => 'Δεν υπάρχουν seasons',
     'sport' => 'Άθλημα',
     'insert sport' => 'Προσθήκη αθλήματος',
@@ -42,6 +43,7 @@ return [
     'sports' => 'Αθλήματα',
     'sports not exist' => 'Δεν υπάρχουν αθλήματα',
     'insert stadium' => 'Προσθήκη γηπέδου',
+    'update stadium' => 'Ενημέρωση γηπέδου',
     'stadia' => 'Γήπεδα',
     'stadia not exist', 'Δεν υπάρχουν γήπεδα',
     'insert team' => 'Προσθήκη ομάδας',
@@ -53,6 +55,11 @@ return [
     'insert' => 'Προσθήκη',
     'action' => 'Ενέργεια',
     'delete' => 'Διαγραφή',
-    'picture' => 'Εικόνα'
+    'picture' => 'Εικόνα',
+    'insert post' => 'Προσθήκη δημοσιεύματος',
+    'update post' => 'Ενημέρωση δημοσιεύματος',
+    'posts' => 'Δημοσιεύματα',
+    'title' => 'Τίτλος',
+    'posts not exist' => 'Δεν υπάρχουν δημοσιεύματα'
 
 ];

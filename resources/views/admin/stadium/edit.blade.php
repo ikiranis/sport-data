@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">{{__('messages.insert stadium')}}</div>
+                    <div class="card-header">{{__('messages.update stadium')}}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('stadium.update', $stadium->id) }}">
@@ -31,7 +31,7 @@
 
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
-                                    {{__('messages.insert')}}
+                                    {{__('messages.update')}}
                                 </button>
                             </div>
 

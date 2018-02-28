@@ -9,7 +9,7 @@
         </a>
     </div>
 
-    @if($championships)
+    @if(count($championships)>0)
         <table class="table">
             <thead>
             <tr>

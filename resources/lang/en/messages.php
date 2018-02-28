@@ -35,6 +35,7 @@ return [
     'users not exist', 'Users not exist',
     'insert user' => 'Insert user',
     'insert season' => 'Insert season',
+    'update season' => 'Update season',
     'seasons not exist' => 'Seasons not exist',
     'sport' => 'Sport',
     'insert sport' => 'Insert sport',
@@ -42,6 +43,7 @@ return [
     'sports' => 'Sports',
     'sports not exist' => 'Δεν υπάρχουν αθλήματα',
     'insert stadium' => 'Insert stadium',
+    'update stadium' => 'Update stadium',
     'stadia' => 'Stadia',
     'stadia not exist', 'Stadia not exist',
     'insert team' => 'Insert team',
@@ -53,7 +55,12 @@ return [
     'insert' => 'Insert',
     'action' => 'Action',
     'delete' => 'Delete',
-    'picture' => 'Picture'
+    'picture' => 'Picture',
+    'insert post' => 'Insert post',
+    'update post' => 'Update post',
+    'posts' => 'Posts',
+    'title' => 'Title',
+    'posts not exist' => 'Posts not exist'
 
 
 ];
