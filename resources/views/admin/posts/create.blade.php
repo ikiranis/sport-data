@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-check-label" for="body">Περιγραφή</label>
+                                <label class="form-check-label" for="description">Περιγραφή</label>
                                 <textarea class="form-control" id="description" name="description" rows="2"></textarea>
                             </div>
 

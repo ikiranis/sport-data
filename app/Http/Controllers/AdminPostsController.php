@@ -92,7 +92,11 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $teams = Team::all();
+        $athletes = Athlete::all();
+
+        return view ('admin/posts/edit', compact('post', 'teams', 'athletes'));
     }
 
     /**
@@ -104,7 +108,32 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $post = Post::findOrFail($id);
+
+        if($file = $request->uploadFile) {
+            if ($file->isValid()) {
+
+                $imgName = time() . '.' . $file->extension();
+                $path = Carbon::now()->month;
+
+                $file->move('images/' . $path, $imgName);
+
+                $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->photo_reference]);
+
+                $input['photo_id'] = $photo->id;
+
+                // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
+
+            } else {
+                return 'problem';
+            }
+        }
+
+        $post->update($input);
+
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -115,6 +144,9 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::whereId($id);
+        $post->delete();
+
+        return redirect(route('posts.index'));
     }
 }
