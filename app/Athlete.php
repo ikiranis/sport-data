@@ -60,4 +60,16 @@ class Athlete extends Model
         return $this->belongsTo('App\Photo');
     }
 
+    /**
+     * Get full name
+     * Get it with $athlete->fullName
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->fname . ' ' . $this->lname;
+    }
+
+
 }

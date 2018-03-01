@@ -14,10 +14,10 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">{{__('messages.teams')}}</th>
+                <th scope="col">{{__('messages.title')}}</th>
                 <th scope="col">{{__('messages.users')}}</th>
                 <th scope="col">{{__('messages.athletes')}}</th>
-                <th scope="col">{{__('messages.title')}}</th>
+                <th scope="col">{{__('messages.teams')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -25,10 +25,10 @@
             @foreach($posts as $post)
                 <tr>
                     <th scope="row">{{$post->id}}</th>
-                    <td><a href="{{route('posts.edit', $post->id)}}">{{$post->team->name}}</a></td>
+                    <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
                     <td>{{$post->user->name}}</td>
-                    <td>{{$post->athlete->fname}} {{$post->athlete->lname}}</td>
-                    <td>{{$post->title}}</td>
+                    <td>{{$post->athlete->fullName}}</td>
+                    <td>{{$post->team->name}}</td>
 
                     <td>
                         <form method="POST" action="{{route('posts.destroy', $post->id)}}">

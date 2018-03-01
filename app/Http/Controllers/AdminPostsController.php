@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Athlete;
+use App\Photo;
 use App\Post;
 use App\Team;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminPostsController extends Controller
@@ -45,7 +47,30 @@ class AdminPostsController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $input = $request->all();
+
+        if ($file = $request->uploadFile) {
+            if ($file->isValid()) {
+
+                $imgName = time() . '.' . $file->extension();
+                $path = Carbon::now()->month;
+
+                $file->move('images/' . $path, $imgName);
+
+                $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->photo_reference]);
+
+                $input['photo_id'] = $photo->id;
+
+                // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
+
+            } else {
+                return 'problem';
+            }
+        }
+
+        Post::create($input);
+
+        return redirect(route('posts.index'));
     }
 
     /**
