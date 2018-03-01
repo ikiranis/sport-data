@@ -18780,3 +18780,7 @@ a.text-dark:focus {
   text-transform: uppercase;
 }
 
+.ck-editor__editable {
+  min-height: 10em;
+}
+

@@ -9,26 +9,28 @@
                     <div class="card-header">{{__('messages.update post')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('posts.update', $post->id) }}"
+                              enctype="multipart/form-data">
                             <input name="_method" type="hidden" value="PUT">
                             @csrf
 
                             <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="title">Τίτλος</label>
+                                <label class="sr-only" for="title">{{__('messages.title')}}</label>
                                 <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">Τίτλος</span>
+                                    <span class="input-group-text w-100">{{__('messages.title')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="title" name="title" value="{{$post->title}}">
+                                <input type="text" class="form-control col-10 px-2" id="title" name="title"
+                                       value="{{$post->title}}">
                             </div>
 
                             <div class="form-group">
-                                <label class="form-check-label" for="description">Περιγραφή</label>
+                                <label class="form-check-label" for="description">{{__('messages.description')}}</label>
                                 <textarea class="form-control" id="description" name="description" rows="2">{{$post->description}}</textarea>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-check-label" for="body">Κείμενο</label>
-                                <textarea class="form-control" id="body" name="body" rows="5">{{$post->body}}</textarea>
+                                <label class="form-check-label" for="body">{{__('messages.text')}}</label>
+                                <textarea class="form-control ckeditor" id="body" name="body">{{$post->body}}</textarea>
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -36,13 +38,14 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.reference')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="reference" name="reference" {{$post->reference}}>
+                                <input type="text" class="form-control col-10 px-2" id="reference"
+                                       name="reference" {{$post->reference}}>
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
-                                <label for="team_id" class="sr-only">Ομάδα</label>
+                                <label for="team_id" class="sr-only">{{__('messages.team')}}</label>
                                 <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">Ομάδα</span>
+                                    <span class="input-group-text w-100">{{__('messages.team')}}</span>
                                 </div>
                                 <select class="form-control col-10 px-2" id="team_id" name="team_id">
                                     @foreach($teams as $team)
@@ -54,9 +57,9 @@
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
-                                <label for="athlete_id" class="sr-only">Αθλητής</label>
+                                <label for="athlete_id" class="sr-only">{{__('messages.athlete')}}</label>
                                 <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">Αθλητής</span>
+                                    <span class="input-group-text w-100">{{__('messages.athlete')}}</span>
                                 </div>
                                 <select class="form-control col-10 px-2" id="athlete_id" name="athlete_id">
                                     @foreach($athletes as $athlete)
@@ -87,11 +90,13 @@
                                     </div>
 
                                     <div class="input-group">
-                                        <label class="sr-only" for="photo_reference">{{__('messages.reference')}}</label>
+                                        <label class="sr-only"
+                                               for="photo_reference">{{__('messages.reference')}}</label>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">{{__('messages.reference')}}</span>
                                         </div>
-                                        <input type="text" class="form-control" id="photo_reference" name="photo_reference"
+                                        <input type="text" class="form-control" id="photo_reference"
+                                               name="photo_reference"
                                                value="{{$post->photo ? $post->photo->reference : ''}}">
                                     </div>
 
@@ -112,5 +117,21 @@
         </div>
     </div>
 
+    <script>
+        ClassicEditor
+            .create(document.querySelector('.ckeditor') )
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
 
 @endsection
+
+@include('includes.editor')
+
+
+
+
+
+

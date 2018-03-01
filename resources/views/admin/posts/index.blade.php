@@ -15,9 +15,9 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">{{__('messages.title')}}</th>
-                <th scope="col">{{__('messages.users')}}</th>
-                <th scope="col">{{__('messages.athletes')}}</th>
-                <th scope="col">{{__('messages.teams')}}</th>
+                <th scope="col">{{__('messages.user')}}</th>
+                <th scope="col">{{__('messages.athlete')}}</th>
+                <th scope="col">{{__('messages.team')}}</th>
             </tr>
             </thead>
             <tbody>

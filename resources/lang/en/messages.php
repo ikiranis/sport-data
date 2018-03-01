@@ -60,7 +60,12 @@ return [
     'update post' => 'Update post',
     'posts' => 'Posts',
     'title' => 'Title',
-    'posts not exist' => 'Posts not exist'
+    'posts not exist' => 'Posts not exist',
+    'user' => 'User',
+    'team' => 'Team',
+    'athlete' => 'Athlete',
+    'description' => 'Description',
+    'text' => 'Text'
 
 
 ];

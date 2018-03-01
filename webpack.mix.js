@@ -14,7 +14,12 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js').version()
     .sass('resources/assets/sass/app.scss', 'public/css').version();
 
+
 mix.sass('resources/assets/sass/home.scss', 'public/css').version();
+
+mix.scripts([
+    'node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js',
+], 'public/js/ckeditor.js');
 
 
 
@@ -24,11 +29,4 @@ mix.sass('resources/assets/sass/home.scss', 'public/css').version();
 //     'resources/assets/css/admin.css'
 // ], 'public/css/style.css');
 
-//
-// mix.scripts([
-//     'resources/assets/js/libs/jquery.js',
-//     'resources/assets/js/libs/bootstrap.js',
-//     'resources/assets/js/libs/metisMenu.js',
-//     'resources/assets/js/libs/sb-admin-2.js',
-//     'resources/assets/js/libs/scripts.js'
-// ], 'public/js/libs.js');
+

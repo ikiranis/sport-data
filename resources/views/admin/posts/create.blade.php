@@ -15,21 +15,21 @@
                             <input type="hidden" id="user_id" name="user_id" value="{{$user_id}}">
 
                             <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="title">Τίτλος</label>
+                                <label class="sr-only" for="title">{{__('messages.title')}}</label>
                                 <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">Τίτλος</span>
+                                    <span class="input-group-text w-100">{{__('messages.title')}}</span>
                                 </div>
                                 <input type="text" class="form-control col-10 px-2" id="title" name="title">
                             </div>
 
                             <div class="form-group">
-                                <label class="form-check-label" for="description">Περιγραφή</label>
+                                <label class="form-check-label" for="description">{{__('messages.description')}}</label>
                                 <textarea class="form-control" id="description" name="description" rows="2"></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-check-label" for="body">Κείμενο</label>
-                                <textarea class="form-control" id="body" name="body" rows="5"></textarea>
+                                <label class="form-check-label" for="body">{{__('messages.text')}}</label>
+                                <textarea class="form-control" id="body" name="body" rows="15"></textarea>
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -41,9 +41,9 @@
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
-                                <label for="team_id" class="sr-only">Ομάδα</label>
+                                <label for="team_id" class="sr-only">{{__('messages.team')}}</label>
                                 <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">Ομάδα</span>
+                                    <span class="input-group-text w-100">{{__('messages.team')}}</span>
                                 </div>
                                 <select class="form-control col-10 px-2" id="team_id" name="team_id">
                                     @foreach($teams as $team)
@@ -55,9 +55,9 @@
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
-                                <label for="athlete_id" class="sr-only">Αθλητής</label>
+                                <label for="athlete_id" class="sr-only">{{__('messages.athlete')}}</label>
                                 <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">Αθλητής</span>
+                                    <span class="input-group-text w-100">{{__('messages.athlete')}}</span>
                                 </div>
                                 <select class="form-control col-10 px-2" id="athlete_id" name="athlete_id">
                                     @foreach($athletes as $athlete)
@@ -101,5 +101,14 @@
         </div>
     </div>
 
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#body' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 
 @endsection
+
+@include('includes.editor')
