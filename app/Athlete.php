@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete wherePhotoId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Athlete whereSportId($value)
  * @mixin \Eloquent
+ * @property-read string $full_name
  */
 class Athlete extends Model
 {

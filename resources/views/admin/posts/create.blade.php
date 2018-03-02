@@ -41,6 +41,20 @@
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
+                                <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">{{__('messages.sport')}}</span>
+                                </div>
+                                <select class="form-control col-10 px-2" id="sport_id" name="sport_id">
+                                    @foreach($sports as $sport)
+                                        <option value="{{$sport->id}}">
+                                            {{$sport->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
                                 <label for="team_id" class="sr-only">{{__('messages.team')}}</label>
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.team')}}</span>

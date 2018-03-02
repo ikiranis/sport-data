@@ -41,6 +41,9 @@ use Cviebrock\EloquentSluggable\Sluggable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereUserId($value)
  * @mixin \Eloquent
+ * @property int|null $sport_id
+ * @property-read \App\Sport|null $sport
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereSportId($value)
  */
 class Post extends Model
 {
@@ -54,6 +57,7 @@ class Post extends Model
         'user_id',
         'athlete_id',
         'match_id',
+        'sport_id',
         'title',
         'description',
         'body',
@@ -108,5 +112,12 @@ class Post extends Model
      */
     public function match() {
         return $this->belongsTo('App\Match');
+    }
+
+    /**
+     * Relation to sports
+     */
+    public function sport() {
+        return $this->belongsTo('App\Sport');
     }
 }

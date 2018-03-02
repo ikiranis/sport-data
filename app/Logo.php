@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Logo wherePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Logo whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read string $full_path_name
  */
 class Logo extends Model
 {

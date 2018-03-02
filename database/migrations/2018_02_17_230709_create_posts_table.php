@@ -21,10 +21,11 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('athlete_id')->unsigned()->nullable();
             $table->integer('match_id')->unsigned()->nullable();
+            $table->integer('sport_id')->unsigned()->nullable();
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->longText('body');
-            $table->string('reference');
+            $table->string('reference')->nullable();
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\Sport;
 
 class HomeController extends Controller
@@ -24,8 +25,9 @@ class HomeController extends Controller
     public function index()
     {
         $sports = Sport::all();
+        $posts = Post::paginate(5);
 
-        return view('public.home', compact('sports'));
+        return view('public.home', compact('sports', 'posts'));
     }
 
     /**
@@ -37,7 +39,8 @@ class HomeController extends Controller
     public function sport($slug)
     {
         $sport = Sport::whereSlug($slug)->firstOrFail();
+        $posts = Post::whereSportId($sport->id)->paginate(5);
 
-        return view('public.sport', compact('sport'));
+        return view('public.sport', compact('sport', 'posts'));
     }
 }

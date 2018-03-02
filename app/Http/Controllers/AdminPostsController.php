@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Athlete;
 use App\Photo;
 use App\Post;
+use App\Sport;
 use App\Team;
 use App\User;
 use Auth;
@@ -34,9 +35,10 @@ class AdminPostsController extends Controller
     {
         $teams = Team::all();
         $athletes = Athlete::all();
+        $sports = Sport::all();
         $user_id = Auth::id();
 
-        return view('admin.posts.create', compact('teams', 'athletes', 'user_id'));
+        return view('admin.posts.create', compact('teams', 'athletes', 'user_id', 'sports'));
     }
 
     /**
@@ -95,8 +97,9 @@ class AdminPostsController extends Controller
         $post = Post::findOrFail($id);
         $teams = Team::all();
         $athletes = Athlete::all();
+        $sports = Sport::all();
 
-        return view ('admin/posts/edit', compact('post', 'teams', 'athletes'));
+        return view ('admin/posts/edit', compact('post', 'teams', 'athletes', 'sports'));
     }
 
     /**

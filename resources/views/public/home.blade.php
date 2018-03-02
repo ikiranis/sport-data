@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+
         <div class="row justify-content-center">
 
             @foreach($sports as $sport)
@@ -19,5 +20,26 @@
             @endforeach
 
         </div>
+
     </div>
+
+
+    <div class="container">
+        @if(count($posts)>0)
+
+            @foreach($posts as $post)
+
+                @include('includes.post')
+
+            @endforeach
+
+            <div class="row">
+                <div class="ml-auto mr-auto">
+                    {{ $posts->links() }}
+                </div>
+            </div>
+
+        @endif
+    </div>
+
 @endsection
