@@ -17,10 +17,10 @@
                          class="card-img">
 
                     <ul class="list-group my-2">
-                        <li class="list-group-item"><a href="">{{$post->team->name}}</a></li>
-                        <li class="list-group-item"><a href="">{{$post->athlete->fullName}}</a></li>
-                        <li class="list-group-item"><a href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a></li>
-                        <li class="list-group-item"><a href="{{$post->reference}}">{{$post->reference}}</a></li>
+                        <li class="list-group-item list-group-item-action"><a href="">{{$post->team->name}}</a></li>
+                        <li class="list-group-item list-group-item-action"><a href="">{{$post->athlete->fullName}}</a></li>
+                        <li class="list-group-item list-group-item-action"><a href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a></li>
+                        <li class="list-group-item list-group-item-action"><a href="{{$post->reference}}">{{$post->reference}}</a></li>
                     </ul>
                 </div>
                 <div class="col-md-8 col-12 text-justify">
