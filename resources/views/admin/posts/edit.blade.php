@@ -39,7 +39,7 @@
                                     <span class="input-group-text w-100">{{__('messages.reference')}}</span>
                                 </div>
                                 <input type="text" class="form-control col-10 px-2" id="reference"
-                                       name="reference" {{$post->reference}}>
+                                       name="reference" value="{{$post->reference}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">

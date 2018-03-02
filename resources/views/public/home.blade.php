@@ -29,7 +29,7 @@
 
             @foreach($posts as $post)
 
-                @include('includes.post')
+                @include('includes.post-list')
 
             @endforeach
 

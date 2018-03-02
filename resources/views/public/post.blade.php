@@ -4,7 +4,7 @@
 
     <div class="container">
 
-            @include('includes.post')
+            @include('includes.post-single')
 
     </div>
 

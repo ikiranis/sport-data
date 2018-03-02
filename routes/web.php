@@ -22,10 +22,12 @@ Route::group(
 
         Auth::routes();
 
+        // Public pages
         Route::get('/', 'HomeController@index')->name('home');
         Route::get('/sport/{slug}', 'HomeController@sport')->name('sport');
         Route::get('/post/{slug}', 'HomeController@post')->name('post');
 
+        // Admin first page
         Route::get('/admin', function () {
             return view('admin.index');
         })->middleware('auth')->name('admin');
