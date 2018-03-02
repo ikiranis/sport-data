@@ -43,4 +43,11 @@ class HomeController extends Controller
 
         return view('public.sport', compact('sport', 'posts'));
     }
+
+    public function post($slug)
+    {
+        $post = Post::whereSlug($slug)->firstOrFail();
+
+        return view('public.post', compact('post'));
+    }
 }

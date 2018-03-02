@@ -24,6 +24,7 @@ Route::group(
 
         Route::get('/', 'HomeController@index')->name('home');
         Route::get('/sport/{slug}', 'HomeController@sport')->name('sport');
+        Route::get('/post/{slug}', 'HomeController@post')->name('post');
 
         Route::get('/admin', function () {
             return view('admin.index');

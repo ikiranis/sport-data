@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header row no-gutters">
             <div class="col-6">
-                {{$post->title}}
+                <a href="{{route('post', $post->slug)}}">{{$post->title}}</a>
             </div>
             <div class="col-6 ml-auto text-right">
                 <span title="{{$post->created_at}}">{{$post->created_at->diffForHumans()}}</span>
@@ -18,6 +18,11 @@
                 </div>
                 <div class="col-md-9 col-12">
                     {!! $post->body !!}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 ml-auto text-right">
+                    <a href="{{$post->reference}}">{{$post->reference}}</a>
                 </div>
             </div>
         </div>
