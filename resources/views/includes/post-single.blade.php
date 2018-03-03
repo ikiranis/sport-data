@@ -18,14 +18,24 @@
                      class="card-img">
 
                 <ul class="list-group my-2">
-                    <li class="list-group-item list-group-item-action"><a href="">{{$post->team->name}}</a></li>
-                    <li class="list-group-item list-group-item-action"><a href="">{{$post->athlete->fullName}}</a>
-                    </li>
-                    <li class="list-group-item list-group-item-action"><a
-                                href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a></li>
-                    <li class="list-group-item list-group-item-action"><a
-                                href="{{$post->reference}}">{{$post->reference}}</a></li>
+                    @if($post->team->name!==null)
+                        <li class="list-group-item list-group-item-action"><a href="">{{$post->team->name}}</a></li>
+                    @endif
+                    @if($post->athlete->fullName!==null)
+                        <li class="list-group-item list-group-item-action"><a
+                                    href="">{{$post->athlete->fullName}}</a>
+                        </li>
+                    @endif
+                    @if($post->sport->name!==null)
+                        <li class="list-group-item list-group-item-action"><a
+                                    href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a></li>
+                    @endif
+                    @if($post->reference!==null)
+                        <li class="list-group-item list-group-item-action"><a
+                                    href="{{$post->reference}}">{{$post->reference}}</a></li>
+                    @endif
                 </ul>
+
             </div>
             <div class="col-md-8 col-12 text-justify">
                 {!! $post->body !!}
@@ -33,10 +43,10 @@
         </div>
     </div>
 
-    <h1>Σχόλια</h1>
-
     @if(count($post->comments)>0)
         <div>
+
+            <h1>{{count($post->comments)}} {{trans_choice('messages.comments', count($post->comments))}}</h1>
 
             @foreach($post->comments->sortBy('created_at')->reverse() as $comment)
                 <div class="col-12 my-3">

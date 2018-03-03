@@ -11,6 +11,7 @@ return [
     */
 
     'matchdays' => '{2}Matchdays|{1}Matchday',
+    'comments' => '[2,*]Comments|{1}Comment',
     'insert matchday' => 'Insert matchday',
     'update matchday' => 'Update matchday',
     'name' => 'Name',
