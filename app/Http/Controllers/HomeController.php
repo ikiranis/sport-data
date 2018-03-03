@@ -55,9 +55,9 @@ class HomeController extends Controller
     public function post($slug)
     {
         $post = Post::whereSlug($slug)->firstOrFail();
-        $comments = $post->comments()->orderBy('created_at', 'desc')->get();
+//        $comments = $post->comments()->orderBy('created_at', 'desc')->get();
 
-        return view('public.post', compact('post', 'comments'));
+        return view('public.post', compact('post'));
     }
 
 

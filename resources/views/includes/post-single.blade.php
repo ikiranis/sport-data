@@ -35,10 +35,10 @@
 
     <h1>Σχόλια</h1>
 
-    @if(count($comments)>0)
+    @if(count($post->comments)>0)
         <div>
 
-            @foreach($comments as $comment)
+            @foreach($post->comments->sortBy('created_at')->reverse() as $comment)
                 <div class="col-12 my-3">
                     <div class="card">
                         <div class="card-header">
