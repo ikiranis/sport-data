@@ -7,7 +7,6 @@ use App\Photo;
 use App\Post;
 use App\Sport;
 use App\Team;
-use App\User;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

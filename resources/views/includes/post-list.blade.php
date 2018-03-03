@@ -18,6 +18,13 @@
                 <div class="col-md-3 col-12">
                     <img src="{{$post->photo ? $post->photo->fullPathName : 'http://via.placeholder.com/350x150'}}"
                          class="card-img">
+
+                    <ul class="list-group my-2">
+                        <li class="list-group-item list-group-item-action"><a href="">{{$post->team->name}}</a></li>
+                        <li class="list-group-item list-group-item-action"><a href="">{{$post->athlete->fullName}}</a></li>
+                        <li class="list-group-item list-group-item-action"><a href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a></li>
+                        <li class="list-group-item list-group-item-action"><a href="{{$post->reference}}">{{$post->reference}}</a></li>
+                    </ul>
                 </div>
                 <div class="col-md-9 col-12">
                     {!! $post->body !!}
@@ -28,12 +35,6 @@
                     <a href="{{$post->reference}}">{{$post->reference}}</a>
                 </div>
             </div>
-        </div>
-
-        <div class="card-footer text-center">
-            <a href="">{{$post->team->name}}</a> |
-            <a href="">{{$post->athlete->fullName}}</a> |
-            <a href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a>
         </div>
 
     </div>

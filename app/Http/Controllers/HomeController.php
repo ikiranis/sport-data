@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Post;
 use App\Sport;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -44,10 +46,32 @@ class HomeController extends Controller
         return view('public.sport', compact('sport', 'posts'));
     }
 
+    /**
+     * Display a single post
+     *
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function post($slug)
     {
         $post = Post::whereSlug($slug)->firstOrFail();
 
         return view('public.post', compact('post'));
+    }
+
+
+    /**
+     * Store a comment
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function storeComment(Request $request)
+    {
+        $input = $request->all();
+
+        Comment::create($input);
+
+        return redirect(route('post', $request->post_slug));
     }
 }
