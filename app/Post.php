@@ -120,4 +120,14 @@ class Post extends Model
     public function sport() {
         return $this->belongsTo('App\Sport');
     }
+
+    /**
+     * Relation to comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments() {
+        return $this->hasMany('App\Comment');
+    }
+
 }

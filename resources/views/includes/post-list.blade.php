@@ -20,11 +20,29 @@
                          class="card-img">
 
                     <ul class="list-group my-2">
-                        <li class="list-group-item list-group-item-action"><a href="">{{$post->team->name}}</a></li>
-                        <li class="list-group-item list-group-item-action"><a href="">{{$post->athlete->fullName}}</a></li>
-                        <li class="list-group-item list-group-item-action"><a href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a></li>
-                        <li class="list-group-item list-group-item-action"><a href="{{$post->reference}}">{{$post->reference}}</a></li>
+                        @if($post->team->name!==null)
+                            <li class="list-group-item list-group-item-action"><a href="">{{$post->team->name}}</a></li>
+                        @endif
+                        @if($post->athlete->fullName!==null)
+                            <li class="list-group-item list-group-item-action"><a
+                                        href="">{{$post->athlete->fullName}}</a>
+                            </li>
+                        @endif
+                        @if($post->sport->name!==null)
+                            <li class="list-group-item list-group-item-action"><a
+                                        href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a></li>
+                        @endif
+                        @if($post->reference!==null)
+                            <li class="list-group-item list-group-item-action"><a
+                                        href="{{$post->reference}}">{{$post->reference}}</a></li>
+                        @endif
+                        @if(count($post->comments)>0)
+                            <li class="list-group-item list-group-item-action"><a
+                                        href="{{route('post', $post->slug)}}">{{count($post->comments)}} comments</a>
+                            </li>
+                        @endif
                     </ul>
+
                 </div>
                 <div class="col-md-9 col-12">
                     {!! $post->body !!}
