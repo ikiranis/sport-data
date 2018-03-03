@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function sport($slug)
     {
         $sport = Sport::whereSlug($slug)->firstOrFail();
-        $posts = Post::whereSportId($sport->id)->paginate(5);
+        $posts = Post::whereSportId($sport->id)->orderBy('created_at', 'desc')->paginate(5);
 
         return view('public.sport', compact('sport', 'posts'));
     }
@@ -55,8 +55,9 @@ class HomeController extends Controller
     public function post($slug)
     {
         $post = Post::whereSlug($slug)->firstOrFail();
+        $comments = Comment::wherePostId($post->id)->orderBy('created_at', 'desc')->get();
 
-        return view('public.post', compact('post'));
+        return view('public.post', compact('post', 'comments'));
     }
 
 
