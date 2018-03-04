@@ -19,6 +19,7 @@
                 <th scope="col">{{__('messages.athlete')}}</th>
                 <th scope="col">{{__('messages.team')}}</th>
                 <th scope="col">{{__('messages.sport')}}</th>
+                <th scope="col">{{__('messages.approve')}}</th>
                 <th scope="col">{{__('messages.action')}}</th>
             </tr>
             </thead>
@@ -32,6 +33,7 @@
                     <td>{{$post->athlete->fullName}}</td>
                     <td>{{$post->team->name}}</td>
                     <td>{{$post->sport->name}}</td>
+                    <td>{{$post->approved==1 ? __('messages.active') : __('messages.inactive')}}</td>
 
                     <td>
                         <form method="POST" action="{{route('posts.destroy', $post->id)}}">

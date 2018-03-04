@@ -67,6 +67,8 @@ return [
     'athlete' => 'Αθλητής',
     'description' => 'Περιγραφή',
     'text' => 'Κείμενο',
-    'approve' => 'Έγκριση'
+    'approve' => 'Έγκριση',
+    'comments not exist' => 'Δεν υπάρχουν σχόλια',
+    'update comment' => 'Ενημέρωση σχολίου'
 
 ];

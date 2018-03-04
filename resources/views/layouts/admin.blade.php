@@ -102,6 +102,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('comments.index') }}">
+                            <span class="mdi mdi-comment-multiple-outline"></span>
+                            Σχόλια
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('athletes.index') }}">
                             <span class="mdi mdi-account-multiple-outline"></span>
                             Αθλητές

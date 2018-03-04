@@ -67,7 +67,9 @@ return [
     'athlete' => 'Athlete',
     'description' => 'Description',
     'text' => 'Text',
-    'approve' => 'Approve'
+    'approve' => 'Approve',
+    'comments not exist' => 'Comments not exist',
+    'update comment' => 'Update comment'
 
 
 ];

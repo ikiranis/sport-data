@@ -44,6 +44,9 @@ use Cviebrock\EloquentSluggable\Sluggable;
  * @property int|null $sport_id
  * @property-read \App\Sport|null $sport
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereSportId($value)
+ * @property int $approved
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereApproved($value)
  */
 class Post extends Model
 {

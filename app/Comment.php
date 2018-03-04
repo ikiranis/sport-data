@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment wherePostId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $approved
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereApproved($value)
  */
 class Comment extends Model
 {
@@ -33,5 +35,14 @@ class Comment extends Model
         'email',
         'approved'
     ];
+
+    /**
+     * Relationship with post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function post() {
+        return $this->belongsTo('App\Post');
+    }
 
 }
