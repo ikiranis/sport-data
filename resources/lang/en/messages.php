@@ -66,7 +66,8 @@ return [
     'team' => 'Team',
     'athlete' => 'Athlete',
     'description' => 'Description',
-    'text' => 'Text'
+    'text' => 'Text',
+    'approve' => 'Approve'
 
 
 ];

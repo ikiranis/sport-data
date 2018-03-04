@@ -47,7 +47,7 @@
                 <div class="col-md-9 col-12">
                     @php ($moreButton = ' [...] <p><a href="'. route('post', $post->slug). '"><span class="btn btn-secondary">more</span></a></p>')
 
-                    {!! Str::words($post->body, 150, $moreButton) !!}
+                    {!! Str::words($post->body, 200, $moreButton) !!}
                 </div>
             </div>
             <div class="row my-1">

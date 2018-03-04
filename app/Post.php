@@ -61,7 +61,8 @@ class Post extends Model
         'title',
         'description',
         'body',
-        'reference'
+        'reference',
+        'approved'
     ];
 
     /**

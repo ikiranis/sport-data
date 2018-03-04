@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('body');
             $table->string('author');
             $table->string('email');
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }

@@ -26,6 +26,7 @@ class CreatePostsTable extends Migration
             $table->text('description')->nullable();
             $table->longText('body');
             $table->string('reference')->nullable();
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }

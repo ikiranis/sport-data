@@ -30,7 +30,8 @@ class Comment extends Model
         'post_id',
         'body',
         'author',
-        'email'
+        'email',
+        'approved'
     ];
 
 }
