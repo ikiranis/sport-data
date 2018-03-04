@@ -43,16 +43,25 @@
         </div>
     </div>
 
-    @if(count($post->comments)>0)
+    @if(session('commentPosted'))
+        <div class="alert-success p-3">
+            {{session('commentPosted')}}
+        </div>
+    @endif
+
+    @php ( $countComments = count($post->comments->where('approved', 1)) )
+
+    @if($countComments>0)
         <div>
 
-            <h1>{{count($post->comments)}} {{trans_choice('messages.comments', count($post->comments))}}</h1>
+            <h1>{{$countComments}} {{trans_choice('messages.comments', $countComments)}}</h1>
 
-            @foreach($post->comments->sortBy('created_at')->reverse() as $comment)
+            @foreach($post->comments->where('approved', 1)->sortBy('created_at')->reverse() as $comment)
                 <div class="col-12 my-3">
                     <div class="card">
                         <div class="card-header">
-                            {{$comment->created_at->diffForHumans()}} by <span class="font-weight-bold">{{$comment->author}}</span>
+                            {{$comment->created_at->diffForHumans()}} by <span
+                                    class="font-weight-bold">{{$comment->author}}</span>
                         </div>
                         <div class="card-body">
                             {{$comment->body}}
@@ -71,6 +80,7 @@
 
             <input type="hidden" id="post_id" name="post_id" value="{{$post->id}}">
             <input type="hidden" id="post_slug" name="post_slug" value="{{$post->slug}}">
+            <input type="hidden" id="approved" name="approved" value="0">
 
             <div class="input-group mb-3 no-gutters">
                 <label class="sr-only" for="author">{{__('messages.name')}}</label>
