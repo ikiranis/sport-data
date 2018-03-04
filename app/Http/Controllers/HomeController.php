@@ -73,9 +73,7 @@ class HomeController extends Controller
 
         Comment::create($input);
 
-        $request->session()->put('paok', 'paok');
-
-        $request->session()->flash('commentPosted', 'Το σχόλιο σου καταχωρήθηκε και θα εμφανιστεί σύντομα, μόλις εγκριθεί από τον διαχειριστή');
+        $request->session()->flash('commentSaved', 'Το σχόλιο σου καταχωρήθηκε και θα εμφανιστεί σύντομα, μόλις εγκριθεί από τον διαχειριστή');
 
         return redirect(route('post', $request->post_slug));
     }

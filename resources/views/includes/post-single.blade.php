@@ -43,9 +43,9 @@
         </div>
     </div>
 
-    @if(session('commentPosted'))
+    @if(session('commentSaved'))
         <div class="alert-success p-3">
-            {{session('commentPosted')}}
+            {{session('commentSaved')}}
         </div>
     @endif
 
