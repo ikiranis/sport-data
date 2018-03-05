@@ -38,7 +38,7 @@
                         @endif
                         @if(count($post->comments)>0)
                             <li class="list-group-item list-group-item-action"><a
-                                        href="{{route('post', $post->slug)}}">{{count($post->comments)}} comments</a>
+                                        href="{{route('post', $post->slug)}}">{{count($post->comments)}} {{trans_choice('messages.comments', count($post->comments))}}</a>
                             </li>
                         @endif
                     </ul>

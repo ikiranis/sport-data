@@ -54,7 +54,7 @@
     @if($countComments>0)
         <div>
 
-            <h1>{{$countComments}} {{trans_choice('messages.comments', $countComments)}}</h1>
+            <h3>{{$countComments}} {{trans_choice('messages.comments', $countComments)}}</h3>
 
             @foreach($post->comments->where('approved', 1)->sortBy('created_at')->reverse() as $comment)
                 <div class="col-12 my-3">
@@ -74,6 +74,7 @@
     @endif
 
     <div>
+        <h3>{{__('messages.write comment')}}</h3>
 
         <form method="POST" action="{{ route('post.comment.store') }}">
             @csrf
@@ -105,7 +106,7 @@
 
             <div class="form-group row">
                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
-                    Αποστολή
+                    {{__('messages.send')}}
                 </button>
             </div>
 

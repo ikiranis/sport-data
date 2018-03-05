@@ -69,6 +69,8 @@ return [
     'text' => 'Κείμενο',
     'approve' => 'Έγκριση',
     'comments not exist' => 'Δεν υπάρχουν σχόλια',
-    'update comment' => 'Ενημέρωση σχολίου'
+    'update comment' => 'Ενημέρωση σχολίου',
+    'send' => 'Αποστολή',
+    'write comment' => 'Γράψε το σχόλιο σου'
 
 ];

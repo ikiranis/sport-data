@@ -69,7 +69,9 @@ return [
     'text' => 'Text',
     'approve' => 'Approve',
     'comments not exist' => 'Comments not exist',
-    'update comment' => 'Update comment'
+    'update comment' => 'Update comment',
+    'send' => 'Send',
+    'write comment' => 'Write your comment'
 
 
 ];
