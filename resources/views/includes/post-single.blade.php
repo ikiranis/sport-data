@@ -60,7 +60,7 @@
                 <div class="col-12 my-3">
                     <div class="card">
                         <div class="card-header">
-                            {{$comment->created_at->diffForHumans()}} by <span
+                            {{$comment->created_at->diffForHumans()}} {{__('messages.by')}} <span
                                     class="font-weight-bold">{{$comment->author}}</span>
                         </div>
                         <div class="card-body">

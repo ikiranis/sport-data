@@ -126,7 +126,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('matches.index') }}">
                             <span class="mdi mdi-basketball"></span>
                             Αγώνες
                         </a>
@@ -176,6 +176,7 @@
 <!-- Scripts -->
 
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ mix('js/myApp.js') }}"></script>
 
 
 </body>

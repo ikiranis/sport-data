@@ -12,6 +12,7 @@ return [
 
     'matchdays' => '{2}Αγωνιστικές|{1}Aγωνιστική',
     'comments' => '[2,*]Σχόλια|{1}Σχόλιο',
+    'matches' => '[2,*]Αγώνες|{1}Αγώνας',
     'insert matchday' => 'Προσθήκη αγωνιστικής',
     'update matchday' => 'Ενημέρωση αγωνιστικής',
     'name' => 'Όνομα',
@@ -71,6 +72,9 @@ return [
     'comments not exist' => 'Δεν υπάρχουν σχόλια',
     'update comment' => 'Ενημέρωση σχολίου',
     'send' => 'Αποστολή',
-    'write comment' => 'Γράψε το σχόλιο σου'
+    'write comment' => 'Γράψε το σχόλιο σου',
+    'by' => 'από',
+    'insert match' => 'Εισαγωγή αγώνα',
+    'matches not exist' => 'Δεν υπάρχουν αγώνες'
 
 ];

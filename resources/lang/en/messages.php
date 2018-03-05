@@ -12,6 +12,7 @@ return [
 
     'matchdays' => '{2}Matchdays|{1}Matchday',
     'comments' => '[2,*]Comments|{1}Comment',
+    'matches' => '[2,*]Matches|{1}Match',
     'insert matchday' => 'Insert matchday',
     'update matchday' => 'Update matchday',
     'name' => 'Name',
@@ -71,7 +72,10 @@ return [
     'comments not exist' => 'Comments not exist',
     'update comment' => 'Update comment',
     'send' => 'Send',
-    'write comment' => 'Write your comment'
+    'write comment' => 'Write your comment',
+    'by' => 'by',
+    'insert match' => 'Insert match',
+    'matches not exist' => 'Matches not exist'
 
 
 ];

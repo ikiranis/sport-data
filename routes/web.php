@@ -45,6 +45,7 @@ Route::group(
             Route::resource('admin/matchdays', 'AdminMatchdaysController');
             Route::resource('admin/championships', 'AdminChampionshipsController');
             Route::resource('admin/comments', 'AdminCommentsController');
+            Route::resource('admin/matches', 'AdminMatchesController');
         });
 
     });
