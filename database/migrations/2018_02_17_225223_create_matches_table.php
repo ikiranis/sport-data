@@ -17,6 +17,7 @@ class CreateMatchesTable extends Migration
             $table->increments('id');
             $table->integer('sport_id')->unsigned()->nullable();
             $table->integer('championship_id')->unsigned()->nullable();
+            $table->integer('season_id')->unsigned()->nullable();
             $table->dateTime('match_date');
             $table->integer('matchday_id')->unsigned()->nullable();
             $table->integer('stadium_id')->unsigned()->nullable();

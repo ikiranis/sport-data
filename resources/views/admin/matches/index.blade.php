@@ -3,6 +3,63 @@
 @section('content')
     <h1>{{trans_choice('messages.matches',2)}}</h1>
 
+    <form method="GET" action="{{route('matches.index')}}">
+        <div class="row">
+
+            @csrf
+
+            <div class="input-group mb-3 no-gutters col-md-3 col-12 my-1">
+                <label for="sport_id" class="sr-only">Sport</label>
+                <div class="input-group-prepend col-5">
+                    <span class="input-group-text w-100">Sport</span>
+                </div>
+                <select class="form-control col-7 px-2" id="sport_id" name="sport_id">
+                    @foreach($sports as $sport)
+                        <option value="{{$sport->id}}">
+                            {{$sport->name}}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="input-group mb-3 no-gutters col-md-3 col-12 my-1">
+                <label for="championship_id" class="sr-only">Championship</label>
+                <div class="input-group-prepend col-5">
+                    <span class="input-group-text w-100">Championship</span>
+                </div>
+                <select class="form-control col-7 px-2" id="championship_id" name="championship_id">
+                    @foreach($championships as $championship)
+                        <option value="{{$championship->id}}">
+                            {{$championship->name}}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="input-group mb-3 no-gutters col-md-3 col-12 my-1">
+                <label for="season_id" class="sr-only">Season</label>
+                <div class="input-group-prepend col-5">
+                    <span class="input-group-text w-100">Season</span>
+                </div>
+                <select class="form-control col-7 px-2" id="season_id" name="season_id">
+                    @foreach($seasons as $season)
+                        <option value="{{$season->id}}">
+                            {{$season->name}}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-md-3 col-12 my-1">
+                <button type="submit" class="btn btn-danger w-100">
+                    Αναζήτηση
+                </button>
+            </div>
+
+
+        </div>
+    </form>
+
     <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
         <a href="{{route('matches.create')}}">
             <button class="btn btn-info w-100">{{__('messages.insert match')}}</button>
@@ -49,10 +106,6 @@
     @else
         <h1>{{__('messages.matches not exist')}}</h1>
     @endif
-
-    <div id="myApp">
-        <paok></paok>
-    </div>
 
 @endsection
 

@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property int $approved
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereApproved($value)
+ * @property-read \App\Post|null $post
  */
 class Comment extends Model
 {

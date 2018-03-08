@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Championship;
 use App\Match;
 use App\Season;
+use App\Sport;
 use Illuminate\Http\Request;
 
 class AdminMatchesController extends Controller
@@ -14,13 +15,22 @@ class AdminMatchesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $matches = Match::paginate(15);
+        if(isset($request)) {
+            $matches = Match::whereSportId($request->sport_id)->
+                whereChampionshipId($request->championship_id)->
+                whereSeasonId($request->season_id)->
+                paginate(15);
+        } else {
+            $matches = Match::paginate(15);
+        }
+
         $championships = Championship::all();
+        $sports = Sport::all();
         $seasons = Season::all();
 
-        return view('admin/matches/index', compact('matches', 'championships', 'seasons'));
+        return view('admin/matches/index', compact('matches', 'championships', 'sports', 'seasons'));
     }
 
     /**

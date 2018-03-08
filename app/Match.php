@@ -37,6 +37,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereStadiumId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int|null $season_id
+ * @property-read \App\Season|null $season
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereSeasonId($value)
  */
 class Match extends Model
 {
@@ -67,6 +70,13 @@ class Match extends Model
      */
     public function championship() {
         return $this->belongsTo('App\Championship');
+    }
+
+    /**
+     * Relation to seasons
+     */
+    public function season() {
+        return $this->belongsTo('App\Season');
     }
 
     /**

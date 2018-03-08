@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-03-02 12:41:35.
+    * Generated on 2018-03-08 13:05:13.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -121,7 +121,7 @@ namespace PHPSTORM_META {
         'migration.creator' => \Illuminate\Database\Migrations\MigrationCreator::class,
         'composer' => \Illuminate\Support\Composer::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
-        'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'hash.driver' => \Illuminate\Hashing\ArgonHasher::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'swift.mailer' => \Swift_Mailer::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -257,7 +257,7 @@ namespace PHPSTORM_META {
         'migration.creator' => \Illuminate\Database\Migrations\MigrationCreator::class,
         'composer' => \Illuminate\Support\Composer::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
-        'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'hash.driver' => \Illuminate\Hashing\ArgonHasher::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'swift.mailer' => \Swift_Mailer::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -393,7 +393,7 @@ namespace PHPSTORM_META {
         'migration.creator' => \Illuminate\Database\Migrations\MigrationCreator::class,
         'composer' => \Illuminate\Support\Composer::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
-        'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'hash.driver' => \Illuminate\Hashing\ArgonHasher::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'swift.mailer' => \Swift_Mailer::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -529,7 +529,7 @@ namespace PHPSTORM_META {
         'migration.creator' => \Illuminate\Database\Migrations\MigrationCreator::class,
         'composer' => \Illuminate\Support\Composer::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
-        'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'hash.driver' => \Illuminate\Hashing\ArgonHasher::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'swift.mailer' => \Swift_Mailer::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -665,7 +665,7 @@ namespace PHPSTORM_META {
         'migration.creator' => \Illuminate\Database\Migrations\MigrationCreator::class,
         'composer' => \Illuminate\Support\Composer::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
-        'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'hash.driver' => \Illuminate\Hashing\ArgonHasher::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'swift.mailer' => \Swift_Mailer::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -801,7 +801,7 @@ namespace PHPSTORM_META {
         'migration.creator' => \Illuminate\Database\Migrations\MigrationCreator::class,
         'composer' => \Illuminate\Support\Composer::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
-        'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'hash.driver' => \Illuminate\Hashing\ArgonHasher::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'swift.mailer' => \Swift_Mailer::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -937,7 +937,7 @@ namespace PHPSTORM_META {
         'migration.creator' => \Illuminate\Database\Migrations\MigrationCreator::class,
         'composer' => \Illuminate\Support\Composer::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
-        'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'hash.driver' => \Illuminate\Hashing\ArgonHasher::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'swift.mailer' => \Swift_Mailer::class,
         'mailer' => \Illuminate\Mail\Mailer::class,

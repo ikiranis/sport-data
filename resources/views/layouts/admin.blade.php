@@ -18,7 +18,6 @@
 
 <body>
 
-<div id="app">
 
     {{--Menu--}}
     <nav class="navbar navbar-expand-lg navbar-light navbar-laravel sticky-top flex-md-nowrap p-0 px-3">
@@ -74,7 +73,6 @@
             </ul>
         </div>
     </nav>
-</div>
 
 
 {{--Main Page--}}
@@ -173,10 +171,11 @@
 </div>
 
 
+
 <!-- Scripts -->
 
 <script src="{{ mix('js/app.js') }}"></script>
-<script src="{{ mix('js/myApp.js') }}"></script>
+
 
 
 </body>
