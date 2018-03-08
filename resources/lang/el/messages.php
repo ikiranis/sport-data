@@ -79,6 +79,7 @@ return [
     'insert match' => 'Εισαγωγή αγώνα',
     'matches not exist' => 'Δεν υπάρχουν αγώνες',
     'date' => 'Ημερομηνία',
-    'score' => 'Σκορ'
+    'score' => 'Σκορ',
+    'search' => 'Αναζήτηση'
 
 ];

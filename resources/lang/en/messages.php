@@ -79,7 +79,8 @@ return [
     'insert match' => 'Insert match',
     'matches not exist' => 'Matches not exist',
     'date' => 'Date',
-    'score' => 'Score'
+    'score' => 'Score',
+    'search' => 'Search'
 
 
 ];

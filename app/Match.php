@@ -47,6 +47,7 @@ class Match extends Model
     protected $fillable = [
         'sport_id',
         'championship_id',
+        'season_id',
         'match_date',
         'matchday_id',
         'stadium_id',
@@ -94,18 +95,27 @@ class Match extends Model
     }
 
     /**
-     * Relation to teams
+     * Relation to first team
      */
     public function first_team() {
         return $this->belongsTo('App\Team', 'first_team_id');
     }
 
+    /**
+     * Relation to second team
+     */
     public function second_team() {
         return $this->belongsTo('App\Team', 'second_team_id');
     }
 
-    public function getTeamsAttribute()
-    {
+    /**
+     * Get two teams string
+     *
+     * Get it with $match->teams
+     *
+     * @return string
+     */
+    public function getTeamsAttribute() {
         return $this->first_team->name . ' VS ' . $this->second_team->name;
     }
 

@@ -20,8 +20,12 @@ class AdminMatchesController extends Controller
      */
     public function index(Request $request)
     {
+
         if(isset($request)) {
-            $matches = Match::paginate(15);
+            $matches = Match::whereSportId($request->sport_id)->
+                whereChampionshipId($request->championship_id)->
+                whereSeasonId($request->season_id)->
+                paginate(15);
         } else {
             $matches = Match::paginate(15);
         }

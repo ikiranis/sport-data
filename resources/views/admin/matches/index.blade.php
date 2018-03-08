@@ -8,7 +8,7 @@
 
             @csrf
 
-            <div class="input-group mb-3 no-gutters col-md-3 col-12 my-1">
+            <div class="input-group mb-3 no-gutters col-lg-3 col-12 my-1">
                 <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
                 <div class="input-group-prepend col-5">
                     <span class="input-group-text w-100">{{__('messages.sport')}}</span>
@@ -22,7 +22,7 @@
                 </select>
             </div>
 
-            <div class="input-group mb-3 no-gutters col-md-3 col-12 my-1">
+            <div class="input-group mb-3 no-gutters col-lg-3 col-12 my-1">
                 <label for="championship_id" class="sr-only">Championship</label>
                 <div class="input-group-prepend col-5">
                     <span class="input-group-text w-100">Championship</span>
@@ -36,7 +36,7 @@
                 </select>
             </div>
 
-            <div class="input-group mb-3 no-gutters col-md-3 col-12 my-1">
+            <div class="input-group mb-3 no-gutters col-lg-3 col-12 my-1">
                 <label for="season_id" class="sr-only">Season</label>
                 <div class="input-group-prepend col-5">
                     <span class="input-group-text w-100">Season</span>
@@ -50,12 +50,11 @@
                 </select>
             </div>
 
-            <div class="col-md-3 col-12 my-1">
-                <button type="submit" class="btn btn-danger w-100">
-                    Αναζήτηση
+            <div class="col-lg-3 col-12 my-1">
+                <button type="submit" class="btn btn-success w-100">
+                    {{__('messages.search')}}
                 </button>
             </div>
-
 
         </div>
     </form>
