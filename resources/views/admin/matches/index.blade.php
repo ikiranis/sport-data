@@ -9,9 +9,9 @@
             @csrf
 
             <div class="input-group mb-3 no-gutters col-md-3 col-12 my-1">
-                <label for="sport_id" class="sr-only">Sport</label>
+                <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
                 <div class="input-group-prepend col-5">
-                    <span class="input-group-text w-100">Sport</span>
+                    <span class="input-group-text w-100">{{__('messages.sport')}}</span>
                 </div>
                 <select class="form-control col-7 px-2" id="sport_id" name="sport_id">
                     @foreach($sports as $sport)
@@ -79,10 +79,10 @@
 
             @foreach($matches as $match)
                 <tr>
-                    <th scope="row">{{$matchday->id}}</th>
-                    <td><a href="{{route('matches.edit', $match->id)}}">{{$matchday->matchday}}</a></td>
+                    <th scope="row">{{$match->id}}</th>
+                    <td><a href="{{route('matches.edit', $match->id)}}">{{$match->teams}}</a></td>
                     <td>
-                        <form method="POST" action="{{route('matchdays.destroy', $matchday->id)}}">
+                        <form method="POST" action="{{route('matchdays.destroy', $match->id)}}">
                             <input name="_method" type="hidden" value="DELETE">
                             @csrf
 

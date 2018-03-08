@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>{{__('messages.insert matchday')}}</h1>
 
     <div class="container">
         <div class="row justify-content-center">

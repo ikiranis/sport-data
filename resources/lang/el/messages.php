@@ -27,6 +27,7 @@ return [
     'height' => 'Ύψος',
     'athletes not exist', 'Δεν υπάρχουν αθλητές',
     'championships' => 'Πρωταθλήματα',
+    'championship' => 'Πρωτάθλημα',
     'insert championship' => 'Προσθήκη πρωταθλήματος',
     'update championship' => 'Ενημέρωση πρωταθλήματος',
     'championships not exist' => 'Δεν υπάρχουν πρωταθλήματα',
@@ -47,6 +48,7 @@ return [
     'insert stadium' => 'Προσθήκη γηπέδου',
     'update stadium' => 'Ενημέρωση γηπέδου',
     'stadia' => 'Γήπεδα',
+    'stadium' => 'Γήπεδο',
     'stadia not exist', 'Δεν υπάρχουν γήπεδα',
     'insert team' => 'Προσθήκη ομάδας',
     'update team' => 'Ενημέρωση ομάδας',
@@ -75,6 +77,8 @@ return [
     'write comment' => 'Γράψε το σχόλιο σου',
     'by' => 'από',
     'insert match' => 'Εισαγωγή αγώνα',
-    'matches not exist' => 'Δεν υπάρχουν αγώνες'
+    'matches not exist' => 'Δεν υπάρχουν αγώνες',
+    'date' => 'Ημερομηνία',
+    'score' => 'Σκορ'
 
 ];

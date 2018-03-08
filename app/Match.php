@@ -96,8 +96,17 @@ class Match extends Model
     /**
      * Relation to teams
      */
-    public function team() {
-        return $this->belongsTo('App\Team');
+    public function first_team() {
+        return $this->belongsTo('App\Team', 'first_team_id');
+    }
+
+    public function second_team() {
+        return $this->belongsTo('App\Team', 'second_team_id');
+    }
+
+    public function getTeamsAttribute()
+    {
+        return $this->first_team->name . ' VS ' . $this->second_team->name;
     }
 
 

@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Championship;
 use App\Match;
+use App\Matchday;
 use App\Season;
 use App\Sport;
+use App\Stadium;
+use App\Team;
 use Illuminate\Http\Request;
 
 class AdminMatchesController extends Controller
@@ -18,10 +21,7 @@ class AdminMatchesController extends Controller
     public function index(Request $request)
     {
         if(isset($request)) {
-            $matches = Match::whereSportId($request->sport_id)->
-                whereChampionshipId($request->championship_id)->
-                whereSeasonId($request->season_id)->
-                paginate(15);
+            $matches = Match::paginate(15);
         } else {
             $matches = Match::paginate(15);
         }
@@ -40,7 +40,14 @@ class AdminMatchesController extends Controller
      */
     public function create()
     {
-        //
+        $championships = Championship::all();
+        $sports = Sport::all();
+        $seasons = Season::all();
+        $matchdays = Matchday::all();
+        $stadia = Stadium::all();
+        $teams = Team::all();
+
+        return view('admin.matches.create', compact('championships', 'sports', 'seasons', 'matchdays', 'stadia', 'teams'));
     }
 
     /**
@@ -51,7 +58,11 @@ class AdminMatchesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Match::create($input);
+
+        return redirect(route('matches.index'));
     }
 
     /**

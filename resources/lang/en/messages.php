@@ -27,6 +27,7 @@ return [
     'height' => 'Height',
     'athletes not exist', 'Athletes not exist',
     'championships' => 'Championships',
+    'championship' => 'Championship',
     'insert championship' => 'Insert championship',
     'update championship' => 'Update championship',
     'championships not exist' => 'Championships not exist',
@@ -47,6 +48,7 @@ return [
     'insert stadium' => 'Insert stadium',
     'update stadium' => 'Update stadium',
     'stadia' => 'Stadia',
+    'stadium' => 'Stadium',
     'stadia not exist', 'Stadia not exist',
     'insert team' => 'Insert team',
     'update team' => 'Update team',
@@ -75,7 +77,9 @@ return [
     'write comment' => 'Write your comment',
     'by' => 'by',
     'insert match' => 'Insert match',
-    'matches not exist' => 'Matches not exist'
+    'matches not exist' => 'Matches not exist',
+    'date' => 'Date',
+    'score' => 'Score'
 
 
 ];
