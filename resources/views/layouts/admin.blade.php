@@ -173,9 +173,7 @@
 
 
 <!-- Scripts -->
-
-<script src="{{ mix('js/app.js') }}"></script>
-
+@include('includes.footer')
 
 
 </body>

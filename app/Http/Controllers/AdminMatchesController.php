@@ -100,7 +100,13 @@ class AdminMatchesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $match = Match::findOrFail($id);
+
+        $match->update($input);
+
+//        return redirect(route('matches.index'));
     }
 
     /**

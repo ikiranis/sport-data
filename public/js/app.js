@@ -46833,9 +46833,27 @@ window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// const app = new Vue({
-//     el: '#app'
-// });
+var app = new Vue({
+    el: '#app',
+    data: {
+        matches: matches.data
+    },
+    methods: {
+        postData: function postData(key) {
+
+            myData = {
+                first_team_score: this.$data.matches[key].first_team_score,
+                second_team_score: this.$data.matches[key].second_team_score
+            };
+
+            axios.put('/admin/matches/' + this.$data.matches[key].id, myData).then(function (res) {
+                console.log(res);
+            }).catch(function (e) {
+                return console.log(e);
+            });
+        }
+    }
+});
 
 /***/ }),
 
