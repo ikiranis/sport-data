@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
     <h1>{{trans_choice('messages.matches',2)}}</h1>
 
     <form method="GET" action="{{route('matches.index')}}">
@@ -104,7 +105,7 @@
 
                                 <div class="col-4">
                                     <button type="submit" class="btn btn-outline-info"
-                                            @click.prevent="postData({{$key}})">
+                                            v-on:click="postData({{$key}})">
                                         Save
                                     </button>
                                 </div>
@@ -139,11 +140,28 @@
         <h1>{{__('messages.matches not exist')}}</h1>
     @endif
 
+    <div id="testVue">
+        <ol>
+            <!--
+              Now we provide each todo-item with the todo object
+              it's representing, so that its content can be dynamic.
+              We also need to provide each component with a "key",
+              which will be explained later.
+            -->
+            <todo-item
+                    v-for="item in groceryList"
+                    v-bind:todo="item"
+                    v-bind:key="item.id">
+            </todo-item>
+        </ol>
+    </div>
+
 @endsection
 
 @section('scripts')
 
     <script>
+
         const match = new Vue({
             el: '#matches',
             data: {
@@ -157,12 +175,15 @@
                         second_team_score: this.matches[key].second_team_score
                     };
 
-                    axios.put('/admin/matches/' + this.matches[key].id, myData)
+                    axios.put('/admin/matches/score/' + this.matches[key].id, myData)
                         .then(res => console.log(res) )
                         .catch(e => console.log(e) );
                 }
             }
         });
+
     </script>
+
+    <script src="{{ mix('js/test.js') }}"></script>
 
 @endsection

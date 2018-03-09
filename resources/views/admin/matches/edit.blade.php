@@ -6,10 +6,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">{{__('messages.insert match')}}</div>
+                    <div class="card-header">{{__('messages.update match')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('matches.store') }}">
+                        <form method="POST" action="{{ route('matches.update', $match->id) }}">
+                            <input name="_method" type="hidden" value="PUT">
                             @csrf
 
                             <div class="input-group mb-3 no-gutters">
@@ -19,7 +20,7 @@
                                 </div>
                                 <select class="form-control col-10 px-2" id="sport_id" name="sport_id">
                                     @foreach($sports as $sport)
-                                        <option value="{{$sport->id}}">
+                                        <option value="{{$sport->id}}" {{$sport->id==$match->sport_id ? 'selected' : ''}}>
                                             {{$sport->name}}
                                         </option>
                                     @endforeach
@@ -33,7 +34,7 @@
                                 </div>
                                 <select class="form-control col-10 px-2" id="championship_id" name="championship_id">
                                     @foreach($championships as $championship)
-                                        <option value="{{$championship->id}}">
+                                        <option value="{{$championship->id}}" {{$championship->id==$match->championship_id ? 'selected' : ''}}>
                                             {{$championship->name}}
                                         </option>
                                     @endforeach
@@ -47,7 +48,7 @@
                                 </div>
                                 <select class="form-control col-10 px-2" id="season_id" name="season_id">
                                     @foreach($seasons as $season)
-                                        <option value="{{$season->id}}">
+                                        <option value="{{$season->id}}" {{$season->id==$match->season_id ? 'selected' : ''}}>
                                             {{$season->name}}
                                         </option>
                                     @endforeach
@@ -61,7 +62,7 @@
                                 </div>
                                 <select class="form-control col-10 px-2" id="matchday_id" name="matchday_id">
                                     @foreach($matchdays as $matchday)
-                                        <option value="{{$matchday->id}}">
+                                        <option value="{{$matchday->id}}" {{$matchday->id==$match->matchday_id ? 'selected' : ''}}>
                                             {{$matchday->matchday}}
                                         </option>
                                     @endforeach
@@ -75,7 +76,7 @@
                                 </div>
                                 <select class="form-control col-10 px-2" id="stadium_id" name="stadium_id">
                                     @foreach($stadia as $stadium)
-                                        <option value="{{$stadium->id}}">
+                                        <option value="{{$stadium->id}}" {{$stadium->id==$match->stadium_id ? 'selected' : ''}}>
                                             {{$stadium->name}}
                                         </option>
                                     @endforeach
@@ -90,7 +91,7 @@
 
                                 <select class="form-control col-5 px-2" id="first_team_id" name="first_team_id">
                                     @foreach($teams as $team)
-                                        <option value="{{$team->id}}">
+                                        <option value="{{$team->id}}" {{$team->id==$match->first_team_id ? 'selected' : ''}}>
                                             {{$team->name}}
                                         </option>
                                     @endforeach
@@ -99,7 +100,7 @@
                                 <label for="second_team_id" class="sr-only">{{__('messages.team')}}</label>
                                 <select class="form-control col-5 px-2" id="second_team_id" name="second_team_id">
                                     @foreach($teams as $team)
-                                        <option value="{{$team->id}}">
+                                        <option value="{{$team->id}}" {{$team->id==$match->second_team_id ? 'selected' : ''}}>
                                             {{$team->name}}
                                         </option>
                                     @endforeach
@@ -112,10 +113,12 @@
                                     <span class="input-group-text w-100">{{__('messages.score')}}</span>
                                 </div>
 
-                                <input type="text" class="form-control col-5 px-2" id="first_team_score" name="first_team_score">
+                                <input type="text" class="form-control col-5 px-2" id="first_team_score" name="first_team_score"
+                                    value="{{$match->first_team_score}}">
 
                                 <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
-                                <input type="text" class="form-control col-5 px-2" id="second_team_score" name="second_team_score">
+                                <input type="text" class="form-control col-5 px-2" id="second_team_score" name="second_team_score"
+                                       value="{{$match->second_team_score}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -123,12 +126,13 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.date')}}</span>
                                 </div>
-                                <input type="date" class="form-control col-10 px-2" id="match_date" name="match_date">
+                                <input type="date" class="form-control col-10 px-2" id="match_date" name="match_date"
+                                       value="{{$match->match_date->format('Y-m-d')}}">
                             </div>
 
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
-                                    {{__('messages.insert')}}
+                                    {{__('messages.update')}}
                                 </button>
                             </div>
 

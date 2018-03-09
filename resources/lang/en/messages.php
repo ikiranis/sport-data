@@ -77,6 +77,7 @@ return [
     'write comment' => 'Write your comment',
     'by' => 'by',
     'insert match' => 'Insert match',
+    'update match' => 'Update match',
     'matches not exist' => 'Matches not exist',
     'date' => 'Date',
     'score' => 'Score',

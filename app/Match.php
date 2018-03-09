@@ -57,6 +57,8 @@ class Match extends Model
         'second_team_score'
     ];
 
+    protected $dates = ['match_date'];
+
     // Relations with the other models
 
     /**

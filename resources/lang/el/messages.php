@@ -77,6 +77,7 @@ return [
     'write comment' => 'Γράψε το σχόλιο σου',
     'by' => 'από',
     'insert match' => 'Εισαγωγή αγώνα',
+    'update match' => 'Ενημέρωση αγώνα',
     'matches not exist' => 'Δεν υπάρχουν αγώνες',
     'date' => 'Ημερομηνία',
     'score' => 'Σκορ',

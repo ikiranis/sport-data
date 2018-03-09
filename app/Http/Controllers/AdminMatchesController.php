@@ -88,7 +88,16 @@ class AdminMatchesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $match = Match::findOrFail($id);
+
+        $championships = Championship::all();
+        $sports = Sport::all();
+        $seasons = Season::all();
+        $matchdays = Matchday::all();
+        $stadia = Stadium::all();
+        $teams = Team::all();
+
+        return view('admin.matches.edit', compact('match', 'championships', 'sports', 'seasons', 'matchdays', 'stadia', 'teams'));
     }
 
     /**
@@ -106,7 +115,16 @@ class AdminMatchesController extends Controller
 
         $match->update($input);
 
-//        return redirect(route('matches.index'));
+        return redirect(route('matches.index'));
+    }
+
+    public function updateScore(Request $request, $id)
+    {
+        $input = $request->all();
+
+        $match = Match::findOrFail($id);
+
+        $match->update($input);
     }
 
     /**
