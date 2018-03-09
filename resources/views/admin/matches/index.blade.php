@@ -96,15 +96,18 @@
                                 <label for="first_team_score" class="sr-only">{{__('messages.team')}}</label>
                                 <input type="text" class="form-control col-4 px-2" id="first_team_score"
                                        name="first_team_score"
-                                       v-model="matches[{{$key}}].first_team_score">
+                                       v-model="matches[{{$key}}].first_team_score"
+                                       v-on:click="changingScore()">
 
                                 <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
                                 <input type="text" class="form-control col-4 px-2" id="second_team_score"
                                        name="second_team_score"
-                                       v-model="matches[{{$key}}].second_team_score">
+                                       v-model="matches[{{$key}}].second_team_score"
+                                       v-on:click="changingScore()">
 
                                 <div class="col-4">
-                                    <button type="submit" class="btn btn-outline-info"
+                                    <button type="submit" class="btn"
+                                            v-bind:class="{ 'btn-success': isSaved, 'btn-outline-info': notSaved }"
                                             v-on:click="postData({{$key}})">
                                         Save
                                     </button>
@@ -165,7 +168,9 @@
         const match = new Vue({
             el: '#matches',
             data: {
-                matches: matches.data
+                matches: matches.data,
+                isSaved: false,
+                notSaved: true
             },
             methods: {
                 postData(key) {
@@ -176,8 +181,16 @@
                     };
 
                     axios.put('/admin/matches/score/' + this.matches[key].id, myData)
-                        .then(res => console.log(res) )
+                        .then(response => {
+                            this.isSaved = true;
+                            this.notSaved = false;
+                            console.log(response)
+                        })
                         .catch(e => console.log(e) );
+                },
+                changingScore() {
+                    this.isSaved = false;
+                    this.notSaved = true;
                 }
             }
         });
