@@ -163,13 +163,13 @@
 
                     axios.put('/admin/matches/score/' + this.matches[key].id, myData)
                         .then(response => {
-                            $('#submit' + key).toggleClass('btn-outline-info btn-primary');
+                            $('#submit' + key).removeClass('btn-outline-success').addClass('btn-success');
                             console.log(response)
                         })
                         .catch(e => console.log(e) );
                 },
                 changingScore(key) {
-                    $('#submit' + key).toggleClass('btn-outline-info btn-primary');
+                    $('#submit' + key).removeClass('btn-success').addClass('btn-outline-success');
                 }
             }
         });
