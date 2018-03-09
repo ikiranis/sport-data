@@ -97,17 +97,16 @@
                                 <input type="text" class="form-control col-4 px-2" id="first_team_score"
                                        name="first_team_score"
                                        v-model="matches[{{$key}}].first_team_score"
-                                       v-on:click="changingScore()">
+                                       v-on:click="changingScore({{$key}})">
 
                                 <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
                                 <input type="text" class="form-control col-4 px-2" id="second_team_score"
                                        name="second_team_score"
                                        v-model="matches[{{$key}}].second_team_score"
-                                       v-on:click="changingScore()">
+                                       v-on:click="changingScore({{$key}})">
 
                                 <div class="col-4">
-                                    <button type="submit" class="btn"
-                                            v-bind:class="{ 'btn-success': isSaved, 'btn-outline-info': notSaved }"
+                                    <button type="submit" class="btn btn-success" id="submit{{$key}}"
                                             v-on:click="postData({{$key}})">
                                         Save
                                     </button>
@@ -143,34 +142,16 @@
         <h1>{{__('messages.matches not exist')}}</h1>
     @endif
 
-    <div id="testVue">
-        <ol>
-            <!--
-              Now we provide each todo-item with the todo object
-              it's representing, so that its content can be dynamic.
-              We also need to provide each component with a "key",
-              which will be explained later.
-            -->
-            <todo-item
-                    v-for="item in groceryList"
-                    v-bind:todo="item"
-                    v-bind:key="item.id">
-            </todo-item>
-        </ol>
-    </div>
-
 @endsection
 
 @section('scripts')
 
     <script>
 
-        const match = new Vue({
+        let match = new Vue({
             el: '#matches',
             data: {
-                matches: matches.data,
-                isSaved: false,
-                notSaved: true
+                matches: matches.data
             },
             methods: {
                 postData(key) {
@@ -182,21 +163,19 @@
 
                     axios.put('/admin/matches/score/' + this.matches[key].id, myData)
                         .then(response => {
-                            this.isSaved = true;
-                            this.notSaved = false;
+                            $('#submit' + key).toggleClass('btn-outline-info btn-primary');
                             console.log(response)
                         })
                         .catch(e => console.log(e) );
                 },
-                changingScore() {
-                    this.isSaved = false;
-                    this.notSaved = true;
+                changingScore(key) {
+                    $('#submit' + key).toggleClass('btn-outline-info btn-primary');
                 }
             }
         });
 
     </script>
 
-    <script src="{{ mix('js/test.js') }}"></script>
+    {{--<script src="{{ mix('js/test.js') }}"></script>--}}
 
 @endsection
