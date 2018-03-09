@@ -71,7 +71,7 @@
             let matches = {!! json_encode($matches) !!};
         </script>
 
-        <div id="app">
+        <div id="matches">
             <table class="table">
                 <thead>
                 <tr>
@@ -90,26 +90,26 @@
                         <td><a href="{{route('matches.edit', $match->id)}}">{{$match->teams}}</a></td>
 
                         <td>
-                                <div class="row">
+                            <div class="row">
 
-                                    <label for="first_team_score" class="sr-only">{{__('messages.team')}}</label>
-                                    <input type="text" class="form-control col-4 px-2" id="first_team_score"
-                                           name="first_team_score"
-                                           v-model="matches[{{$key}}].first_team_score">
+                                <label for="first_team_score" class="sr-only">{{__('messages.team')}}</label>
+                                <input type="text" class="form-control col-4 px-2" id="first_team_score"
+                                       name="first_team_score"
+                                       v-model="matches[{{$key}}].first_team_score">
 
-                                    <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
-                                    <input type="text" class="form-control col-4 px-2" id="second_team_score"
-                                           name="second_team_score"
-                                           v-model="matches[{{$key}}].second_team_score">
+                                <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
+                                <input type="text" class="form-control col-4 px-2" id="second_team_score"
+                                       name="second_team_score"
+                                       v-model="matches[{{$key}}].second_team_score">
 
-                                    <div class="col-4">
-                                        <button type="submit" class="btn btn-outline-info"
-                                                @click.prevent="postData({{$key}})">
-                                            Save
-                                        </button>
-                                    </div>
-
+                                <div class="col-4">
+                                    <button type="submit" class="btn btn-outline-info"
+                                            @click.prevent="postData({{$key}})">
+                                        Save
+                                    </button>
                                 </div>
+
+                            </div>
                         </td>
 
 
@@ -138,5 +138,31 @@
     @else
         <h1>{{__('messages.matches not exist')}}</h1>
     @endif
+
+@endsection
+
+@section('scripts')
+
+    <script>
+        const match = new Vue({
+            el: '#matches',
+            data: {
+                matches: matches.data
+            },
+            methods: {
+                postData(key) {
+
+                    let myData = {
+                        first_team_score: this.matches[key].first_team_score,
+                        second_team_score: this.matches[key].second_team_score
+                    };
+
+                    axios.put('/admin/matches/' + this.matches[key].id, myData)
+                        .then(res => console.log(res) )
+                        .catch(e => console.log(e) );
+                }
+            }
+        });
+    </script>
 
 @endsection
