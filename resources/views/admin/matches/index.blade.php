@@ -164,11 +164,12 @@
                 postData(key) {
 
                     let myData = {
+                        id: this.matches[key].id,
                         first_team_score: this.matches[key].first_team_score,
                         second_team_score: this.matches[key].second_team_score
                     };
 
-                    axios.put('/api/match/' + this.matches[key].id, myData)
+                    axios.put('/api/match', myData)
                         .then(response => {
                             Vue.set(this.isSaved, key, true);
                             console.log(response)

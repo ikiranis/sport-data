@@ -118,11 +118,11 @@ class AdminMatchesController extends Controller
         return redirect(route('matches.index'));
     }
 
-    public function updateScore(Request $request, $id)
+    public function updateScore(Request $request)
     {
         $input = $request->all();
 
-        $match = Match::findOrFail($id);
+        $match = Match::findOrFail($request->id);
 
         $match->update($input);
     }
