@@ -127,7 +127,7 @@
                                     <span class="input-group-text w-100">{{__('messages.date')}}</span>
                                 </div>
                                 <input type="date" class="form-control col-10 px-2" id="match_date" name="match_date"
-                                       value="{{$match->match_date->format('Y-m-d')}}">
+                                       value="{{$match->match_date ? $match->match_date->format('Y-m-d') : ''}}">
                             </div>
 
                             <div class="form-group row">
