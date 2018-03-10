@@ -125,6 +125,8 @@ class AdminMatchesController extends Controller
         $match = Match::findOrFail($request->id);
 
         $match->update($input);
+
+        return $input;
     }
 
     /**
