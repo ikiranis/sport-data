@@ -97,16 +97,17 @@
                                 <input type="text" class="form-control col-4 px-2" id="first_team_score"
                                        name="first_team_score"
                                        v-model="matches[{{$key}}].first_team_score"
-                                       v-on:click="changingScore({{$key}})">
+                                       v-on:input="changingScore({{$key}})">
 
                                 <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
                                 <input type="text" class="form-control col-4 px-2" id="second_team_score"
                                        name="second_team_score"
                                        v-model="matches[{{$key}}].second_team_score"
-                                       v-on:click="changingScore({{$key}})">
+                                       v-on:input="changingScore({{$key}})">
 
                                 <div class="col-4">
-                                    <button type="submit" class="btn btn-success" id="submit{{$key}}"
+                                    <button type="submit" class="btn" id="submit{{$key}}"
+                                            v-bind:class="{ 'btn-success': isSaved[{{$key}}], 'btn-outline-success': !isSaved[{{$key}}] }"
                                             v-on:click="postData({{$key}})">
                                         Save
                                     </button>
@@ -151,7 +152,13 @@
         let match = new Vue({
             el: '#matches',
             data: {
-                matches: matches.data
+                matches: matches.data,
+                isSaved: {}
+            },
+            created: function() {
+                for(let key in this.matches) {
+                    Vue.set(this.isSaved, key, true);
+                }
             },
             methods: {
                 postData(key) {
@@ -163,13 +170,13 @@
 
                     axios.put('/admin/matches/score/' + this.matches[key].id, myData)
                         .then(response => {
-                            $('#submit' + key).removeClass('btn-outline-success').addClass('btn-success');
+                            Vue.set(this.isSaved, key, true);
                             console.log(response)
                         })
                         .catch(e => console.log(e) );
                 },
                 changingScore(key) {
-                    $('#submit' + key).removeClass('btn-success').addClass('btn-outline-success');
+                    Vue.set(this.isSaved, key, false);
                 }
             }
         });
