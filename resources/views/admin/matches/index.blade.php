@@ -107,7 +107,7 @@
 
                                 <div class="col-4">
                                     <button type="submit" class="btn" id="submit{{$key}}"
-                                            v-bind:class="{ 'btn-success': isSaved[{{$key}}], 'btn-outline-success': !isSaved[{{$key}}] }"
+                                            v-bind:class="isSaved[{{$key}}] ? 'btn-success' : 'btn-outline-success'"
                                             v-on:click="postData({{$key}})">
                                         Save
                                     </button>
