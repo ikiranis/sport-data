@@ -45,7 +45,6 @@ Route::group(
             Route::resource('admin/matchdays', 'AdminMatchdaysController');
             Route::resource('admin/championships', 'AdminChampionshipsController');
             Route::resource('admin/comments', 'AdminCommentsController');
-            Route::put('admin/matches/score/{id}', 'AdminMatchesController@updateScore');
             Route::resource('admin/matches', 'AdminMatchesController');
         });
 

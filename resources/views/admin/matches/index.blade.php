@@ -155,7 +155,7 @@
                 matches: matches.data,
                 isSaved: {}
             },
-            created: function() {
+            created: function() { // Set first values to this.isSaved array
                 for(let key in this.matches) {
                     Vue.set(this.isSaved, key, true);
                 }
@@ -168,7 +168,7 @@
                         second_team_score: this.matches[key].second_team_score
                     };
 
-                    axios.put('/admin/matches/score/' + this.matches[key].id, myData)
+                    axios.put('/api/match/' + this.matches[key].id, myData)
                         .then(response => {
                             Vue.set(this.isSaved, key, true);
                             console.log(response)
