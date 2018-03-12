@@ -20,6 +20,19 @@ class AdminSeasonsController extends Controller
     }
 
     /**
+     * Api that returns the Seasons list for championship_id
+     *
+     * @param $championship_id
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getSeasons($championship_id)
+    {
+        $seasons = Season::all();
+
+        return $seasons;
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

@@ -22,4 +22,14 @@ class Championship extends Model
 
     // Don't write timestamps at factory
     public $timestamps  = false;
+
+    /**
+     * Relation with sports
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function sport()
+    {
+        return $this->belongsTo('App\Sport');
+    }
 }

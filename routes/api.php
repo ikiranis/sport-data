@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::put('match', 'AdminMatchesController@updateScore');
+Route::get('championships/{sport_id}', 'AdminChampionshipsController@getChampionships');
+Route::get('seasons/{championship_id}', 'AdminSeasonsController@getSeasons');

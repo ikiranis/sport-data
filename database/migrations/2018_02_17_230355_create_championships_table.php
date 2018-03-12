@@ -15,6 +15,7 @@ class CreateChampionshipsTable extends Migration
     {
         Schema::create('championships', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sport_id')->unsigned()->nullable();
             $table->string('name');
         });
     }

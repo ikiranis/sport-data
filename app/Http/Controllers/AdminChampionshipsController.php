@@ -20,6 +20,21 @@ class AdminChampionshipsController extends Controller
     }
 
     /**
+     * Api that returns the Championships list for $request->sport_id
+     *
+     * @param $sport_id
+     * @return mixed
+     */
+    public function getChampionships($sport_id)
+    {
+//        $championships = Championship::whereSportId($request->sport_id);
+
+        $championships = Championship::all();
+
+        return $championships;
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
