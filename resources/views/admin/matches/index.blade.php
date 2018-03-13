@@ -5,7 +5,7 @@
     <h1>{{trans_choice('messages.matches',2)}}</h1>
 
     <form method="GET" action="{{route('matches.index')}}">
-        <div class="row">
+        <div id="searchContainer" class="row">
 
             @csrf
 
@@ -14,7 +14,8 @@
                 <div class="input-group-prepend col-5">
                     <span class="input-group-text w-100">{{__('messages.sport')}}</span>
                 </div>
-                <select class="form-control col-7 px-2" id="sport_id" name="sport_id">
+                <select v-on:change="getChampionships()" v-model="sportSelected" class="form-control col-7 px-2"
+                        id="sport_id" name="sport_id">
                     @foreach($sports as $sport)
                         <option value="{{$sport->id}}">
                             {{$sport->name}}
@@ -28,13 +29,7 @@
                 <div class="input-group-prepend col-5">
                     <span class="input-group-text w-100">Championship</span>
                 </div>
-                <select class="form-control col-7 px-2" id="championship_id" name="championship_id">
-                    @foreach($championships as $championship)
-                        <option value="{{$championship->id}}">
-                            {{$championship->name}}
-                        </option>
-                    @endforeach
-                </select>
+                <championship-list v-bind:championships="championships"></championship-list>
             </div>
 
             <div class="input-group mb-3 no-gutters col-lg-3 col-12 my-1">
@@ -182,7 +177,10 @@
             }
         });
 
+
     </script>
+
+    <script src="{{ mix('js/searchContainer.js') }}"></script>
 
     {{--<script src="{{ mix('js/test.js') }}"></script>--}}
 

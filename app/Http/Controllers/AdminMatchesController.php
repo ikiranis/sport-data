@@ -21,12 +21,12 @@ class AdminMatchesController extends Controller
     public function index(Request $request)
     {
 
-        if(isset($request)) {
+        if($request->has('_token')) { // If there are request data do filter
             $matches = Match::whereSportId($request->sport_id)->
                 whereChampionshipId($request->championship_id)->
                 whereSeasonId($request->season_id)->
                 paginate(15);
-        } else {
+        } else {  // get all data
             $matches = Match::paginate(15);
         }
 
