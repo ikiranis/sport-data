@@ -33,7 +33,8 @@
                 <select v-on:change="getSeasons()" v-model="championshipSelected" class="form-control col-7 px-2"
                         id="championship_id" name="championship_id">
                     <option value="0" disabled>Επιλογή</option>
-                    <option v-for="championship in championships" :value="championship.id">{% championship.name %}</option>
+                    <option v-for="championship in championships" :value="championship.id">{% championship.name %}
+                    </option>
                 </select>
             </div>
 
@@ -147,67 +148,71 @@
 
     <script>
 
+                @if(count($matches)>0)
+
         let match = new Vue({
-            el: '#matches',
-            delimiters: ['{%', '%}'],
-            data: {
-                matches: matches.data,
-                isSaved: {}
-            },
-            created: function() { // Set first values to this.isSaved array
-                for(let key in this.matches) {
-                    Vue.set(this.isSaved, key, true);
-                }
-            },
-            methods: {
-                postData(key) {
-
-                    let myData = {
-                        id: this.matches[key].id,
-                        first_team_score: this.matches[key].first_team_score,
-                        second_team_score: this.matches[key].second_team_score
-                    };
-
-                    axios.put('/api/match', myData)
-                        .then(response => {
-                            Vue.set(this.isSaved, key, true);
-                            console.log(response)
-                        })
-                        .catch(e => console.log(e) );
+                el: '#matches',
+                delimiters: ['{%', '%}'],
+                data: {
+                    matches: matches.data,
+                    isSaved: {}
                 },
-                changingScore(key) {
-                    Vue.set(this.isSaved, key, false);
+                created: function () { // Set first values to this.isSaved array
+                    for (let key in this.matches) {
+                        Vue.set(this.isSaved, key, true);
+                    }
+                },
+                methods: {
+                    postData(key) {
+
+                        let myData = {
+                            id: this.matches[key].id,
+                            first_team_score: this.matches[key].first_team_score,
+                            second_team_score: this.matches[key].second_team_score
+                        };
+
+                        axios.put('/api/match', myData)
+                            .then(response => {
+                                Vue.set(this.isSaved, key, true);
+                                console.log(response)
+                            })
+                            .catch(e => console.log(e));
+                    },
+                    changingScore(key) {
+                        Vue.set(this.isSaved, key, false);
+                    }
                 }
-            }
-        });
+            });
+
+                @endif
 
         let searchContainer = new Vue({
-            delimiters: ['{%', '%}'],
-            el: "#searchContainer",
-            data: {
-                sportSelected: 0,
-                championshipSelected: 0,
-                seasonSelected: 0,
-                championships: '',
-                seasons: ''
-            },
-            methods: {
-                getChampionships() {
-                    axios.get('/api/championships/' + this.sportSelected)
-                        .then(response => {
-                            this.championships = response.data;
-                        })
-                        .catch(e => console.log(e) );
+                delimiters: ['{%', '%}'],
+                el: "#searchContainer",
+                data: {
+                    sportSelected: 0,
+                    championshipSelected: 0,
+                    seasonSelected: 0,
+                    championships: '',
+                    seasons: ''
                 },
-                getSeasons() {
-                    axios.get('/api/seasons/' + this.championshipSelected)
-                        .then(response => {
-                            this.seasons = response.data;
-                        })
-                        .catch(e => console.log(e) );
+                methods: {
+                    getChampionships() {
+                        axios.get('/api/championships/' + this.sportSelected)
+                            .then(response => {
+                                this.championships = response.data;
+                            })
+                            .catch(e => console.log(e));
+                    },
+                    getSeasons() {
+                        axios.get('/api/seasons/' + this.championshipSelected)
+                            .then(response => {
+                                this.seasons = response.data;
+                            })
+                            .catch(e => console.log(e));
+                    }
                 }
-            }
-        });
+            });
 
 
     </script>

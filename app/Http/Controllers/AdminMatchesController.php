@@ -22,8 +22,6 @@ class AdminMatchesController extends Controller
     {
 
         if($request->has('_token')) { // If there are request data do filter
-            return $request->all();
-
             $matches = Match::whereSportId($request->sport_id)->
                 whereChampionshipId($request->championship_id)->
                 whereSeasonId($request->season_id)->
