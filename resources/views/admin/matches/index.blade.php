@@ -16,6 +16,7 @@
                 </div>
                 <select v-on:change="getChampionships()" v-model="sportSelected" class="form-control col-7 px-2"
                         id="sport_id" name="sport_id">
+                    <option value="0" disabled>Επιλογή</option>
                     @foreach($sports as $sport)
                         <option value="{{$sport->id}}">
                             {{$sport->name}}
@@ -25,11 +26,15 @@
             </div>
 
             <div class="input-group mb-3 no-gutters col-lg-3 col-12 my-1">
-                <label for="championship_id" class="sr-only">Championship</label>
+                <label for="championship_id" class="sr-only">{{__('messages.championship')}}</label>
                 <div class="input-group-prepend col-5">
-                    <span class="input-group-text w-100">Championship</span>
+                    <span class="input-group-text w-100">{{__('messages.championship')}}</span>
                 </div>
-                <championship-list v-bind:championships="championships"></championship-list>
+                <select v-on:change="getSeasons()" v-model="championshipSelected" class="form-control col-7 px-2"
+                        id="championship_id" name="championship_id">
+                    <option value="0" disabled>Επιλογή</option>
+                    <option v-for="championship in championships" :value="championship.id">{% championship.name %}</option>
+                </select>
             </div>
 
             <div class="input-group mb-3 no-gutters col-lg-3 col-12 my-1">
@@ -37,12 +42,10 @@
                 <div class="input-group-prepend col-5">
                     <span class="input-group-text w-100">Season</span>
                 </div>
-                <select class="form-control col-7 px-2" id="season_id" name="season_id">
-                    @foreach($seasons as $season)
-                        <option value="{{$season->id}}">
-                            {{$season->name}}
-                        </option>
-                    @endforeach
+                <select class="form-control col-7 px-2" v-model="seasonSelected"
+                        id="season_id" name="season_id">
+                    <option value="0" disabled>Επιλογή</option>
+                    <option v-for="season in seasons" :value="season.id">{% season.name %}</option>
                 </select>
             </div>
 
@@ -146,6 +149,7 @@
 
         let match = new Vue({
             el: '#matches',
+            delimiters: ['{%', '%}'],
             data: {
                 matches: matches.data,
                 isSaved: {}
@@ -177,10 +181,36 @@
             }
         });
 
+        let searchContainer = new Vue({
+            delimiters: ['{%', '%}'],
+            el: "#searchContainer",
+            data: {
+                sportSelected: 0,
+                championshipSelected: 0,
+                seasonSelected: 0,
+                championships: '',
+                seasons: ''
+            },
+            methods: {
+                getChampionships() {
+                    axios.get('/api/championships/' + this.sportSelected)
+                        .then(response => {
+                            this.championships = response.data;
+                        })
+                        .catch(e => console.log(e) );
+                },
+                getSeasons() {
+                    axios.get('/api/seasons/' + this.championshipSelected)
+                        .then(response => {
+                            this.seasons = response.data;
+                        })
+                        .catch(e => console.log(e) );
+                }
+            }
+        });
+
 
     </script>
-
-    <script src="{{ mix('js/searchContainer.js') }}"></script>
 
     {{--<script src="{{ mix('js/test.js') }}"></script>--}}
 
