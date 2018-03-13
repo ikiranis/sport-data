@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Championship;
 use App\Season;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class AdminSeasonsController extends Controller
      */
     public function getSeasons($championship_id)
     {
-        $seasons = Season::all();
+        $seasons = Season::whereChampionshipId($championship_id)->get();
 
         return $seasons;
     }
@@ -39,7 +40,9 @@ class AdminSeasonsController extends Controller
      */
     public function create()
     {
-        return view('admin.seasons.create');
+        $championships = Championship::all();
+
+        return view('admin.seasons.create', compact('championships'));
     }
 
     /**
@@ -77,8 +80,9 @@ class AdminSeasonsController extends Controller
     public function edit($id)
     {
         $season = Season::findOrFail($id);
+        $championships = Championship::all();
 
-        return view ('admin/seasons/edit', compact('season'));
+        return view ('admin/seasons/edit', compact('season', 'championships'));
     }
 
     /**

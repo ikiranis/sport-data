@@ -20,6 +20,20 @@
                                 <input type="text" class="form-control col-10" id="name" name="name">
                             </div>
 
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="championship_id" class="sr-only">{{__('messages.championship')}}</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">{{__('messages.championship')}}</span>
+                                </div>
+                                <select class="form-control col-10 px-2" id="championship_id" name="championship_id">
+                                    @foreach($championships as $championship)
+                                        <option value="{{$championship->id}}">
+                                            {{$championship->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     {{__('messages.insert')}}

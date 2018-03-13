@@ -40,6 +40,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $season_id
  * @property-read \App\Season|null $season
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereSeasonId($value)
+ * @property-read \App\Team|null $first_team
+ * @property-read string $teams
+ * @property-read \App\Team|null $second_team
  */
 class Match extends Model
 {

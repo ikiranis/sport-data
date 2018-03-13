@@ -12,12 +12,16 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Season whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Season whereName($value)
  * @mixin \Eloquent
+ * @property int|null $championship_id
+ * @property-read \App\Championship|null $championship
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Season whereChampionshipId($value)
  */
 class Season extends Model
 {
     // The attributes that are mass assignable
     protected $fillable = [
-        'name'
+        'name',
+        'championship_id'
     ];
 
     // Don't write timestamps at factory

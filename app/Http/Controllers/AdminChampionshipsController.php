@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Championship;
+use App\Sport;
 use Illuminate\Http\Request;
 
 class AdminChampionshipsController extends Controller
@@ -27,9 +28,8 @@ class AdminChampionshipsController extends Controller
      */
     public function getChampionships($sport_id)
     {
-//        $championships = Championship::whereSportId($request->sport_id);
 
-        $championships = Championship::all();
+        $championships = Championship::whereSportId($sport_id)->get();
 
         return $championships;
     }
@@ -41,7 +41,9 @@ class AdminChampionshipsController extends Controller
      */
     public function create()
     {
-        return view('admin.championships.create');
+        $sports = Sport::all();
+
+        return view('admin.championships.create', compact('sports'));
     }
 
     /**
@@ -79,8 +81,9 @@ class AdminChampionshipsController extends Controller
     public function edit($id)
     {
         $championship = Championship::findOrFail($id);
+        $sports = Sport::all();
 
-        return view ('admin/championships/edit', compact('championship'));
+        return view ('admin/championships/edit', compact('championship', 'sports'));
     }
 
     /**
