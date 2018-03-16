@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.error')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -17,7 +19,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control" id="name" name="name">
+                                <input type="text" max="255" class="form-control" id="name" name="name">
                             </div>
 
 
@@ -36,7 +38,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">{{__('messages.reference')}}</span>
                                     </div>
-                                    <input type="text" class="form-control" id="reference" name="reference">
+                                    <input type="text" max="255" class="form-control" id="reference" name="reference">
                                 </div>
 
                             </div>

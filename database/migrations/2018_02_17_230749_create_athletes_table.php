@@ -15,14 +15,14 @@ class CreateAthletesTable extends Migration
     {
         Schema::create('athletes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sport_id')->unsigned()->nullable();
+            $table->integer('sport_id')->unsigned();
             $table->integer('photo_id')->unsigned()->nullable();
             $table->string('fname');
             $table->string('lname');
-            $table->integer('birthyear');
-            $table->string('city');
-            $table->string('country');
-            $table->smallInteger('height');
+            $table->integer('birthyear')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->smallInteger('height')->nullable();
         });
     }
 

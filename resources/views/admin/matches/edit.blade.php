@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.error')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -113,11 +115,11 @@
                                     <span class="input-group-text w-100">{{__('messages.score')}}</span>
                                 </div>
 
-                                <input type="text" class="form-control col-5 px-2" id="first_team_score" name="first_team_score"
+                                <input type="number" min="0" max="200"  class="form-control col-5 px-2" id="first_team_score" name="first_team_score"
                                     value="{{$match->first_team_score}}">
 
                                 <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
-                                <input type="text" class="form-control col-5 px-2" id="second_team_score" name="second_team_score"
+                                <input type="number" min="0" max="200" class="form-control col-5 px-2" id="second_team_score" name="second_team_score"
                                        value="{{$match->second_team_score}}">
                             </div>
 

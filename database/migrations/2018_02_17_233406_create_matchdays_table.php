@@ -15,7 +15,7 @@ class CreateMatchdaysTable extends Migration
     {
         Schema::create('matchdays', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('season_id')->unsigned()->nullable();
+            $table->integer('season_id')->unsigned();
             $table->integer('matchday');
         });
     }

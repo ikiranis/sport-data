@@ -53,6 +53,11 @@ class AdminSeasonsController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'championship_id' => 'required',
+            'name' => 'required|max:255'
+        ]);
+
         $input = $request->all();
 
         Season::create($input);
@@ -94,6 +99,11 @@ class AdminSeasonsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'championship_id' => 'required',
+            'name' => 'required|max:255'
+        ]);
+
         $input = $request->all();
 
         $season = Season::findOrFail($id);

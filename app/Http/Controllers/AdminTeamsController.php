@@ -40,6 +40,12 @@ class AdminTeamsController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'logo_id' => 'nullable',
+            'name' => 'required|max:255',
+            'city' => 'nullable|max:255'
+        ]);
+
         $input = $request->all();
 
         if ($file = $request->uploadFile) {
@@ -99,6 +105,12 @@ class AdminTeamsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'logo_id' => 'nullable',
+            'name' => 'required|max:255',
+            'city' => 'nullable|max:255'
+        ]);
+
         $input = $request->all();
 
         $team = Team::findOrFail($id);

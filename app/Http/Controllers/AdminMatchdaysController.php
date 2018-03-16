@@ -40,6 +40,11 @@ class AdminMatchdaysController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'season_id' => 'required',
+            'matchday' => 'required|integer|between:0,100'
+        ]);
+
         $input = $request->all();
 
         Matchday::create($input);
@@ -81,6 +86,11 @@ class AdminMatchdaysController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'season_id' => 'required',
+            'matchday' => 'required|integer|between:0,100'
+        ]);
+
         $input = $request->all();
 
         $matchday = Matchday::findOrFail($id);

@@ -62,6 +62,19 @@ class AdminMatchesController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'sport_id' => 'required',
+            'championship_id' => 'required',
+            'season_id' => 'required',
+            'match_date' => 'nullable|date',
+            'matchday_id' => 'required',
+            'stadium_id' => 'nullable',
+            'first_team_id' => 'required',
+            'second_team_id' => 'required',
+            'first_team_score' => 'nullable|integer|between:0-200',
+            'second_team_score' => 'nullable|integer|between:0-200'
+        ]);
+
         $input = $request->all();
 
         Match::create($input);
@@ -109,6 +122,19 @@ class AdminMatchesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'sport_id' => 'required',
+            'championship_id' => 'required',
+            'season_id' => 'required',
+            'match_date' => 'nullable|date',
+            'matchday_id' => 'required',
+            'stadium_id' => 'nullable',
+            'first_team_id' => 'required',
+            'second_team_id' => 'required',
+            'first_team_score' => 'nullable|integer|between:0-200',
+            'second_team_score' => 'nullable|integer|between:0-200'
+        ]);
+
         $input = $request->all();
 
         $match = Match::findOrFail($id);

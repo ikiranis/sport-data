@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.error')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -18,7 +20,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control" id="name" name="name" value="{{$sport->name}}">
+                                <input type="text" max="255" class="form-control" id="name" name="name" value="{{$sport->name}}">
                             </div>
 
                             <div class="row border p-2">
@@ -43,7 +45,7 @@
                                             <span class="input-group-text">{{__('messages.reference')}}</span>
                                         </div>
                                         <input type="text" class="form-control" id="reference" name="reference"
-                                               value="{{$sport->photo ? $sport->photo->reference : ''}}">
+                                               max="255" value="{{$sport->photo ? $sport->photo->reference : ''}}">
                                     </div>
 
                                 </div>

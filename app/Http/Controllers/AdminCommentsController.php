@@ -73,6 +73,14 @@ class AdminCommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'post_id' => 'required',
+            'body' => 'required',
+            'author' => 'required|max:255',
+            'email' => 'required|email',
+            'approved' => 'nullable'
+        ]);
+
         $input = $request->all();
 
         $comment = Comment::findOrFail($id);

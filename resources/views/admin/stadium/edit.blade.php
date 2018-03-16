@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.error')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -18,7 +20,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="name" name="name" value="{{$stadium->name}}">
+                                <input type="text" max="255" class="form-control col-10 px-2" id="name" name="name" value="{{$stadium->name}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -26,7 +28,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.city')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="city" name="city" value="{{$stadium->city}}">
+                                <input type="text" max="255" class="form-control col-10 px-2" id="city" name="city" value="{{$stadium->city}}">
                             </div>
 
                             <div class="form-group row">

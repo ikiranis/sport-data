@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.error')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -20,7 +22,7 @@
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
                                 <input type="text" class="form-control col-9 px-2" id="fname" name="fname"
-                                       value="{{$athlete->fname}}">
+                                       max="255" value="{{$athlete->fname}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -29,7 +31,7 @@
                                     <span class="input-group-text w-100">{{__('messages.lname')}}</span>
                                 </div>
                                 <input type="text" class="form-control col-9 px-2" id="lname" name="lname"
-                                       value="{{$athlete->lname}}">
+                                       max="255" value="{{$athlete->lname}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -37,8 +39,8 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.birthyear')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="birthyear" name="birthyear"
-                                       value="{{$athlete->birthyear}}">
+                                <input type="number" class="form-control col-9 px-2" id="birthyear" name="birthyear"
+                                       min="1930" max="2030" value="{{$athlete->birthyear}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -47,7 +49,7 @@
                                     <span class="input-group-text w-100">{{__('messages.city')}}</span>
                                 </div>
                                 <input type="text" class="form-control col-9 px-2" id="city" name="city"
-                                       value="{{$athlete->city}}">
+                                       max="255" value="{{$athlete->city}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -56,7 +58,7 @@
                                     <span class="input-group-text w-100">{{__('messages.country')}}</span>
                                 </div>
                                 <input type="text" class="form-control col-9 px-2" id="country" name="country"
-                                       value="{{$athlete->country}}">
+                                       max="255" value="{{$athlete->country}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -64,8 +66,8 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.height')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="height" name="height"
-                                       value="{{$athlete->height}}">
+                                <input type="number" class="form-control col-9 px-2" id="height" name="height"
+                                       min="100" max="230" value="{{$athlete->height}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -107,7 +109,7 @@
                                             <span class="input-group-text">{{__('messages.reference')}}</span>
                                         </div>
                                         <input type="text" class="form-control" id="reference" name="reference"
-                                               value="{{$athlete->photo ? $athlete->photo->reference : ''}}">
+                                               max="255" value="{{$athlete->photo ? $athlete->photo->reference : ''}}">
                                     </div>
 
                                 </div>

@@ -37,6 +37,11 @@ class AdminStadiumController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'city' => 'nullable|max:255'
+        ]);
+
         $input = $request->all();
 
         Stadium::create($input);
@@ -77,6 +82,11 @@ class AdminStadiumController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'city' => 'nullable|max:255'
+        ]);
+
         $input = $request->all();
 
         $stadium = Stadium::findOrFail($id);

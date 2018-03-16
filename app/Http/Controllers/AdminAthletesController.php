@@ -42,6 +42,17 @@ class AdminAthletesController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'sport_id' => 'required',
+            'photo_id' => 'nullable',
+            'fname' => 'required|max:255',
+            'lname' => 'required|max:255',
+            'birthyear' => 'nullable|integer|between:1930,2030',
+            'city' => 'nullable|max:255',
+            'country' => 'nullable|max:255',
+            'height' => 'nullable|integer|between:100,230'
+        ]);
+
         $input = $request->all();
 
         if ($file = $request->uploadFile) {
@@ -102,6 +113,17 @@ class AdminAthletesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'sport_id' => 'required',
+            'photo_id' => 'nullable',
+            'fname' => 'required|max:255',
+            'lname' => 'required|max:255',
+            'birthyear' => 'nullable|integer|between:1930,2030',
+            'city' => 'nullable|max:255',
+            'country' => 'nullable|max:255',
+            'height' => 'nullable|integer|between:100,230'
+        ]);
+
         $input = $request->all();
 
         $athlete = Athlete::findOrFail($id);

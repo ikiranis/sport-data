@@ -16,7 +16,7 @@ class CreateStadiaTable extends Migration
         Schema::create('stadia', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('city');
+            $table->string('city')->nullable();
         });
     }
 

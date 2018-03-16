@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.error')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -19,7 +21,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.title')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="title" name="title"
+                                <input type="text" max="255" class="form-control col-10 px-2" id="title" name="title"
                                        value="{{$post->title}}">
                             </div>
 
@@ -38,7 +40,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.reference')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="reference"
+                                <input type="text" max="255" class="form-control col-10 px-2" id="reference"
                                        name="reference" value="{{$post->reference}}">
                             </div>
 
@@ -109,8 +111,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">{{__('messages.reference')}}</span>
                                         </div>
-                                        <input type="text" class="form-control" id="photo_reference"
-                                               name="photo_reference"
+                                        <input type="text" max="255" class="form-control"
+                                               id="photo_reference" name="photo_reference"
                                                value="{{$post->photo ? $post->photo->reference : ''}}">
                                     </div>
 

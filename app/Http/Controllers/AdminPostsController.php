@@ -48,6 +48,23 @@ class AdminPostsController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'slug' => 'nullable',
+            'team_id' => 'nullable',
+            'photo_id' => 'nullable',
+            'user_id' => 'nullable',
+            'athlete_id' => 'nullable',
+            'match_id' => 'nullable',
+            'sport_id' => 'required',
+            'title' => 'required|max:255',
+            'description' => 'nullable|max:500',
+            'body' => 'required',
+            'reference' => 'nullable|max:255',
+            'approved' => 'nullable'
+        ]);
+
+        // TODO δεν δέχεται το required του body. Για κάποιον λόγο γίνεται και το κενό validated
+
         $input = $request->all();
 
         if ($file = $request->uploadFile) {
@@ -110,6 +127,21 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'slug' => 'nullable',
+            'team_id' => 'nullable',
+            'photo_id' => 'nullable',
+            'user_id' => 'nullable',
+            'athlete_id' => 'nullable',
+            'match_id' => 'nullable',
+            'sport_id' => 'required',
+            'title' => 'required|max:255',
+            'description' => 'nullable|max:500',
+            'body' => 'required',
+            'reference' => 'nullable|max:255',
+            'approved' => 'nullable'
+        ]);
+
         $input = $request->all();
 
         $post = Post::findOrFail($id);

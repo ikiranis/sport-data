@@ -17,7 +17,7 @@ class CreateTeamsTable extends Migration
             $table->increments('id');
             $table->integer('logo_id')->unsigned()->nullable();
             $table->string('name');
-            $table->string('city');
+            $table->string('city')->nullable();
         });
     }
 

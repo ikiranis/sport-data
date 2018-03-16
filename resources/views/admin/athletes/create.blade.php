@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.error')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -17,7 +19,7 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="fname" name="fname">
+                                <input type="text" max="255" class="form-control col-9 px-2" id="fname" name="fname">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -25,7 +27,7 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.lname')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="lname" name="lname">
+                                <input type="text" max="255" class="form-control col-9 px-2" id="lname" name="lname">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -33,7 +35,7 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.birthyear')}}</span>
                                 </div>
-                                <input type="number" class="form-control col-9 px-2" id="birthyear" name="birthyear">
+                                <input type="number" min="1930" max="2030" class="form-control col-9 px-2" id="birthyear" name="birthyear">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -41,7 +43,7 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.city')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="city" name="city">
+                                <input type="text" max="255" class="form-control col-9 px-2" id="city" name="city">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -49,7 +51,7 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.country')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="country" name="country">
+                                <input type="text" max="255" class="form-control col-9 px-2" id="country" name="country">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -57,7 +59,7 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">{{__('messages.height')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-9 px-2" id="height" name="height">
+                                <input type="number" class="form-control col-9 px-2" min="100" max="230" id="height" name="height">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -89,7 +91,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">{{__('messages.reference')}}</span>
                                     </div>
-                                    <input type="text" class="form-control" id="reference" name="reference">
+                                    <input type="text" max="255" class="form-control" id="reference" name="reference">
                                 </div>
 
                             </div>

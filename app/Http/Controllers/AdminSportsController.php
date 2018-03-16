@@ -39,6 +39,12 @@ class AdminSportsController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'photo_id' => 'nullable',
+            'slug' => 'nullable',
+            'name' => 'required|max:255'
+        ]);
+
         $input = $request->all();
 
         if ($file = $request->uploadFile) {
@@ -99,6 +105,12 @@ class AdminSportsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'photo_id' => 'nullable',
+            'slug' => 'nullable',
+            'name' => 'required|max:255'
+        ]);
+
         $input = $request->all();
 
         $sport = Sport::findOrFail($id);

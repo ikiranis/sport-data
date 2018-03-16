@@ -54,6 +54,11 @@ class AdminChampionshipsController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'sport_id' => 'required',
+            'name' => 'required|max:255',
+        ]);
+
         $input = $request->all();
 
         Championship::create($input);
@@ -95,6 +100,11 @@ class AdminChampionshipsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'sport_id' => 'required',
+            'name' => 'required|max:255',
+        ]);
+
         $input = $request->all();
 
         $championship = Championship::findOrFail($id);
