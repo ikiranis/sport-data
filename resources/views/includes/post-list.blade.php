@@ -20,15 +20,15 @@
                          class="card-img">
 
                     <ul class="list-group my-2">
-                        @if($post->team->name!==null)
+                        @if($post->team!==null)
                             <li class="list-group-item list-group-item-action"><a href="">{{$post->team->name}}</a></li>
                         @endif
-                        @if($post->athlete->fullName!==null)
+                        @if($post->athlete!==null)
                             <li class="list-group-item list-group-item-action"><a
                                         href="">{{$post->athlete->fullName}}</a>
                             </li>
                         @endif
-                        @if($post->sport->name!==null)
+                        @if($post->sport!==null)
                             <li class="list-group-item list-group-item-action"><a
                                         href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a></li>
                         @endif
