@@ -30,8 +30,8 @@
                     <th scope="row">{{$post->id}}</th>
                     <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
                     <td>{{$post->user->name}}</td>
-                    <td>{{$post->athlete->fullName}}</td>
-                    <td>{{$post->team->name}}</td>
+                    <td>{{$post->athlete ? $post->athlete->fullName : ''}}</td>
+                    <td>{{$post->team ? $post->team->name: ''}}</td>
                     <td>{{$post->sport->name}}</td>
                     <td>{{$post->approved==1 ? __('messages.active') : __('messages.inactive')}}</td>
 
