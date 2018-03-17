@@ -25,7 +25,7 @@ return [
     'city' => 'Πόλη',
     'country' => 'Χώρα',
     'height' => 'Ύψος',
-    'athletes not exist', 'Δεν υπάρχουν αθλητές',
+    'athletes not exist'=> 'Δεν υπάρχουν αθλητές',
     'championships' => 'Πρωταθλήματα',
     'championship' => 'Πρωτάθλημα',
     'insert championship' => 'Προσθήκη πρωταθλήματος',

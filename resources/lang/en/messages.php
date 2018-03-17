@@ -25,7 +25,7 @@ return [
     'city' => 'City',
     'country' => 'Country',
     'height' => 'Height',
-    'athletes not exist', 'Athletes not exist',
+    'athletes not exist' => 'Athletes not exist',
     'championships' => 'Championships',
     'championship' => 'Championship',
     'insert championship' => 'Insert championship',
