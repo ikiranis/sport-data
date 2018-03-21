@@ -212,6 +212,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Str'  => Illuminate\Support\Str::class,
+        'Uuid' => Webpatser\Uuid\Uuid::class,
 
     ],
 

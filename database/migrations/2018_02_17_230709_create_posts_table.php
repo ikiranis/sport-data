@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->uuid('id')->change();
+            $table->uuid('id');
             $table->string('slug');
             $table->integer('team_id')->unsigned()->nullable();
             $table->integer('photo_id')->unsigned()->nullable();
@@ -28,6 +28,7 @@ class CreatePostsTable extends Migration
             $table->string('reference')->nullable();
             $table->boolean('approved')->default(false);
             $table->timestamps();
+            $table->primary('id');
         });
     }
 

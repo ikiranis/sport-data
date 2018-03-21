@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use App\Traits\Uuids;
 
 /**
  * App\Post
@@ -51,6 +52,9 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Post extends Model
 {
     use Sluggable;
+    use Uuids;
+
+    public $incrementing = false;
 
     // The attributes that are mass assignable
     protected $fillable = [
