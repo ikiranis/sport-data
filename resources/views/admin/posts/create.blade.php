@@ -21,12 +21,13 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.title')}}</span>
                                 </div>
-                                <input type="text" max="255" class="form-control col-10 px-2" id="title" name="title">
+                                <input type="text" max="255" class="form-control col-10 px-2" id="title" name="title"
+                                       placeholder="{{old('title')}}">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-check-label" for="description">{{__('messages.description')}}</label>
-                                <textarea class="form-control" id="description" name="description" rows="2"></textarea>
+                                <textarea class="form-control" id="description" name="description" rows="2">{{old('description')}}</textarea>
                             </div>
 
                             <div class="form-group">
@@ -39,7 +40,8 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.reference')}}</span>
                                 </div>
-                                <input type="text" max="255" class="form-control col-10 px-2" id="reference" name="reference">
+                                <input type="text" max="255" class="form-control col-10 px-2" id="reference" name="reference"
+                                       placeholder="{{old('reference')}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -99,7 +101,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">{{__('messages.reference')}}</span>
                                     </div>
-                                    <input type="text" max="255" class="form-control" id="photo_reference" name="photo_reference">
+                                    <input type="text" max="255" class="form-control" id="photo_reference" name="photo_reference"
+                                           placeholder="{{old('photo_reference')}}">
                                 </div>
 
                             </div>
