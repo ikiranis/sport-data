@@ -14,10 +14,11 @@ class CreateSportsTable extends Migration
     public function up()
     {
         Schema::create('sports', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('photo_id')->unsigned()->nullable();
+            $table->uuid('id');
+            $table->uuid('photo_id')->nullable();
             $table->string('slug')->default('');
             $table->string('name');
+            $table->primary('id');
         });
     }
 

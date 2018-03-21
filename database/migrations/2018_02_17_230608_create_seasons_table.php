@@ -14,9 +14,10 @@ class CreateSeasonsTable extends Migration
     public function up()
     {
         Schema::create('seasons', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('championship_id')->unsigned();
+            $table->uuid('id');
+            $table->uuid('championship_id');
             $table->string('name');
+            $table->primary('id');
         });
     }
 

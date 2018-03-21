@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.12 on 2018-03-21 00:08:13.
+ * Generated for Laravel 5.6.12 on 2018-03-21 14:47:20.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -13448,6 +13448,14 @@ namespace Illuminate\Support {
  
 }
 
+namespace Webpatser\Uuid { 
+
+    class Uuid {
+         
+    }
+ 
+}
+
 namespace Mcamara\LaravelLocalization\Facades { 
 
     class LaravelLocalization {
@@ -13751,14 +13759,6 @@ namespace Mcamara\LaravelLocalization\Facades {
         {
             return \Mcamara\LaravelLocalization\LaravelLocalization::setBaseUrl($url);
         }
-         
-    }
- 
-}
-
-namespace Webpatser\Uuid { 
-
-    class Uuid {
          
     }
  
@@ -16007,9 +16007,9 @@ namespace  {
 
     class Str extends \Illuminate\Support\Str {}
 
-    class LaravelLocalization extends \Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
-
     class Uuid extends \Webpatser\Uuid\Uuid {}
+
+    class LaravelLocalization extends \Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
  
 }
 

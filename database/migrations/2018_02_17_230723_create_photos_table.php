@@ -14,11 +14,12 @@ class CreatePhotosTable extends Migration
     public function up()
     {
         Schema::create('photos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
             $table->string('path');
             $table->string('filename');
             $table->string('reference')->nullable();
             $table->timestamps();
+            $table->primary('id');
         });
     }
 

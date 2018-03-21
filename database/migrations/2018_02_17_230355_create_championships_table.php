@@ -14,9 +14,10 @@ class CreateChampionshipsTable extends Migration
     public function up()
     {
         Schema::create('championships', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('sport_id')->unsigned();
+            $table->uuid('id');
+            $table->uuid('sport_id');
             $table->string('name');
+            $table->primary('id');
         });
     }
 

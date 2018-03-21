@@ -14,9 +14,10 @@ class CreateStadiaTable extends Migration
     public function up()
     {
         Schema::create('stadia', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
             $table->string('name');
             $table->string('city')->nullable();
+            $table->primary('id');
         });
     }
 

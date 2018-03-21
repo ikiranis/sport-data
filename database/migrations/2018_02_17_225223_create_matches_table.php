@@ -14,18 +14,19 @@ class CreateMatchesTable extends Migration
     public function up()
     {
         Schema::create('matches', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('sport_id')->unsigned();
-            $table->integer('championship_id')->unsigned();
-            $table->integer('season_id')->unsigned();
+            $table->uuid('id');
+            $table->uuid('sport_id');
+            $table->uuid('championship_id');
+            $table->uuid('season_id');
             $table->dateTime('match_date')->nullable();
-            $table->integer('matchday_id')->unsigned();
-            $table->integer('stadium_id')->unsigned()->nullable();
-            $table->integer('first_team_id')->unsigned();
-            $table->integer('second_team_id')->unsigned();
+            $table->uuid('matchday_id');
+            $table->uuid('stadium_id')->nullable();
+            $table->uuid('first_team_id');
+            $table->uuid('second_team_id');
             $table->integer('first_team_score')->unsigned()->nullable();
             $table->integer('second_team_score')->unsigned()->nullable();
             $table->timestamps();
+            $table->primary('id');
         });
     }
 

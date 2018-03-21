@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -17,5 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Rule extends Model
 {
-    //
+    use Uuids;
+
+    public $incrementing = false;
 }

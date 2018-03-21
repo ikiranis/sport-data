@@ -18,6 +18,7 @@ class SportsTableSeeder extends Seeder
 
         foreach ($this->sports as $sport) {
             DB::table('sports')->insert([
+                'id' => Str::uuid(),
                 'name' => $sport,
                 'slug' => str_slug($sport)
             ]);

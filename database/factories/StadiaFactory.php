@@ -16,6 +16,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Stadium::class, function (Faker $faker) {
     return [
+        'id' => Str::uuid(),
         'name' => $faker->name,
         'city' => $faker->city
     ];

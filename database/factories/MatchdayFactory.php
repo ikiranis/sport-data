@@ -4,6 +4,8 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Matchday::class, function (Faker $faker) {
     return [
-        'matchday' => $faker->randomDigit
+        'id' => Str::uuid(),
+        'matchday' => $faker->randomDigit,
+        'season_id' => ''
     ];
 });

@@ -14,15 +14,16 @@ class CreateAthletesTable extends Migration
     public function up()
     {
         Schema::create('athletes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('sport_id')->unsigned();
-            $table->integer('photo_id')->unsigned()->nullable();
+            $table->uuid('id');
+            $table->uuid('sport_id');
+            $table->uuid('photo_id')->nullable();
             $table->string('fname');
             $table->string('lname');
             $table->integer('birthyear')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
             $table->smallInteger('height')->nullable();
+            $table->primary('id');
         });
     }
 

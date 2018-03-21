@@ -16,12 +16,12 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('slug');
-            $table->integer('team_id')->unsigned()->nullable();
-            $table->integer('photo_id')->unsigned()->nullable();
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->integer('athlete_id')->unsigned()->nullable();
-            $table->integer('match_id')->unsigned()->nullable();
-            $table->integer('sport_id')->unsigned()->nullable();
+            $table->uuid('team_id')->nullable();
+            $table->uuid('photo_id')->nullable();
+            $table->uuid('user_id')->nullable();
+            $table->uuid('athlete_id')->nullable();
+            $table->uuid('match_id')->nullable();
+            $table->uuid('sport_id')->nullable();
             $table->string('title');
             $table->text('description')->nullable();
             $table->longText('body');

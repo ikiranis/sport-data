@@ -16,22 +16,22 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->truncate();
         DB::table('roles')->truncate();
         DB::table('sports')->truncate();
-//        DB::table('stadia')->truncate();
-//        DB::table('athletes')->truncate();
-//        DB::table('teams')->truncate();
-//        DB::table('seasons')->truncate();
-//        DB::table('championships')->truncate();
-//        DB::table('matchdays')->truncate();
+        DB::table('stadia')->truncate();
+        DB::table('athletes')->truncate();
+        DB::table('teams')->truncate();
+        DB::table('seasons')->truncate();
+        DB::table('championships')->truncate();
+        DB::table('matchdays')->truncate();
 
         $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(SportsTableSeeder::class);
 
-//        factory(App\Athlete::class, 50)->create();
-//        factory(App\Stadium::class, 50)->create();
-//        factory(App\Team::class, 50)->create();
-//        factory(App\Season::class, 10)->create();
-//        factory(App\Championship::class, 10)->create();
-//        factory(App\Matchday::class, 20)->create();
+        factory(App\Athlete::class, 50)->create();
+        factory(App\Stadium::class, 50)->create();
+        factory(App\Team::class, 50)->create();
+        factory(App\Season::class, 10)->create();
+        factory(App\Championship::class, 10)->create();
+        factory(App\Matchday::class, 20)->create();
     }
 }

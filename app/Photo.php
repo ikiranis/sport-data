@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -24,6 +25,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Photo extends Model
 {
+    use Uuids;
+
+    public $incrementing = false;
+
     // The attributes that are mass assignable
     protected $fillable = [
         'path',

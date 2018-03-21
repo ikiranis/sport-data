@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
@@ -23,6 +24,9 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Sport extends Model
 {
     use Sluggable;
+    use Uuids;
+
+    public $incrementing = false;
 
     // The attributes that are mass assignable
     protected $fillable = [

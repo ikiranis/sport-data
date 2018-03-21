@@ -14,9 +14,10 @@ class CreateRulesTable extends Migration
     public function up()
     {
         Schema::create('rules', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('championship_id')->unsigned()->nullable();
+            $table->uuid('id');
+            $table->uuid('championship_id')->nullable();
             $table->json('description');
+            $table->primary('id');
         });
     }
 
