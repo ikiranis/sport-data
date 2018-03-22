@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\Uuids;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
@@ -25,6 +26,7 @@ class Sport extends Model
 {
     use Sluggable;
     use Uuids;
+    use Cachable;
 
     public $incrementing = false;
 

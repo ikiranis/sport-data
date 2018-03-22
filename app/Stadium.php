@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\Uuids;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
 class Stadium extends Model
 {
     use Uuids;
+    use Cachable;
 
     public $incrementing = false;
 
