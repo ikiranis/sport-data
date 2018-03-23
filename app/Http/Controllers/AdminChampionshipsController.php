@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Championship;
+use App\Http\Resources\ChampionshipCollection;
+use App\Http\Resources\ChampionshipResource;
 use App\Sport;
 use Illuminate\Http\Request;
 
@@ -31,7 +33,15 @@ class AdminChampionshipsController extends Controller
 
         $championships = Championship::whereSportId($sport_id)->get();
 
-        return $championships;
+        if ($championships->isNotEmpty()) {
+            return ChampionshipResource::collection($championships);
+        } else {
+            return response()->json([
+                'status' => 'failed',
+                'data' => null,
+                'message' => 'Championships not found'
+            ], 200);
+        }
     }
 
     /**

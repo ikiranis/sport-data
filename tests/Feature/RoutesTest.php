@@ -10,6 +10,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class RoutesTest extends TestCase
 {
 
+    private $userID = '75c480af-925c-4510-a0f2-48b9ba814b90';
+
     /**
      * Test admin page
      *
@@ -17,7 +19,7 @@ class RoutesTest extends TestCase
      */
     public function testAdmin()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin');
@@ -30,7 +32,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminUsersPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/users');
@@ -43,7 +45,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminPostsPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/posts');
@@ -56,7 +58,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminCommentsPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/comments');
@@ -69,7 +71,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminAthletesPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/athletes');
@@ -82,7 +84,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminStadiaPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/stadium');
@@ -95,7 +97,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminTeamsPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/teams');
@@ -108,7 +110,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminMatchesPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/matches');
@@ -121,7 +123,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminSportsPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/sports');
@@ -134,7 +136,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminSeasonsPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/seasons');
@@ -147,7 +149,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminChampionshipsPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/championships');
@@ -160,7 +162,7 @@ class RoutesTest extends TestCase
      */
     public function testAdminMatchdaysPages()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail($this->userID);
 
         $response = $this->actingAs($user, 'api')
             ->get('/admin/matchdays');
