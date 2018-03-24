@@ -28,7 +28,7 @@ class SportsTableSeeder extends Seeder
             factory(App\Championship::class, 5)->create([
                     'sport_id' => $id
             ])->each(function($championship) {
-                factory(App\Season::class, 5)->create([
+                factory(App\Season::class)->create([
                     'championship_id' => $championship->id
                 ]);
             });

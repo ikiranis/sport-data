@@ -171,10 +171,10 @@
                             second_team_score: this.matches[key].second_team_score
                         };
 
-                        axios.put('/api/match', myData)
+                        axios.patch('/api/match', myData)
                             .then(response => {
+                                console.log(response);
                                 Vue.set(this.isSaved, key, true);
-                                console.log(response)
                             })
                             .catch(e => console.log(e));
                     },

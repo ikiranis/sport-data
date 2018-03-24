@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Championship;
+use App\Http\Resources\MatchResource;
 use App\Match;
 use App\Matchday;
 use App\Season;
@@ -144,6 +145,12 @@ class AdminMatchesController extends Controller
         return redirect(route('matches.index'));
     }
 
+    /**
+     * Api call to update score
+     *
+     * @param Request $request
+     * @return MatchResource
+     */
     public function updateScore(Request $request)
     {
         $input = $request->all();
@@ -152,7 +159,7 @@ class AdminMatchesController extends Controller
 
         $match->update($input);
 
-        return $input;
+        return new MatchResource($match);
     }
 
     /**

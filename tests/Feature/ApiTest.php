@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Championship;
+use App\Match;
 use App\Sport;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -22,7 +23,7 @@ class ApiTest extends TestCase
 
         $response = $this->get('/api/championships/' . $sport_id);
 
-        if($response->getStatusCode() == 200 || $response->getStatusCode() == 204) {
+        if ($response->getStatusCode() == 200 || $response->getStatusCode() == 204) {
             $this->assertTrue(true);
         }
     }
@@ -37,7 +38,7 @@ class ApiTest extends TestCase
 
         $response = $this->get('/api/championships/' . $sport_id);
 
-        if($response->getStatusCode() == 200) {
+        if ($response->getStatusCode() == 200) {
             $response->assertJsonStructure([
                 '*' => [
                     'id',
@@ -59,7 +60,7 @@ class ApiTest extends TestCase
 
         $response = $this->get('/api/seasons/' . $championship_id);
 
-        if($response->getStatusCode() == 200 || $response->getStatusCode() == 204) {
+        if ($response->getStatusCode() == 200 || $response->getStatusCode() == 204) {
             $this->assertTrue(true);
         }
     }
@@ -74,12 +75,38 @@ class ApiTest extends TestCase
 
         $response = $this->get('/api/seasons/' . $championship_id);
 
-        if($response->getStatusCode() == 200) {
+        if ($response->getStatusCode() == 200) {
             $response->assertJsonStructure([
                 '*' => [
                     'id',
                     'name'
                 ]
+            ]);
+        } else {
+            $this->assertTrue(true);
+        }
+    }
+
+    /**
+     * Test Patch Match api
+     */
+    public function testPatchMatch()
+    {
+        $match = Match::first();
+
+        $request = [
+            'id' => $match->id,
+            'first_team_score' => 1,
+            'second_team_score' => 1
+        ];
+
+        $response = $this->patch('/api/match/', $request);
+
+        if ($response->getStatusCode() == 200) {
+            $response->assertJsonStructure([
+                'id',
+                'first_team_score',
+                'second_team_score'
             ]);
         } else {
             $this->assertTrue(true);
