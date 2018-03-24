@@ -37,10 +37,8 @@ class AdminChampionshipsController extends Controller
             return ChampionshipResource::collection($championships);
         } else {
             return response()->json([
-                'status' => 'failed',
-                'data' => null,
                 'message' => 'Championships not found'
-            ], 200);
+            ], 204);
         }
     }
 

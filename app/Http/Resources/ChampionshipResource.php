@@ -19,4 +19,5 @@ class ChampionshipResource extends JsonResource
             'name' => $this->name
         ];
     }
+
 }
