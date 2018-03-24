@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Championship;
-use App\Http\Resources\ChampionshipCollection;
 use App\Http\Resources\ChampionshipResource;
 use App\Sport;
 use Illuminate\Http\Request;

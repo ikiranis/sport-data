@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Championship;
+use App\Http\Resources\SeasonResource;
 use App\Season;
 use Illuminate\Http\Request;
 
@@ -24,13 +25,19 @@ class AdminSeasonsController extends Controller
      * Api that returns the Seasons list for championship_id
      *
      * @param $championship_id
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function getSeasons($championship_id)
     {
         $seasons = Season::whereChampionshipId($championship_id)->get();
 
-        return $seasons;
+        if ($seasons->isNotEmpty()) {
+            return SeasonResource::collection($seasons);
+        } else {
+            return response()->json([
+                'message' => 'Seasons not found'
+            ], 204);
+        }
     }
 
     /**
