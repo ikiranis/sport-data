@@ -17,11 +17,22 @@ class SportsTableSeeder extends Seeder
     {
 
         foreach ($this->sports as $sport) {
+            $id = Str::uuid();
+
             DB::table('sports')->insert([
-                'id' => Str::uuid(),
+                'id' => $id,
                 'name' => $sport,
                 'slug' => str_slug($sport)
             ]);
+
+            factory(App\Championship::class, 5)->create([
+                    'sport_id' => $id
+            ])->each(function($championship) {
+                factory(App\Season::class, 5)->create([
+                    'championship_id' => $championship->id
+                ]);
+            });
+
         }
 
 

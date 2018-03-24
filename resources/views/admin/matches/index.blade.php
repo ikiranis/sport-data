@@ -201,7 +201,6 @@
                         axios.get('/api/championships/' + this.sportSelected)
                             .then(response => {
                                 this.championships = response.data;
-                                console.log(response)
                             })
                             .catch(e => console.log(e));
                     },

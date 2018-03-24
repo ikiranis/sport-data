@@ -59,4 +59,9 @@ class Sport extends Model
     public function photo() {
         return $this->belongsTo('App\Photo');
     }
+
+    public function championship()
+    {
+        return $this->hasMany('App\Championship');
+    }
 }

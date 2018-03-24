@@ -30,8 +30,6 @@ class DatabaseSeeder extends Seeder
         factory(App\Athlete::class, 50)->create();
         factory(App\Stadium::class, 50)->create();
         factory(App\Team::class, 50)->create();
-        factory(App\Season::class, 10)->create();
-        factory(App\Championship::class, 10)->create();
         factory(App\Matchday::class, 20)->create();
     }
 }
