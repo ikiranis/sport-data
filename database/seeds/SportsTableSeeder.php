@@ -26,11 +26,15 @@ class SportsTableSeeder extends Seeder
             ]);
 
             factory(App\Championship::class, 5)->create([
-                    'sport_id' => $id
-            ])->each(function($championship) {
+                'sport_id' => $id
+            ])->each(function ($championship) {
                 factory(App\Season::class)->create([
                     'championship_id' => $championship->id
-                ]);
+                ])->each(function ($season) {
+                    factory(App\Matchday::class, 10)->create([
+                        'season_id' => $season->id
+                    ]);
+                });
             });
 
         }

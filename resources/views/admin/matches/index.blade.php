@@ -9,7 +9,7 @@
 
             @csrf
 
-            <div class="input-group mb-3 no-gutters col-lg-3 col-12 my-1">
+            <div class="input-group mb-3 no-gutters col-lg col-12 my-1">
                 <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
                 <div class="input-group-prepend col-5">
                     <span class="input-group-text w-100">{{__('messages.sport')}}</span>
@@ -25,7 +25,7 @@
                 </select>
             </div>
 
-            <div class="input-group mb-3 no-gutters col-lg-3 col-12 my-1">
+            <div class="input-group mb-3 no-gutters col-lg col-12 my-1">
                 <label for="championship_id" class="sr-only">{{__('messages.championship')}}</label>
                 <div class="input-group-prepend col-5">
                     <span class="input-group-text w-100">{{__('messages.championship')}}</span>
@@ -38,15 +38,27 @@
                 </select>
             </div>
 
-            <div class="input-group mb-3 no-gutters col-lg-3 col-12 my-1">
+            <div class="input-group mb-3 no-gutters col-lg col-12 my-1">
                 <label for="season_id" class="sr-only">Season</label>
                 <div class="input-group-prepend col-5">
                     <span class="input-group-text w-100">Season</span>
                 </div>
-                <select class="form-control col-7 px-2" v-model="seasonSelected"
+                <select v-on:change="getMatchdays()" v-model="seasonSelected" class="form-control col-7 px-2"
                         id="season_id" name="season_id">
                     <option value="0" disabled>Επιλογή</option>
                     <option v-for="season in seasons" :value="season.id">{% season.name %}</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3 no-gutters col-lg col-12 my-1">
+                <label for="matchday_id" class="sr-only">{{trans_choice('messages.matchdays',1)}}</label>
+                <div class="input-group-prepend col-5">
+                    <span class="input-group-text w-100">{{trans_choice('messages.matchdays',1)}}</span>
+                </div>
+                <select class="form-control col-7 px-2" v-model="matchdaySelected"
+                        id="matchday_id" name="matchday_id">
+                    <option value="0" disabled>Επιλογή</option>
+                    <option v-for="matchday in matchdays" :value="matchday.id">{% matchday.matchday %}</option>
                 </select>
             </div>
 
@@ -193,8 +205,10 @@
                     sportSelected: 0,
                     championshipSelected: 0,
                     seasonSelected: 0,
+                    matchdaySelected: 0,
                     championships: '',
-                    seasons: ''
+                    seasons: '',
+                    matchdays: ''
                 },
                 methods: {
                     getChampionships() {
@@ -208,6 +222,13 @@
                         axios.get('/api/seasons/' + this.championshipSelected)
                             .then(response => {
                                 this.seasons = response.data;
+                            })
+                            .catch(e => console.log(e));
+                    },
+                    getMatchdays() {
+                        axios.get('/api/matchdays/' + this.seasonSelected)
+                            .then(response => {
+                                this.matchdays = response.data;
                             })
                             .catch(e => console.log(e));
                     }

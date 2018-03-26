@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use App\Championship;
 use App\Match;
+use App\Matchday;
+use App\Season;
 use App\Sport;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -19,9 +21,8 @@ class ApiTest extends TestCase
     public function testGetChampionships()
     {
         $sport = Sport::first();
-        $sport_id = $sport->id;
 
-        $response = $this->get('/api/championships/' . $sport_id);
+        $response = $this->get('/api/championships/' . $sport->id);
 
         if ($response->getStatusCode() == 200 || $response->getStatusCode() == 204) {
             $this->assertTrue(true);
@@ -34,9 +35,8 @@ class ApiTest extends TestCase
     public function testChampionshipResponseStructure()
     {
         $sport = Sport::first();
-        $sport_id = $sport->id;
 
-        $response = $this->get('/api/championships/' . $sport_id);
+        $response = $this->get('/api/championships/' . $sport->id);
 
         if ($response->getStatusCode() == 200) {
             $response->assertJsonStructure([
@@ -56,9 +56,8 @@ class ApiTest extends TestCase
     public function testGetSeasons()
     {
         $championship = Championship::first();
-        $championship_id = $championship->id;
 
-        $response = $this->get('/api/seasons/' . $championship_id);
+        $response = $this->get('/api/seasons/' . $championship->id);
 
         if ($response->getStatusCode() == 200 || $response->getStatusCode() == 204) {
             $this->assertTrue(true);
@@ -71,15 +70,49 @@ class ApiTest extends TestCase
     public function testSeasonResponseStructure()
     {
         $championship = Championship::first();
-        $championship_id = $championship->id;
 
-        $response = $this->get('/api/seasons/' . $championship_id);
+        $response = $this->get('/api/seasons/' . $championship->id);
 
         if ($response->getStatusCode() == 200) {
             $response->assertJsonStructure([
                 '*' => [
                     'id',
                     'name'
+                ]
+            ]);
+        } else {
+            $this->assertTrue(true);
+        }
+    }
+
+    /**
+     * Test if matchdays api works
+     */
+    public function testGetMatchdays()
+    {
+        $season = Season::first();
+
+        $response = $this->get('/api/matchdays/' . $season->id);
+
+        if ($response->getStatusCode() == 200 || $response->getStatusCode() == 204) {
+            $this->assertTrue(true);
+        }
+    }
+
+    /**
+     * Test if matchdays json response structure is ok
+     */
+    public function testMatchdayResponseStructure()
+    {
+        $season = Season::first();
+
+        $response = $this->get('/api/matchdays/' . $season->id);
+
+        if ($response->getStatusCode() == 200) {
+            $response->assertJsonStructure([
+                '*' => [
+                    'id',
+                    'matchday'
                 ]
             ]);
         } else {

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MatchdayResource;
+use App\Http\Resources\MatchResource;
 use App\Matchday;
 use App\Season;
 use Illuminate\Http\Request;
@@ -18,6 +20,26 @@ class AdminMatchdaysController extends Controller
         $matchdays = Matchday::paginate(15);
 
         return view('admin/matchdays/index', compact('matchdays'));
+    }
+
+    /**
+     * Api call to return matchdays
+     *
+     * @param $season_id
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function getMatchdays($season_id)
+    {
+
+        $matchdays = Matchday::whereSeasonId($season_id)->get();
+
+        if ($matchdays->isNotEmpty()) {
+            return MatchdayResource::collection($matchdays);
+        } else {
+            return response()->json([
+                'message' => 'Matchdays not found'
+            ], 204);
+        }
     }
 
     /**
