@@ -10,7 +10,7 @@
                 <div class="card card-default">
                     <div class="card-header">{{__('messages.update match')}}</div>
 
-                    <div class="card-body">
+                    <div id="searchContainer" class="card-body">
                         <form method="POST" action="{{ route('matches.update', $match->id) }}">
                             <input name="_method" type="hidden" value="PUT">
                             @csrf
@@ -20,7 +20,8 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.sport')}}</span>
                                 </div>
-                                <select class="form-control col-10 px-2" id="sport_id" name="sport_id">
+                                <select v-on:change="getChampionships()" v-model="sportSelected"
+                                        class="form-control col-10 px-2" id="sport_id" name="sport_id">
                                     @foreach($sports as $sport)
                                         <option value="{{$sport->id}}" {{$sport->id==$match->sport_id ? 'selected' : ''}}>
                                             {{$sport->name}}
@@ -34,12 +35,12 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.championship')}}</span>
                                 </div>
-                                <select class="form-control col-10 px-2" id="championship_id" name="championship_id">
-                                    @foreach($championships as $championship)
-                                        <option value="{{$championship->id}}" {{$championship->id==$match->championship_id ? 'selected' : ''}}>
-                                            {{$championship->name}}
-                                        </option>
-                                    @endforeach
+                                <select v-on:change="getSeasons()" v-model="championshipSelected"
+                                        class="form-control col-10 px-2" id="championship_id" name="championship_id">
+                                    <option value="0" disabled>Επιλογή</option>
+                                    <option v-for="championship in championships"
+                                            :value="championship.id">{% championship.name %}
+                                    </option>
                                 </select>
                             </div>
 
@@ -48,12 +49,10 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">Season</span>
                                 </div>
-                                <select class="form-control col-10 px-2" id="season_id" name="season_id">
-                                    @foreach($seasons as $season)
-                                        <option value="{{$season->id}}" {{$season->id==$match->season_id ? 'selected' : ''}}>
-                                            {{$season->name}}
-                                        </option>
-                                    @endforeach
+                                <select v-on:change="getMatchdays()" v-model="seasonSelected"
+                                        class="form-control col-10 px-2" id="season_id" name="season_id">
+                                    <option value="0" disabled>Επιλογή</option>
+                                    <option v-for="season in seasons" :value="season.id">{% season.name %}</option>
                                 </select>
                             </div>
 
@@ -62,12 +61,10 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{trans_choice('messages.matchdays',1)}}</span>
                                 </div>
-                                <select class="form-control col-10 px-2" id="matchday_id" name="matchday_id">
-                                    @foreach($matchdays as $matchday)
-                                        <option value="{{$matchday->id}}" {{$matchday->id==$match->matchday_id ? 'selected' : ''}}>
-                                            {{$matchday->matchday}}
-                                        </option>
-                                    @endforeach
+                                <select v-model="matchdaySelected" class="form-control col-10 px-2"
+                                        id="matchday_id" name="matchday_id">
+                                    <option value="0" disabled>Επιλογή</option>
+                                    <option v-for="matchday in matchdays" :value="matchday.id">{% matchday.matchday %}</option>
                                 </select>
                             </div>
 
@@ -146,5 +143,55 @@
         </div>
     </div>
 
+
+@endsection
+
+@section('scripts')
+
+    <script>
+
+        let searchContainer = new Vue({
+            delimiters: ['{%', '%}'],
+            el: "#searchContainer",
+            data: {
+                sportSelected: '{!! $match->sport_id !!}',
+                championshipSelected: '{!! $match->championship_id !!}',
+                seasonSelected: '{!! $match->season_id !!}',
+                matchdaySelected: '{!! $match->matchday_id !!}',
+                championships: '',
+                seasons: '',
+                matchdays: ''
+            },
+            mounted: function() {
+               this.getChampionships();
+               this.getSeasons();
+               this.getMatchdays();
+            },
+            methods: {
+                getChampionships() {
+                    axios.get('/api/championships/' + this.sportSelected)
+                        .then(response => {
+                            this.championships = response.data;
+                        })
+                        .catch(e => console.log(e));
+                },
+                getSeasons() {
+                    axios.get('/api/seasons/' + this.championshipSelected)
+                        .then(response => {
+                            this.seasons = response.data;
+                        })
+                        .catch(e => console.log(e));
+                },
+                getMatchdays() {
+                    axios.get('/api/matchdays/' + this.seasonSelected)
+                        .then(response => {
+                            this.matchdays = response.data;
+                        })
+                        .catch(e => console.log(e));
+                }
+            }
+        });
+
+    </script>
 
 @endsection

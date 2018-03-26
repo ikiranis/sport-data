@@ -10,7 +10,7 @@
                 <div class="card card-default">
                     <div class="card-header">{{__('messages.insert match')}}</div>
 
-                    <div class="card-body">
+                    <div id="searchContainer" class="card-body">
                         <form method="POST" action="{{ route('matches.store') }}">
                             @csrf
 
@@ -19,7 +19,8 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.sport')}}</span>
                                 </div>
-                                <select class="form-control col-10 px-2" id="sport_id" name="sport_id">
+                                <select v-on:change="getChampionships()" v-model="sportSelected"
+                                        class="form-control col-10 px-2" id="sport_id" name="sport_id">
                                     @foreach($sports as $sport)
                                         <option value="{{$sport->id}}">
                                             {{$sport->name}}
@@ -33,12 +34,11 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.championship')}}</span>
                                 </div>
-                                <select class="form-control col-10 px-2" id="championship_id" name="championship_id">
-                                    @foreach($championships as $championship)
-                                        <option value="{{$championship->id}}">
-                                            {{$championship->name}}
-                                        </option>
-                                    @endforeach
+                                <select v-on:change="getSeasons()" v-model="championshipSelected"
+                                        class="form-control col-10 px-2" id="championship_id" name="championship_id">
+                                    <option value="0" disabled>Επιλογή</option>
+                                    <option v-for="championship in championships" :value="championship.id">{% championship.name %}
+                                    </option>
                                 </select>
                             </div>
 
@@ -47,26 +47,23 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">Season</span>
                                 </div>
-                                <select class="form-control col-10 px-2" id="season_id" name="season_id">
-                                    @foreach($seasons as $season)
-                                        <option value="{{$season->id}}">
-                                            {{$season->name}}
-                                        </option>
-                                    @endforeach
+                                <select v-on:change="getMatchdays()" v-model="seasonSelected"
+                                        class="form-control col-10 px-2" id="season_id" name="season_id">
+                                    <option value="0" disabled>Επιλογή</option>
+                                    <option v-for="season in seasons" :value="season.id">{% season.name %}</option>
                                 </select>
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
-                                <label for="matchday_id" class="sr-only">{{trans_choice('messages.matchdays',1)}}</label>
+                                <label for="matchday_id"
+                                       class="sr-only">{{trans_choice('messages.matchdays',1)}}</label>
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{trans_choice('messages.matchdays',1)}}</span>
                                 </div>
-                                <select class="form-control col-10 px-2" id="matchday_id" name="matchday_id">
-                                    @foreach($matchdays as $matchday)
-                                        <option value="{{$matchday->id}}">
-                                            {{$matchday->matchday}}
-                                        </option>
-                                    @endforeach
+                                <select v-model="matchdaySelected" class="form-control col-10 px-2"
+                                        id="matchday_id" name="matchday_id">
+                                    <option value="0" disabled>Επιλογή</option>
+                                    <option v-for="matchday in matchdays" :value="matchday.id">{% matchday.matchday %}</option>
                                 </select>
                             </div>
 
@@ -114,10 +111,12 @@
                                     <span class="input-group-text w-100">{{__('messages.score')}}</span>
                                 </div>
 
-                                <input type="number" min="0" max="200" class="form-control col-5 px-2" id="first_team_score" name="first_team_score">
+                                <input type="number" min="0" max="200" class="form-control col-5 px-2"
+                                       id="first_team_score" name="first_team_score">
 
                                 <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
-                                <input type="number" min="0" max="200"  class="form-control col-5 px-2" id="second_team_score" name="second_team_score">
+                                <input type="number" min="0" max="200" class="form-control col-5 px-2"
+                                       id="second_team_score" name="second_team_score">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -142,5 +141,50 @@
         </div>
     </div>
 
+
+@endsection
+
+@section('scripts')
+
+    <script>
+
+        let searchContainer = new Vue({
+            delimiters: ['{%', '%}'],
+            el: "#searchContainer",
+            data: {
+                sportSelected: 0,
+                championshipSelected: 0,
+                seasonSelected: 0,
+                matchdaySelected: 0,
+                championships: '',
+                seasons: '',
+                matchdays: ''
+            },
+            methods: {
+                getChampionships() {
+                    axios.get('/api/championships/' + this.sportSelected)
+                        .then(response => {
+                            this.championships = response.data;
+                        })
+                        .catch(e => console.log(e));
+                },
+                getSeasons() {
+                    axios.get('/api/seasons/' + this.championshipSelected)
+                        .then(response => {
+                            this.seasons = response.data;
+                        })
+                        .catch(e => console.log(e));
+                },
+                getMatchdays() {
+                    axios.get('/api/matchdays/' + this.seasonSelected)
+                        .then(response => {
+                            this.matchdays = response.data;
+                        })
+                        .catch(e => console.log(e));
+                }
+            }
+        });
+
+    </script>
 
 @endsection
