@@ -7,7 +7,7 @@
 
             @foreach($sports as $sport)
 
-                <div class="col-lg-3 col-12 my-1">
+                <div class="col-lg col-12 my-1">
                     <a href="{{route('sport', $sport->slug)}}">
                         <div class="card">
                             <div class="card-header">{{$sport->name}}</div>
