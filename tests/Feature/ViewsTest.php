@@ -12,9 +12,9 @@ class ViewsTest extends TestCase
 {
 
     /**
-     * Test Atletes Index view response
+     * Test Athletes Index view response
      */
-    public function testAthletesIndexResponse()
+    public function testAthletesIndexViewResponse()
     {
         $user = User::whereRoleId(1)->first();
 
@@ -32,7 +32,6 @@ class ViewsTest extends TestCase
         if($athlete->fname==$responseAthlete->fname) {  // Test if fname field is ok
             $this->assertTrue(true);
         } else {
-            dd($responseAthlete);
             $this->assertTrue(false);
         }
 
