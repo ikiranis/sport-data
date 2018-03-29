@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Athlete;
 use App\User;
+use ReflectionClass;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
