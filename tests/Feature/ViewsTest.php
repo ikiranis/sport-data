@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Athlete;
+use App\Season;
 use App\Sport;
 use App\Stadium;
 use App\Team;
@@ -111,6 +112,32 @@ class ViewsTest extends TestCase
         $responseSports = (object) $response->original['sports']->first();
 
         if($sports->name==$responseSports->name) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
+    /**
+     * Test Seasons Index view response
+     */
+    public function testSeasonsIndexViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/seasons');
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('seasons');
+
+        $seasons = Season::first();
+
+        $responseSeasons = (object) $response->original['seasons']->first();
+
+        if($seasons->name==$responseSeasons->name) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
