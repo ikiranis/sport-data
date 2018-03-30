@@ -251,4 +251,28 @@ class ViewsTest extends TestCase
 
     }
 
+    /**
+     * Test Users Index view response
+     */
+    public function testUsersIndexViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/users');
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('users');
+
+        $responseUsers = (object) $response->original['users']->first();
+
+        if($user->name==$responseUsers->name) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
 }
