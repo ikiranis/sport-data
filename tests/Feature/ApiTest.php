@@ -25,29 +25,22 @@ class ApiTest extends TestCase
         $response = $this->get('/api/championships/' . $sport->id);
 
         if ($response->getStatusCode() == 200 || $response->getStatusCode() == 204) {
-            $this->assertTrue(true);
-        }
-    }
 
-    /**
-     * Test if championship json response structure is ok
-     */
-    public function testChampionshipResponseStructure()
-    {
-        $sport = Sport::first();
+            if ($response->getStatusCode() == 200) { // Test json response structure
+                $response->assertJsonStructure([
+                    '*' => [
+                        'id',
+                        'name'
+                    ]
+                ]);
+            } else {
+                $this->assertTrue(true);
+            }
 
-        $response = $this->get('/api/championships/' . $sport->id);
-
-        if ($response->getStatusCode() == 200) {
-            $response->assertJsonStructure([
-                '*' => [
-                    'id',
-                    'name'
-                ]
-            ]);
         } else {
-            $this->assertTrue(true);
+            $this->assertTrue(false);
         }
+
     }
 
     /**
@@ -60,29 +53,20 @@ class ApiTest extends TestCase
         $response = $this->get('/api/seasons/' . $championship->id);
 
         if ($response->getStatusCode() == 200 || $response->getStatusCode() == 204) {
-            $this->assertTrue(true);
-        }
-    }
-
-    /**
-     * Test if seasons json response structure is ok
-     */
-    public function testSeasonResponseStructure()
-    {
-        $championship = Championship::first();
-
-        $response = $this->get('/api/seasons/' . $championship->id);
-
-        if ($response->getStatusCode() == 200) {
-            $response->assertJsonStructure([
-                '*' => [
-                    'id',
-                    'name'
-                ]
-            ]);
+            if ($response->getStatusCode() == 200) {
+                $response->assertJsonStructure([
+                    '*' => [
+                        'id',
+                        'name'
+                    ]
+                ]);
+            } else {
+                $this->assertTrue(true);
+            }
         } else {
-            $this->assertTrue(true);
+            $this->assertTrue(false);
         }
+
     }
 
     /**
@@ -95,28 +79,18 @@ class ApiTest extends TestCase
         $response = $this->get('/api/matchdays/' . $season->id);
 
         if ($response->getStatusCode() == 200 || $response->getStatusCode() == 204) {
-            $this->assertTrue(true);
-        }
-    }
-
-    /**
-     * Test if matchdays json response structure is ok
-     */
-    public function testMatchdayResponseStructure()
-    {
-        $season = Season::first();
-
-        $response = $this->get('/api/matchdays/' . $season->id);
-
-        if ($response->getStatusCode() == 200) {
-            $response->assertJsonStructure([
-                '*' => [
-                    'id',
-                    'matchday'
-                ]
-            ]);
+            if ($response->getStatusCode() == 200) {
+                $response->assertJsonStructure([
+                    '*' => [
+                        'id',
+                        'matchday'
+                    ]
+                ]);
+            } else {
+                $this->assertTrue(true);
+            }
         } else {
-            $this->assertTrue(true);
+            $this->assertTrue(false);
         }
     }
 
