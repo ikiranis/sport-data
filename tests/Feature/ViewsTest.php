@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Athlete;
 use App\Championship;
+use App\Matchday;
 use App\Season;
 use App\Sport;
 use App\Stadium;
@@ -165,6 +166,32 @@ class ViewsTest extends TestCase
         $responseChampionships = (object) $response->original['championships']->first();
 
         if($championships->name==$responseChampionships->name) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
+    /**
+     * Test Matchdays Index view response
+     */
+    public function testMatchdaysIndexViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/matchdays');
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('matchdays');
+
+        $matchdays = Matchday::first();
+
+        $responseMatchdays = (object) $response->original['matchdays']->first();
+
+        if($matchdays->name==$responseMatchdays->name) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
