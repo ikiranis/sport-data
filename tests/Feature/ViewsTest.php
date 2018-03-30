@@ -44,6 +44,21 @@ class ViewsTest extends TestCase
     }
 
     /**
+     * Test Athletes create view response
+     */
+    public function testAthletesCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/athletes/create');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
+    }
+
+    /**
      * Test Stadia Index view response
      */
     public function testStadiaIndexViewResponse()
