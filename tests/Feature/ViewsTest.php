@@ -4,15 +4,15 @@ namespace Tests\Feature;
 
 use App\Athlete;
 use App\Championship;
+use App\Comment;
 use App\Matchday;
+use App\Post;
 use App\Season;
 use App\Sport;
 use App\Stadium;
 use App\Team;
 use App\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ViewsTest extends TestCase
 {
@@ -192,6 +192,58 @@ class ViewsTest extends TestCase
         $responseMatchdays = (object) $response->original['matchdays']->first();
 
         if($matchdays->name==$responseMatchdays->name) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
+    /**
+     * Test Posts Index view response
+     */
+    public function testPostsIndexViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/posts');
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('posts');
+
+        $posts = Post::first();
+
+        $responsePosts = (object) $response->original['posts']->first();
+
+        if($posts->title==$responsePosts->title) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
+    /**
+     * Test Comments Index view response
+     */
+    public function testCommentsIndexViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/comments');
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('comments');
+
+        $comments = Comment::first();
+
+        $responseComments = (object) $response->original['comments']->first();
+
+        if($comments->email==$responseComments->email) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
