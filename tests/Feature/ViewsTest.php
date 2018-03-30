@@ -85,6 +85,21 @@ class ViewsTest extends TestCase
     }
 
     /**
+     * Test Stadia create view response
+     */
+    public function testStadiaCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/stadium/create');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
+    }
+
+    /**
      * Test Teams Index view response
      */
     public function testTeamsIndexViewResponse()
@@ -108,6 +123,21 @@ class ViewsTest extends TestCase
             $this->assertTrue(false);
         }
 
+    }
+
+    /**
+     * Test Teams create view response
+     */
+    public function testTeamsCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/teams/create');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
     }
 
     /**
@@ -137,6 +167,21 @@ class ViewsTest extends TestCase
     }
 
     /**
+     * Test Sports create view response
+     */
+    public function testSportsCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/sports/create');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
+    }
+
+    /**
      * Test Seasons Index view response
      */
     public function testSeasonsIndexViewResponse()
@@ -160,6 +205,21 @@ class ViewsTest extends TestCase
             $this->assertTrue(false);
         }
 
+    }
+
+    /**
+     * Test Seasons create view response
+     */
+    public function testSeasonsCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/seasons/create');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
     }
 
     /**
@@ -189,6 +249,21 @@ class ViewsTest extends TestCase
     }
 
     /**
+     * Test Seasons create view response
+     */
+    public function testChampionshipsCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/championships/create');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
+    }
+
+    /**
      * Test Matchdays Index view response
      */
     public function testMatchdaysIndexViewResponse()
@@ -215,6 +290,21 @@ class ViewsTest extends TestCase
     }
 
     /**
+     * Test Matchdays create view response
+     */
+    public function testMatchdaysCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/matchdays/create');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
+    }
+
+    /**
      * Test Posts Index view response
      */
     public function testPostsIndexViewResponse()
@@ -238,6 +328,21 @@ class ViewsTest extends TestCase
             $this->assertTrue(false);
         }
 
+    }
+
+    /**
+     * Test Posts create view response
+     */
+    public function testPostsCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/posts/create');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
     }
 
     /**
