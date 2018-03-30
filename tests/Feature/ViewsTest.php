@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Athlete;
+use App\Stadium;
+use App\Team;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -30,6 +32,58 @@ class ViewsTest extends TestCase
         $responseAthlete = (object) $response->original['athletes']->first(); // First athlete in view response
 
         if($athlete->fname==$responseAthlete->fname) {  // Test if fname field is ok
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
+    /**
+     * Test Stadia Index view response
+     */
+    public function testStadiaIndexViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/stadium');
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('stadia');
+
+        $stadia = Stadium::first();
+
+        $responseStadia = (object) $response->original['stadia']->first();
+
+        if($stadia->name==$responseStadia->name) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
+    /**
+     * Test Teams Index view response
+     */
+    public function testTeamsIndexViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/teams');
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('teams');
+
+        $teams = Team::first();
+
+        $responseTeams = (object) $response->original['teams']->first();
+
+        if($teams->name==$responseTeams->name) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
