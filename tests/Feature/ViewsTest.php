@@ -35,7 +35,7 @@ class ViewsTest extends TestCase
 
         $responseAthlete = (object) $response->original['athletes']->first(); // First athlete in view response
 
-        if($athlete->fname==$responseAthlete->fname) {  // Test if fname field is ok
+        if($athlete->id==$responseAthlete->id) {  // Test if fname field is ok
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -76,7 +76,7 @@ class ViewsTest extends TestCase
 
         $responseAthlete = (object) $response->original['athlete']->first(); // First athlete in view response
 
-        if($athlete->fname==$responseAthlete->fname) {  // Test if fname field is ok
+        if($athlete->id==$responseAthlete->id) {  // Test if fname field is ok
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -101,7 +101,7 @@ class ViewsTest extends TestCase
 
         $responseStadia = (object) $response->original['stadia']->first();
 
-        if($stadia->name==$responseStadia->name) {
+        if($stadia->id==$responseStadia->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -142,7 +142,7 @@ class ViewsTest extends TestCase
 
         $responseStadium = (object) $response->original['stadium']->first();
 
-        if($stadium->name==$responseStadium->name) {
+        if($stadium->id==$responseStadium->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -167,7 +167,7 @@ class ViewsTest extends TestCase
 
         $responseTeams = (object) $response->original['teams']->first();
 
-        if($teams->name==$responseTeams->name) {
+        if($teams->id==$responseTeams->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -208,7 +208,7 @@ class ViewsTest extends TestCase
 
         $responseTeam = (object) $response->original['team']->first();
 
-        if($team->name==$responseTeam->name) {
+        if($team->id==$responseTeam->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -233,7 +233,7 @@ class ViewsTest extends TestCase
 
         $responseSports = (object) $response->original['sports']->first();
 
-        if($sports->name==$responseSports->name) {
+        if($sports->id==$responseSports->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -274,7 +274,7 @@ class ViewsTest extends TestCase
 
         $responseSport = (object) $response->original['sport']->first();
 
-        if($sport->name==$responseSport->name) {
+        if($sport->id==$responseSport->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -299,7 +299,7 @@ class ViewsTest extends TestCase
 
         $responseSeasons = (object) $response->original['seasons']->first();
 
-        if($seasons->name==$responseSeasons->name) {
+        if($seasons->id==$responseSeasons->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -340,7 +340,7 @@ class ViewsTest extends TestCase
 
         $responseSeason = (object) $response->original['season']->first();
 
-        if($season->name==$responseSeason->name) {
+        if($season->id==$responseSeason->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -365,7 +365,7 @@ class ViewsTest extends TestCase
 
         $responseChampionships = (object) $response->original['championships']->first();
 
-        if($championships->name==$responseChampionships->name) {
+        if($championships->id==$responseChampionships->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -406,7 +406,7 @@ class ViewsTest extends TestCase
 
         $responseChampionship = (object) $response->original['championship']->first();
 
-        if($championship->name==$responseChampionship->name) {
+        if($championship->id==$responseChampionship->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -431,7 +431,7 @@ class ViewsTest extends TestCase
 
         $responseMatchdays = (object) $response->original['matchdays']->first();
 
-        if($matchdays->matchday === $responseMatchdays->matchday) {
+        if($matchdays->id === $responseMatchdays->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -472,7 +472,7 @@ class ViewsTest extends TestCase
 
         $responseMatchday = (object) $response->original['matchday']->first();
 
-        if($matchday->matchday==$responseMatchday->matchday) {
+        if($matchday->id==$responseMatchday->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -497,7 +497,7 @@ class ViewsTest extends TestCase
 
         $responsePosts = (object) $response->original['posts']->first();
 
-        if($posts->title==$responsePosts->title) {
+        if($posts->id==$responsePosts->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -538,7 +538,7 @@ class ViewsTest extends TestCase
 
         $responsePost = (object) $response->original['post']->first();
 
-        if($post->title==$responsePost->title) {
+        if($post->id==$responsePost->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -563,7 +563,7 @@ class ViewsTest extends TestCase
 
         $responseComments = (object) $response->original['comments']->first();
 
-        if($comments->email==$responseComments->email) {
+        if($comments->id==$responseComments->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -589,7 +589,7 @@ class ViewsTest extends TestCase
 
         $responseComment = (object) $response->original['comment']->first();
 
-        if($comment->email==$responseComment->email) {
+        if($comment->id==$responseComment->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -612,7 +612,7 @@ class ViewsTest extends TestCase
 
         $responseUsers = (object) $response->original['users']->first();
 
-        if($user->name==$responseUsers->name) {
+        if($user->id==$responseUsers->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
