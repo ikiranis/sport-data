@@ -206,13 +206,18 @@
                 delimiters: ['{%', '%}'],
                 el: "#searchContainer",
                 data: {
-                    sportSelected: 0,
-                    championshipSelected: 0,
-                    seasonSelected: 0,
-                    matchdaySelected: 0,
+                    sportSelected: '{!! $request->sport_id ?? 0 !!}',
+                    championshipSelected: '{!! $request->championship_id ?? 0 !!}',
+                    seasonSelected: '{!! $request->season_id ?? 0 !!}',
+                    matchdaySelected: '{!! $request->matchday_id ?? 0 !!}',
                     championships: '',
                     seasons: '',
                     matchdays: ''
+                },
+                mounted: function () {
+                    this.getChampionships();
+                    this.getSeasons();
+                    this.getMatchdays();
                 },
                 methods: {
                     getChampionships() {

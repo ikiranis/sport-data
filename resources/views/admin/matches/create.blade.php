@@ -153,10 +153,10 @@
             delimiters: ['{%', '%}'],
             el: "#searchContainer",
             data: {
-                sportSelected: '{!! $data->sport_id !!}',
-                championshipSelected: '{!! $data->championship_id !!}',
-                seasonSelected: '{!! $data->season_id !!}',
-                matchdaySelected: '{!! $data->matchday_id !!}',
+                sportSelected: '{!! $data->sport_id ?? 0 !!}',
+                championshipSelected: '{!! $data->championship_id ?? 0 !!}',
+                seasonSelected: '{!! $data->season_id ?? 0 !!}',
+                matchdaySelected: '{!! $data->matchday_id ?? 0 !!}',
                 championships: '',
                 seasons: '',
                 matchdays: ''

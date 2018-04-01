@@ -30,13 +30,14 @@ class AdminMatchesController extends Controller
                 paginate(15);
         } else {  // get all data
             $matches = Match::paginate(15);
+            $request = null;
         }
 
         $championships = Championship::all();
         $sports = Sport::all();
         $seasons = Season::all();
 
-        return view('admin/matches/index', compact('matches', 'championships', 'sports', 'seasons'));
+        return view('admin/matches/index', compact('matches', 'championships', 'sports', 'seasons', 'request'));
     }
 
     /**
