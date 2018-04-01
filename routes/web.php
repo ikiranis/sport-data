@@ -46,6 +46,7 @@ Route::group(
             Route::resource('admin/championships', 'AdminChampionshipsController');
             Route::resource('admin/comments', 'AdminCommentsController');
             Route::resource('admin/matches', 'AdminMatchesController');
+            Route::get('admin/matches/create/{request}', 'AdminMatchesController@create')->name('admin.matches.create');
         });
 
     });

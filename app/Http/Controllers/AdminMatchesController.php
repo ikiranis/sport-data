@@ -44,16 +44,18 @@ class AdminMatchesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($request)
     {
+
         $championships = Championship::all();
         $sports = Sport::all();
         $seasons = Season::all();
         $matchdays = Matchday::all();
         $stadia = Stadium::all();
         $teams = Team::all();
+        $data = json_decode($request);
 
-        return view('admin.matches.create', compact('championships', 'sports', 'seasons', 'matchdays', 'stadia', 'teams'));
+        return view('admin.matches.create', compact('championships', 'sports', 'seasons', 'matchdays', 'stadia', 'teams', 'data'));
     }
 
     /**

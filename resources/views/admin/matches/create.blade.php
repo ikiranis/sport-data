@@ -5,6 +5,7 @@
     @include('includes.error')
 
     <div class="container">
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
@@ -152,13 +153,18 @@
             delimiters: ['{%', '%}'],
             el: "#searchContainer",
             data: {
-                sportSelected: 0,
-                championshipSelected: 0,
-                seasonSelected: 0,
-                matchdaySelected: 0,
+                sportSelected: '{!! $data->sport_id !!}',
+                championshipSelected: '{!! $data->championship_id !!}',
+                seasonSelected: '{!! $data->season_id !!}',
+                matchdaySelected: '{!! $data->matchday_id !!}',
                 championships: '',
                 seasons: '',
                 matchdays: ''
+            },
+            mounted: function() {
+                this.getChampionships();
+                this.getSeasons();
+                this.getMatchdays();
             },
             methods: {
                 getChampionships() {
