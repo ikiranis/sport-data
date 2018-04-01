@@ -44,7 +44,7 @@ class AdminMatchesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($request)
+    public function create(Request $request)
     {
 
         $championships = Championship::all();
@@ -53,7 +53,7 @@ class AdminMatchesController extends Controller
         $matchdays = Matchday::all();
         $stadia = Stadium::all();
         $teams = Team::all();
-        $data = json_decode($request);
+        $data = $request;
 
         return view('admin.matches.create', compact('championships', 'sports', 'seasons', 'matchdays', 'stadia', 'teams', 'data'));
     }

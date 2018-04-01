@@ -5,7 +5,7 @@
     <h1>{{trans_choice('messages.matches',2)}}</h1>
 
     <div id="searchContainer">
-        <form method="GET" action="{{route('matches.index')}}">
+        <form method="GET">
             <div class="row">
 
                 @csrf
@@ -64,23 +64,21 @@
                 </div>
 
                 <div class="col-lg-3 col-12 my-1">
-                    <button type="submit" class="btn btn-success w-100">
+                    <button type="submit" class="btn btn-success w-100" formaction="{{route('matches.index')}}">
                         {{__('messages.search')}}
+                    </button>
+                </div>
+
+                <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
+                    <button type="submit" class="btn btn-info w-100" formaction="{{route('matches.create')}}">
+                        {{__('messages.insert match')}}
                     </button>
                 </div>
 
             </div>
         </form>
 
-        <form method="GET" action="{{route('matches.create')}}" v-on:submit.prevent>
 
-                @csrf
-                <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
-                    <button type="submit" class="btn btn-info w-100" v-on:click="createMatch()">
-                        {{__('messages.insert match')}}
-                    </button>
-                </div>
-        </form>
     </div>
 
 
@@ -214,8 +212,7 @@
                     matchdaySelected: 0,
                     championships: '',
                     seasons: '',
-                    matchdays: '',
-                    myToken: '{!! csrf_token() !!}'
+                    matchdays: ''
                 },
                 methods: {
                     getChampionships() {
@@ -238,17 +235,6 @@
                                 this.matchdays = response.data;
                             })
                             .catch(e => console.log(e));
-                    },
-                    createMatch() {
-                        let myData = {
-                            sport_id: this.sportSelected,
-                            championship_id: this.championshipSelected,
-                            season_id: this.seasonSelected,
-                            matchday_id: this.matchdaySelected,
-                        };
-
-                        window.location.href = '/admin/matches/create/' + JSON.stringify(myData);
-
                     }
                 }
             });
