@@ -50,6 +50,7 @@
                                     <span class="input-group-text w-100">{{__('messages.sport')}}</span>
                                 </div>
                                 <select class="form-control col-10 px-2" id="sport_id" name="sport_id">
+                                    <option value="0"></option>
                                     @foreach($sports as $sport)
                                         <option value="{{$sport->id}}">
                                             {{$sport->name}}
@@ -64,6 +65,7 @@
                                     <span class="input-group-text w-100">{{__('messages.team')}}</span>
                                 </div>
                                 <select class="form-control col-10 px-2" id="team_id" name="team_id">
+                                    <option value="0"></option>
                                     @foreach($teams as $team)
                                         <option value="{{$team->id}}">
                                             {{$team->name}}
@@ -78,6 +80,7 @@
                                     <span class="input-group-text w-100">{{__('messages.athlete')}}</span>
                                 </div>
                                 <select class="form-control col-10 px-2" id="athlete_id" name="athlete_id">
+                                    <option value="0"></option>
                                     @foreach($athletes as $athlete)
                                         <option value="{{$athlete->id}}">
                                             {{$athlete->fullName}}
