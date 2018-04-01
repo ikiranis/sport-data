@@ -247,15 +247,8 @@
                             matchday_id: this.matchdaySelected,
                         };
 
-                        console.log(this.myToken);
-
                         window.location.href = '/admin/matches/create/' + JSON.stringify(myData);
 
-                        // axios.get('/admin/matches/create', myData)
-                        //     .then(response => {
-                        //         console.log(response);
-                        //     })
-                        //     .catch(e => console.log(e));
                     }
                 }
             });
