@@ -48,6 +48,8 @@ class AdminPostsController extends Controller
      */
     public function store(Request $request)
     {
+        return($request->team_id);
+
         $validatedData = $request->validate([
             'slug' => 'nullable',
             'team_id' => 'nullable',

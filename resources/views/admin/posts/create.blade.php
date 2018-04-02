@@ -27,7 +27,8 @@
 
                             <div class="form-group">
                                 <label class="form-check-label" for="description">{{__('messages.description')}}</label>
-                                <textarea class="form-control" id="description" name="description" rows="2">{{old('description')}}</textarea>
+                                <textarea class="form-control" id="description" name="description"
+                                          rows="2">{{old('description')}}</textarea>
                             </div>
 
                             <div class="form-group">
@@ -40,7 +41,8 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.reference')}}</span>
                                 </div>
-                                <input type="text" max="255" class="form-control col-10 px-2" id="reference" name="reference"
+                                <input type="text" max="255" class="form-control col-10 px-2" id="reference"
+                                       name="reference"
                                        placeholder="{{old('reference')}}">
                             </div>
 
@@ -59,12 +61,13 @@
                                 </select>
                             </div>
 
-                            <div class="input-group mb-3 no-gutters">
+                            <div id="teamsContainer" class="input-group mb-3 no-gutters">
                                 <label for="team_id" class="sr-only">{{__('messages.team')}}</label>
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.team')}}</span>
                                 </div>
-                                <select class="form-control col-10 px-2" id="team_id" name="team_id">
+                                <select multiple v-on:change="choseTeam" v-model="teamSelected"
+                                        class="form-control col-10 px-2" id="team_id" name="team_id">
                                     <option value="0"></option>
                                     @foreach($teams as $team)
                                         <option value="{{$team->id}}">
@@ -95,7 +98,8 @@
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" name="uploadFile" id="uploadFile"
                                                accept='image/*'>
-                                        <label class="custom-file-label" for="customFile">{{__('messages.picture')}}</label>
+                                        <label class="custom-file-label"
+                                               for="customFile">{{__('messages.picture')}}</label>
                                     </div>
                                 </div>
 
@@ -104,7 +108,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">{{__('messages.reference')}}</span>
                                     </div>
-                                    <input type="text" max="255" class="form-control" id="photo_reference" name="photo_reference"
+                                    <input type="text" max="255" class="form-control" id="photo_reference"
+                                           name="photo_reference"
                                            placeholder="{{old('photo_reference')}}">
                                 </div>
 
@@ -136,12 +141,33 @@
 
     <script>
         ClassicEditor
-            .create( document.querySelector( '#body' ) )
-            .catch( error => {
-                console.error( error );
-            } );
+            .create(document.querySelector('#body'))
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 
 @endsection
 
 @include('includes.editor')
+
+@section('scripts')
+
+    <script>
+
+        let teamTags = new Vue({
+            el: '#teamsContainer',
+            delimiters: ['{%', '%}'],
+            data: {
+                teamSelected: []
+            },
+            methods: {
+                choseTeam() {
+                    console.log(this.teamSelected);
+                }
+            }
+        });
+
+    </script>
+
+@endsection

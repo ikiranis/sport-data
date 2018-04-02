@@ -111,13 +111,13 @@
                                 <label for="first_team_score" class="sr-only">{{__('messages.team')}}</label>
                                 <input type="text" class="form-control col-4 px-2" id="first_team_score"
                                        name="first_team_score"
-                                       v-model="matches[{{$key}}].first_team_score"
+                                       v-model="matches['{{$key}}'].first_team_score"
                                        v-on:input="changingScore({{$key}})">
 
                                 <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
                                 <input type="text" class="form-control col-4 px-2" id="second_team_score"
                                        name="second_team_score"
-                                       v-model="matches[{{$key}}].second_team_score"
+                                       v-model="matches['{{$key}}'].second_team_score"
                                        v-on:input="changingScore({{$key}})">
 
                                 <div class="col-4">
@@ -189,7 +189,6 @@
 
                         axios.patch('/api/match', myData)
                             .then(response => {
-                                console.log(response);
                                 Vue.set(this.isSaved, key, true);
                             })
                             .catch(e => console.log(e));
