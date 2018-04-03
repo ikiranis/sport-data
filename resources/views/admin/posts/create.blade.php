@@ -62,12 +62,13 @@
                             </div>
 
                             <div id="teamsContainer" class="input-group mb-3 no-gutters">
-                                <label for="team_id" class="sr-only">{{__('messages.team')}}</label>
+                                <label for="teams_selected" class="sr-only">{{__('messages.team')}}</label>
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.team')}}</span>
                                 </div>
-                                <select multiple v-on:change="choseTeam" v-model="teamSelected"
-                                        class="form-control col-10 px-2" id="team_id" name="team_id">
+
+                                <select multiple v-on:change="chooseTeam" v-model="teamsSelected"
+                                        class="form-control " id="teams_selected" name="teams_selected[]">
                                     <option value="0"></option>
                                     @foreach($teams as $team)
                                         <option value="{{$team->id}}">
@@ -75,6 +76,15 @@
                                         </option>
                                     @endforeach
                                 </select>
+
+                                {{--<input type="hidden" name="teams_selected[]" :value="teamsSelected">--}}
+                                {{--<select multiple class="form-control col-10 px-2" v-model="teamsSelected"--}}
+                                        {{--v-on:change="chooseTeam" id="teams_selected">--}}
+                                    {{--<option value="0"></option>--}}
+                                    {{--<option v-for="team in teams" :value="{id:team.id, text: team.name}">{% team.name--}}
+                                        {{--%}--}}
+                                    {{--</option>--}}
+                                {{--</select>--}}
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -159,11 +169,11 @@
             el: '#teamsContainer',
             delimiters: ['{%', '%}'],
             data: {
-                teamSelected: []
+                teamsSelected: []
             },
             methods: {
-                choseTeam() {
-                    console.log(this.teamSelected);
+                chooseTeam() {
+                    console.log(this.teamsSelected);
                 }
             }
         });
@@ -171,3 +181,4 @@
     </script>
 
 @endsection
+

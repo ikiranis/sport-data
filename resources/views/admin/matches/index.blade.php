@@ -249,3 +249,4 @@
     {{--<script src="{{ mix('js/test.js') }}"></script>--}}
 
 @endsection
+

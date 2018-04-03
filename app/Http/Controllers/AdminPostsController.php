@@ -48,7 +48,7 @@ class AdminPostsController extends Controller
      */
     public function store(Request $request)
     {
-        return($request->team_id);
+        return dd($request->teams_selected);
 
         $validatedData = $request->validate([
             'slug' => 'nullable',
