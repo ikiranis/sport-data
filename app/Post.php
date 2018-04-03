@@ -91,7 +91,7 @@ class Post extends Model
      * Relation to teams
      */
     public function teams() {
-        return $this->belongsToMany('App\Team');
+        return $this->belongsToMany('App\Team')->withTimestamps();
     }
 
     /**

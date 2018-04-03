@@ -18,7 +18,6 @@ class CreatePostTeamTable extends Migration
             $table->uuid('post_id')->index();
             $table->uuid('team_id')->index();
             $table->timestamps();
-
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
         });
