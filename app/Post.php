@@ -90,8 +90,8 @@ class Post extends Model
     /**
      * Relation to teams
      */
-    public function team() {
-        return $this->belongsTo('App\Team');
+    public function teams() {
+        return $this->belongsToMany('App\Team');
     }
 
     /**

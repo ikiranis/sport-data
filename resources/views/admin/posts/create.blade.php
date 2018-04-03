@@ -67,24 +67,14 @@
                                     <span class="input-group-text w-100">{{__('messages.team')}}</span>
                                 </div>
 
-                                <select multiple v-on:change="chooseTeam" v-model="teamsSelected"
-                                        class="form-control " id="teams_selected" name="teams_selected[]">
+                                <input type="hidden" v-for="team in teamsSelected" name="teams_selected[]" :value="team.id">
+                                <select multiple class="form-control col-10 px-2" v-model="teamsSelected"
+                                        v-on:change="chooseTeam" id="teams_selected">
                                     <option value="0"></option>
-                                    @foreach($teams as $team)
-                                        <option value="{{$team->id}}">
-                                            {{$team->name}}
-                                        </option>
-                                    @endforeach
+                                    <option v-for="team in teams" :value="{id:team.id, text: team.name}">{% team.name
+                                        %}
+                                    </option>
                                 </select>
-
-                                {{--<input type="hidden" name="teams_selected[]" :value="teamsSelected">--}}
-                                {{--<select multiple class="form-control col-10 px-2" v-model="teamsSelected"--}}
-                                        {{--v-on:change="chooseTeam" id="teams_selected">--}}
-                                    {{--<option value="0"></option>--}}
-                                    {{--<option v-for="team in teams" :value="{id:team.id, text: team.name}">{% team.name--}}
-                                        {{--%}--}}
-                                    {{--</option>--}}
-                                {{--</select>--}}
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -169,11 +159,12 @@
             el: '#teamsContainer',
             delimiters: ['{%', '%}'],
             data: {
+                teams: {!! json_encode($teams) !!},
                 teamsSelected: []
             },
             methods: {
                 chooseTeam() {
-                    console.log(this.teamsSelected);
+                    console.log(this.teamsSelected.text);
                 }
             }
         });

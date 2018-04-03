@@ -16,7 +16,6 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('slug');
-            $table->uuid('team_id')->nullable();
             $table->uuid('photo_id')->nullable();
             $table->uuid('user_id')->nullable();
             $table->uuid('athlete_id')->nullable();

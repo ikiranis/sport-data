@@ -43,4 +43,11 @@ class Team extends Model
     public function logo() {
         return $this->belongsTo('App\Logo');
     }
+
+    /**
+     * Relation to posts
+     */
+    public function posts() {
+        return $this->belongsToMany('App\Post');
+    }
 }

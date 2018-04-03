@@ -48,11 +48,10 @@ class AdminPostsController extends Controller
      */
     public function store(Request $request)
     {
-        return dd($request->teams_selected);
 
         $validatedData = $request->validate([
             'slug' => 'nullable',
-            'team_id' => 'nullable',
+            'team_selected' => 'nullable',
             'photo_id' => 'nullable',
             'user_id' => 'nullable',
             'athlete_id' => 'nullable',
@@ -88,7 +87,9 @@ class AdminPostsController extends Controller
             }
         }
 
-        Post::create($input);
+        $post = Post::create($input);
+
+        $post->teams()->attach($request->teams_selected); // Insert teams relation with pivot table
 
         return redirect(route('posts.index'));
     }
