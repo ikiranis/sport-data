@@ -71,9 +71,8 @@
                                 <select multiple class="form-control col-10 px-2" v-model="teamsSelected"
                                         v-on:change="chooseTeam" id="teams_selected">
                                     <option value="0"></option>
-                                    <option v-for="team in teams" :value="{id:team.id, text: team.name}"
-                                            :selected="teamsAllreadySelected.includes(team.id) === true ? false : true">{% team.name
-                                        %}
+                                    <option v-for="team in teams" :value="{id:team.id, text: team.name}">
+                                        {% team.name %}
                                     </option>
                                 </select>
                             </div>
@@ -155,8 +154,8 @@
         ClassicEditor
             .create(document.querySelector('#body'))
             .catch(error => {
-            console.error(error);
-        });
+                console.error(error);
+            });
     </script>
 
 
@@ -173,11 +172,11 @@
             delimiters: ['{%', '%}'],
             data: {
                 teams: {!! json_encode($teams) !!},
-                teamsAllreadySelected: {!! json_encode($post->teams()->extract('id')) !!},
-                teamsSelected: []
-            },
-            created: function() {
-                console.log(this.teamsAllreadySelected);
+                teamsSelected: {!!
+                    json_encode($post->teams()->get()->map(function($item) {
+                        return ['id' => $item->id, 'text' => $item->name];
+                    }))
+                !!}
             },
             methods: {
                 chooseTeam() {
