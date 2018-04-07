@@ -17,7 +17,6 @@
                 <th scope="col">{{__('messages.title')}}</th>
                 <th scope="col">{{__('messages.user')}}</th>
                 <th scope="col">{{__('messages.athlete')}}</th>
-                <th scope="col">{{__('messages.team')}}</th>
                 <th scope="col">{{__('messages.sport')}}</th>
                 <th scope="col">{{__('messages.approve')}}</th>
                 <th scope="col">{{__('messages.action')}}</th>
@@ -31,7 +30,6 @@
                     <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->athlete->fullName ?? ''}}</td>
-                    <td>{{$post->team->name ?? ''}}</td>
                     <td>{{$post->sport->name ?? ''}}</td>
                     <td>{{$post->approved==1 ? __('messages.active') : __('messages.inactive')}}</td>
 

@@ -132,7 +132,6 @@ class AdminPostsController extends Controller
     {
         $validatedData = $request->validate([
             'slug' => 'nullable',
-            'team_id' => 'nullable',
             'photo_id' => 'nullable',
             'user_id' => 'nullable',
             'athlete_id' => 'nullable',

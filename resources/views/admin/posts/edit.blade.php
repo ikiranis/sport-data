@@ -27,7 +27,8 @@
 
                             <div class="form-group">
                                 <label class="form-check-label" for="description">{{__('messages.description')}}</label>
-                                <textarea class="form-control" id="description" name="description" rows="2">{{$post->description}}</textarea>
+                                <textarea class="form-control" id="description" name="description"
+                                          rows="2">{{$post->description}}</textarea>
                             </div>
 
                             <div class="form-group">
@@ -59,18 +60,21 @@
                                 </select>
                             </div>
 
-                            <div class="input-group mb-3 no-gutters">
-                                <label for="team_id" class="sr-only">{{__('messages.team')}}</label>
+                            <div id="teamsContainer" class="input-group mb-3 no-gutters">
+                                <label for="teams_selected" class="sr-only">{{__('messages.team')}}</label>
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.team')}}</span>
                                 </div>
-                                <select class="form-control col-10 px-2" id="team_id" name="team_id">
+
+                                <input type="hidden" v-for="team in teamsSelected" name="teams_selected[]"
+                                       :value="team.id">
+                                <select multiple class="form-control col-10 px-2" v-model="teamsSelected"
+                                        v-on:change="chooseTeam" id="teams_selected">
                                     <option value="0"></option>
-                                    @foreach($teams as $team)
-                                        <option value="{{$team->id}}" {{$team->id==$post->team_id ? 'selected' : ''}}>
-                                            {{$team->name}}
-                                        </option>
-                                    @endforeach
+                                    <option v-for="team in teams" :value="{id:team.id, text: team.name}"
+                                            :selected="teamsAllreadySelected.includes(team.id) === true ? false : true">{% team.name
+                                        %}
+                                    </option>
                                 </select>
                             </div>
 
@@ -149,10 +153,10 @@
 
     <script>
         ClassicEditor
-            .create(document.querySelector('.ckeditor') )
+            .create(document.querySelector('#body'))
             .catch(error => {
-                console.error(error);
-            });
+            console.error(error);
+        });
     </script>
 
 
@@ -160,7 +164,31 @@
 
 @include('includes.editor')
 
+@section('scripts')
 
+    <script>
+
+        let teamTags = new Vue({
+            el: '#teamsContainer',
+            delimiters: ['{%', '%}'],
+            data: {
+                teams: {!! json_encode($teams) !!},
+                teamsAllreadySelected: {!! json_encode($post->teams()->extract('id')) !!},
+                teamsSelected: []
+            },
+            created: function() {
+                console.log(this.teamsAllreadySelected);
+            },
+            methods: {
+                chooseTeam() {
+                    console.log(this.teamsSelected.text);
+                }
+            }
+        });
+
+    </script>
+
+@endsection
 
 
 
