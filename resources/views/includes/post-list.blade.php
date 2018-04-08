@@ -20,8 +20,16 @@
                          class="card-img">
 
                     <ul class="list-group my-2">
-                        @if($post->team!==null)
-                            <li class="list-group-item list-group-item-action"><a href="">{{$post->team->name}}</a></li>
+                        @if(count($post->teams()->get())>0)
+                            <div id="teamsContainer{{$post->id}}">
+                                <li class="list-group-item list-group-item-action">
+                                    <div class="row">
+                                        <span class="my-1 mx-2 px-2 bg-primary text-light"
+                                              v-for="team in teamsSelected">{% team.name %}</span>
+                                    </div>
+                                </li>
+                            </div>
+
                         @endif
                         @if($post->athlete!==null)
                             <li class="list-group-item list-group-item-action"><a

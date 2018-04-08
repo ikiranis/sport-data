@@ -65,6 +65,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    @include('includes.footer')
+
+    @yield('scripts')
 </body>
 </html>
