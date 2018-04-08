@@ -68,11 +68,11 @@
                                 </div>
 
                                 <input type="hidden" v-for="team in teamsSelected" name="teams_selected[]" :value="team.id">
-                                <select multiple class="form-control col-10 px-2" v-model="teamsSelected"
-                                        v-on:change="chooseTeam" id="teams_selected">
+                                <select multiple class="form-control col-10 px-2" v-model="teamsSelected" ref="teamSelector"
+                                        id="teams_selected">
                                     <option value="0"></option>
-                                    <option v-for="team in teams" :value="{id:team.id, text: team.name}">{% team.name
-                                        %}
+                                    <option v-for="team in teams" :value="{id:team.id, text: team.name}" @mousedown.prevent="toggleOption(team)">
+                                        {% team.name %}
                                     </option>
                                 </select>
                             </div>
@@ -163,8 +163,15 @@
                 teamsSelected: []
             },
             methods: {
-                chooseTeam() {
-                    console.log(this.teamsSelected.text);
+                toggleOption(team) {
+                    this.$refs.teamSelector.focus();
+                    let idx = this.teamsSelected.findIndex(t => t.id === team.id);
+                    if (idx >= 0) {
+                        this.teamsSelected.splice(idx, 1);
+                    }
+                    else {
+                        this.teamsSelected.push({id: team.id, text: team.name});
+                    }
                 }
             }
         });
