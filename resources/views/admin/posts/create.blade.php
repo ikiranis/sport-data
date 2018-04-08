@@ -61,21 +61,31 @@
                                 </select>
                             </div>
 
-                            <div id="teamsContainer" class="input-group mb-3 no-gutters">
-                                <label for="teams_selected" class="sr-only">{{__('messages.team')}}</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">{{__('messages.team')}}</span>
+                            <div id="teamsContainer">
+                                <div class="input-group mb-3 no-gutters">
+                                    <label for="teams_selected" class="sr-only">{{__('messages.team')}}</label>
+                                    <div class="input-group-prepend col-2">
+                                        <span class="input-group-text w-100">{{__('messages.team')}}</span>
+                                    </div>
+
+                                    <input type="hidden" v-for="team in teamsSelected" name="teams_selected[]"
+                                           :value="team.id">
+                                    <select multiple class="form-control col-10 px-2" v-model="teamsSelected"
+                                            ref="teamSelector"
+                                            id="teams_selected">
+                                        <option value="0"></option>
+                                        <option v-for="team in teams" :value="{id:team.id, text: team.name}"
+                                                @mousedown.prevent="toggleOption(team)">
+                                            {% team.name %}
+                                        </option>
+                                    </select>
                                 </div>
 
-                                <input type="hidden" v-for="team in teamsSelected" name="teams_selected[]" :value="team.id">
-                                <select multiple class="form-control col-10 px-2" v-model="teamsSelected" ref="teamSelector"
-                                        id="teams_selected">
-                                    <option value="0"></option>
-                                    <option v-for="team in teams" :value="{id:team.id, text: team.name}" @mousedown.prevent="toggleOption(team)">
-                                        {% team.name %}
-                                    </option>
-                                </select>
+                                <div class="my-2 row">
+                                    <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="team in teamsSelected">{% team.text %}</span>
+                                </div>
                             </div>
+
 
                             <div class="input-group mb-3 no-gutters">
                                 <label for="athlete_id" class="sr-only">{{__('messages.athlete')}}</label>
