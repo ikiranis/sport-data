@@ -74,7 +74,7 @@
                                             id="teams_selected">
                                         <option value="0"></option>
                                         <option v-for="team in teams" :value="{id:team.id, text: team.name}"
-                                                @mousedown.prevent="toggleOption(team)">
+                                                @mousedown.prevent="toggleOption">
                                             {% team.name %}
                                         </option>
                                     </select>
@@ -187,15 +187,10 @@
                 !!}
             },
             methods: {
-                toggleOption(team) {
-                    this.$refs.teamSelector.focus();
-                    let idx = this.teamsSelected.findIndex(t => t.id === team.id);
-                    if (idx >= 0) {
-                        this.teamsSelected.splice(idx, 1);
-                    }
-                    else {
-                        this.teamsSelected.push({id: team.id, text: team.name});
-                    }
+                toggleOption(e) {
+                    // this.$refs.teamSelector.focus();
+                    e.target.selected = !e.target.selected;
+                    e.target.parentElement.dispatchEvent(new Event('change'));
                 }
             }
         });
