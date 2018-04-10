@@ -21,10 +21,7 @@
                     @if(count($post->teams()->get())>0)
                         <div id="teamsContainer{{$post->id}}">
                             <li class="list-group-item list-group-item-action">
-                                <div class="row">
-                                        <span class="my-1 mx-2 px-2 bg-primary text-light"
-                                              v-for="team in teamsSelected">{% team.name %}</span>
-                                </div>
+                                @include('includes.teams-list')
                             </li>
                         </div>
                     @endif

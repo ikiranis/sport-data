@@ -174,7 +174,7 @@
             },
             methods: {
                 toggleOption(e) {
-                    // this.$refs.teamSelector.focus();
+                    this.$refs.teamSelector.focus();
                     e.target.selected = !e.target.selected;
                     e.target.parentElement.dispatchEvent(new Event('change'));
                 }
