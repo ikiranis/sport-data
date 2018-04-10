@@ -23,9 +23,12 @@
                         @if(count($post->teams()->get())>0)
                             <div id="teamsContainer{{$post->id}}">
                                 <li class="list-group-item list-group-item-action">
-                                    <div class="row">
-                                        <span class="my-1 mx-2 px-2 bg-primary text-light"
-                                              v-for="team in teamsSelected">{% team.name %}</span>
+                                    <div class="row" v-for="team in teamsSelected">
+                                        <a href="{{route('postsTeam', '')}}/@{%team.id%}">
+                                            <span class="my-1 mx-2 px-2 bg-primary text-light">
+                                                {% team.name %}
+                                            </span>
+                                        </a>
                                     </div>
                                 </li>
                             </div>
