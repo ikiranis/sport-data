@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Post;
 use App\Sport;
+use App\Team;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -58,6 +59,27 @@ class HomeController extends Controller
 //            $comments = $post->comments()->orderBy('created_at', 'desc')->get();
 
         return view('public.post', compact('post'));
+    }
+
+    /**
+     * Display home index posts page with team filter
+     *
+     * @param $team_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function teamPosts($team_id)
+    {
+
+        // Get the team with $team_id
+        $team = Team::whereId($team_id)->firstOrFail();
+
+        // Get all the posts of $team_id
+        $posts = $team->posts()->orderBy('created_at', 'desc')->paginate(5);
+
+        $sports = Sport::all();
+
+        return view('public.home', compact('posts', 'sports'));
+
     }
 
 
