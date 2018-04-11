@@ -78,6 +78,7 @@ class HomeController extends Controller
 
         $sports = Sport::all();
 
+        // TODO Να το κάνω με άλλη view, που να μην εμφανίζει τα sports
         return view('public.home', compact('posts', 'sports'));
 
     }
