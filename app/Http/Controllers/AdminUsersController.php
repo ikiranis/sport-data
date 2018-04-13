@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,9 @@ class AdminUsersController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -39,7 +42,19 @@ class AdminUsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'role_id' => 'required',
+            'name' => 'required|max:255',
+            'email' => 'required|unique:users,email',
+            'password' => 'required|max:255',
+            'is_active' => 'required|integer'
+        ]);
+
+        $input = $request->all();
+
+        User::create($input);
+
+        return redirect(route('users.index'));
     }
 
     /**
@@ -61,7 +76,10 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+
+        return view ('admin/users/edit', compact('user', 'roles'));
     }
 
     /**
@@ -73,7 +91,20 @@ class AdminUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'role_id' => 'required',
+            'name' => 'required|max:255',
+            'email' => 'required|unique:users,email,'.$id,
+            'is_active' => 'required|integer'
+        ]);
+
+        $input = $request->all();
+
+        $user = User::findOrFail($id);
+
+        $user->update($input);
+
+        return redirect(route('users.index'));
     }
 
     /**

@@ -8,10 +8,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">{{__('messages.insert user')}}</div>
+                    <div class="card-header">{{__('messages.update user')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
+                            <input name="_method" type="hidden" value="PUT">
                             @csrf
 
                             <div class="input-group mb-3 no-gutters">
@@ -20,7 +21,7 @@
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
                                 <input type="text" max="255" class="form-control col-9 px-2" id="name" name="name"
-                                       placeholder="{{old('name')}}">
+                                       value="{{$user->name}}" autocomplete="off">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -29,7 +30,7 @@
                                     <span class="input-group-text w-100">e-mail</span>
                                 </div>
                                 <input type="email" max="255" class="form-control col-9 px-2" id="email" name="email"
-                                       placeholder="{{old('email')}}">
+                                       value="{{$user->email}}" autocomplete="off">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -38,7 +39,7 @@
                                     <span class="input-group-text w-100">{{__('messages.password')}}</span>
                                 </div>
                                 <input type="password" max="255" class="form-control col-9 px-2" id="password" name="password"
-                                       placeholder="{{old('password')}}">
+                                       value="{{$user->password}}" autocomplete="off">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -48,7 +49,7 @@
                                 </div>
                                 <select class="form-control col-9 px-2" id="role_id" name="role_id">
                                     @foreach($roles as $role)
-                                        <option value="{{$role->id}}">
+                                        <option value="{{$role->id}}" {{$role->id==$user->role_id ? 'selected' : ''}}>
                                             {{$role->name}}
                                         </option>
                                     @endforeach
@@ -61,14 +62,14 @@
                                     <span class="input-group-text w-100 bg-warning">{{__('messages.approve')}}</span>
                                 </div>
                                 <select class="form-control col-9 px-2" id="is_active" name="is_active">
-                                    <option value="0">{{__('messages.inactive')}}</option>
-                                    <option value="1" selected>{{__('messages.active')}}</option>
+                                    <option value="0" {{$user->is_active==0 ? 'selected' : ''}} >{{__('messages.inactive')}}</option>
+                                    <option value="1" {{$user->is_active==1 ? 'selected' : ''}}>{{__('messages.active')}}</option>
                                 </select>
                             </div>
 
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
-                                    {{__('messages.insert')}}
+                                    {{__('messages.update')}}
                                 </button>
                             </div>
 

@@ -37,6 +37,7 @@ return [
     'inactive' => 'Ανενεργός',
     'users not exist', 'Δεν υπάρχουν χρήστες',
     'insert user' => 'Προσθήκη χρήστη',
+    'update user' => 'Ενημέρωση χρήστη',
     'insert season' => 'Προσθήκη season',
     'update season' => 'Ενημέρωση season',
     'seasons not exist' => 'Δεν υπάρχουν seasons',
@@ -81,6 +82,7 @@ return [
     'matches not exist' => 'Δεν υπάρχουν αγώνες',
     'date' => 'Ημερομηνία',
     'score' => 'Σκορ',
-    'search' => 'Αναζήτηση'
+    'search' => 'Αναζήτηση',
+    'password' => 'Συνθηματικό'
 
 ];

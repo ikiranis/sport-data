@@ -3,6 +3,12 @@
 @section('content')
     <h1>{{__('messages.users')}}</h1>
 
+    <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
+        <a href="{{route('users.create')}}">
+            <button class="btn btn-info w-100">{{__('messages.insert user')}}</button>
+        </a>
+    </div>
+
     @if(count($users)>0)
         <table class="table">
             <thead>

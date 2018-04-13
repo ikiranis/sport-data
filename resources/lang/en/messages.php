@@ -37,6 +37,7 @@ return [
     'inactive' => 'Inactive',
     'users not exist', 'Users not exist',
     'insert user' => 'Insert user',
+    'update user' => 'Update user',
     'insert season' => 'Insert season',
     'update season' => 'Update season',
     'seasons not exist' => 'Seasons not exist',
@@ -81,7 +82,8 @@ return [
     'matches not exist' => 'Matches not exist',
     'date' => 'Date',
     'score' => 'Score',
-    'search' => 'Search'
+    'search' => 'Search',
+    'password' => 'Password'
 
 
 ];
