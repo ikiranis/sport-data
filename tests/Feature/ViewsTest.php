@@ -620,4 +620,27 @@ class ViewsTest extends TestCase
 
     }
 
+    /**
+     * Test Home page index view
+     */
+    public function testHomeIndex()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('sports');
+
+        $responseSports = (object) $response->original['sports']->first();
+
+        $sports = Sport::first();
+
+        if($sports->id==$responseSports->id) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
 }
