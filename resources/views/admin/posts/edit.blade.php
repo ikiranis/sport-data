@@ -72,7 +72,7 @@
                                     <select multiple class="form-control col-10 px-2" v-model="teamsSelected"
                                             ref="teamSelector"
                                             id="teams_selected">
-                                        <option value="0"></option>
+                                        <option value="0" disabled></option>
                                         <option v-for="team in teams" :value="{id:team.id, text: team.name}"
                                                 @mousedown.prevent="toggleOption">
                                             {% team.name %}

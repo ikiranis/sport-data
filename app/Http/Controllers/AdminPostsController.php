@@ -169,7 +169,7 @@ class AdminPostsController extends Controller
 
         $post->update($input);
 
-        $post->teams()->sync($request->teams_selected); // Insert teams relation with pivot table
+        $post->teams()->sync($request->teams_selected); // Sync teams relation with pivot table
 
         return redirect(route('posts.index'));
     }
