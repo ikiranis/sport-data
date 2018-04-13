@@ -643,4 +643,55 @@ class ViewsTest extends TestCase
 
     }
 
+    /**
+     * Test public sport index page
+     */
+    public function testSportIndex()
+    {
+        $sport = Sport::first();
+
+        $response = $this->get("/sport/{$sport->slug}");
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('sport');
+
+        $responseSport = (object) $response->original['sport']->first();
+
+        $sport = Sport::first();
+
+        if($sport->id==$responseSport->id) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
+    /**
+     * Test team posts index view
+     */
+    public function testTeamPostsIndex()
+    {
+        // Team with posts relations
+        $team = Team::whereHas('posts')->first();
+
+        $response = $this->get("/teamPosts/{$team->slug}");
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('posts');
+
+        $responsePost = (object) $response->original['posts']->first();
+
+        $post = $team->posts()->orderBy('created_at', 'desc')->first();
+
+        if($post->id==$responsePost->id) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
 }
