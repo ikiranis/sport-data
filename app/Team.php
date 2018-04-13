@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\Uuids;
+use Cviebrock\EloquentSluggable\Sluggable;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,15 +25,32 @@ class Team extends Model
 {
     use Uuids;
     use Cachable;
+    use Sluggable;
 
     public $incrementing = false;
 
     // The attributes that are mass assignable
     protected $fillable = [
+        'slug',
         'logo_id',
         'name',
         'city'
     ];
+
+    /**
+     * Return the sluggable configuration array for this model.
+     * @source https://github.com/cviebrock/eloquent-sluggable
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source'    => 'name'
+            ]
+        ];
+    }
 
     // Don't write timestamps at factory
     public $timestamps  = false;

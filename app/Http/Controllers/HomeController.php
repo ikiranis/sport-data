@@ -67,19 +67,16 @@ class HomeController extends Controller
      * @param $team_id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function teamPosts($team_id)
+    public function teamPosts($slug)
     {
 
         // Get the team with $team_id
-        $team = Team::whereId($team_id)->firstOrFail();
+        $team = Team::whereSlug($slug)->firstOrFail();
 
         // Get all the posts of $team_id
         $posts = $team->posts()->orderBy('created_at', 'desc')->paginate(5);
 
-        $sports = Sport::all();
-
-        // TODO Να το κάνω με άλλη view, που να μην εμφανίζει τα sports
-        return view('public.home', compact('posts', 'sports'));
+        return view('public.teamPosts', compact('posts'));
 
     }
 

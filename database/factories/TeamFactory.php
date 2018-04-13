@@ -17,6 +17,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Team::class, function (Faker $faker) {
     return [
         'id' => Str::uuid(),
+        'slug' => '',
         'name' => $faker->company,
         'city' => $faker->city
     ];
