@@ -621,6 +621,46 @@ class ViewsTest extends TestCase
     }
 
     /**
+     * Test Users edit view response
+     */
+    public function testUsersEditViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $user = User::first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get("/admin/users/{$user->id}/edit");
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('user'); //
+
+        $responseUser = (object) $response->original['user']->first();
+
+        if($user->id==$responseUser->id) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+    }
+
+    /**
+     * Test Users create view response
+     */
+    public function testUsersCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/users/create');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
+    }
+
+    /**
      * Test Home page index view
      */
     public function testHomeIndex()
