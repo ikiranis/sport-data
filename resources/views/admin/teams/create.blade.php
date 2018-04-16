@@ -32,6 +32,34 @@
                                        value="{{old('city')}}">
                             </div>
 
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">{{__('messages.sport')}}</span>
+                                </div>
+                                <select class="form-control col-10 px-2" id="sport_id" name="sport_id">
+                                    @foreach($sports as $sport)
+                                        <option value="{{$sport->id}}">
+                                            {{$sport->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="division_id" class="sr-only">{{__('messages.division')}}</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">{{__('messages.division')}}</span>
+                                </div>
+                                <select class="form-control col-10 px-2" id="division_id" name="division_id">
+                                    @foreach($divisions as $division)
+                                        <option value="{{$division->id}}">
+                                            {{$division->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="row my-3 border">
 
                                 <div class="form-group my-3 col-lg-6 col-12 ml-auto mr-auto">

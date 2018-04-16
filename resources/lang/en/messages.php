@@ -83,7 +83,7 @@ return [
     'date' => 'Date',
     'score' => 'Score',
     'search' => 'Search',
-    'password' => 'Password'
-
+    'password' => 'Password',
+    'division' => 'Division'
 
 ];

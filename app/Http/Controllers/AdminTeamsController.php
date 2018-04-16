@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Division;
 use App\Logo;
-use App\Photo;
+use App\Sport;
 use App\Team;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -29,7 +30,10 @@ class AdminTeamsController extends Controller
      */
     public function create()
     {
-        return view('admin.teams.create');
+        $divisions = Division::orderBy('name', 'asc')->all();
+        $sports = Sport::orderBy('name', 'asc')->all();
+
+        return view('admin.teams.create', compact('divisions', 'sports'));
     }
 
     /**
@@ -92,8 +96,10 @@ class AdminTeamsController extends Controller
     public function edit($id)
     {
         $team = Team::findOrFail($id);
+        $divisions = Division::orderBy('name', 'asc')->all();
+        $sports = Sport::orderBy('name', 'asc')->all();
 
-        return view ('admin/teams/edit', compact('team'));
+        return view ('admin/teams/edit', compact('team', 'divisions', 'sports'));
     }
 
     /**

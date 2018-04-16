@@ -31,6 +31,34 @@
                                 <input type="text" max="255" class="form-control col-10 px-2" id="city" name="city" value="{{$team->city}}">
                             </div>
 
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">{{__('messages.sport')}}</span>
+                                </div>
+                                <select class="form-control col-10 px-2" id="sport_id" name="sport_id">
+                                    @foreach($sports as $sport)
+                                        <option value="{{$sport->id}}" {{$sport->id==$team->sport_id ? 'selected' : ''}}>
+                                            {{$sport->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="division_id" class="sr-only">{{__('messages.division')}}</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">{{__('messages.division')}}</span>
+                                </div>
+                                <select class="form-control col-10 px-2" id="division_id" name="division_id">
+                                    @foreach($divisions as $division)
+                                        <option value="{{$division->id}}" {{$division->id==$team->division_id ? 'selected' : ''}}>
+                                            {{$division->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="row border p-2">
 
                                 <div class="col-lg-5">
