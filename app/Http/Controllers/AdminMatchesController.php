@@ -27,7 +27,7 @@ class AdminMatchesController extends Controller
                 whereChampionshipId($request->championship_id)->
                 whereSeasonId($request->season_id)->
                 whereMatchdayId($request->matchday_id)->
-                paginate(15);
+                orderBy('match_date', 'desc')->paginate(15);
         } else {  // get all data
             $matches = Match::paginate(15);
             $request = null;

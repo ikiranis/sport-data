@@ -14,7 +14,7 @@ class AdminCommentsController extends Controller
      */
     public function index()
     {
-        $comments = Comment::paginate(15);
+        $comments = Comment::orderBy('created_at', 'desc')->paginate(15);
 
         return view('admin/comments/index', compact('comments'));
     }

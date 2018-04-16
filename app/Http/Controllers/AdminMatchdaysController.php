@@ -17,7 +17,7 @@ class AdminMatchdaysController extends Controller
      */
     public function index()
     {
-        $matchdays = Matchday::paginate(15);
+        $matchdays = Matchday::orderBy('matchday', 'asc')->paginate(15);
 
         return view('admin/matchdays/index', compact('matchdays'));
     }

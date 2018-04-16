@@ -16,7 +16,7 @@ class AdminChampionshipsController extends Controller
      */
     public function index()
     {
-        $championships = Championship::paginate(15);
+        $championships = Championship::orderBy('name', 'asc')->paginate(15);
 
         return view('admin/championships/index', compact('championships'));
     }

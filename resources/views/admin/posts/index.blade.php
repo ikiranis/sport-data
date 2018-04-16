@@ -18,6 +18,7 @@
                 <th scope="col">{{__('messages.user')}}</th>
                 <th scope="col">{{__('messages.athlete')}}</th>
                 <th scope="col">{{__('messages.sport')}}</th>
+                <th scope="col">{{__('messages.date')}}</th>
                 <th scope="col">{{__('messages.approve')}}</th>
                 <th scope="col">{{__('messages.action')}}</th>
             </tr>
@@ -31,6 +32,7 @@
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->athlete->fullName ?? ''}}</td>
                     <td>{{$post->sport->name ?? ''}}</td>
+                    <td>{{$post->created_at->diffForHumans() ?? ''}}</td>
                     <td>{{$post->approved==1 ? __('messages.active') : __('messages.inactive')}}</td>
 
                     <td>

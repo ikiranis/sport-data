@@ -17,7 +17,7 @@ class AdminTeamsController extends Controller
      */
     public function index()
     {
-        $teams = Team::paginate(15);
+        $teams = Team::orderBy('name', 'asc')->paginate(15);
 
         return view('admin.teams.index', compact('teams'));
     }

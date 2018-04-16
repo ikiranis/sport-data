@@ -16,7 +16,7 @@ class AdminSeasonsController extends Controller
      */
     public function index()
     {
-        $seasons = Season::paginate(15);
+        $seasons = Season::orderBy('name', 'asc')->paginate(15);
 
         return view('admin/seasons/index', compact('seasons'));
     }
