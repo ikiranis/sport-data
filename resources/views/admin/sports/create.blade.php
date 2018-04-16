@@ -20,7 +20,7 @@
                                     <span class="input-group-text">{{__('messages.name')}}</span>
                                 </div>
                                 <input type="text" max="255" class="form-control" id="name" name="name"
-                                       placeholder="{{old('name')}}">
+                                       value="{{old('name')}}">
                             </div>
 
 
@@ -40,7 +40,7 @@
                                         <span class="input-group-text">{{__('messages.reference')}}</span>
                                     </div>
                                     <input type="text" max="255" class="form-control" id="reference" name="reference"
-                                           placeholder="{{old('reference')}}">
+                                           value="{{old('reference')}}">
                                 </div>
 
                             </div>

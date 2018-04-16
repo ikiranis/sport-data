@@ -22,7 +22,7 @@
                                     <span class="input-group-text w-100">{{__('messages.title')}}</span>
                                 </div>
                                 <input type="text" max="255" class="form-control col-10 px-2" id="title" name="title"
-                                       placeholder="{{old('title')}}">
+                                       value="{{old('title')}}">
                             </div>
 
                             <div class="form-group">
@@ -43,7 +43,7 @@
                                 </div>
                                 <input type="text" max="255" class="form-control col-10 px-2" id="reference"
                                        name="reference"
-                                       placeholder="{{old('reference')}}">
+                                       value="{{old('reference')}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -120,7 +120,7 @@
                                     </div>
                                     <input type="text" max="255" class="form-control" id="photo_reference"
                                            name="photo_reference"
-                                           placeholder="{{old('photo_reference')}}">
+                                           value="{{old('photo_reference')}}">
                                 </div>
 
                             </div>

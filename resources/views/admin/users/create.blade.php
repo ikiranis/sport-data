@@ -20,7 +20,7 @@
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
                                 <input type="text" max="255" class="form-control col-9 px-2" id="name" name="name"
-                                       placeholder="{{old('name')}}">
+                                       value="{{old('name')}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -29,7 +29,7 @@
                                     <span class="input-group-text w-100">e-mail</span>
                                 </div>
                                 <input type="email" max="255" class="form-control col-9 px-2" id="email" name="email"
-                                       placeholder="{{old('email')}}">
+                                       value="{{old('email')}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -38,7 +38,7 @@
                                     <span class="input-group-text w-100">{{__('messages.password')}}</span>
                                 </div>
                                 <input type="password" max="255" class="form-control col-9 px-2" id="password" name="password"
-                                       placeholder="{{old('password')}}">
+                                       value="{{old('password')}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
