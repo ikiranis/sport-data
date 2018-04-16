@@ -89,6 +89,12 @@ class HomeController extends Controller
      */
     public function storeComment(Request $request)
     {
+        $validatedData = $request->validate([
+            'body' => 'required',
+            'author' => 'required|max:255',
+            'email' => 'required|email'
+        ]);
+
         $input = $request->all();
 
         Comment::create($input);
