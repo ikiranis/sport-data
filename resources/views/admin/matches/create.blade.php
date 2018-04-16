@@ -200,9 +200,9 @@
                     for(let i=0; i<this.teams.length; i++) {
                         if(this.teams[i].id === needle) {
                             if(i === this.teams.length-1) {
-                                return -1;
+                                return 0;
                             } else {
-                                return i;
+                                return i+1;
                             }
 
                         }
@@ -214,9 +214,9 @@
                         let changedSelectElement = e.target.id;
 
                         if(changedSelectElement === 'first_team_id') {
-                            this.firstTeamSelected = this.teams[this.getIndexInArray(this.firstTeamSelected) + 1].id;
+                            this.firstTeamSelected = this.teams[this.getIndexInArray(this.firstTeamSelected)].id;
                         } else {
-                            this.secondTeamSelected = this.teams[this.getIndexInArray(this.secondTeamSelected) + 1].id;
+                            this.secondTeamSelected = this.teams[this.getIndexInArray(this.secondTeamSelected) ].id;
                         }
 
                     }
