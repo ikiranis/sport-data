@@ -67,7 +67,7 @@ class HomeController extends Controller
      * @param $team_id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function teamPosts($slug)
+    public function team($slug)
     {
 
         // Get the team with $team_id
