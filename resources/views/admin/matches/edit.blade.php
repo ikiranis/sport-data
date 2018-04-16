@@ -112,7 +112,7 @@
                                     <span class="input-group-text w-100">{{__('messages.score')}}</span>
                                 </div>
 
-                                <input type="number" min="0" max="200"  class="form-control col-5 px-2" id="first_team_score" name="first_team_score"
+                                <input type="number" min="0" max="200" class="form-control col-5 px-2" id="first_team_score" name="first_team_score"
                                     value="{{$match->first_team_score}}">
 
                                 <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>

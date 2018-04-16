@@ -84,7 +84,7 @@
 
     @if(count($matches)>0)
         <script>
-            let matches = {!! json_encode($matches) !!};
+            let matches = @json($matches);
         </script>
 
         <div id="matches">
@@ -164,42 +164,42 @@
 
     <script>
 
-                @if(count($matches)>0)
+        @if(count($matches)>0)
 
-        let match = new Vue({
-                el: '#matches',
-                delimiters: ['{%', '%}'],
-                data: {
-                    matches: matches.data,
-                    isSaved: {}
-                },
-                created: function () { // Set first values to this.isSaved array
-                    for (let key in this.matches) {
-                        Vue.set(this.isSaved, key, true);
-                    }
-                },
-                methods: {
-                    postData(key) {
-
-                        let myData = {
-                            id: this.matches[key].id,
-                            first_team_score: this.matches[key].first_team_score,
-                            second_team_score: this.matches[key].second_team_score
-                        };
-
-                        axios.patch('/api/match', myData)
-                            .then(response => {
-                                Vue.set(this.isSaved, key, true);
-                            })
-                            .catch(e => console.log(e));
+            let match = new Vue({
+                    el: '#matches',
+                    delimiters: ['{%', '%}'],
+                    data: {
+                        matches: matches.data,
+                        isSaved: {}
                     },
-                    changingScore(key) {
-                        Vue.set(this.isSaved, key, false);
-                    }
-                }
-            });
+                    created: function () { // Set first values to this.isSaved array
+                        for (let key in this.matches) {
+                            Vue.set(this.isSaved, key, true);
+                        }
+                    },
+                    methods: {
+                        postData(key) {
 
-                @endif
+                            let myData = {
+                                id: this.matches[key].id,
+                                first_team_score: this.matches[key].first_team_score,
+                                second_team_score: this.matches[key].second_team_score
+                            };
+
+                            axios.patch('/api/match', myData)
+                                .then(response => {
+                                    Vue.set(this.isSaved, key, true);
+                                })
+                                .catch(e => console.log(e));
+                        },
+                        changingScore(key) {
+                            Vue.set(this.isSaved, key, false);
+                        }
+                    }
+                });
+
+        @endif
 
         let searchContainer = new Vue({
                 delimiters: ['{%', '%}'],
@@ -245,8 +245,6 @@
 
 
     </script>
-
-    {{--<script src="{{ mix('js/test.js') }}"></script>--}}
 
 @endsection
 

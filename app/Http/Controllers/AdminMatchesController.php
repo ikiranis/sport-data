@@ -76,8 +76,8 @@ class AdminMatchesController extends Controller
             'stadium_id' => 'nullable',
             'first_team_id' => 'required',
             'second_team_id' => 'required',
-            'first_team_score' => 'nullable|integer|between:0-200',
-            'second_team_score' => 'nullable|integer|between:0-200'
+            'first_team_score' => 'nullable|integer|between:0,200',
+            'second_team_score' => 'nullable|integer|between:0,200'
         ]);
 
         $input = $request->all();
@@ -136,8 +136,8 @@ class AdminMatchesController extends Controller
             'stadium_id' => 'nullable',
             'first_team_id' => 'required',
             'second_team_id' => 'required',
-            'first_team_score' => 'nullable|integer|between:0-200',
-            'second_team_score' => 'nullable|integer|between:0-200'
+            'first_team_score' => 'nullable|integer|between:0,200',
+            'second_team_score' => 'nullable|integer|between:0,200'
         ]);
 
         $input = $request->all();
