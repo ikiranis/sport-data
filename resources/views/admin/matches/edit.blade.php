@@ -88,21 +88,15 @@
                                     <span class="input-group-text w-100">{{__('messages.teams')}}</span>
                                 </div>
 
-                                <select class="form-control col-5 px-2" id="first_team_id" name="first_team_id">
-                                    @foreach($teams as $team)
-                                        <option value="{{$team->id}}" {{$team->id==$match->first_team_id ? 'selected' : ''}}>
-                                            {{$team->name}}
-                                        </option>
-                                    @endforeach
+                                <select v-model="firstTeamSelected" class="form-control col-5 px-2"
+                                        id="first_team_id" name="first_team_id">
+                                    <option v-for="team in teams" :value="team.id">{% team.name %}</option>
                                 </select>
 
                                 <label for="second_team_id" class="sr-only">{{__('messages.team')}}</label>
-                                <select class="form-control col-5 px-2" id="second_team_id" name="second_team_id">
-                                    @foreach($teams as $team)
-                                        <option value="{{$team->id}}" {{$team->id==$match->second_team_id ? 'selected' : ''}}>
-                                            {{$team->name}}
-                                        </option>
-                                    @endforeach
+                                <select v-model="secondTeamSelected" class="form-control col-5 px-2"
+                                        id="second_team_id" name="second_team_id">
+                                    <option v-for="team in teams" :value="team.id">{% team.name %}</option>
                                 </select>
                             </div>
 
@@ -158,14 +152,18 @@
                 championshipSelected: '{!! $match->championship_id ?? 0 !!}',
                 seasonSelected: '{!! $match->season_id ?? 0 !!}',
                 matchdaySelected: '{!! $match->matchday_id ?? 0 !!}',
+                firstTeamSelected: '{!! $match->first_team_id ?? 0 !!}',
+                secondTeamSelected: '{!! $match->second_team_id ?? 0 !!}',
                 championships: '',
                 seasons: '',
-                matchdays: ''
+                matchdays: '',
+                teams: ''
             },
             mounted: function() {
                this.getChampionships();
                this.getSeasons();
                this.getMatchdays();
+               this.getTeams();
             },
             methods: {
                 getChampionships() {
@@ -186,6 +184,13 @@
                     axios.get('/api/matchdays/' + this.seasonSelected)
                         .then(response => {
                             this.matchdays = response.data;
+                        })
+                        .catch(e => console.log(e));
+                },
+                getTeams() {
+                    axios.get('/api/teams/' + this.sportSelected)
+                        .then(response => {
+                            this.teams = response.data;
                         })
                         .catch(e => console.log(e));
                 }
