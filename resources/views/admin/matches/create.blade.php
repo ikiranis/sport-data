@@ -88,14 +88,16 @@
                                     <span class="input-group-text w-100">{{__('messages.teams')}}</span>
                                 </div>
 
-                                <select v-model="firstTeamSelected" class="form-control col-5 px-2"
+                                <select v-model="firstTeamSelected" v-on:change="checkValidTeam" class="form-control col-5 px-2"
                                         id="first_team_id" name="first_team_id">
+                                    <option value="0"></option>
                                     <option v-for="team in teams" :value="team.id">{% team.name %}</option>
                                 </select>
 
                                 <label for="second_team_id" class="sr-only">{{__('messages.team')}}</label>
-                                <select v-model="secondTeamSelected" class="form-control col-5 px-2"
+                                <select v-model="secondTeamSelected" v-on:change="checkValidTeam" class="form-control col-5 px-2"
                                         id="second_team_id" name="second_team_id">
+                                    <option value="0"></option>
                                     <option v-for="team in teams" :value="team.id">{% team.name %}</option>
                                 </select>
                             </div>
@@ -192,6 +194,32 @@
                             this.teams = response.data;
                         })
                         .catch(e => console.log(e));
+                },
+                getIndexInArray(needle) {
+                    // TODO find better way with for/in
+                    for(let i=0; i<this.teams.length; i++) {
+                        if(this.teams[i].id === needle) {
+                            if(i === this.teams.length-1) {
+                                return -1;
+                            } else {
+                                return i;
+                            }
+
+                        }
+                    }
+                },
+                checkValidTeam(e) { // Check if the other team is the same
+                    if(this.firstTeamSelected === this.secondTeamSelected) {
+
+                        let changedSelectElement = e.target.id;
+
+                        if(changedSelectElement === 'first_team_id') {
+                            this.firstTeamSelected = this.teams[this.getIndexInArray(this.firstTeamSelected) + 1].id;
+                        } else {
+                            this.secondTeamSelected = this.teams[this.getIndexInArray(this.secondTeamSelected) + 1].id;
+                        }
+
+                    }
                 }
             }
         });
