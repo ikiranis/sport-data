@@ -41,9 +41,12 @@
                             <li class="list-group-item list-group-item-action"><a
                                         href="{{$post->reference}}">{{$post->reference}}</a></li>
                         @endif
-                        @if(count($post->comments->where('approved', 1))>0)
+
+                            @php $approvedComments = count($post->comments->where('approved', 1)) @endphp
+
+                        @if($approvedComments>0)
                             <li class="list-group-item list-group-item-action"><a
-                                        href="{{route('post', $post->slug)}}">{{count($post->comments)}} {{trans_choice('messages.comments', count($post->comments))}}</a>
+                                        href="{{route('post', $post->slug)}}">{{$approvedComments}} {{trans_choice('messages.comments', count($post->comments))}}</a>
                             </li>
                         @endif
                     </ul>
