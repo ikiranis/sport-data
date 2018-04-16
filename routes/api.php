@@ -21,3 +21,4 @@ Route::patch('match', 'AdminMatchesController@updateScore');
 Route::get('championships/{sport_id}', 'AdminChampionshipsController@getChampionships');
 Route::get('seasons/{championship_id}', 'AdminSeasonsController@getSeasons');
 Route::get('matchdays/{season_id}', 'AdminMatchdaysController@getMatchdays');
+Route::get('teams/{sport_id}', 'AdminTeamsController@getTeams');

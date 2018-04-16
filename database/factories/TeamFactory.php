@@ -15,11 +15,15 @@ use Faker\Generator as Faker;
 
 
 $factory->define(App\Team::class, function (Faker $faker) {
-    return [
-        'id' => Str::uuid(),
-        'slug' => '',
-        'name' => $faker->company,
-        'city' => $faker->city
-    ];
+
+        return [
+            'id' => Str::uuid(),
+            'slug' => '',
+            'name' => $faker->company,
+            'city' => $faker->city,
+            'sport_id' => '',
+            'division_id' => random_int(1, 4)
+        ];
+
 });
 

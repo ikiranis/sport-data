@@ -34,7 +34,9 @@ class Team extends Model
         'slug',
         'logo_id',
         'name',
-        'city'
+        'city',
+        'sport_id',
+        'division_id'
     ];
 
     /**
@@ -58,14 +60,26 @@ class Team extends Model
     /**
      * Relation to Logos
      */
-    public function logo() {
+    public function logo()
+    {
         return $this->belongsTo('App\Logo');
     }
 
     /**
      * Relation to posts
      */
-    public function posts() {
+    public function posts()
+    {
         return $this->belongsToMany('App\Post')->withTimestamps();
+    }
+
+    /**
+     * Relation with divisions
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function division()
+    {
+        return $this->belongsTo('App\Division');
     }
 }

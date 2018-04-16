@@ -37,6 +37,10 @@ class SportsTableSeeder extends Seeder
                 });
             });
 
+            factory(App\Team::class, 10)->create([
+                'sport_id' => $id
+            ]);
+
         }
 
 

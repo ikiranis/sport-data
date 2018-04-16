@@ -19,6 +19,8 @@ class CreateTeamsTable extends Migration
             $table->uuid('logo_id')->nullable();
             $table->string('name');
             $table->string('city')->nullable();
+            $table->uuid('sport_id');
+            $table->integer('division_id')->unsigned();
             $table->primary('id');
         });
     }
