@@ -54,9 +54,6 @@ class Team extends Model
         ];
     }
 
-    // Don't write timestamps at factory
-    public $timestamps  = false;
-
     /**
      * Relation to Logos
      */
