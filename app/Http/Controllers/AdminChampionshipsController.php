@@ -22,7 +22,7 @@ class AdminChampionshipsController extends Controller
     }
 
     /**
-     * Api that returns the Championships list for $request->sport_id
+     * Api that returns the Championships list for sport_id
      *
      * @param $sport_id
      * @return mixed

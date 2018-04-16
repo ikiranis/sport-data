@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Division;
+use App\Http\Resources\TeamResource;
 use App\Logo;
 use App\Sport;
 use App\Team;
@@ -21,6 +22,25 @@ class AdminTeamsController extends Controller
         $teams = Team::orderBy('created_at', 'desc')->paginate(15);
 
         return view('admin.teams.index', compact('teams'));
+    }
+
+    /**
+     * Api that returns the teams list for sport_id
+     *
+     * @param $sport_id
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function getTeams($sport_id)
+    {
+        $teams = Team::whereSportId($sport_id)->get();
+
+        if ($teams->isNotEmpty()) {
+            return TeamResource::collection($teams);
+        } else {
+            return response()->json([
+                'message' => 'Teams not found'
+            ], 204);
+        }
     }
 
     /**
