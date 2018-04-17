@@ -31,6 +31,7 @@
                             <input type="hidden" name="approved" value="{{$comment->approved == 0 ? 1 : 0}}">
                             @csrf
 
+                            {{-- TODO make it with javascript --}}
                             <button type="submit" class="btn-sm btn-outline-success w-100">
                                 {{$comment->approved == 0 ? __('messages.active') : __('messages.inactive')}}
                             </button>
