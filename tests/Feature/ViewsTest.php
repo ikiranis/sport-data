@@ -31,7 +31,7 @@ class ViewsTest extends TestCase
 
         $response->assertViewHas('athletes'); // Test if "athletes" data exist
 
-        $athlete = Athlete::first(); // First athlete in database
+        $athlete = Athlete::orderBy('lname', 'asc')->first(); // First athlete in database
 
         $responseAthlete = (object) $response->original['athletes']->first(); // First athlete in view response
 
@@ -97,7 +97,7 @@ class ViewsTest extends TestCase
 
         $response->assertViewHas('stadia');
 
-        $stadia = Stadium::first();
+        $stadia = Stadium::orderBy('name', 'asc')->first();
 
         $responseStadia = (object) $response->original['stadia']->first();
 
@@ -163,7 +163,7 @@ class ViewsTest extends TestCase
 
         $response->assertViewHas('teams');
 
-        $teams = Team::first();
+        $teams = Team::orderBy('created_at', 'desc')->first();
 
         $responseTeams = (object) $response->original['teams']->first();
 
@@ -229,7 +229,7 @@ class ViewsTest extends TestCase
 
         $response->assertViewHas('sports');
 
-        $sports = Sport::first();
+        $sports = Sport::orderBy('name', 'asc')->first();
 
         $responseSports = (object) $response->original['sports']->first();
 
@@ -295,7 +295,7 @@ class ViewsTest extends TestCase
 
         $response->assertViewHas('seasons');
 
-        $seasons = Season::first();
+        $seasons = Season::orderBy('name', 'asc')->first();
 
         $responseSeasons = (object) $response->original['seasons']->first();
 
@@ -361,7 +361,7 @@ class ViewsTest extends TestCase
 
         $response->assertViewHas('championships');
 
-        $championships = Championship::first();
+        $championships = Championship::orderBy('name', 'asc')->first();
 
         $responseChampionships = (object) $response->original['championships']->first();
 
@@ -716,7 +716,7 @@ class ViewsTest extends TestCase
         // Team with posts relations
         $team = Team::whereHas('posts')->first();
 
-        $response = $this->get("/teamPosts/{$team->slug}");
+        $response = $this->get("/team/{$team->slug}");
 
         $response->assertStatus(200);
 
