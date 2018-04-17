@@ -84,6 +84,7 @@ return [
     'score' => 'Σκορ',
     'search' => 'Αναζήτηση',
     'password' => 'Συνθηματικό',
-    'division' => 'Τμήμα'
+    'division' => 'Τμήμα',
+    'insert matches' => 'Εισαγωγή αγώνων αγωνιστικής'
 
 ];

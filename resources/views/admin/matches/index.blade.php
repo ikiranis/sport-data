@@ -75,6 +75,12 @@
                     </button>
                 </div>
 
+                <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
+                    <button type="submit" class="btn btn-info w-100" formaction="{{route('matches.create.massive')}}">
+                        {{__('messages.insert matches')}}
+                    </button>
+                </div>
+
             </div>
         </form>
 

@@ -59,6 +59,20 @@ class AdminMatchesController extends Controller
         return view('admin.matches.create', compact('championships', 'sports', 'seasons', 'matchdays', 'stadia', 'teams', 'data'));
     }
 
+
+    public function createMassive(Request $request)
+    {
+        $championships = Championship::all();
+        $sports = Sport::all();
+        $seasons = Season::all();
+        $matchdays = Matchday::all();
+        $stadia = Stadium::all();
+        $teams = Team::all();
+        $data = $request;
+
+        return view('admin/matches/createMassive', compact('championships', 'sports', 'seasons', 'matchdays', 'stadia', 'teams', 'data'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
