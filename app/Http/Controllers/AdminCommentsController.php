@@ -73,6 +73,7 @@ class AdminCommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $validatedData = $request->validate([
             'post_id' => 'required',
             'body' => 'required',
@@ -81,6 +82,17 @@ class AdminCommentsController extends Controller
             'approved' => 'nullable'
         ]);
 
+        $input = $request->all();
+
+        $comment = Comment::findOrFail($id);
+
+        $comment->update($input);
+
+        return redirect(route('comments.index'));
+    }
+
+    public function approvedOrNot(Request $request, $id)
+    {
         $input = $request->all();
 
         $comment = Comment::findOrFail($id);

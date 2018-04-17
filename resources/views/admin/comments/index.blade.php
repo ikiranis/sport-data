@@ -25,12 +25,22 @@
                     <td>{{$comment->approved==1 ? __('messages.active') : __('messages.inactive')}}</td>
                     <td>{{$comment->created_at->diffForHumans()}}</td>
 
-                    <td>
-                        <form method="POST" action="{{route('comments.destroy', $comment->id)}}">
+                    <td class="row my-auto">
+                        <form method="POST" action="{{route('comments.approvedOrNot', $comment->id)}}" class="col-6">
+                            <input name="_method" type="hidden" value="PATCH">
+                            <input type="hidden" name="approved" value="{{$comment->approved == 0 ? 1 : 0}}">
+                            @csrf
+
+                            <button type="submit" class="btn-sm btn-outline-success w-100">
+                                {{$comment->approved == 0 ? __('messages.active') : __('messages.inactive')}}
+                            </button>
+                        </form>
+
+                        <form method="POST" action="{{route('comments.destroy', $comment->id)}}" class="col-6">
                             <input name="_method" type="hidden" value="DELETE">
                             @csrf
 
-                            <button type="submit" class="btn btn-danger">
+                            <button type="submit" class="btn-sm btn-danger w-100">
                                 {{__('messages.delete')}}
                             </button>
                         </form>

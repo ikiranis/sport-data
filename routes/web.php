@@ -46,6 +46,7 @@ Route::group(
             Route::resource('admin/matchdays', 'AdminMatchdaysController');
             Route::resource('admin/championships', 'AdminChampionshipsController');
             Route::resource('admin/comments', 'AdminCommentsController');
+            Route::patch('admin/comments/{comment}/approvedOrNot', 'AdminCommentsController@approvedOrNot')->name('comments.approvedOrNot');
             Route::resource('admin/matches', 'AdminMatchesController');
         });
 
