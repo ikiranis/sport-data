@@ -26,5 +26,7 @@ $factory->define(App\Team::class, function (Faker $faker) {
             'division_id' => random_int(1, 4)
         ];
 
+
+
 });
 
