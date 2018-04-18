@@ -48,26 +48,32 @@ class AdminMatchesController extends Controller
     public function create(Request $request)
     {
 
-        $championships = Championship::all();
-        $sports = Sport::all();
-        $seasons = Season::all();
-        $matchdays = Matchday::all();
-        $stadia = Stadium::all();
-        $teams = Team::all();
+        $championships = Championship::orderBy('name', 'asc')->all();
+        $sports = Sport::orderBy('name', 'asc')->all();
+        $seasons = Season::orderBy('name', 'asc')->all();
+        $matchdays = Matchday::orderBy('matchday', 'asc')->all();
+        $stadia = Stadium::orderBy('name', 'asc')->all();
+        $teams = Team::orderBy('name', 'asc')->all();
         $data = $request;
 
         return view('admin.matches.create', compact('championships', 'sports', 'seasons', 'matchdays', 'stadia', 'teams', 'data'));
     }
 
 
+    /**
+     * Show the form for creating massive matches
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function createMassive(Request $request)
     {
-        $championships = Championship::all();
-        $sports = Sport::all();
-        $seasons = Season::all();
-        $matchdays = Matchday::all();
-        $stadia = Stadium::all();
-        $teams = Team::all();
+        $championships = Championship::orderBy('name', 'asc')->all();
+        $sports = Sport::orderBy('name', 'asc')->all();
+        $seasons = Season::orderBy('name', 'asc')->all();
+        $matchdays = Matchday::orderBy('matchday', 'asc')->all();
+        $stadia = Stadium::orderBy('name', 'asc')->all();
+        $teams = Team::whereChampionshipId($request->championship_id)->orderBy('name', 'asc')->get();
         $data = $request;
 
         return view('admin/matches/createMassive', compact('championships', 'sports', 'seasons', 'matchdays', 'stadia', 'teams', 'data'));
