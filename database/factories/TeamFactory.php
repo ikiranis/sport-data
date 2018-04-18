@@ -22,6 +22,7 @@ $factory->define(App\Team::class, function (Faker $faker) {
             'name' => $faker->company,
             'city' => $faker->city,
             'sport_id' => '',
+            'championship_id' => '',
             'division_id' => random_int(1, 4)
         ];
 

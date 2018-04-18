@@ -20,6 +20,7 @@ class CreateTeamsTable extends Migration
             $table->string('name');
             $table->string('city')->nullable();
             $table->uuid('sport_id');
+            $table->uuid('championship_id');
             $table->integer('division_id')->unsigned();
             $table->timestamps();
             $table->primary('id');

@@ -8,6 +8,8 @@ class SportsTableSeeder extends Seeder
         'Ποδόσφαιρο', 'Μπάσκετ', 'Βόλει', 'Χαντμπολ'
     ];
 
+    protected $createdChampionships = array();
+
     /**
      * Run the database seeds.
      *
@@ -28,6 +30,9 @@ class SportsTableSeeder extends Seeder
             factory(App\Championship::class, 5)->create([
                 'sport_id' => $id
             ])->each(function ($championship) {
+
+                $this->createdChampionships[] = $championship->id;
+
                 factory(App\Season::class)->create([
                     'championship_id' => $championship->id
                 ])->each(function ($season) {
@@ -37,9 +42,13 @@ class SportsTableSeeder extends Seeder
                 });
             });
 
-            factory(App\Team::class, 10)->create([
-                'sport_id' => $id
-            ]);
+            foreach ($this->createdChampionships as $championship_id) {
+                factory(App\Team::class, 8)->create([
+                    'sport_id' => $id,
+                    'championship_id' => $championship_id
+                ]);
+            }
+
 
         }
 

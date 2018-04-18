@@ -31,11 +31,13 @@ class Team extends Model
 
     // The attributes that are mass assignable
     protected $fillable = [
+        'id',
         'slug',
         'logo_id',
         'name',
         'city',
         'sport_id',
+        'championship_id',
         'division_id'
     ];
 
@@ -78,5 +80,15 @@ class Team extends Model
     public function division()
     {
         return $this->belongsTo('App\Division');
+    }
+
+    /**
+     * Relation with championships
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function championship()
+    {
+        return $this->belongsTo('App\Championship');
     }
 }
