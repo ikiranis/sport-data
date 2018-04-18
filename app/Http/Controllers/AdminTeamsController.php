@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Championship;
 use App\Division;
 use App\Http\Resources\TeamResource;
 use App\Logo;
@@ -52,8 +53,9 @@ class AdminTeamsController extends Controller
     {
         $divisions = Division::orderBy('name', 'asc')->all();
         $sports = Sport::orderBy('name', 'asc')->all();
+        $championships = Championship::orderBy('name', 'asc')->all();
 
-        return view('admin.teams.create', compact('divisions', 'sports'));
+        return view('admin.teams.create', compact('divisions', 'sports', 'championships'));
     }
 
     /**
@@ -118,8 +120,9 @@ class AdminTeamsController extends Controller
         $team = Team::findOrFail($id);
         $divisions = Division::orderBy('name', 'asc')->all();
         $sports = Sport::orderBy('name', 'asc')->all();
+        $championships = Championship::orderBy('name', 'asc')->all();
 
-        return view ('admin/teams/edit', compact('team', 'divisions', 'sports'));
+        return view ('admin/teams/edit', compact('team', 'divisions', 'sports', 'championships'));
     }
 
     /**
