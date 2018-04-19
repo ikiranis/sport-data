@@ -22,12 +22,12 @@ class AdminMatchesController extends Controller
     public function index(Request $request)
     {
 
-        if($request->has('_token')) { // If there are request data do filter
+        if ($request->has('_token')) { // If there are request data do filter
             $matches = Match::whereSportId($request->sport_id)->
-                whereChampionshipId($request->championship_id)->
-                whereSeasonId($request->season_id)->
-                whereMatchdayId($request->matchday_id)->
-                orderBy('match_date', 'desc')->paginate(15);
+            whereChampionshipId($request->championship_id)->
+            whereSeasonId($request->season_id)->
+            whereMatchdayId($request->matchday_id)->
+            orderBy('match_date', 'desc')->paginate(15);
         } else {  // get all data
             $matches = Match::paginate(15);
             $request = null;
@@ -68,21 +68,29 @@ class AdminMatchesController extends Controller
      */
     public function createMassive(Request $request)
     {
-        $championships = Championship::orderBy('name', 'asc')->all();
-        $sports = Sport::orderBy('name', 'asc')->all();
-        $seasons = Season::orderBy('name', 'asc')->all();
-        $matchdays = Matchday::orderBy('matchday', 'asc')->all();
+        $matches = 0;
+
+        if ($request->has('_token')) { // If there are request data do filter
+            $matches = Match::whereSportId($request->sport_id)->
+            whereChampionshipId($request->championship_id)->
+            whereSeasonId($request->season_id)->
+            whereMatchdayId($request->matchday_id)->
+            orderBy('match_date', 'desc')->get();
+
+            $matches = count($matches);
+        }
+
         $stadia = Stadium::orderBy('name', 'asc')->all();
         $teams = Team::whereChampionshipId($request->championship_id)->orderBy('name', 'asc')->get();
         $data = $request;
 
-        return view('admin/matches/createMassive', compact('championships', 'sports', 'seasons', 'matchdays', 'stadia', 'teams', 'data'));
+        return view('admin/matches/createMassive', compact('stadia', 'teams', 'data', 'matches'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -110,7 +118,7 @@ class AdminMatchesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -121,7 +129,7 @@ class AdminMatchesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -141,8 +149,8 @@ class AdminMatchesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -189,7 +197,7 @@ class AdminMatchesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

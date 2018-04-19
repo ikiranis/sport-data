@@ -2,89 +2,94 @@
 
 @section('content')
 
-    @include('includes.error')
+    <h1>{{trans_choice('messages.matches',2)}}</h1>
 
     <div class="container">
 
-        <div id="matches">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">{{trans_choice('messages.matches',1)}}</th>
-                    <th scope="col">{{__('messages.stadium')}}</th>
-                    <th scope="col">{{__('messages.date')}}</th>
-                    <th scope="col">{{__('messages.action')}}</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                @for($key=0; $key<(count($teams)/2); $key++)
+        @if(!$matches>0)
+            <div id="matches">
+                <table class="table">
+                    <thead>
                     <tr>
-
-                        <td>
-
-                            <div class="input-group mb-3 no-gutters">
-                                <label for="first_team_id" class="sr-only">{{__('messages.team')}}</label>
-                                <select v-model="firstTeamSelected['{{$key}}']"
-                                        v-on:change="checkValidTeam($event, {{$key}})"
-                                        class="form-control col-5 px-2"
-                                        id="first_team_id" name="first_team_id">
-                                    <option value="0"></option>
-                                    <option v-for="team in teams" :value="team.id">{% team.name %}</option>
-                                </select>
-
-                                <label for="second_team_id" class="sr-only">{{__('messages.team')}}</label>
-                                <select v-model="secondTeamSelected['{{$key}}']"
-                                        v-on:change="checkValidTeam($event, {{$key}})"
-                                        class="form-control col-5 px-2"
-                                        id="second_team_id" name="second_team_id">
-                                    <option value="0"></option>
-                                    <option v-for="team in teams" :value="team.id">{% team.name %}</option>
-                                </select>
-                            </div>
-
-                        </td>
-
-                        <td>
-                            <div class="input-group mb-3 no-gutters">
-                                <label for="stadium_id" class="sr-only">{{__('messages.stadium')}}</label>
-                                <select v-model="stadiumSelected['{{$key}}']" class="form-control col-10 px-2"
-                                        id="stadium_id"
-                                        name="stadium_id">
-                                    @foreach($stadia as $stadium)
-                                        <option value="{{$stadium->id}}">
-                                            {{$stadium->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </td>
-
-                        <td>
-                            <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="match_date">{{__('messages.date')}}</label>
-                                <input type="date" class="form-control col-10 px-2" id="match_date"
-                                       name="match_date">
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <button v-on:click="postData({{$key}})" type="submit" class="btn"
-                                    v-bind:class="isSaved[{{$key}}] ? 'btn-success' : 'btn-outline-success'"
-                                    v-bind:disabled="isSaved[{{$key}}]">
-                                Save
-                            </button>
-                        </td>
+                        <th scope="col">{{trans_choice('messages.matches',1)}}</th>
+                        <th scope="col">{{__('messages.stadium')}}</th>
+                        <th scope="col">{{__('messages.date')}}</th>
+                        <th scope="col">{{__('messages.action')}}</th>
                     </tr>
-                @endfor
+                    </thead>
+                    <tbody>
 
-                </tbody>
-            </table>
+                    @for($key=0; $key<(count($teams)/2); $key++)
+                        <tr>
 
-        </div>
+                            <td>
+
+                                <div class="input-group mb-3 no-gutters">
+                                    <label for="first_team_id" class="sr-only">{{__('messages.team')}}</label>
+                                    <select v-model="firstTeamSelected['{{$key}}']"
+                                            v-on:change="checkValidTeam($event, {{$key}})"
+                                            class="form-control col-5 px-2"
+                                            id="first_team_id" name="first_team_id">
+                                        <option value="0"></option>
+                                        <option v-for="team in teams" :value="team.id">{% team.name %}</option>
+                                    </select>
+
+                                    <label for="second_team_id" class="sr-only">{{__('messages.team')}}</label>
+                                    <select v-model="secondTeamSelected['{{$key}}']"
+                                            v-on:change="checkValidTeam($event, {{$key}})"
+                                            class="form-control col-5 px-2"
+                                            id="second_team_id" name="second_team_id">
+                                        <option value="0"></option>
+                                        <option v-for="team in teams" :value="team.id">{% team.name %}</option>
+                                    </select>
+                                </div>
+
+                            </td>
+
+                            <td>
+                                <div class="input-group mb-3 no-gutters">
+                                    <label for="stadium_id" class="sr-only">{{__('messages.stadium')}}</label>
+                                    <select v-model="stadiumSelected['{{$key}}']" class="form-control col-10 px-2"
+                                            id="stadium_id"
+                                            name="stadium_id">
+                                        @foreach($stadia as $stadium)
+                                            <option value="{{$stadium->id}}">
+                                                {{$stadium->name}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="input-group mb-3 no-gutters">
+                                    <label class="sr-only" for="match_date">{{__('messages.date')}}</label>
+                                    <input type="date" class="form-control col-10 px-2" id="match_date"
+                                           name="match_date">
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                <button v-on:click="postData({{$key}})" type="submit" class="btn"
+                                        v-bind:class="isSaved[{{$key}}] ? 'btn-success' : 'btn-outline-success'"
+                                        v-bind:disabled="isSaved[{{$key}}]">
+                                    Save
+                                </button>
+                            </td>
+                        </tr>
+                    @endfor
+
+                    </tbody>
+                </table>
+
+            </div>
     </div>
+
+    @else
+        <h1>Υπάρχουν ήδη αγώνες σε αυτή την αγωνιστική</h1>
+    @endif
 
 
 @endsection
