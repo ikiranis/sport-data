@@ -73,8 +73,7 @@
 
                             <td>
                                 <button v-on:click="postData({{$key}})" type="submit" class="btn"
-                                        v-bind:class="isSaved[{{$key}}] ? 'btn-success' : 'btn-outline-success'"
-                                        v-bind:disabled="isSaved[{{$key}}]">
+                                        v-bind:class="isSaved[{{$key}}] ? 'btn-success' : 'btn-outline-success'">
                                     {% isSaved['{{$key}}'] ? 'Ενημέρωση' : 'Αποθήκευση' %}
                                 </button>
                             </td>
@@ -150,6 +149,7 @@
                 postData(key) {
 
                     let myData = {
+                        id: this.match_id[key],
                         sport_id: this.sport_id,
                         championship_id: this.championship_id,
                         season_id: this.season_id,
@@ -158,12 +158,24 @@
                         second_team_id: this.secondTeamSelected[key],
                         stadium_id: this.stadiumSelected[key]
                     };
+                    console.log(this.isSaved[key]);
 
-                    axios.post('/api/match', myData)
-                        .then(response => {
-                            Vue.set(this.isSaved, key, true);
-                        })
-                        .catch(e => console.log(e));
+                    if(this.isSaved[key]) {
+                        axios.patch('/api/match', myData)
+                            .then(response => {
+                                Vue.set(this.isSaved, key, true);
+                            })
+                            .catch(e => console.log(e));
+                    } else {
+                        axios.post('/api/match', myData)
+                            .then(response => {
+                                Vue.set(this.match_id, key, response.data.id);
+                                Vue.set(this.isSaved, key, true);
+                            })
+                            .catch(e => console.log(e));
+                    }
+
+
                 },
             }
         });

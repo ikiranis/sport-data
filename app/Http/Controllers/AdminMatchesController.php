@@ -116,6 +116,21 @@ class AdminMatchesController extends Controller
     }
 
     /**
+     * Api call to store new match
+     *
+     * @param Request $request
+     * @return MatchResource
+     */
+    public function storeFromMassive(Request $request)
+    {
+        $input = $request->all();
+
+        $match = Match::create($input);
+
+        return new MatchResource($match);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int $id

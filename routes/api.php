@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::patch('match', 'AdminMatchesController@updateScore');
-Route::post('match', 'AdminMatchesController@store'); // TODO use another method to store
+Route::post('match', 'AdminMatchesController@storeFromMassive');
 Route::get('championships/{sport_id}', 'AdminChampionshipsController@getChampionships');
 Route::get('seasons/{championship_id}', 'AdminSeasonsController@getSeasons');
 Route::get('matchdays/{season_id}', 'AdminMatchdaysController@getMatchdays');
