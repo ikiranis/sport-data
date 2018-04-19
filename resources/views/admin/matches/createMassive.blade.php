@@ -75,7 +75,7 @@
                                 <button v-on:click="postData({{$key}})" type="submit" class="btn"
                                         v-bind:class="isSaved[{{$key}}] ? 'btn-success' : 'btn-outline-success'"
                                         v-bind:disabled="isSaved[{{$key}}]">
-                                    Save
+                                    {% isSaved['{{$key}}'] ? 'Ενημέρωση' : 'Αποθήκευση' %}
                                 </button>
                             </td>
                         </tr>
@@ -125,7 +125,8 @@
                 season_id: '{!! $data->season_id ?? 0 !!}',
                 matchday_id: '{!! $data->matchday_id ?? 0 !!}',
                 stadiumSelected: [],
-                isSaved: {}
+                isSaved: [],
+                match_id: []
             },
             created: function () { // Set first values to this.isSaved array
                 for (let i = 0; i < (this.teams.length / 2); i++) {
