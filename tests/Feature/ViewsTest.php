@@ -431,8 +431,6 @@ class ViewsTest extends TestCase
 
         $responseMatchdays = (object) $response->original['matchdays']->first();
 
-        echo $matchdays->id . '    '. $responseMatchdays->id;
-
         if($matchdays->id == $responseMatchdays->id) {
             $this->assertTrue(true);
         } else {

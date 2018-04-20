@@ -125,20 +125,22 @@ class ApiTest extends TestCase
     {
         $sport = Sport::firstOrFail();
         $championship = $sport->championship()->first();
-        $season = $championship->season()->first();
-        $matchday = Matchday::whereSeasonId($season->id)->get();
+        $season = Season::whereChampionshipId($championship->id)->first();
+        $matchday = Matchday::whereSeasonId($season->id)->first();
         $teams = Team::whereChampionshipId($championship->id)->get();
 
         $request = [
             'sport_id' => $sport->id,
-            'championsip_id' => $championship->id,
+            'championship_id' => $championship->id,
             'season_id' => $season->id,
             'matchday_id' => $matchday->id,
-            'first_team_id' => $teams[0],
-            'second_team_id' => $teams[1]
+            'first_team_id' => $teams[0]->id,
+            'second_team_id' => $teams[1]->id
         ];
 
         $response = $this->post('/api/match/', $request);
+
+        echo $response->getStatusCode();
 
         if ($response->getStatusCode() == 200) {
             $response->assertJsonStructure([
