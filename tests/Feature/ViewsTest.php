@@ -427,11 +427,13 @@ class ViewsTest extends TestCase
 
         $response->assertViewHas('matchdays');
 
-        $matchdays = Matchday::first();
+        $matchdays = Matchday::orderBy('matchday', 'asc')->paginate(15)->first();
 
         $responseMatchdays = (object) $response->original['matchdays']->first();
 
-        if($matchdays->id === $responseMatchdays->id) {
+        echo $matchdays->id . '    '. $responseMatchdays->id;
+
+        if($matchdays->id == $responseMatchdays->id) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -468,7 +470,7 @@ class ViewsTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertViewHas('matchday'); //
+        $response->assertViewHas('matchday');
 
         $responseMatchday = (object) $response->original['matchday']->first();
 

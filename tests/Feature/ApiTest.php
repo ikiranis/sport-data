@@ -7,6 +7,7 @@ use App\Match;
 use App\Matchday;
 use App\Season;
 use App\Sport;
+use App\Team;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -108,6 +109,36 @@ class ApiTest extends TestCase
         ];
 
         $response = $this->patch('/api/match/', $request);
+
+        if ($response->getStatusCode() == 200) {
+            $response->assertJsonStructure([
+                'id',
+                'first_team_score',
+                'second_team_score'
+            ]);
+        } else {
+            $this->assertTrue(true);
+        }
+    }
+
+    public function testPostMatch()
+    {
+        $sport = Sport::firstOrFail();
+        $championship = $sport->championship()->first();
+        $season = $championship->season()->first();
+        $matchday = Matchday::whereSeasonId($season->id)->get();
+        $teams = Team::whereChampionshipId($championship->id)->get();
+
+        $request = [
+            'sport_id' => $sport->id,
+            'championsip_id' => $championship->id,
+            'season_id' => $season->id,
+            'matchday_id' => $matchday->id,
+            'first_team_id' => $teams[0],
+            'second_team_id' => $teams[1]
+        ];
+
+        $response = $this->post('/api/match/', $request);
 
         if ($response->getStatusCode() == 200) {
             $response->assertJsonStructure([
