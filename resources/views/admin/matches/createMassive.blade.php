@@ -97,7 +97,15 @@
 
     <script>
 
-        function getIndexInArray(haystack, needle) {
+        /**
+         * Get the index position of needle in haystack array
+         *
+         * @param haystack {array}
+         * @param needle
+         * @returns {number}
+         */
+        function getIndexInArray(haystack, needle)
+        {
             // TODO find better way with for/in
             // TODO put function at basic library
             for (let i = 0; i < haystack.length; i++) {
@@ -112,12 +120,27 @@
             }
         }
 
+        /**
+         * Count how many times needle is in haystack array
+         *
+         * @param haystack
+         * @param needle
+         * @returns {number}
+         */
+        function countArrayContains(haystack, needle)
+        {
+            return haystack.filter(function(x){
+                return x === needle;
+            }).length;
+        }
+
         new Vue({
             delimiters: ['{%', '%}'],
             el: "#matches",
             data: {
                 firstTeamSelected: [],
                 secondTeamSelected: [],
+                teamsSelected: [],
                 teams: @json($teams),
                 sport_id: '{!! $data->sport_id ?? 0 !!}',
                 championship_id: '{!! $data->championship_id ?? 0 !!}',
@@ -134,14 +157,19 @@
             },
             methods: {
                 checkValidTeam(e, key) { // Check if the other team is the same
-                    if (this.firstTeamSelected[key] === this.secondTeamSelected[key]) {
+                    this.teamsSelected = this.firstTeamSelected.concat(this.secondTeamSelected);
+
+                    let countFirstTeamContains = countArrayContains(this.teamsSelected, this.firstTeamSelected[key]);
+                    let countSecondTeamContains = countArrayContains(this.teamsSelected, this.secondTeamSelected[key]);
+
+                    if (countFirstTeamContains > 1 || countSecondTeamContains > 1) {
 
                         let changedSelectElement = e.target.id;
 
                         if (changedSelectElement === 'first_team_id') {
-                            this.firstTeamSelected[key] = this.teams[getIndexInArray(this.teams, this.firstTeamSelected[key])].id;
+                            this.firstTeamSelected[key] = 0;
                         } else {
-                            this.secondTeamSelected[key] = this.teams[getIndexInArray(this.teams, this.secondTeamSelected[key])].id;
+                            this.secondTeamSelected[key] = 0;
                         }
 
                     }
@@ -158,7 +186,6 @@
                         second_team_id: this.secondTeamSelected[key],
                         stadium_id: this.stadiumSelected[key]
                     };
-                    console.log(this.isSaved[key]);
 
                     if(this.isSaved[key]) {
                         axios.patch('/api/match', myData)
