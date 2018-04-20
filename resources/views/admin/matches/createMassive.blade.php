@@ -156,17 +156,24 @@
                 }
             },
             methods: {
-                checkValidTeam(e, key) { // Check if the other team is the same
+                /**
+                 * Check if the other team is the same
+                 *
+                 * @param e
+                 * @param key
+                 */
+                checkValidTeam(e, key) {
+                    // Combine arrays
                     this.teamsSelected = this.firstTeamSelected.concat(this.secondTeamSelected);
 
+                    // Count how many times selected team exists in this.teamsSelected
                     let countFirstTeamContains = countArrayContains(this.teamsSelected, this.firstTeamSelected[key]);
                     let countSecondTeamContains = countArrayContains(this.teamsSelected, this.secondTeamSelected[key]);
 
+                    // If selected team exist more than one time
                     if (countFirstTeamContains > 1 || countSecondTeamContains > 1) {
 
-                        let changedSelectElement = e.target.id;
-
-                        if (changedSelectElement === 'first_team_id') {
+                        if (e.target.id === 'first_team_id') {
                             this.firstTeamSelected[key] = 0;
                         } else {
                             this.secondTeamSelected[key] = 0;
@@ -174,6 +181,11 @@
 
                     }
                 },
+                /**
+                 * Post data with api
+                 *
+                 * @param key
+                 */
                 postData(key) {
 
                     let myData = {
@@ -187,13 +199,13 @@
                         stadium_id: this.stadiumSelected[key]
                     };
 
-                    if(this.isSaved[key]) {
+                    if(this.isSaved[key]) { // Update data
                         axios.patch('/api/match', myData)
                             .then(response => {
                                 Vue.set(this.isSaved, key, true);
                             })
                             .catch(e => console.log(e));
-                    } else {
+                    } else {  // Insert data
                         axios.post('/api/match', myData)
                             .then(response => {
                                 Vue.set(this.match_id, key, response.data.id);
