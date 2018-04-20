@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Athlete;
 use App\Championship;
 use App\Comment;
+use App\Match;
 use App\Matchday;
 use App\Post;
 use App\Season;
@@ -732,6 +733,87 @@ class ViewsTest extends TestCase
             $this->assertTrue(false);
         }
 
+    }
+
+    /**
+     * Test Matches Index view response
+     */
+    public function testMatchesIndexViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/matches');
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('matches');
+
+        $matches = Match::first();
+
+        $responseMatches = (object) $response->original['matches']->first();
+
+        if($matches->id==$responseMatches->id) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
+
+    }
+
+    /**
+     * Test Match create view response
+     */
+    public function testMatchCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/matches/create');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
+    }
+
+    /**
+     * Test Match massive create view response
+     */
+    public function testMatchMassiveCreateViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get('/admin/matches/create/massive');
+
+        $response->assertStatus(200);  // Test if view loading
+
+        $response->assertSee('content'); // Test if it has content
+    }
+
+    /**
+     * Test Match edit view response
+     */
+    public function testMatchEditViewResponse()
+    {
+        $user = User::whereRoleId(1)->first();
+
+        $match = Match::first();
+
+        $response = $this->actingAs($user, 'web')
+            ->get("/admin/matches/{$match->id}/edit");
+
+        $response->assertStatus(200);
+
+        $response->assertViewHas('match');
+
+        $responseMatch = (object) $response->original['match']->first();
+
+        if($match->id==$responseMatch->id) {
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
     }
 
 }
