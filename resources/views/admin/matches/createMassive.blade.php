@@ -140,7 +140,6 @@
             data: {
                 firstTeamSelected: [],
                 secondTeamSelected: [],
-                teamsSelected: [],
                 teams: @json($teams),
                 sport_id: '{!! $data->sport_id ?? 0 !!}',
                 championship_id: '{!! $data->championship_id ?? 0 !!}',
@@ -155,6 +154,12 @@
                     Vue.set(this.isSaved, i, false);
                 }
             },
+            computed: {
+                // Combine arrays to teamsSelected
+                teamsSelected: function() {
+                    return [...this.firstTeamSelected, ...this.secondTeamSelected];
+                }
+            },
             methods: {
                 /**
                  * Check if the other team is the same
@@ -163,9 +168,6 @@
                  * @param key
                  */
                 checkValidTeam(e, key) {
-                    // Combine arrays
-                    this.teamsSelected = this.firstTeamSelected.concat(this.secondTeamSelected);
-
                     // Count how many times selected team exists in this.teamsSelected
                     let countFirstTeamContains = countArrayContains(this.teamsSelected, this.firstTeamSelected[key]);
                     let countSecondTeamContains = countArrayContains(this.teamsSelected, this.secondTeamSelected[key]);
