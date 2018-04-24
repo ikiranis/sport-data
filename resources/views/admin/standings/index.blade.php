@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="col-lg-3 col-12 my-1">
-                    <button type="submit" class="btn btn-success w-100" formaction="{{route('matches.index')}}">
+                    <button type="submit" class="btn btn-success w-100" formaction="{{route('standings.index')}}">
                         {{__('messages.search')}}
                     </button>
                 </div>
@@ -80,7 +80,7 @@
     </div>
 
 
-    @if(!$teamsStandings == null)
+    @if($teamsStandings)
 
         <div id="teams">
             <table class="table">
@@ -95,8 +95,8 @@
 
                 @foreach($teamsStandings as $team)
                     <tr>
-                        <th>{{$team->team}}</th>
-                        <td>{{$team->points}}</td>
+                        <td>{{$team['name']}}</td>
+                        <td>{{$team['points']}}</td>
                     </tr>
                 @endforeach
 

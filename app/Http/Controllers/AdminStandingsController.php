@@ -23,15 +23,16 @@ class AdminStandingsController extends Controller
 
         if ($request->has('_token')) { // If there are request data do filter
             $matches = Match::whereSportId($request->sport_id)->
-            whereChampionshipId($request->championship_id)->
-            whereSeasonId($request->season_id)->
-            orderBy('match_date', 'desc')->paginate(15);
+                whereChampionshipId($request->championship_id)->
+                whereSeasonId($request->season_id)->
+                orderBy('match_date', 'desc')->paginate(15);
 
-            $teams = Team::whereChampionshipId($request->championship_id);
+            $teams = Team::whereSportId($request->sport_id)->
+                whereChampionshipId($request->championship_id)->get();
+
             $standings = new Standings($matches, $teams);
 
             $teamsStandings = $standings->getStandings();
-
 
         } else {
             $matches = null;

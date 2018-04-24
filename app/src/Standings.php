@@ -33,7 +33,7 @@ class Standings
         // construct $this->teams array with teams and 0 points
         foreach ($teams as $team) {
             $this->teams[] = [
-                'team' => $team,
+                'name' => $team->name,
                 'points' => 0
             ];
         }
