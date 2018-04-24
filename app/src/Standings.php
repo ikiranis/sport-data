@@ -30,10 +30,9 @@ class Standings
      */
     public function __construct($matches, $teams)
     {
-        // construct $this->teams array with teams and 0 points
+        // construct $this->teams array of objects, with names and 0 points
         foreach ($teams as $team) {
-            $this->teams[] = [
-                'name' => $team->name,
+            $this->teams[$team->name] = (object) [
                 'points' => 0
             ];
         }
@@ -43,9 +42,35 @@ class Standings
 
     }
 
+    /**
+     * Compute overall standings by match scores
+     */
+    private function compute()
+    {
+        foreach ($this->matches as $match) {
+            if($match->first_team_score > $match->second_team_score) {
+                $this->teams[$match->first_team->name]->points += $this->winPoints;
+                $this->teams[$match->second_team->name]->points += $this->losePoints;
+            } elseif ($match->first_team_scrore < $match->second_team_scrore) {
+                $this->teams[$match->first_team->name]->points += $this->winPoints;
+                $this->teams[$match->second_team->name]->points += $this->losePoints;
+            } else {
+                $this->teams[$match->first_team->name]->points += $this->drawPoints;
+                $this->teams[$match->second_team->name]->points += $this->drawPoints;
+            }
+        }
+    }
+
+    /**
+     * Get overall standings
+     *
+     * @return array
+     */
     public function getStandings()
     {
-        return $this->teams;
+        $this->compute();
+
+        return collect($this->teams)->sortBy('points')->reverse()->all();
     }
 
 

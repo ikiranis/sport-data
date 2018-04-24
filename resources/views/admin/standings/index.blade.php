@@ -59,21 +59,6 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
-                    <button type="submit" class="btn btn-info w-100" formaction="{{route('matches.create')}}">
-                        {{__('messages.insert match')}}
-                    </button>
-                </div>
-
-                <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
-                    <button type="submit" class="btn btn-info w-100"
-                            formaction="{{route('matches.create.massive')}}">
-                        {{__('messages.insert matches')}}
-                    </button>
-                </div>
-            </div>
-
         </form>
 
 
@@ -93,10 +78,10 @@
                 <tbody>
 
 
-                @foreach($teamsStandings as $team)
+                @foreach($teamsStandings as $key=>$team)
                     <tr>
-                        <td>{{$team['name']}}</td>
-                        <td>{{$team['points']}}</td>
+                        <td>{{$key}}</td>
+                        <td>{{$team->points}}</td>
                     </tr>
                 @endforeach
 

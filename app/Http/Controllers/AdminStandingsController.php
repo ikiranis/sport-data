@@ -25,7 +25,7 @@ class AdminStandingsController extends Controller
             $matches = Match::whereSportId($request->sport_id)->
                 whereChampionshipId($request->championship_id)->
                 whereSeasonId($request->season_id)->
-                orderBy('match_date', 'desc')->paginate(15);
+                orderBy('match_date', 'desc')->get();
 
             $teams = Team::whereSportId($request->sport_id)->
                 whereChampionshipId($request->championship_id)->get();
