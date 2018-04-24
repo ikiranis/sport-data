@@ -139,7 +139,7 @@
 
 
                         <td>
-                            <form method="POST" action="{{route('match.destroy', $match->id)}}">
+                            <form method="POST" action="{{route('matches.destroy', $match->id)}}">
                                 <input name="_method" type="hidden" value="DELETE">
                                 @csrf
 

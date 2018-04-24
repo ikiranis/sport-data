@@ -220,6 +220,6 @@ class AdminMatchesController extends Controller
         $match = Match::whereId($id);
         $match->delete();
 
-        return redirect(route('match.index'));
+        return redirect(route('matches.index'));
     }
 }
