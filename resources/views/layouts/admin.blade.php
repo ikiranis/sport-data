@@ -131,6 +131,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('standings.index') }}">
+                            <span class="mdi mdi-format-list-numbers"></span>
+                            Βαθμολογίες
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('sports.index') }}">
                             <span class="mdi mdi-tennis"></span>
                             Αθλήματα

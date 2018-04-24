@@ -85,6 +85,7 @@ return [
     'search' => 'Search',
     'password' => 'Password',
     'division' => 'Division',
-    'insert matches' => 'Insert matches on a matchday'
+    'insert matches' => 'Insert matches on a matchday',
+    'standings' => 'Standings'
 
 ];

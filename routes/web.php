@@ -49,6 +49,7 @@ Route::group(
             Route::patch('admin/comments/{comment}/approvedOrNot', 'AdminCommentsController@approvedOrNot')->name('comments.approvedOrNot');
             Route::resource('admin/matches', 'AdminMatchesController');
             Route::get('admin/matches/create/massive', 'AdminMatchesController@createMassive')->name('matches.create.massive');
+            Route::get('admin/standings', 'AdminStandingsController@index')->name('standings.index');
         });
 
     });
