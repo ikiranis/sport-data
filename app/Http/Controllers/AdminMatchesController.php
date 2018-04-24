@@ -217,6 +217,9 @@ class AdminMatchesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $match = Match::whereId($id);
+        $match->delete();
+
+        return redirect(route('match.index'));
     }
 }

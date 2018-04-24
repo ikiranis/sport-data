@@ -80,80 +80,32 @@
     </div>
 
 
-    @if(count($matches)>0)
-        <script>
-            let matches = @json($matches);
-        </script>
+    @if(!$teamsStandings == null)
 
-        <div id="matches">
+        <div id="teams">
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">{{trans_choice('messages.matches',1)}}</th>
-                    <th scope="col">{{__('messages.score')}}</th>
-                    <th scope="col">{{__('messages.action')}}</th>
+                    <th scope="col">Ομάδα</th>
+                    <th scope="col">Βαθμολογία</th>
                 </tr>
                 </thead>
                 <tbody>
 
 
-                @foreach($matches as $key=>$match)
+                @foreach($teamsStandings as $team)
                     <tr>
-                        <th scope="row">{{$match->id}}</th>
-                        <td><a href="{{route('matches.edit', $match->id)}}">{{$match->teams}}</a></td>
-
-                        <td>
-                            <div class="row">
-
-                                <label for="first_team_score" class="sr-only">{{__('messages.team')}}</label>
-                                <input type="text" class="form-control col-4 px-2" id="first_team_score"
-                                       name="first_team_score"
-                                       v-model="matches['{{$key}}'].first_team_score"
-                                       v-on:input="changingScore({{$key}})">
-
-                                <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
-                                <input type="text" class="form-control col-4 px-2" id="second_team_score"
-                                       name="second_team_score"
-                                       v-model="matches['{{$key}}'].second_team_score"
-                                       v-on:input="changingScore({{$key}})">
-
-                                <div class="col-4">
-                                    <button type="submit" class="btn" id="submit{{$key}}"
-                                            v-bind:class="isSaved[{{$key}}] ? 'btn-success' : 'btn-outline-success'"
-                                            v-on:click="postData({{$key}})">
-                                        Save
-                                    </button>
-                                </div>
-
-                            </div>
-                        </td>
-
-
-                        <td>
-                            <form method="POST" action="{{route('matchdays.destroy', $match->id)}}">
-                                <input name="_method" type="hidden" value="DELETE">
-                                @csrf
-
-                                <button type="submit" class="btn btn-danger">
-                                    {{__('messages.delete')}}
-                                </button>
-                            </form>
-                        </td>
+                        <th>{{$team->team}}</th>
+                        <td>{{$team->points}}</td>
                     </tr>
                 @endforeach
 
                 </tbody>
             </table>
 
-            <div class="row">
-                <div class="ml-auto mr-auto">
-                    {{ $matches->links() }}
-                </div>
-            </div>
         </div>
     @else
-        <h1>{{__('messages.matches not exist')}}</h1>
+        <h1>{{__('messages.teams not exist')}}</h1>
     @endif
 
 @endsection
@@ -161,43 +113,6 @@
 @section('scripts')
 
     <script>
-
-                @if(count($matches)>0)
-
-        let match = new Vue({
-                el: '#matches',
-                delimiters: ['{%', '%}'],
-                data: {
-                    matches: matches.data,
-                    isSaved: {}
-                },
-                created: function () { // Set first values to this.isSaved array
-                    for (let key in this.matches) {
-                        Vue.set(this.isSaved, key, true);
-                    }
-                },
-                methods: {
-                    postData(key) {
-
-                        let myData = {
-                            id: this.matches[key].id,
-                            first_team_score: this.matches[key].first_team_score,
-                            second_team_score: this.matches[key].second_team_score
-                        };
-
-                        axios.patch('/api/match', myData)
-                            .then(response => {
-                                Vue.set(this.isSaved, key, true);
-                            })
-                            .catch(e => console.log(e));
-                    },
-                    changingScore(key) {
-                        Vue.set(this.isSaved, key, false);
-                    }
-                }
-            });
-
-                @endif
 
         let searchContainer = new Vue({
                 delimiters: ['{%', '%}'],

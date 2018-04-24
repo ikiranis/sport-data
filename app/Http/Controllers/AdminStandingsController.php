@@ -6,6 +6,8 @@ use App\Championship;
 use App\Match;
 use App\Season;
 use App\Sport;
+use App\src\Standings;
+use App\Team;
 use Illuminate\Http\Request;
 
 class AdminStandingsController extends Controller
@@ -23,10 +25,17 @@ class AdminStandingsController extends Controller
             $matches = Match::whereSportId($request->sport_id)->
             whereChampionshipId($request->championship_id)->
             whereSeasonId($request->season_id)->
-            whereMatchdayId($request->matchday_id)->
             orderBy('match_date', 'desc')->paginate(15);
-        } else {  // get all data
-            $matches = Match::paginate(15);
+
+            $teams = Team::whereChampionshipId($request->championship_id);
+            $standings = new Standings($matches, $teams);
+
+            $teamsStandings = $standings->getStandings();
+
+
+        } else {
+            $matches = null;
+            $teamsStandings = null;
             $request = null;
         }
 
@@ -34,7 +43,7 @@ class AdminStandingsController extends Controller
         $sports = Sport::all();
         $seasons = Season::all();
 
-        return view('admin/standings/index', compact('matches', 'championships', 'sports', 'seasons', 'request'));
+        return view('admin/standings/index', compact('teamsStandings', 'championships', 'sports', 'seasons', 'request'));
     }
 
 }
