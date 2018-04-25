@@ -143,8 +143,6 @@ class ApiTest extends TestCase
 
         $response = $this->post('/api/match/', $request);
 
-        echo $response->getStatusCode();
-
         if ($response->getStatusCode() == 200) {
             $response->assertJsonStructure([
                 'id',
