@@ -67,7 +67,7 @@ class Standings
      * @param $secondTeam
      * @param $winner
      */
-    private function setTeamPoints($firstTeam, $secondTeam, $winner)
+    private function setTeamsPoints($firstTeam, $secondTeam, $winner)
     {
         if($winner == '1') {
             $this->teams[$firstTeam]->points += $this->winPoints;
@@ -89,7 +89,7 @@ class Standings
         foreach ($this->matches as $match) {
             $winner = $this->whoIsTheWinner($match->first_team_score, $match->second_team_score);
 
-            $this->setTeamPoints($match->first_team->name, $match->second_team->name, $winner);
+            $this->setTeamsPoints($match->first_team->name, $match->second_team->name, $winner);
 
         }
     }
