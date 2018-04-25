@@ -61,23 +61,36 @@ class Standings
     }
 
     /**
+     * Set the points for every team
+     *
+     * @param $firstTeam
+     * @param $secondTeam
+     * @param $winner
+     */
+    private function setTeamPoints($firstTeam, $secondTeam, $winner)
+    {
+        if($winner == '1') {
+            $this->teams[$firstTeam]->points += $this->winPoints;
+            $this->teams[$secondTeam]->points += $this->losePoints;
+        } elseif ($winner == '2') {
+            $this->teams[$firstTeam]->points += $this->winPoints;
+            $this->teams[$secondTeam]->points += $this->losePoints;
+        } else {
+            $this->teams[$firstTeam]->points += $this->drawPoints;
+            $this->teams[$secondTeam]->points += $this->drawPoints;
+        }
+    }
+
+    /**
      * Compute overall standings by match scores
      */
     private function compute()
     {
         foreach ($this->matches as $match) {
-            $getTheWinner = $this->whoIsTheWinner($match->first_team_score, $match->second_team_score);
+            $winner = $this->whoIsTheWinner($match->first_team_score, $match->second_team_score);
 
-            if($getTheWinner == '1') {
-                $this->teams[$match->first_team->name]->points += $this->winPoints;
-                $this->teams[$match->second_team->name]->points += $this->losePoints;
-            } elseif ($getTheWinner == '2') {
-                $this->teams[$match->first_team->name]->points += $this->winPoints;
-                $this->teams[$match->second_team->name]->points += $this->losePoints;
-            } else {
-                $this->teams[$match->first_team->name]->points += $this->drawPoints;
-                $this->teams[$match->second_team->name]->points += $this->drawPoints;
-            }
+            $this->setTeamPoints($match->first_team->name, $match->second_team->name, $winner);
+
         }
     }
 
