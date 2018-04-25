@@ -43,15 +43,35 @@ class Standings
     }
 
     /**
+     * Finds who is the winner
+     *
+     * @param $firstTeamScore
+     * @param $secondTeamScore
+     * @return string
+     */
+    private function whoIsTheWinner($firstTeamScore, $secondTeamScore)
+    {
+        if($firstTeamScore > $secondTeamScore) {
+            return '1';
+        } elseif ($firstTeamScore < $secondTeamScore) {
+            return '2';
+        } else {
+            return 'X';
+        }
+    }
+
+    /**
      * Compute overall standings by match scores
      */
     private function compute()
     {
         foreach ($this->matches as $match) {
-            if($match->first_team_score > $match->second_team_score) {
+            $getTheWinner = $this->whoIsTheWinner($match->first_team_score, $match->second_team_score);
+
+            if($getTheWinner == '1') {
                 $this->teams[$match->first_team->name]->points += $this->winPoints;
                 $this->teams[$match->second_team->name]->points += $this->losePoints;
-            } elseif ($match->first_team_scrore < $match->second_team_scrore) {
+            } elseif ($getTheWinner == '2') {
                 $this->teams[$match->first_team->name]->points += $this->winPoints;
                 $this->teams[$match->second_team->name]->points += $this->losePoints;
             } else {
