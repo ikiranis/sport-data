@@ -18,19 +18,21 @@ class AdminStandingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, Standings $standings)
     {
 
         if ($request->has('_token')) { // If there are request data do filter
-            $matches = Match::whereSportId($request->sport_id)->
+            $standings->setMatches(
+                Match::whereSportId($request->sport_id)->
                 whereChampionshipId($request->championship_id)->
                 whereSeasonId($request->season_id)->
-                orderBy('match_date', 'desc')->get();
+                orderBy('match_date', 'desc')->get()
+            );
 
-            $teams = Team::whereSportId($request->sport_id)->
-                whereChampionshipId($request->championship_id)->get();
-
-            $standings = new Standings($matches, $teams);
+            $standings->setTeams(
+                Team::whereSportId($request->sport_id)->
+                whereChampionshipId($request->championship_id)->get()
+            );
 
             $teamsStandings = $standings->getStandings()->sortBy('points')->reverse()->all();
 

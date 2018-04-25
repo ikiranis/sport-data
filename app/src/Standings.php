@@ -25,12 +25,9 @@ class Standings
     private $drawPoints = 1;
 
     /**
-     * Standings constructor
-     *
-     * @param $matches
-     * @param $teams
+     * @param array $teams
      */
-    public function __construct($matches, $teams)
+    public function setTeams($teams)
     {
         // construct $this->teams array of objects, with names and 0 points
         foreach ($teams as $team) {
@@ -38,11 +35,16 @@ class Standings
                 'points' => 0
             ];
         }
-
-        // Get matches of season
-        $this->matches = $matches;
-
     }
+
+    /**
+     * @param array $matches
+     */
+    public function setMatches($matches)
+    {
+        $this->matches = $matches;
+    }
+
 
     /**
      * Finds who is the winner
