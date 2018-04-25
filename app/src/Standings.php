@@ -14,6 +14,8 @@
 namespace App\src;
 
 
+use Illuminate\Support\Collection;
+
 class Standings
 {
     private $teams = array();
@@ -97,13 +99,13 @@ class Standings
     /**
      * Get overall standings
      *
-     * @return array
+     * @return Collection
      */
     public function getStandings()
     {
         $this->compute();
 
-        return collect($this->teams)->sortBy('points')->reverse()->all();
+        return collect($this->teams);
     }
 
 

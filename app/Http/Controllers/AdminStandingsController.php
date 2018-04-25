@@ -32,7 +32,7 @@ class AdminStandingsController extends Controller
 
             $standings = new Standings($matches, $teams);
 
-            $teamsStandings = $standings->getStandings();
+            $teamsStandings = $standings->getStandings()->sortBy('points')->reverse()->all();
 
         } else {
             $matches = null;
