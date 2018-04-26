@@ -20,11 +20,21 @@ class Standings
 {
     private $teams = array();
     private $matches = array();
-    private $winPoints = 3;
-    private $losePoints = 0;
-    private $drawPoints = 1;
+    private $winPoints;
+    private $losePoints;
+    private $drawPoints;
 
     /**
+     * Standings constructor
+     */
+    public function __construct()
+    {
+        $this->setPoints();
+    }
+
+    /**
+     * Teams setter
+     *
      * @param array $teams
      */
     public function setTeams($teams)
@@ -38,6 +48,8 @@ class Standings
     }
 
     /**
+     * Matches setter
+     *
      * @param array $matches
      */
     public function setMatches($matches)
@@ -45,6 +57,15 @@ class Standings
         $this->matches = $matches;
     }
 
+    /**
+     * Set points for winner/loser/draw
+     */
+    private function setPoints()
+    {
+        $this->winPoints = 3;
+        $this->losePoints = 0;
+        $this->drawPoints = 1;
+    }
 
     /**
      * Finds who is the winner
@@ -65,23 +86,34 @@ class Standings
     }
 
     /**
-     * Set the points for every team
+     * Set points for team
+     *
+     * @param $team
+     * @param $points
+     */
+    private function setTeamPoints($team, $points)
+    {
+        $this->teams[$team]->points += $points;
+    }
+
+    /**
+     * Set the points for every team in match
      *
      * @param $firstTeam
      * @param $secondTeam
      * @param $winner
      */
-    private function setTeamsPoints($firstTeam, $secondTeam, $winner)
+    private function setTeamsPoints($match, $winner)
     {
         if($winner == '1') {
-            $this->teams[$firstTeam]->points += $this->winPoints;
-            $this->teams[$secondTeam]->points += $this->losePoints;
+            $this->setTeamPoints($match->first_team->name, $this->winPoints);
+            $this->setTeamPoints($match->second_team->name, $this->losePoints);
         } elseif ($winner == '2') {
-            $this->teams[$firstTeam]->points += $this->winPoints;
-            $this->teams[$secondTeam]->points += $this->losePoints;
+            $this->setTeamPoints($match->first_team->name, $this->losePoints);
+            $this->setTeamPoints($match->second_team->name, $this->winPoints);
         } else {
-            $this->teams[$firstTeam]->points += $this->drawPoints;
-            $this->teams[$secondTeam]->points += $this->drawPoints;
+            $this->setTeamPoints($match->first_team->name, $this->drawPoints);
+            $this->setTeamPoints($match->second_team->name, $this->drawPoints);
         }
     }
 
@@ -93,8 +125,7 @@ class Standings
         foreach ($this->matches as $match) {
             $winner = $this->whoIsTheWinner($match->first_team_score, $match->second_team_score);
 
-            $this->setTeamsPoints($match->first_team->name, $match->second_team->name, $winner);
-
+            $this->setTeamsPoints($match, $winner);
         }
     }
 
