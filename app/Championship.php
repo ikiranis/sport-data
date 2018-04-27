@@ -43,4 +43,14 @@ class Championship extends Model
     {
         return $this->belongsTo('App\Sport');
     }
+
+    /**
+     * Relation with rules
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function rule()
+    {
+        return $this->belongsTo('App\Rule');
+    }
 }

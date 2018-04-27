@@ -16,6 +16,7 @@ class CreateChampionshipsTable extends Migration
         Schema::create('championships', function (Blueprint $table) {
             $table->uuid('id');
             $table->uuid('sport_id');
+            $table->uuid('rule_id');
             $table->string('name');
             $table->primary('id');
         });

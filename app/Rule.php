@@ -21,4 +21,5 @@ class Rule extends Model
     use Uuids;
 
     public $incrementing = false;
+
 }

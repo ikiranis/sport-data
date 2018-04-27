@@ -15,7 +15,7 @@ class CreateRulesTable extends Migration
     {
         Schema::create('rules', function (Blueprint $table) {
             $table->uuid('id');
-            $table->uuid('championship_id')->nullable();
+            $table->string('name');
             $table->json('description');
             $table->primary('id');
         });
