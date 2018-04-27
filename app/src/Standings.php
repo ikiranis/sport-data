@@ -138,7 +138,7 @@ class Standings
     {
         $this->compute();
 
-        return collect($this->teams);
+        return collect($this->teams)->sortBy('points')->reverse()->all();
     }
 
 

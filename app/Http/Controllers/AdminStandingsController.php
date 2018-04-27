@@ -34,7 +34,7 @@ class AdminStandingsController extends Controller
                 whereChampionshipId($request->championship_id)->get()
             );
 
-            $teamsStandings = $standings->getStandings()->sortBy('points')->reverse()->all();
+            $teamsStandings = $standings->getStandings();
 
         } else {
             $matches = null;
