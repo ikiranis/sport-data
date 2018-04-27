@@ -74,7 +74,7 @@ class Standings
      * @param $secondTeamScore
      * @return string
      */
-    private function whoIsTheWinner($firstTeamScore, $secondTeamScore)
+    public function whoIsTheWinner($firstTeamScore, $secondTeamScore)
     {
         if($firstTeamScore > $secondTeamScore) {
             return '1';

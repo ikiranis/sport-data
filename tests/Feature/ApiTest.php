@@ -149,6 +149,7 @@ class ApiTest extends TestCase
                 'first_team_score',
                 'second_team_score'
             ]);
+
         } else {
             $this->assertTrue(true);
         }

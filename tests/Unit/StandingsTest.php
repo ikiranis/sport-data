@@ -66,6 +66,22 @@ class StandingsTest extends TestCase
     }
 
     /**
+     * Test getStandings method
+     */
+    public function testGetStandings()
+    {
+        $standings = new Standings();
+        $standings->setTeams($this->getTeams());
+        $standings->setMatches($this->getMatches());
+
+        $teamsStandings = $standings->getStandings();
+
+        $this->assertEquals(3, $teamsStandings['PAOK']->points);
+        $this->assertEquals(1, $teamsStandings['EORDAIKOS']->points);
+        $this->assertEquals(0, $teamsStandings['AEK']->points);
+    }
+
+    /**
      * Call protected/private method of a class.
      *
      * @param object &$object Instantiated object that we will run method on.
@@ -93,26 +109,15 @@ class StandingsTest extends TestCase
     {
         $standings = new Standings();
 
-        $winner = $this->invokeMethod($standings, 'whoIsTheWinner', array('3', '2'));
+        $winner = $standings->whoIsTheWinner('3', '2');
+        $this->assertEquals('1', $winner);
 
-        $expectedWinner = '1';
+        $winner = $standings->whoIsTheWinner('2', '3');
+        $this->assertEquals('2', $winner);
 
-        $this->assertEquals($expectedWinner, $winner);
+        $winner = $standings->whoIsTheWinner('2', '2');
+        $this->assertEquals('X', $winner);
     }
 
-    /**
-     * Test getStandings method
-     */
-    public function testGetStandings()
-    {
-        $standings = new Standings();
-        $standings->setTeams($this->getTeams());
-        $standings->setMatches($this->getMatches());
 
-        $teamsStandings = $standings->getStandings();
-
-        $this->assertEquals(3, $teamsStandings['IRAKLIS']->points);
-        $this->assertEquals(1, $teamsStandings['EORDAIKOS']->points);
-        $this->assertEquals(0, $teamsStandings['AEK']->points);
-    }
 }
