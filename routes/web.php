@@ -43,6 +43,7 @@ Route::group(
             Route::resource('admin/teams', 'AdminTeamsController');
             Route::resource('admin/sports', 'AdminSportsController');
             Route::resource('admin/seasons', 'AdminSeasonsController');
+            Route::resource('admin/rules', 'AdminRulesController');
             Route::resource('admin/matchdays', 'AdminMatchdaysController');
             Route::resource('admin/championships', 'AdminChampionshipsController');
             Route::resource('admin/comments', 'AdminCommentsController');

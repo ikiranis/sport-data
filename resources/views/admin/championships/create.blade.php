@@ -36,11 +36,6 @@
                                 </select>
                             </div>
 
-                            <div class="form-group" id="jsonEdit">
-                                <label class="form-check-label" for="rule">Κανόνες</label>
-                                <textarea class="form-control" id="rule" name="rule" rows="5">{% jsonString %}</textarea>
-                            </div>
-
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     {{__('messages.insert')}}

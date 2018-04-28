@@ -13,6 +13,7 @@ return [
     'matchdays' => '{2}Matchdays|{1}Matchday',
     'comments' => '[2,*]Comments|{1}Comment',
     'matches' => '[2,*]Matches|{1}Match',
+    'rules' => '[2,*]Rules|{1}Rule',
     'insert matchday' => 'Insert matchday',
     'update matchday' => 'Update matchday',
     'name' => 'Name',
@@ -86,6 +87,7 @@ return [
     'password' => 'Password',
     'division' => 'Division',
     'insert matches' => 'Insert matches on a matchday',
-    'standings' => 'Standings'
+    'standings' => 'Standings',
+    'insert rule' => 'Insert rule'
 
 ];

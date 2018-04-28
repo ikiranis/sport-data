@@ -155,6 +155,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('rules.index') }}">
+                            <span class="mdi mdi-ruler"></span>
+                            Κανόνες
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('matchdays.index') }}">
                             <span class="mdi mdi-calendar-multiple"></span>
                             Αγωνιστικές
