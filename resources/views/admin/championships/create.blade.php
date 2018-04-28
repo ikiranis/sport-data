@@ -53,22 +53,4 @@
 
 @endsection
 
-@section('scripts')
 
-    <script>
-
-        new Vue({
-            el: '#jsonEdit',
-            delimiters: ['{%', '%}'],
-            data: {
-                jsonString: {
-                    'winnerPoints': 3,
-                    'loserPoints': 0,
-                    'drawPoints': 1
-                }
-            }
-        });
-
-    </script>
-
-@endsection

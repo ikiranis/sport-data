@@ -22,9 +22,12 @@
                                 <input type="number" min="0" max="100" class="form-control col-10 px-2" id="name" name="name">
                             </div>
 
-                            <div class="form-group" id="jsonEdit">
-                                <label class="form-check-label" for="description">Κανόνες</label>
-                                <textarea class="form-control" id="description" name="description" rows="5">{% jsonString %}</textarea>
+                            <div class="input-group mb-3 no-gutters" id="jsonEdit">
+                                <label class="sr-only" for="name">{{__('messages.name')}}</label>
+                                <div v-for="field in jsonString">
+                                    <input type="text" class="form-control col-10 px-2" :value="field">
+                                </div>
+
                             </div>
 
                             <div class="form-group row">
@@ -41,5 +44,26 @@
         </div>
     </div>
 
+
+@endsection
+
+
+@section('scripts')
+
+    <script>
+
+        new Vue({
+            el: '#jsonEdit',
+            delimiters: ['{%', '%}'],
+            data: {
+                jsonString: {
+                    'winnerPoints': 3,
+                    'loserPoints': 0,
+                    'drawPoints': 1
+                }
+            }
+        });
+
+    </script>
 
 @endsection
