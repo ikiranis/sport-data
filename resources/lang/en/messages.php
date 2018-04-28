@@ -88,6 +88,7 @@ return [
     'division' => 'Division',
     'insert matches' => 'Insert matches on a matchday',
     'standings' => 'Standings',
-    'insert rule' => 'Insert rule'
+    'insert rule' => 'Insert rule',
+    'rules not exist' => 'Rules not exist'
 
 ];

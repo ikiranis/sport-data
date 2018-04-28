@@ -88,6 +88,7 @@ return [
     'division' => 'Τμήμα',
     'insert matches' => 'Εισαγωγή αγώνων αγωνιστικής',
     'standings' => 'Βαθμολογίες',
-    'insert rule' => 'Εισαγωγή κανόνα'
+    'insert rule' => 'Εισαγωγή κανόνα',
+    'rules not exist' => 'Δεν υπάρχουν κανόνες'
 
 ];

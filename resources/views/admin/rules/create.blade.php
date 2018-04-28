@@ -19,16 +19,23 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="number" min="0" max="100" class="form-control col-10 px-2" id="name" name="name">
+                                <input type="number" min="0" max="100" class="form-control col-10 px-2" id="name"
+                                       name="name">
                             </div>
 
-                            <div class="input-group mb-3 no-gutters" id="jsonEdit">
-                                <label class="sr-only" for="name">{{__('messages.name')}}</label>
-                                <div v-for="field in jsonString">
-                                    <input type="text" class="form-control col-10 px-2" :value="field">
+                            <div id="rulesEdit">
+                                <div v-for="(rule, name) in rules">
+                                    <div class="input-group mb-3 no-gutters">
+                                        <label class="sr-only" for="rule">{{__('messages.name')}}</label>
+                                        <div class="input-group-prepend col-2">
+                                            <span class="input-group-text w-100">{% name %}</span>
+                                        </div>
+                                        <input type="text" :value="rule" class="form-control col-10 px-2" id="rule"
+                                               name="rule">
+                                    </div>
                                 </div>
-
                             </div>
+
 
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
@@ -53,10 +60,10 @@
     <script>
 
         new Vue({
-            el: '#jsonEdit',
+            el: '#rulesEdit',
             delimiters: ['{%', '%}'],
             data: {
-                jsonString: {
+                rules: {
                     'winnerPoints': 3,
                     'loserPoints': 0,
                     'drawPoints': 1

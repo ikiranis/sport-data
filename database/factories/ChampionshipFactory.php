@@ -6,6 +6,7 @@ $factory->define(App\Championship::class, function (Faker $faker) {
     return [
         'id' => Str::uuid(),
         'name' => $faker->domainWord,
-        'sport_id' => ''
+        'sport_id' => '',
+        'rule_id' => ''
     ];
 });

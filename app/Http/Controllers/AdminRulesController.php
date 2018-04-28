@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rule;
 use Illuminate\Http\Request;
 
 class AdminRulesController extends Controller
@@ -13,7 +14,9 @@ class AdminRulesController extends Controller
      */
     public function index()
     {
-        //
+        $rules = Rule::orderBy('name', 'asc')->paginate(15);
+
+        return view('admin/rules/index', compact('rules'));
     }
 
     /**
@@ -23,7 +26,9 @@ class AdminRulesController extends Controller
      */
     public function create()
     {
-        //
+        $rules = Rule::all();
+
+        return view('admin.rules.create', compact('rules'));
     }
 
     /**
@@ -56,7 +61,9 @@ class AdminRulesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rule = Rule::findOrFail($id);
+
+        return view ('admin/rules/edit', compact('rule'));
     }
 
     /**
@@ -79,6 +86,9 @@ class AdminRulesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rule = Rule::whereId($id);
+        $rule->delete();
+
+        return redirect(route('rules.index'));
     }
 }
