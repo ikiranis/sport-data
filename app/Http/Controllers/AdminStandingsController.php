@@ -34,10 +34,14 @@ class AdminStandingsController extends Controller
                 whereChampionshipId($request->championship_id)->get()
             );
 
-            $championship = Championship::whereId($request->championship_id)->firstOrFail();
-
+            // Pass rules as object
             $standings->setRules(
-                json_decode($championship->rule->description, true)
+                json_decode(
+                    Championship::whereId($request->championship_id)->
+                    firstOrFail()->
+                    rule->
+                    description,
+                false)
             );
 
             $teamsStandings = $standings->getStandings();
