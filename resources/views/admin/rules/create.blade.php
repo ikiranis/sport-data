@@ -29,12 +29,14 @@
                                 <div v-for="(value, key) in rules">
                                     <div class="input-group mb-3 no-gutters">
                                         <div class="input-group-prepend col-4">
-                                            <label class="sr-only" :for="key">{% key %}</label>
-                                            <input type="text" :value="key" class="input-group-text w-100" :id="key"
+                                            <label class="sr-only" for="keys[]">Key</label>
+                                            <input type="text" :value="key" class="input-group-text w-100" id="keys[]"
                                                    v-on:change="setKeyValue($event, key)">
                                         </div>
+                                        <label class="sr-only" for="values[]">Value</label>
                                         <input type="text" class="form-control col-6 px-2"
-                                               v-model="rules[key]">
+                                               v-model="rules[key]" id="values[]">
+
                                         <input type="button" class="btn btn-danger col-2 px-2"
                                                value="Αφαίρεση" v-on:click="removeField(key)">
                                     </div>
@@ -45,7 +47,7 @@
 
                                 <div class="row">
                                     <input type="button" id="insertField" class="btn btn-outline-warning ml-auto mr-auto"
-                                           value="Προσθήκη πεδίου" v-on:click="insertField">
+                                           value="Προσθήκη κανόνα" v-on:click="insertField">
                                 </div>
                             </div>
 
