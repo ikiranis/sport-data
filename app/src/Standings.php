@@ -20,16 +20,24 @@ class Standings
 {
     private $teams = array();
     private $matches = array();
-    private $winPoints;
-    private $losePoints;
-    private $drawPoints;
+    private $rules = array();
 
     /**
      * Standings constructor
      */
     public function __construct()
     {
-        $this->setPoints();
+        //
+    }
+
+    /**
+     * Rules setter
+     *
+     * @param array $rules
+     */
+    public function setRules(array $rules): void
+    {
+        $this->rules = $rules;
     }
 
     /**
@@ -55,16 +63,6 @@ class Standings
     public function setMatches($matches)
     {
         $this->matches = $matches;
-    }
-
-    /**
-     * Set points for winner/loser/draw
-     */
-    private function setPoints()
-    {
-        $this->winPoints = 3;
-        $this->losePoints = 0;
-        $this->drawPoints = 1;
     }
 
     /**
@@ -106,14 +104,14 @@ class Standings
     private function setTeamsPoints($match, $winner)
     {
         if($winner == '1') {
-            $this->setTeamPoints($match->first_team->name, $this->winPoints);
-            $this->setTeamPoints($match->second_team->name, $this->losePoints);
+            $this->setTeamPoints($match->first_team->name, (int) $this->rules['winnerPoints']);
+            $this->setTeamPoints($match->second_team->name, (int) $this->rules['loserPoints']);
         } elseif ($winner == '2') {
-            $this->setTeamPoints($match->first_team->name, $this->losePoints);
-            $this->setTeamPoints($match->second_team->name, $this->winPoints);
+            $this->setTeamPoints($match->first_team->name, (int) $this->rules['loserPoints']);
+            $this->setTeamPoints($match->second_team->name, (int) $this->rules['winnerPoints']);
         } else {
-            $this->setTeamPoints($match->first_team->name, $this->drawPoints);
-            $this->setTeamPoints($match->second_team->name, $this->drawPoints);
+            $this->setTeamPoints($match->first_team->name, (int) $this->rules['drawPoints']);
+            $this->setTeamPoints($match->second_team->name, (int) $this->rules['drawPoints']);
         }
     }
 
