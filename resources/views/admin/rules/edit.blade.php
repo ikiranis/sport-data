@@ -8,36 +8,50 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">{{__('messages.update matchday')}}</div>
+                    <div class="card-header">{{__('messages.insert rule')}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('matchdays.update', $matchday->id) }}">
+                        <form method="POST" action="{{ route('rules.update', $rule->id) }}">
                             <input name="_method" type="hidden" value="PUT">
                             @csrf
 
                             <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="matchday">{{trans_choice('messages.matchdays',1)}}</label>
+                                <label class="sr-only" for="name">{{__('messages.name')}}</label>
                                 <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">{{trans_choice('messages.matchdays',1)}}</span>
+                                    <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="number" min="0" max="100" class="form-control col-10 px-2" id="matchday" name="matchday" value="{{$matchday->matchday}}">
+                                <input type="text" max="255" class="form-control col-10 px-2" id="name"
+                                       name="name" value="{{ $rule->name }}">
                             </div>
 
-                            <div class="input-group mb-3 no-gutters">
-                                <label for="season_id" class="sr-only">Season</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">Season</span>
+                            <div id="rulesEdit">
+                                <h5 class="w-100 px-3 py-1">Κανόνες</h5>
+
+                                <div v-for="(value, key) in rules">
+                                    <div class="input-group mb-3 no-gutters">
+                                        <div class="input-group-prepend col-4">
+                                            <label class="sr-only" :for="key">{% key %}</label>
+                                            <input type="text" :value="key" class="input-group-text w-100" :id="key"
+                                                   v-on:change="setKeyValue($event, key)">
+                                        </div>
+                                        <input type="text" class="form-control col-6 px-2"
+                                               v-model="rules[key]">
+                                        <input type="button" class="btn btn-danger col-2 px-2"
+                                               value="Αφαίρεση" v-on:click="removeField(key)">
+                                    </div>
+
                                 </div>
-                                <select class="form-control col-10 px-2" id="season_id" name="season_id">
-                                    @foreach($seasons as $season)
-                                        <option value="{{$season->id}}" {{$season->id==$matchday->season_id ? 'selected' : ''}}>
-                                            {{$season->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
+
+                                <input type="hidden" name="description" :value="JSON.stringify(rules)">
+
+                                <div class="row">
+                                    <input type="button" id="insertField" class="btn btn-outline-warning ml-auto mr-auto"
+                                           value="Προσθήκη πεδίου" v-on:click="insertField">
+                                </div>
                             </div>
 
-                            <div class="form-group row">
+
+                            <div class="form-group row my-2">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     {{__('messages.update')}}
                                 </button>
@@ -51,5 +65,40 @@
         </div>
     </div>
 
+
+@endsection
+
+
+@section('scripts')
+
+    <script>
+
+        new Vue({
+            el: '#rulesEdit',
+            delimiters: ['{%', '%}'],
+            data: {
+                rules: {!! $rule->description !!},
+            },
+            methods: {
+                insertField() {
+                    Vue.set(this.rules, 'void', '');
+                },
+                removeField(key) {
+                    Vue.delete(this.rules, key);
+                },
+                renameProperty(oldProperty, newProperty) {
+                    if(oldProperty !== newProperty) {
+                        Vue.set(this.rules, newProperty, this.rules[oldProperty]);
+                        Vue.delete(this.rules, oldProperty);
+                    }
+                },
+                setKeyValue(e, key) {
+                    this.renameProperty(key, e.target.value);
+
+                }
+            }
+        });
+
+    </script>
 
 @endsection

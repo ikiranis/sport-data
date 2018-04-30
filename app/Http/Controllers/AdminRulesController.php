@@ -84,7 +84,17 @@ class AdminRulesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255'
+        ]);
+
+        $input = $request->all();
+
+        $rule = Rule::findOrFail($id);
+
+        $rule->update($input);
+
+        return redirect(route('rules.index'));
     }
 
     /**
