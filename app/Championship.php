@@ -28,7 +28,8 @@ class Championship extends Model
     // The attributes that are mass assignable
     protected $fillable = [
         'name',
-        'sport_id'
+        'sport_id',
+        'rule_id'
     ];
 
     // Don't write timestamps at factory

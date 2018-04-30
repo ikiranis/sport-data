@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Championship;
 use App\Http\Resources\ChampionshipResource;
+use App\Rule;
 use App\Sport;
 use Illuminate\Http\Request;
 
@@ -48,9 +49,10 @@ class AdminChampionshipsController extends Controller
      */
     public function create()
     {
-        $sports = Sport::all();
+        $sports = Sport::orderBy('name', 'asc')->get();
+        $rules = Rule::orderBy('name', 'asc')->get();
 
-        return view('admin.championships.create', compact('sports'));
+        return view('admin.championships.create', compact('sports', 'rules'));
     }
 
     /**
@@ -93,9 +95,10 @@ class AdminChampionshipsController extends Controller
     public function edit($id)
     {
         $championship = Championship::findOrFail($id);
-        $sports = Sport::all();
+        $sports = Sport::orderBy('name', 'asc')->get();
+        $rules = Rule::orderBy('name', 'asc')->get();
 
-        return view ('admin/championships/edit', compact('championship', 'sports'));
+        return view ('admin/championships/edit', compact('championship', 'sports', 'rules'));
     }
 
     /**
