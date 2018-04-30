@@ -26,14 +26,14 @@
                             <div id="rulesEdit">
                                 <div v-for="(value, key) in rules">
                                     <div class="input-group mb-3 no-gutters">
-                                        <label class="sr-only" :for="key">{% key %}</label>
                                         <div class="input-group-prepend col-4">
+                                            <label class="sr-only" :for="key">{% key %}</label>
                                             <input type="text" :value="key" class="input-group-text w-100" :id="key"
                                                    v-on:change="setKeyValue($event, key)">
                                         </div>
                                         <input type="text" class="form-control col-6 px-2"
                                                v-model="rules[key]">
-                                        <input type="button" class="col-2 px-2"
+                                        <input type="button" class="btn btn-danger col-2 px-2"
                                                value="Αφαίρεση" v-on:click="removeField(key)">
                                     </div>
 
@@ -42,7 +42,7 @@
                                 <input type="hidden" name="description" :value="JSON.stringify(rules)">
 
                                 <div class="row">
-                                    <input type="button" id="insertField" class="ml-auto mr-auto"
+                                    <input type="button" id="insertField" class="btn btn-outline-warning ml-auto mr-auto"
                                            value="Προσθήκη πεδίου" v-on:click="insertField">
                                 </div>
                             </div>
@@ -88,8 +88,10 @@
                     Vue.delete(this.rules, key);
                 },
                 renameProperty(oldProperty, newProperty) {
-                    Vue.set(this.rules, newProperty, this.rules[oldProperty]);
-                    Vue.delete(this.rules, oldProperty);
+                    if(oldProperty !== newProperty) {
+                        Vue.set(this.rules, newProperty, this.rules[oldProperty]);
+                        Vue.delete(this.rules, oldProperty);
+                    }
                 },
                 setKeyValue(e, key) {
                     this.renameProperty(key, e.target.value);
