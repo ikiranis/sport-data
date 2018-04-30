@@ -20,6 +20,14 @@ class Rule extends Model
 {
     use Uuids;
 
+    // The attributes that are mass assignable
+    protected $fillable = [
+        'name', 'description'
+    ];
+
+    // Don't write timestamps at factory
+    public $timestamps  = false;
+
     public $incrementing = false;
 
 }

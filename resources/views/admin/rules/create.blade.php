@@ -19,11 +19,13 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" class="form-control col-10 px-2" id="name"
+                                <input type="text" max="255" class="form-control col-10 px-2" id="name"
                                        name="name">
                             </div>
 
                             <div id="rulesEdit">
+                                <h5 class="w-100 px-3 py-1">Κανόνες</h5>
+
                                 <div v-for="(value, key) in rules">
                                     <div class="input-group mb-3 no-gutters">
                                         <div class="input-group-prepend col-4">
