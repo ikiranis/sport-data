@@ -19,21 +19,26 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="number" min="0" max="100" class="form-control col-10 px-2" id="name"
+                                <input type="text" class="form-control col-10 px-2" id="name"
                                        name="name">
                             </div>
 
                             <div id="rulesEdit">
-                                <div v-for="(rule, name) in rules">
+                                <div v-for="(value, key) in rules">
                                     <div class="input-group mb-3 no-gutters">
-                                        <label class="sr-only" for="rule">{{__('messages.name')}}</label>
+                                        <label class="sr-only" for="{% key %}">{% key %}</label>
                                         <div class="input-group-prepend col-2">
-                                            <span class="input-group-text w-100">{% name %}</span>
+                                            <span class="input-group-text w-100">{% key %}</span>
                                         </div>
-                                        <input type="text" :value="rule" class="form-control col-10 px-2" id="rule"
-                                               name="rule">
+                                        <input type="text" :value="value" class="form-control col-10 px-2" id="{% key %}"
+                                               v-model="rules[key]">
                                     </div>
                                 </div>
+
+                                <input type="hidden" name="description" :value="JSON.stringify(rules)">
+
+                                <input type="button" id="insertField" value="Προσθήκη πεδίου" v-on:click="insertField">
+                                <input type="button" id="removeField" value="Αφαίρεση πεδίου" v-on:click="removeField">
                             </div>
 
 
@@ -67,6 +72,16 @@
                     'winnerPoints': 3,
                     'loserPoints': 0,
                     'drawPoints': 1
+                },
+            },
+            methods: {
+                insertField()
+                {
+                    Vue.set(this.rules, key, '');
+                },
+                removeField()
+                {
+
                 }
             }
         });

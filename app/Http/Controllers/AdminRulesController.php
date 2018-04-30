@@ -39,7 +39,19 @@ class AdminRulesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        return $request->description;
+
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'matchday' => 'required|integer|between:0,100'
+        ]);
+
+        $input = $request->all();
+
+        Matchday::create($input);
+
+        return redirect(route('matchdays.index'));
     }
 
     /**
