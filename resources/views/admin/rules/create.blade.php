@@ -26,23 +26,29 @@
                             <div id="rulesEdit">
                                 <div v-for="(value, key) in rules">
                                     <div class="input-group mb-3 no-gutters">
-                                        <label class="sr-only" for="{% key %}">{% key %}</label>
-                                        <div class="input-group-prepend col-2">
-                                            <span class="input-group-text w-100">{% key %}</span>
+                                        <label class="sr-only" :for="key">{% key %}</label>
+                                        <div class="input-group-prepend col-4">
+                                            <input type="text" :value="key" class="input-group-text w-100" :id="key"
+                                                   v-on:change="setKeyValue($event, key)">
                                         </div>
-                                        <input type="text" :value="value" class="form-control col-10 px-2" id="{% key %}"
+                                        <input type="text" class="form-control col-6 px-2"
                                                v-model="rules[key]">
+                                        <input type="button" class="col-2 px-2"
+                                               value="Αφαίρεση" v-on:click="removeField(key)">
                                     </div>
+
                                 </div>
 
                                 <input type="hidden" name="description" :value="JSON.stringify(rules)">
 
-                                <input type="button" id="insertField" value="Προσθήκη πεδίου" v-on:click="insertField">
-                                <input type="button" id="removeField" value="Αφαίρεση πεδίου" v-on:click="removeField">
+                                <div class="row">
+                                    <input type="button" id="insertField" class="ml-auto mr-auto"
+                                           value="Προσθήκη πεδίου" v-on:click="insertField">
+                                </div>
                             </div>
 
 
-                            <div class="form-group row">
+                            <div class="form-group row my-2">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     {{__('messages.insert')}}
                                 </button>
@@ -75,12 +81,18 @@
                 },
             },
             methods: {
-                insertField()
-                {
-                    Vue.set(this.rules, key, '');
+                insertField() {
+                    Vue.set(this.rules, 'void', '');
                 },
-                removeField()
-                {
+                removeField(key) {
+                    Vue.delete(this.rules, key);
+                },
+                renameProperty(oldProperty, newProperty) {
+                    Vue.set(this.rules, newProperty, this.rules[oldProperty]);
+                    Vue.delete(this.rules, oldProperty);
+                },
+                setKeyValue(e, key) {
+                    this.renameProperty(key, e.target.value);
 
                 }
             }
