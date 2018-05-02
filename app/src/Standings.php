@@ -94,9 +94,6 @@ class Standings
         $scoreDifference = $this->getScoreDifference($match->first_team_score, $match->second_team_score);
 
         if(isset($this->rules->winnerPoints)) { // Points by winner
-
-            echo $scoreDifference . ': ' . $this->rules->winnerPoints . '     ';
-
             if($scoreDifference > 0) { // First team wins
                 $this->setTeamPoints($match->first_team->name, $this->rules->winnerPoints);
                 $this->setTeamPoints($match->second_team->name, $this->rules->loserPoints);
