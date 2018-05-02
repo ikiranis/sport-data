@@ -31,6 +31,20 @@ class StandingsTest extends TestCase
     }
 
     /**
+     * Rules Data
+     *
+     * @return object
+     */
+    public function getRules()
+    {
+        return (object) [
+            'winnerPoints' => 3,
+            'loserPoints' => 0,
+            'drawPoints' => 1,
+        ];
+    }
+
+    /**
      * Matches data
      *
      * @return array
@@ -73,6 +87,7 @@ class StandingsTest extends TestCase
         $standings = new Standings();
         $standings->setTeams($this->getTeams());
         $standings->setMatches($this->getMatches());
+        $standings->setRules($this->getRules());
 
         $teamsStandings = $standings->getStandings();
 
@@ -100,24 +115,6 @@ class StandingsTest extends TestCase
         return $method->invokeArgs($object, $parameters);
     }
 
-    /**
-     * Test who is the winner
-     *
-     * @throws \ReflectionException
-     */
-    public function testWhoIsTheWinner()
-    {
-        $standings = new Standings();
-
-        $winner = $standings->whoIsTheWinner('3', '2');
-        $this->assertEquals('1', $winner);
-
-        $winner = $standings->whoIsTheWinner('2', '3');
-        $this->assertEquals('2', $winner);
-
-        $winner = $standings->whoIsTheWinner('2', '2');
-        $this->assertEquals('X', $winner);
-    }
 
 
 }
