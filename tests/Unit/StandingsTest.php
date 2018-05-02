@@ -38,12 +38,12 @@ class StandingsTest extends TestCase
     public function getRules()
     {
         return [
-            (object)[
+            (object)[ // Football rules
                 'winnerPoints' => 3,
                 'loserPoints' => 0,
                 'drawPoints' => 1,
             ],
-            (object)[
+            (object)[ // Volley rules
                 'winWith2Sets' => 3,
                 'loseWith2Sets' => 0,
                 'winWith1Set' => 2,

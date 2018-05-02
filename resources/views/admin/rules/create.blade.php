@@ -31,7 +31,11 @@
                                         <div class="input-group-prepend col-4">
                                             <label class="sr-only" for="keys[]">Key</label>
                                             <input type="text" :value="key" class="input-group-text w-100" id="keys[]"
-                                                   v-on:change="setKeyValue($event, key)">
+                                                   v-on:change="setKeyValue($event, key)" list="suggestionRules">
+
+                                            <datalist id="suggestionRules" v-for="suggestion in defaultRules">
+                                                <option :value="suggestion">
+                                            </datalist>
                                         </div>
                                         <label class="sr-only" for="values[]">Value</label>
                                         <input type="text" class="form-control col-6 px-2"
@@ -46,7 +50,8 @@
                                 <input type="hidden" name="description" :value="JSON.stringify(rules)">
 
                                 <div class="row">
-                                    <input type="button" id="insertField" class="btn btn-outline-warning ml-auto mr-auto"
+                                    <input type="button" id="insertField"
+                                           class="btn btn-outline-warning ml-auto mr-auto"
                                            value="Προσθήκη κανόνα" v-on:click="insertField">
                                 </div>
                             </div>
@@ -78,6 +83,15 @@
             el: '#rulesEdit',
             delimiters: ['{%', '%}'],
             data: {
+                defaultRules: [
+                    'winnerPoints',
+                    'loserPoints',
+                    'drawPoints',
+                    'winWith2Sets',
+                    'loseWith2Sets',
+                    'winWith1Set',
+                    'loseWith1Set'
+                ],
                 rules: {
                     'winnerPoints': 3,
                     'loserPoints': 0,
@@ -92,7 +106,7 @@
                     Vue.delete(this.rules, key);
                 },
                 renameProperty(oldProperty, newProperty) {
-                    if(oldProperty !== newProperty) {
+                    if (oldProperty !== newProperty) {
                         Vue.set(this.rules, newProperty, this.rules[oldProperty]);
                         Vue.delete(this.rules, oldProperty);
                     }
