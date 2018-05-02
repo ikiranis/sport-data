@@ -31,12 +31,12 @@
                                     <div class="input-group mb-3 no-gutters">
                                         <div class="input-group-prepend col-4">
                                             <label class="sr-only" for="keys[]">Key</label>
-                                            <input type="text" :value="key" class="input-group-text w-100" id="keys[]"
-                                                   v-on:change="setKeyValue($event, key)" list="suggestionRules">
-
-                                            <datalist id="suggestionRules" v-for="suggestion in defaultRules">
-                                                <option :value="suggestion">
-                                            </datalist>
+                                            <select class="input-group-text w-100" id="keys[]"
+                                                    v-on:change="setKeyValue($event, key)">
+                                                <option v-for="suggestion in defaultRules" :selected="key===suggestion">
+                                                    {% suggestion %}
+                                                </option>
+                                            </select>
                                         </div>
                                         <label class="sr-only" for="values[]">Value</label>
                                         <input type="text" class="form-control col-6 px-2"
