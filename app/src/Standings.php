@@ -71,11 +71,19 @@ class Standings
      * @param $team
      * @param $points
      */
-    private function setTeamPoints($team, $points)
+    private function setTeamPoints($firstTeam, $secondTeam, $firstTeamPoints, $secondTeamPoints)
     {
-        $this->teams[$team]->points += $points;
+        $this->teams[$firstTeam]->points += $firstTeamPoints;
+        $this->teams[$secondTeam]->points += $secondTeamPoints;
     }
 
+    /**
+     * Get the score difference between 2 teams
+     *
+     * @param $firstTeamScore
+     * @param $secondTeamScore
+     * @return mixed
+     */
     private function getScoreDifference($firstTeamScore, $secondTeamScore)
     {
         return $firstTeamScore - $secondTeamScore;
@@ -95,31 +103,31 @@ class Standings
 
         if(isset($this->rules->winnerPoints)) { // Points by winner
             if($scoreDifference > 0) { // First team wins
-                $this->setTeamPoints($match->first_team->name, $this->rules->winnerPoints);
-                $this->setTeamPoints($match->second_team->name, $this->rules->loserPoints);
+                $this->setTeamPoints($match->first_team->name, $match->second_team->name,
+                    $this->rules->winnerPoints, $this->rules->loserPoints);
             } elseif($scoreDifference < 0) { // Second team wins
-                $this->setTeamPoints($match->second_team->name, $this->rules->winnerPoints);
-                $this->setTeamPoints($match->first_team->name, $this->rules->loserPoints);
+                $this->setTeamPoints($match->second_team->name, $match->first_team->name,
+                    $this->rules->winnerPoints, $this->rules->loserPoints);
             } else { // Draw
-                $this->setTeamPoints($match->first_team->name, $this->rules->drawPoints);
-                $this->setTeamPoints($match->second_team->name, $this->rules->drawPoints);
+                $this->setTeamPoints($match->first_team->name, $match->second_team->name,
+                    $this->rules->drawPoints, $this->rules->drawPoints);
             }
         } elseif(isset($this->rules->winWith1Set)) {  // Points by score difference
             if($scoreDifference > 0) { // First team wins
                 if ($scoreDifference > 1) { // Score bigger than 1 set difference
-                    $this->setTeamPoints($match->first_team->name, $this->rules->winWith2Sets);
-                    $this->setTeamPoints($match->second_team->name, $this->rules->loseWith2Sets);
+                    $this->setTeamPoints($match->first_team->name, $match->second_team->name,
+                        $this->rules->winWith2Sets, $this->rules->loseWith2Sets);
                 } else { // Score with 1 set difference
-                    $this->setTeamPoints($match->first_team->name, $this->rules->winWith1Set);
-                    $this->setTeamPoints($match->second_team->name, $this->rules->loseWith1Set);
+                    $this->setTeamPoints($match->first_team->name, $match->second_team->name,
+                        $this->rules->winWith1Set, $this->rules->loseWith1Set);
                 }
             } else { // Second team wins
                 if ($scoreDifference < -1) { // Score bigger than 1 set difference
-                    $this->setTeamPoints($match->second_team->name, $this->rules->winWith2Sets);
-                    $this->setTeamPoints($match->first_team->name, $this->rules->loseWith2Sets);
+                    $this->setTeamPoints($match->second_team->name, $match->first_team->name,
+                        $this->rules->winWith2Sets, $this->rules->loseWith2Sets);
                 } else { // Score with 1 set difference
-                    $this->setTeamPoints($match->second_team->name, $this->rules->winWith1Set);
-                    $this->setTeamPoints($match->first_team->name, $this->rules->loseWith1Set);
+                    $this->setTeamPoints($match->second_team->name, $match->first_team->name,
+                        $this->rules->winWith1Set, $this->rules->loseWith1Set);
                 }
             }
         }
