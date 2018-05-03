@@ -66,15 +66,18 @@ class Standings
     }
 
     /**
-     * Set points for team
+     * Set points for the two teams
      *
-     * @param $team
-     * @param $points
+     * @param $firstTeam
+     * @param $secondTeam
+     * @param $firstTeamPoints
+     * @param $secondTeamPoints
      */
-    private function setTeamPoints($firstTeam, $secondTeam, $firstTeamPoints, $secondTeamPoints)
+    private function setTeamPoints($teams, $points)
     {
-        $this->teams[$firstTeam]->points += $firstTeamPoints;
-        $this->teams[$secondTeam]->points += $secondTeamPoints;
+        foreach ($teams as $key=>$team) {
+            $this->teams[$team]->points += $points[$key];
+        }
     }
 
     /**
@@ -101,33 +104,36 @@ class Standings
 
         $scoreDifference = $this->getScoreDifference($match->first_team_score, $match->second_team_score);
 
+        // Array with teams, depends on who wins
+        $firstTeamWinsTeams = [$match->first_team->name, $match->second_team->name];
+        $secondTeamWinsTeams = [$match->second_team->name, $match->first_team->name];
+
+        // Array with points for every team
+        $pointsByTheWinner = [$this->rules->winnerPoints, $this->rules->loserPoints];
+        $drawPoints = [$this->rules->drawPoints, $this->rules->drawPoints];
+        $pointsByScoreDifferenceWith2Sets = [$this->rules->winWith2Sets, $this->rules->loseWith2Sets];
+        $pointsByScoreDifferenceWith1Set = [$this->rules->winWith1Set, $this->rules->loseWith1Set];
+
         if(isset($this->rules->winnerPoints)) { // Points by winner
             if($scoreDifference > 0) { // First team wins
-                $this->setTeamPoints($match->first_team->name, $match->second_team->name,
-                    $this->rules->winnerPoints, $this->rules->loserPoints);
+                $this->setTeamPoints($firstTeamWinsTeams, $pointsByTheWinner);
             } elseif($scoreDifference < 0) { // Second team wins
-                $this->setTeamPoints($match->second_team->name, $match->first_team->name,
-                    $this->rules->winnerPoints, $this->rules->loserPoints);
+                $this->setTeamPoints($secondTeamWinsTeams, $pointsByTheWinner);
             } else { // Draw
-                $this->setTeamPoints($match->first_team->name, $match->second_team->name,
-                    $this->rules->drawPoints, $this->rules->drawPoints);
+                $this->setTeamPoints($firstTeamWinsTeams, $drawPoints);
             }
         } elseif(isset($this->rules->winWith1Set)) {  // Points by score difference
             if($scoreDifference > 0) { // First team wins
                 if ($scoreDifference > 1) { // Score bigger than 1 set difference
-                    $this->setTeamPoints($match->first_team->name, $match->second_team->name,
-                        $this->rules->winWith2Sets, $this->rules->loseWith2Sets);
+                    $this->setTeamPoints($firstTeamWinsTeams, $pointsByScoreDifferenceWith2Sets);
                 } else { // Score with 1 set difference
-                    $this->setTeamPoints($match->first_team->name, $match->second_team->name,
-                        $this->rules->winWith1Set, $this->rules->loseWith1Set);
+                    $this->setTeamPoints($firstTeamWinsTeams, $pointsByScoreDifferenceWith1Set);
                 }
             } else { // Second team wins
                 if ($scoreDifference < -1) { // Score bigger than 1 set difference
-                    $this->setTeamPoints($match->second_team->name, $match->first_team->name,
-                        $this->rules->winWith2Sets, $this->rules->loseWith2Sets);
+                    $this->setTeamPoints($secondTeamWinsTeams, $pointsByScoreDifferenceWith2Sets);
                 } else { // Score with 1 set difference
-                    $this->setTeamPoints($match->second_team->name, $match->first_team->name,
-                        $this->rules->winWith1Set, $this->rules->loseWith1Set);
+                    $this->setTeamPoints($secondTeamWinsTeams, $pointsByScoreDifferenceWith1Set);
                 }
             }
         }
