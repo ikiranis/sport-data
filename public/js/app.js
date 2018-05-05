@@ -46833,26 +46833,6 @@ window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// const app = new Vue({
-//     el: '#app',
-//     data: {
-//         matches: matches.data
-//     },
-//     methods: {
-//         postData(key) {
-//
-//             let myData = {
-//                 first_team_score: this.matches[key].first_team_score,
-//                 second_team_score: this.matches[key].second_team_score
-//             };
-//
-//             axios.put('/admin/matches/' + this.matches[key].id, myData)
-//                 .then(res => console.log(res) )
-//                 .catch(e => console.log(e) );
-//         }
-//     }
-// });
-
 /***/ }),
 
 /***/ "./resources/assets/js/bootstrap.js":
@@ -46885,7 +46865,6 @@ window.axios = __webpack_require__("./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 if (typeof LaravelAuth !== 'undefined') {
-  console.log(LaravelAuth.apiToken);
   window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + LaravelAuth.apiToken;
 }
 

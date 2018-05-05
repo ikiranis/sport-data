@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.apiToken')
+
     <h1>{{trans_choice('messages.matches',2)}}</h1>
 
     <div class="container">

@@ -88,7 +88,9 @@ class AdminMatchesController extends Controller
         $teams = Team::whereChampionshipId($request->championship_id)->orderBy('name', 'asc')->get();
         $data = $request;
 
-        return view('admin/matches/createMassive', compact('stadia', 'teams', 'data', 'matches'));
+        $userApiToken = Auth::user()->api_token;
+
+        return view('admin/matches/createMassive', compact('stadia', 'teams', 'data', 'matches', 'userApiToken'));
     }
 
     /**

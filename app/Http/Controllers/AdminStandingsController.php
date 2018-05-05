@@ -36,14 +36,13 @@ class AdminStandingsController extends Controller
             );
 
             // Pass rules as object
-            $standings->setRules(
-                json_decode(
-                    Championship::whereId($request->championship_id)->
-                    firstOrFail()->
-                    rule->
-                    description,
-                false)
-            );
+            $rules = json_decode(
+                        Championship::whereId($request->championship_id)->
+                        firstOrFail()->
+                        rule->
+                        description,
+                    false);
+            $standings->setRules($rules);
 
             $teamsStandings = $standings->getStandings();
 
@@ -57,9 +56,7 @@ class AdminStandingsController extends Controller
         $sports = Sport::all();
         $seasons = Season::all();
 
-        $userApiToken = Auth::user()->api_token;
-
-        return view('admin/standings/index', compact('teamsStandings', 'championships', 'sports', 'seasons', 'request', 'userApiToken'));
+        return view('admin/standings/index', compact('teamsStandings', 'championships', 'sports', 'seasons', 'request'));
     }
 
 }

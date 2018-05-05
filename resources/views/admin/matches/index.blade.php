@@ -2,11 +2,7 @@
 
 @section('content')
 
-    <script>
-        let LaravelAuth = @json([
-               'apiToken' => $userApiToken ?? null,
-            ]);
-    </script>
+    @include('includes.apiToken')
 
     <h1>{{trans_choice('messages.matches',2)}}</h1>
 

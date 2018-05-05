@@ -20,12 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Api with auth
 Route::group(['middleware' => 'auth:api'], function() {
     Route::patch('match', 'AdminMatchesController@updateScore');
-    Route::get('championships/{sport_id}', 'AdminChampionshipsController@getChampionships');
+    Route::post('match', 'AdminMatchesController@storeFromMassive');
 });
 
 
-// Api witouth auth
-Route::post('match', 'AdminMatchesController@storeFromMassive');
+// Api without auth
+Route::get('championships/{sport_id}', 'AdminChampionshipsController@getChampionships');
 Route::get('seasons/{championship_id}', 'AdminSeasonsController@getSeasons');
 Route::get('matchdays/{season_id}', 'AdminMatchdaysController@getMatchdays');
 Route::get('teams/{sport_id}', 'AdminTeamsController@getTeams');

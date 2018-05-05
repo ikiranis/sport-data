@@ -25,7 +25,6 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 if(typeof LaravelAuth !== 'undefined') {
-    console.log(LaravelAuth.apiToken);
     window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + LaravelAuth.apiToken;
 }
 

@@ -2,12 +2,6 @@
 
 @section('content')
 
-    <script>
-        let LaravelAuth = @json([
-               'apiToken' => $userApiToken ?? null,
-            ]);
-    </script>
-
     <h1>{{__('messages.standings')}}</h1>
 
     <div id="searchContainer">
