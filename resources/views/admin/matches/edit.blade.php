@@ -123,13 +123,13 @@
                                 </div>
 
                                 @for($counter=1; $counter<6; $counter++)
-                                    @php $property = 'first_team_score_'.$counter @endphp
+                                    @php $score = 'first_team_score_'.$counter @endphp
                                     <label for="first_team_score_{{$counter}}"
                                            class="sr-only">{{__('messages.team')}}</label>
                                     <input type="text" class="form-control col-2 px-2"
                                            id="first_team_score_{{$counter}}"
                                            name="first_team_score_{{$counter}}"
-                                           value="{{$match->$property}}">
+                                           value="{{$match->$score}}">
 
                                 @endfor
 
@@ -142,13 +142,13 @@
                                 </div>
 
                                 @for($counter=1; $counter<6; $counter++)
-                                    @php $property = 'second_team_score_'.$counter @endphp
+                                    @php $score = 'second_team_score_'.$counter @endphp
                                     <label for="second_team_score_{{$counter}}"
                                            class="sr-only">{{__('messages.team')}}</label>
                                     <input type="text" class="form-control col-2 px-2"
                                            id="second_team_score_{{$counter}}"
                                            name="second_team_score_{{$counter}}"
-                                           value="{{$match->$property}}">
+                                           value="{{$match->$score}}">
                                 @endfor
 
                             </div>
