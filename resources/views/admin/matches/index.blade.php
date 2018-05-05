@@ -2,6 +2,12 @@
 
 @section('content')
 
+    <script>
+        let LaravelAuth = @json([
+               'apiToken' => $userApiToken ?? null,
+            ]);
+    </script>
+
     <h1>{{trans_choice('messages.matches',2)}}</h1>
 
     <div id="searchContainer">
@@ -91,6 +97,9 @@
     @if(count($matches)>0)
         <script>
             let matches = @json($matches);
+            window.LaravelAuth = @json([
+               'apiToken' => $userApiToken ?? null,
+            ]);
         </script>
 
         <div id="matches">
@@ -195,6 +204,7 @@
 
                             axios.patch('/api/match', myData)
                                 .then(response => {
+                                    console.log(response.data);
                                     Vue.set(this.isSaved, key, true);
                                 })
                                 .catch(e => console.log(e));

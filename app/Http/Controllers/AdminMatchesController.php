@@ -10,10 +10,12 @@ use App\Season;
 use App\Sport;
 use App\Stadium;
 use App\Team;
+use Auth;
 use Illuminate\Http\Request;
 
 class AdminMatchesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +39,9 @@ class AdminMatchesController extends Controller
         $sports = Sport::all();
         $seasons = Season::all();
 
-        return view('admin/matches/index', compact('matches', 'championships', 'sports', 'seasons', 'request'));
+        $userApiToken = Auth::user()->api_token;
+
+        return view('admin/matches/index', compact('matches', 'championships', 'sports', 'seasons', 'request', 'userApiToken'));
     }
 
     /**
@@ -200,13 +204,15 @@ class AdminMatchesController extends Controller
      */
     public function updateScore(Request $request)
     {
-        $input = $request->all();
+        return response()->json($request);
 
-        $match = Match::findOrFail($request->id);
-
-        $match->update($input);
-
-        return new MatchResource($match);
+//        $input = $request->all();
+//
+//        $match = Match::findOrFail($request->id);
+//
+//        $match->update($input);
+//
+//        return new MatchResource($match);
     }
 
     /**

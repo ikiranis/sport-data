@@ -24,6 +24,11 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+if(typeof LaravelAuth !== 'undefined') {
+    console.log(LaravelAuth.apiToken);
+    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + LaravelAuth.apiToken;
+}
+
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -37,6 +42,7 @@ if (token) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
