@@ -2,6 +2,12 @@
 
 @section('content')
 
+    <script>
+        let LaravelAuth = @json([
+               'apiToken' => $userApiToken ?? null,
+            ]);
+    </script>
+
     <h1>{{__('messages.standings')}}</h1>
 
     <div id="searchContainer">
@@ -45,7 +51,7 @@
                     <div class="input-group-prepend col-5">
                         <span class="input-group-text w-100">Season</span>
                     </div>
-                    <select v-on:change="getMatchdays()" v-model="seasonSelected" class="form-control col-7 px-2"
+                    <select v-model="seasonSelected" class="form-control col-7 px-2"
                             id="season_id" name="season_id">
                         <option value="0" disabled>Επιλογή</option>
                         <option v-for="season in seasons" :value="season.id">{% season.name %}</option>

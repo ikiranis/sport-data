@@ -204,15 +204,13 @@ class AdminMatchesController extends Controller
      */
     public function updateScore(Request $request)
     {
-        return response()->json($request);
+        $input = $request->all();
 
-//        $input = $request->all();
-//
-//        $match = Match::findOrFail($request->id);
-//
-//        $match->update($input);
-//
-//        return new MatchResource($match);
+        $match = Match::findOrFail($request->id);
+
+        $match->update($input);
+
+        return new MatchResource($match);
     }
 
     /**

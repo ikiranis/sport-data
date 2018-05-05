@@ -8,6 +8,7 @@ use App\Season;
 use App\Sport;
 use App\src\Standings;
 use App\Team;
+use Auth;
 use Illuminate\Http\Request;
 
 class AdminStandingsController extends Controller
@@ -56,7 +57,9 @@ class AdminStandingsController extends Controller
         $sports = Sport::all();
         $seasons = Season::all();
 
-        return view('admin/standings/index', compact('teamsStandings', 'championships', 'sports', 'seasons', 'request'));
+        $userApiToken = Auth::user()->api_token;
+
+        return view('admin/standings/index', compact('teamsStandings', 'championships', 'sports', 'seasons', 'request', 'userApiToken'));
     }
 
 }

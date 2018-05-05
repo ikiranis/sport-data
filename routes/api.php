@@ -17,10 +17,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->patch('match', 'AdminMatchesController@updateScore');
+// Api with auth
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::patch('match', 'AdminMatchesController@updateScore');
+    Route::get('championships/{sport_id}', 'AdminChampionshipsController@getChampionships');
+});
 
+
+// Api witouth auth
 Route::post('match', 'AdminMatchesController@storeFromMassive');
-Route::middleware('auth:api')->get('championships/{sport_id}', 'AdminChampionshipsController@getChampionships');
 Route::get('seasons/{championship_id}', 'AdminSeasonsController@getSeasons');
 Route::get('matchdays/{season_id}', 'AdminMatchdaysController@getMatchdays');
 Route::get('teams/{sport_id}', 'AdminTeamsController@getTeams');

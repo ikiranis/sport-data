@@ -52,6 +52,7 @@ class AdminUsersController extends Controller
 
         $input = $request->all();
 
+        $input['password'] = bcrypt($input['password']);
         $input['api_token'] = str_random(60);
 
         User::create($input);
@@ -103,6 +104,9 @@ class AdminUsersController extends Controller
         $input = $request->all();
 
         $input['api_token'] = str_random(60);
+        if(!$input['password'] == null) {
+            $input['password'] = bcrypt($input['password']);
+        }
 
         $user = User::findOrFail($id);
 

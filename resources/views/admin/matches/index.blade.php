@@ -204,7 +204,6 @@
 
                             axios.patch('/api/match', myData)
                                 .then(response => {
-                                    console.log(response.data);
                                     Vue.set(this.isSaved, key, true);
                                 })
                                 .catch(e => console.log(e));
