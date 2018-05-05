@@ -62,7 +62,17 @@ class Match extends Model
         'first_team_id',
         'second_team_id',
         'first_team_score',
-        'second_team_score'
+        'first_team_score_1',
+        'first_team_score_2',
+        'first_team_score_3',
+        'first_team_score_4',
+        'first_team_score_5',
+        'second_team_score',
+        'second_team_score_1',
+        'second_team_score_2',
+        'second_team_score_3',
+        'second_team_score_4',
+        'second_team_score_5'
     ];
 
     protected $dates = ['match_date'];

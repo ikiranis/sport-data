@@ -113,25 +113,52 @@
 
                 @foreach($matches as $key=>$match)
                     <tr>
-                        <th scope="row">{{$match->id}}</th>
-                        <td><a href="{{route('matches.edit', $match->id)}}">{{$match->teams}}</a></td>
+                        <th scope="row" class="align-middle">{{$match->id}}</th>
+                        <td class="align-middle"><a href="{{route('matches.edit', $match->id)}}">{{$match->teams}}</a></td>
 
-                        <td>
+                        <td class="align-middle">
                             <div class="row">
 
-                                <label for="first_team_score" class="sr-only">{{__('messages.team')}}</label>
-                                <input type="text" class="form-control col-4 px-2" id="first_team_score"
-                                       name="first_team_score"
-                                       v-model="matches['{{$key}}'].first_team_score"
-                                       v-on:input="changingScore({{$key}})">
+                                <div class="row col-4 no-gutters">
+                                    <label for="first_team_score" class="sr-only">{{__('messages.team')}}</label>
+                                    <input type="text" class="form-control col-12 px-2 my-1" id="first_team_score"
+                                           name="first_team_score"
+                                           v-model="matches['{{$key}}'].first_team_score"
+                                           v-on:input="changingScore({{$key}})">
 
-                                <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
-                                <input type="text" class="form-control col-4 px-2" id="second_team_score"
-                                       name="second_team_score"
-                                       v-model="matches['{{$key}}'].second_team_score"
-                                       v-on:input="changingScore({{$key}})">
 
-                                <div class="col-4">
+                                    @for($counter=1; $counter<6; $counter++)
+                                        <label for="first_team_score_{{$counter}}"
+                                               class="sr-only">{{__('messages.team')}}</label>
+                                        <input type="text" class="form-control col-2 my-1 ml-auto mr-auto px-2"
+                                               id="first_team_score_{{$counter}}"
+                                               name="first_team_score_{{$counter}}"
+                                               v-model="matches['{{$key}}'].first_team_score_{{$counter}}"
+                                               v-on:input="changingScore({{$key}})">
+                                    @endfor
+
+                                </div>
+
+                                <div class="row col-4 no-gutters">
+                                    <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
+                                    <input type="text" class="form-control col-12 px-2 my-1" id="second_team_score"
+                                           name="second_team_score"
+                                           v-model="matches['{{$key}}'].second_team_score"
+                                           v-on:input="changingScore({{$key}})">
+
+
+                                    @for($counter=1; $counter<6; $counter++)
+                                        <label for="second_team_score_{{$counter}}"
+                                               class="sr-only">{{__('messages.team')}}</label>
+                                        <input type="text" class="form-control col-2 my-1 ml-auto mr-auto  px-2"
+                                               id="second_team_score_{{$counter}}"
+                                               name="second_team_score_{{$counter}}"
+                                               v-model="matches['{{$key}}'].second_team_score_{{$counter}}"
+                                               v-on:input="changingScore({{$key}})">
+                                    @endfor
+                                </div>
+
+                                <div class="col-4 my-auto">
                                     <button type="submit" class="btn" id="submit{{$key}}"
                                             v-bind:class="isSaved[{{$key}}] ? 'btn-success' : 'btn-outline-success'"
                                             v-on:click="postData({{$key}})">
@@ -143,7 +170,7 @@
                         </td>
 
 
-                        <td>
+                        <td class="align-middle">
                             <form method="POST" action="{{route('matches.destroy', $match->id)}}">
                                 <input name="_method" type="hidden" value="DELETE">
                                 @csrf
@@ -175,42 +202,42 @@
 
     <script>
 
-        @if(count($matches)>0)
+                @if(count($matches)>0)
 
-            let match = new Vue({
-                    el: '#matches',
-                    delimiters: ['{%', '%}'],
-                    data: {
-                        matches: matches.data,
-                        isSaved: {}
-                    },
-                    created: function () { // Set first values to this.isSaved array
-                        for (let key in this.matches) {
-                            Vue.set(this.isSaved, key, true);
-                        }
-                    },
-                    methods: {
-                        postData(key) {
-
-                            let myData = {
-                                id: this.matches[key].id,
-                                first_team_score: this.matches[key].first_team_score,
-                                second_team_score: this.matches[key].second_team_score
-                            };
-
-                            axios.patch('/api/match', myData)
-                                .then(response => {
-                                    Vue.set(this.isSaved, key, true);
-                                })
-                                .catch(e => console.log(e));
-                        },
-                        changingScore(key) {
-                            Vue.set(this.isSaved, key, false);
-                        }
+        let match = new Vue({
+                el: '#matches',
+                delimiters: ['{%', '%}'],
+                data: {
+                    matches: matches.data,
+                    isSaved: {}
+                },
+                created: function () { // Set first values to this.isSaved array
+                    for (let key in this.matches) {
+                        Vue.set(this.isSaved, key, true);
                     }
-                });
+                },
+                methods: {
+                    postData(key) {
 
-        @endif
+                        let myData = {
+                            id: this.matches[key].id,
+                            first_team_score: this.matches[key].first_team_score,
+                            second_team_score: this.matches[key].second_team_score
+                        };
+
+                        axios.patch('/api/match', myData)
+                            .then(response => {
+                                Vue.set(this.isSaved, key, true);
+                            })
+                            .catch(e => console.log(e));
+                    },
+                    changingScore(key) {
+                        Vue.set(this.isSaved, key, false);
+                    }
+                }
+            });
+
+                @endif
 
         let searchContainer = new Vue({
                 delimiters: ['{%', '%}'],
