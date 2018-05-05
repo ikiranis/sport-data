@@ -38,7 +38,8 @@
                                 <select v-on:change="getSeasons()" v-model="championshipSelected"
                                         class="form-control col-10 px-2" id="championship_id" name="championship_id">
                                     <option value="0" disabled>Επιλογή</option>
-                                    <option v-for="championship in championships" :value="championship.id">{% championship.name %}
+                                    <option v-for="championship in championships" :value="championship.id">{%
+                                        championship.name %}
                                     </option>
                                 </select>
                             </div>
@@ -64,7 +65,8 @@
                                 <select v-model="matchdaySelected" class="form-control col-10 px-2"
                                         id="matchday_id" name="matchday_id">
                                     <option value="0" disabled>Επιλογή</option>
-                                    <option v-for="matchday in matchdays" :value="matchday.id">{% matchday.matchday %}</option>
+                                    <option v-for="matchday in matchdays" :value="matchday.id">{% matchday.matchday %}
+                                    </option>
                                 </select>
                             </div>
 
@@ -88,14 +90,16 @@
                                     <span class="input-group-text w-100">{{__('messages.teams')}}</span>
                                 </div>
 
-                                <select v-model="firstTeamSelected" v-on:change="checkValidTeam" class="form-control col-5 px-2"
+                                <select v-model="firstTeamSelected" v-on:change="checkValidTeam"
+                                        class="form-control col-5 px-2"
                                         id="first_team_id" name="first_team_id">
                                     <option value="0"></option>
                                     <option v-for="team in teams" :value="team.id">{% team.name %}</option>
                                 </select>
 
                                 <label for="second_team_id" class="sr-only">{{__('messages.team')}}</label>
-                                <select v-model="secondTeamSelected" v-on:change="checkValidTeam" class="form-control col-5 px-2"
+                                <select v-model="secondTeamSelected" v-on:change="checkValidTeam"
+                                        class="form-control col-5 px-2"
                                         id="second_team_id" name="second_team_id">
                                     <option value="0"></option>
                                     <option v-for="team in teams" :value="team.id">{% team.name %}</option>
@@ -114,6 +118,39 @@
                                 <label for="second_team_score" class="sr-only">{{__('messages.team')}}</label>
                                 <input type="number" min="0" max="200" class="form-control col-5 px-2"
                                        id="second_team_score" name="second_team_score">
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
+
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">Πρωτ. ομάδα</span>
+                                </div>
+
+                                @for($counter=1; $counter<6; $counter++)
+                                    <label for="first_team_score_{{$counter}}"
+                                           class="sr-only">{{__('messages.team')}}</label>
+                                    <input type="text" class="form-control col-2 px-2"
+                                           id="first_team_score_{{$counter}}"
+                                           name="first_team_score_{{$counter}}">
+
+                                @endfor
+
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
+
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">Δεύτερ. ομάδα</span>
+                                </div>
+
+                                @for($counter=1; $counter<6; $counter++)
+                                    <label for="second_team_score_{{$counter}}"
+                                           class="sr-only">{{__('messages.team')}}</label>
+                                    <input type="text" class="form-control col-2 px-2"
+                                           id="second_team_score_{{$counter}}"
+                                           name="second_team_score_{{$counter}}">
+                                @endfor
+
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -160,7 +197,7 @@
                 matchdays: '',
                 teams: ''
             },
-            mounted: function() {
+            mounted: function () {
                 this.getChampionships();
                 this.getSeasons();
                 this.getMatchdays();
@@ -197,26 +234,26 @@
                 },
                 getIndexInArray(needle) {
                     // TODO find better way with for/in
-                    for(let i=0; i<this.teams.length; i++) {
-                        if(this.teams[i].id === needle) {
-                            if(i === this.teams.length-1) {
+                    for (let i = 0; i < this.teams.length; i++) {
+                        if (this.teams[i].id === needle) {
+                            if (i === this.teams.length - 1) {
                                 return 0;
                             } else {
-                                return i+1;
+                                return i + 1;
                             }
 
                         }
                     }
                 },
                 checkValidTeam(e) { // Check if the other team is the same
-                    if(this.firstTeamSelected === this.secondTeamSelected) {
+                    if (this.firstTeamSelected === this.secondTeamSelected) {
 
                         let changedSelectElement = e.target.id;
 
-                        if(changedSelectElement === 'first_team_id') {
+                        if (changedSelectElement === 'first_team_id') {
                             this.firstTeamSelected = this.teams[this.getIndexInArray(this.firstTeamSelected)].id;
                         } else {
-                            this.secondTeamSelected = this.teams[this.getIndexInArray(this.secondTeamSelected) ].id;
+                            this.secondTeamSelected = this.teams[this.getIndexInArray(this.secondTeamSelected)].id;
                         }
 
                     }

@@ -222,7 +222,17 @@
                         let myData = {
                             id: this.matches[key].id,
                             first_team_score: this.matches[key].first_team_score,
-                            second_team_score: this.matches[key].second_team_score
+                            first_team_score_1: this.matches[key].first_team_score_1,
+                            first_team_score_2: this.matches[key].first_team_score_2,
+                            first_team_score_3: this.matches[key].first_team_score_3,
+                            first_team_score_4: this.matches[key].first_team_score_4,
+                            first_team_score_5: this.matches[key].first_team_score_5,
+                            second_team_score: this.matches[key].second_team_score,
+                            second_team_score_1: this.matches[key].second_team_score_1,
+                            second_team_score_2: this.matches[key].second_team_score_2,
+                            second_team_score_3: this.matches[key].second_team_score_3,
+                            second_team_score_4: this.matches[key].second_team_score_4,
+                            second_team_score_5: this.matches[key].second_team_score_5
                         };
 
                         axios.patch('/api/match', myData)

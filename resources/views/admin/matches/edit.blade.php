@@ -117,6 +117,43 @@
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
+
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">Πρωτ. ομάδα</span>
+                                </div>
+
+                                @for($counter=1; $counter<6; $counter++)
+                                    @php $property = 'first_team_score_'.$counter @endphp
+                                    <label for="first_team_score_{{$counter}}"
+                                           class="sr-only">{{__('messages.team')}}</label>
+                                    <input type="text" class="form-control col-2 px-2"
+                                           id="first_team_score_{{$counter}}"
+                                           name="first_team_score_{{$counter}}"
+                                           value="{{$match->$property}}">
+
+                                @endfor
+
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
+
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">Δεύτερ. ομάδα</span>
+                                </div>
+
+                                @for($counter=1; $counter<6; $counter++)
+                                    @php $property = 'second_team_score_'.$counter @endphp
+                                    <label for="second_team_score_{{$counter}}"
+                                           class="sr-only">{{__('messages.team')}}</label>
+                                    <input type="text" class="form-control col-2 px-2"
+                                           id="second_team_score_{{$counter}}"
+                                           name="second_team_score_{{$counter}}"
+                                           value="{{$match->$property}}">
+                                @endfor
+
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
                                 <label class="sr-only" for="match_date">{{__('messages.date')}}</label>
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.date')}}</span>
