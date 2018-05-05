@@ -52,6 +52,8 @@ class AdminUsersController extends Controller
 
         $input = $request->all();
 
+        $input['api_token'] = str_random(60);
+
         User::create($input);
 
         return redirect(route('users.index'));
@@ -99,6 +101,8 @@ class AdminUsersController extends Controller
         ]);
 
         $input = $request->all();
+
+        $input['api_token'] = str_random(60);
 
         $user = User::findOrFail($id);
 

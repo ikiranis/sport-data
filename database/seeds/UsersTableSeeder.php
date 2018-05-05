@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'rocean',
             'email' => 'rocean74@gmail.com',
             'password' => bcrypt('123456'),
-            'role_id' => 1
+            'role_id' => 1,
+            'api_token' => str_random(60),
         ]);
     }
 }
