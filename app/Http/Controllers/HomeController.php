@@ -57,7 +57,6 @@ class HomeController extends Controller
     public function post($slug)
     {
         $post = Post::whereSlug($slug)->firstOrFail();
-//            $comments = $post->comments()->orderBy('created_at', 'desc')->get();
 
         return view('public.post', compact('post'));
     }
@@ -93,7 +92,7 @@ class HomeController extends Controller
         // Get the athlete with $slug
         $athlete = Athlete::whereSlug($slug)->firstOrFail();
 
-        // Get all the posts of $team_id
+        // Get all the posts of $athlete->id
         $posts = Post::whereAthleteId($athlete->id)->orderBy('created_at', 'desc')->paginate(5);
 
         return view('public.athletePosts', compact('athlete', 'posts'));
