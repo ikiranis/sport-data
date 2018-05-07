@@ -77,7 +77,7 @@ class HomeController extends Controller
         // Get all the posts of $team_id
         $posts = $team->posts()->orderBy('created_at', 'desc')->paginate(5);
 
-        return view('public.teamPosts', compact('posts'));
+        return view('public.teamPosts', compact('team', 'posts'));
 
     }
 
@@ -96,7 +96,7 @@ class HomeController extends Controller
         // Get all the posts of $team_id
         $posts = Post::whereAthleteId($athlete->id)->orderBy('created_at', 'desc')->paginate(5);
 
-        return view('public.athletePosts', compact('posts'));
+        return view('public.athletePosts', compact('athlete', 'posts'));
 
     }
 

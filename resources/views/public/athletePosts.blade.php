@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <h1>{{$athlete->fullname}}</h1>
+
     <div class="container">
         @if(count($posts)>0)
 
