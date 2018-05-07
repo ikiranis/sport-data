@@ -27,7 +27,7 @@
                     @endif
                     @if($post->athlete!==null)
                         <li class="list-group-item list-group-item-action"><a
-                                    href="">{{$post->athlete->fullName}}</a>
+                                    href="{{route('athlete', $post->athlete->slug)}}">{{$post->athlete->fullName}}</a>
                         </li>
                     @endif
                     @if($post->sport!==null)

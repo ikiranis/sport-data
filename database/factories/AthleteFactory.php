@@ -23,8 +23,8 @@ $factory->define(App\Athlete::class, function (Faker $faker) {
     return [
         'id' => Str::uuid(),
         'slug' => $slug,
-        'fname' => $faker->firstName,
-        'lname' => $faker->lastName,
+        'fname' => $fname,
+        'lname' => $lname,
         'sport_id' => 0,
         'photo_id' => 0,
         'birthyear' => $faker->dateTimeBetween('-50 years', '-10 years')->format('Y'),
