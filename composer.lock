@@ -1024,16 +1024,16 @@
         },
         {
             "name": "genealabs/laravel-model-caching",
-            "version": "0.2.52",
+            "version": "0.2.55",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GeneaLabs/laravel-model-caching.git",
-                "reference": "8736fa3e0d49e150e4af7e6619989511aa4c6b77"
+                "reference": "f748947e0946842f19c2e5235da01bcb158e170d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GeneaLabs/laravel-model-caching/zipball/8736fa3e0d49e150e4af7e6619989511aa4c6b77",
-                "reference": "8736fa3e0d49e150e4af7e6619989511aa4c6b77",
+                "url": "https://api.github.com/repos/GeneaLabs/laravel-model-caching/zipball/f748947e0946842f19c2e5235da01bcb158e170d",
+                "reference": "f748947e0946842f19c2e5235da01bcb158e170d",
                 "shasum": ""
             },
             "require": {
@@ -1047,17 +1047,17 @@
             },
             "require-dev": {
                 "codedungeon/phpunit-result-printer": "*",
-                "fzaninotto/faker": "~1.4",
-                "mockery/mockery": "0.9.*",
-                "orchestra/database": "3.6.x-dev@dev",
+                "fzaninotto/faker": "*",
+                "mockery/mockery": "*",
+                "orchestra/database": "^3.6",
                 "orchestra/testbench": "^3.6",
                 "orchestra/testbench-browser-kit": "^3.6",
                 "php-coveralls/php-coveralls": "*",
                 "phpmd/phpmd": "*",
                 "phpunit/phpunit": "*",
-                "predis/predis": "^1.1",
+                "predis/predis": "*",
                 "sebastian/phpcpd": "*",
-                "symfony/thanks": "^1.0"
+                "symfony/thanks": "*"
             },
             "type": "library",
             "extra": {
@@ -1083,7 +1083,7 @@
                 }
             ],
             "description": "Automatic caching for Eloquent models.",
-            "time": "2018-03-21T13:52:38+00:00"
+            "time": "2018-05-06T23:20:13+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1444,16 +1444,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.44",
+            "version": "1.0.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "168dbe519737221dc87d17385cde33073881fd02"
+                "reference": "a99f94e63b512d75f851b181afcdf0ee9ebef7e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/168dbe519737221dc87d17385cde33073881fd02",
-                "reference": "168dbe519737221dc87d17385cde33073881fd02",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a99f94e63b512d75f851b181afcdf0ee9ebef7e6",
+                "reference": "a99f94e63b512d75f851b181afcdf0ee9ebef7e6",
                 "shasum": ""
             },
             "require": {
@@ -1524,7 +1524,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-04-06T09:58:14+00:00"
+            "time": "2018-05-07T08:44:23+00:00"
         },
         {
             "name": "mcamara/laravel-localization",
@@ -2166,16 +2166,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "5.6.5",
+            "version": "5.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "dc139dd381f38d9afcb6bbf861838acb1c838ef6"
+                "reference": "e40a94f5d1224356a002c1f74643782e684caa17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/dc139dd381f38d9afcb6bbf861838acb1c838ef6",
-                "reference": "dc139dd381f38d9afcb6bbf861838acb1c838ef6",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/e40a94f5d1224356a002c1f74643782e684caa17",
+                "reference": "e40a94f5d1224356a002c1f74643782e684caa17",
                 "shasum": ""
             },
             "require": {
@@ -2186,7 +2186,7 @@
                 "illuminate/notifications": "~5.5.0|~5.6.0",
                 "illuminate/support": "~5.5.0|~5.6.0",
                 "league/flysystem": "^1.0.27",
-                "php": "^7.0",
+                "php": "^7.1",
                 "spatie/db-dumper": "^2.10",
                 "spatie/temporary-directory": "^1.1",
                 "symfony/finder": "^3.3|^4.0"
@@ -2235,7 +2235,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2018-05-01T07:48:28+00:00"
+            "time": "2018-05-05T09:08:56+00:00"
         },
         {
             "name": "spatie/temporary-directory",

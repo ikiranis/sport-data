@@ -16,8 +16,13 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Athlete::class, function (Faker $faker) {
 
+    $fname = $faker->firstName;
+    $lname = $faker->lastName;
+    $slug = $fname . '-' . $lname;
+
     return [
         'id' => Str::uuid(),
+        'slug' => $slug,
         'fname' => $faker->firstName,
         'lname' => $faker->lastName,
         'sport_id' => 0,

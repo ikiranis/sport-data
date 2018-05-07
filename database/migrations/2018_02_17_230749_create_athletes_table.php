@@ -15,6 +15,7 @@ class CreateAthletesTable extends Migration
     {
         Schema::create('athletes', function (Blueprint $table) {
             $table->uuid('id');
+            $table->string('slug');
             $table->uuid('sport_id');
             $table->uuid('photo_id')->nullable();
             $table->string('fname');

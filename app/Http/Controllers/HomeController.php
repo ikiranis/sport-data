@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Athlete;
 use App\Comment;
 use App\Post;
 use App\Sport;
@@ -70,13 +71,32 @@ class HomeController extends Controller
     public function team($slug)
     {
 
-        // Get the team with $team_id
+        // Get the team with $slug
         $team = Team::whereSlug($slug)->firstOrFail();
 
         // Get all the posts of $team_id
         $posts = $team->posts()->orderBy('created_at', 'desc')->paginate(5);
 
         return view('public.teamPosts', compact('posts'));
+
+    }
+
+    /**
+     * Display home index posts page with team filter
+     *
+     * @param $team_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function athlete($slug)
+    {
+
+        // Get the athlete with $slug
+        $athlete = Athlete::whereSlug($slug)->firstOrFail();
+
+        // Get all the posts of $team_id
+        $posts = Post::whereAthleteId($athlete->id)->orderBy('created_at', 'desc')->paginate(5);
+
+        return view('public.athletePosts', compact('posts'));
 
     }
 

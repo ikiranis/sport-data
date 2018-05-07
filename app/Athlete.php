@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\Uuids;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -34,6 +35,7 @@ use Illuminate\Database\Eloquent\Model;
 class Athlete extends Model
 {
     use Uuids;
+    use Sluggable;
 
     public $incrementing = false;
 
@@ -41,6 +43,7 @@ class Athlete extends Model
     protected $fillable = [
         'sport_id',
         'photo_id',
+        'slug',
         'fname',
         'lname',
         'birthyear',
@@ -51,6 +54,21 @@ class Athlete extends Model
 
     // Don't write timestamps at factory
     public $timestamps  = false;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     * @source https://github.com/cviebrock/eloquent-sluggable
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source'    => ['fname', 'lname']
+            ]
+        ];
+    }
 
     /**
      * Relation to sports
