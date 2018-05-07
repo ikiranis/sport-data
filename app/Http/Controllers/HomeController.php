@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Athlete;
+use App\Championship;
 use App\Comment;
 use App\Post;
+use App\Season;
 use App\Sport;
 use App\Team;
 use Illuminate\Http\Request;
@@ -44,8 +46,9 @@ class HomeController extends Controller
     {
         $sport = Sport::whereSlug($slug)->firstOrFail();
         $posts = Post::whereSportId($sport->id)->whereApproved(1)->orderBy('created_at', 'desc')->paginate(5);
+        $championships = Championship::whereSportId($sport->id)->all();
 
-        return view('public.sport', compact('sport', 'posts'));
+        return view('public.sport', compact('sport', 'posts', 'championships'));
     }
 
     /**
@@ -64,7 +67,7 @@ class HomeController extends Controller
     /**
      * Display home index posts page with team filter
      *
-     * @param $team_id
+     * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function team($slug)
@@ -83,7 +86,7 @@ class HomeController extends Controller
     /**
      * Display home index posts page with athlete filter
      *
-     * @param $team_id
+     * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function athlete($slug)
@@ -97,6 +100,28 @@ class HomeController extends Controller
 
         return view('public.athletePosts', compact('athlete', 'posts'));
 
+    }
+
+    /**
+     *
+     * Display championship home index page with seasons
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function championship($id)
+    {
+        $championship = Championship::whereId($id)->firstOrFail();
+        $seasons = Season::whereChampionshipId($championship->id)->all();
+
+        return view('public.championship', compact('championship', 'seasons'));
+    }
+
+    public function season($id)
+    {
+        $season = Season::whereId($id)->firstOrFail();
+
+        return view('public.season', compact('season'));
     }
 
 

@@ -6,6 +6,17 @@
     <div class="container">
         @if(count($posts)>0)
 
+            @if(count($championships)>0)
+                @foreach($championships as $championship)
+                    <li>
+                        <a href="{{route('championship', $championship->id)}}">
+                            {{$championship->name}}
+                        </a>
+                    </li>
+
+                @endforeach
+            @endif
+
             @foreach($posts as $post)
 
                 @include('includes.post-list')
