@@ -26,14 +26,14 @@
 
     @if(count($posts)>0)
         @foreach($posts as $post)
-            @if(count($post->athlete->get())>0)
+            @if(count($post->teams()->get())>0)
                 <script>
 
                     new Vue({
                         el: '#teamsContainer' + '{!! $post->id !!}',
                         delimiters: ['{%', '%}'],
                         data: {
-                            teamsSelected: {!! json_encode($post->athlete->get()) !!}
+                            teamsSelected: {!! json_encode($post->teams()->get()) !!}
                         }
                     });
 

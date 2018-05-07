@@ -82,7 +82,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Display home index posts page with team filter
+     * Display home index posts page with athlete filter
      *
      * @param $team_id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
