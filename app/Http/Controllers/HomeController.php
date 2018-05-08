@@ -6,6 +6,7 @@ use App\Athlete;
 use App\Championship;
 use App\Comment;
 use App\Match;
+use App\Matchday;
 use App\Post;
 use App\Season;
 use App\Sport;
@@ -114,11 +115,12 @@ class HomeController extends Controller
     public function standings(Request $request, Standings $standings)
     {
         if ($request->has('_token')) { // If there are request data do filter
-            $standings->setMatches(
-                Match::whereChampionshipId($request->championship_id)->
+
+            $matches = Match::whereChampionshipId($request->championship_id)->
                 whereSeasonId($request->season_id)->
-                orderBy('match_date', 'desc')->get()
-            );
+                orderBy('match_date', 'desc')->get();
+
+            $standings->setMatches($matches);
 
             $standings->setTeams(
                 Team::whereChampionshipId($request->championship_id)->get()
@@ -135,12 +137,16 @@ class HomeController extends Controller
 
             $teamsStandings = $standings->getStandings();
 
+            $matchdays = Matchday::whereId($request->season_id)->all();
+
         } else {
             $teamsStandings = null;
+            $matches = null;
+            $matchdays = null;
         }
 
 
-        return view('public.standings', compact('teamsStandings'));
+        return view('public.standings', compact('teamsStandings', 'matches', 'matchdays'));
 
     }
 
