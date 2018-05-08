@@ -43,7 +43,9 @@
 
             @foreach($matchdays as $matchday)
 
-                @if(count($matches->where('matchday_id', $matchday->id))>0)
+                @php $matchdayMatches = $matches->where('matchday_id', $matchday->id) @endphp
+
+                @if(count($matchdayMatches)>0)
 
                     <h4>Αγωνιστική {{$matchday->matchday}}</h4>
 
@@ -56,7 +58,7 @@
                         </thead>
                         <tbody>
 
-                        @foreach($matches->where('matchday_id', $matchday->id) as $match)
+                        @foreach($matchdayMatches as $match)
                             <tr>
                                 <td>{{$match->teams}}</td>
                                 <td>{{$match->first_team_score}} - {{$match->second_team_score}}</td>
