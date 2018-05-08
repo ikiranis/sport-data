@@ -7,14 +7,31 @@
         @if(count($posts)>0)
 
             @if(count($championships)>0)
-                @foreach($championships as $championship)
-                    <li>
-                        <a href="{{route('championship', $championship->id)}}">
-                            {{$championship->name}}
-                        </a>
-                    </li>
 
-                @endforeach
+                <form method="GET" action="{{route('championship')}}">
+
+                    @csrf
+
+                    <div class="container w-75">
+                        <div class="input-group no-gutters ml-auto mr-auto row">
+                            <label for="championship_id" class="sr-only">Πρωτάθλημα</label>
+                            <select class="form-control col-8 px-2" id="championship_id" name="championship_id">
+                                <option value="0"></option>
+                                @foreach($championships as $championship)
+                                    <option value="{{$championship->id}}">
+                                        {{$championship->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            <button type="submit" class="btn btn-info col-4 mx-2">
+                                Επιλογή πρωταθλήματος
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
             @endif
 
             @foreach($posts as $post)

@@ -109,9 +109,9 @@ class HomeController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function championship($id)
+    public function championship(Request $request)
     {
-        $championship = Championship::whereId($id)->firstOrFail();
+        $championship = Championship::whereId($request->championship_id)->firstOrFail();
         $seasons = Season::whereChampionshipId($championship->id)->all();
 
         return view('public.championship', compact('championship', 'seasons'));
