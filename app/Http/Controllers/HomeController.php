@@ -106,7 +106,7 @@ class HomeController extends Controller
      *
      * Display championship home index page with seasons
      *
-     * @param $id
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function championship(Request $request)
@@ -117,9 +117,16 @@ class HomeController extends Controller
         return view('public.championship', compact('championship', 'seasons'));
     }
 
-    public function season($id)
+    /**
+     *
+     * Display season home index page
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function season(Request $request)
     {
-        $season = Season::whereId($id)->firstOrFail();
+        $season = Season::whereId($request->season_id)->firstOrFail();
 
         return view('public.season', compact('season'));
     }
