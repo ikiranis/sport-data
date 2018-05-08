@@ -28,45 +28,54 @@
             </table>
 
         </div>
+
     @else
+
         <h1>Δεν υπάρχει βαθμολογία</h1>
+
     @endif
 
     @if($matches)
 
         <h1>Αποτελέσματα</h1>
 
-        {{dd($matchdays)}}
-
         <div id="matches">
 
             @foreach($matchdays as $matchday)
 
-                <h4>Αγωνιστική {{$matchday->matchday}}</h4>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Αγώνας</th>
-                        <th scope="col">Σκορ</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                @if(count($matches->where('matchday_id', $matchday->id))>0)
 
+                    <h4>Αγωνιστική {{$matchday->matchday}}</h4>
 
-                    @foreach($matches->where('matchday_id', $matchday->id) as $match)
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td>{{$match->teams}}</td>
-                            <td>{{$match->first_team_score}} - {{$match->second_team_score}}</td>
+                            <th scope="col">Αγώνας</th>
+                            <th scope="col">Σκορ</th>
                         </tr>
-                    @endforeach
+                        </thead>
+                        <tbody>
 
-                    </tbody>
-                </table>
+                        @foreach($matches->where('matchday_id', $matchday->id) as $match)
+                            <tr>
+                                <td>{{$match->teams}}</td>
+                                <td>{{$match->first_team_score}} - {{$match->second_team_score}}</td>
+                            </tr>
+                        @endforeach
+
+                        </tbody>
+                    </table>
+
+                @endif
+
             @endforeach
 
         </div>
+
     @else
+
         <h1>Δεν υπάρχουν αποτελέσματα</h1>
+
     @endif
 
 @endsection

@@ -137,7 +137,7 @@ class HomeController extends Controller
 
             $teamsStandings = $standings->getStandings();
 
-            $matchdays = Matchday::whereId($request->season_id)->all();
+            $matchdays = Matchday::whereSeasonId($request->season_id)->all();
 
         } else {
             $teamsStandings = null;
