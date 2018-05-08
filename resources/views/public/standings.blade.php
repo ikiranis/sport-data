@@ -43,7 +43,9 @@
 
             @foreach($matchdays as $matchday)
 
-                @php $matchdayMatches = $matches->where('matchday_id', $matchday->id) @endphp
+                @php
+                    $matchdayMatches = $matches->where('matchday_id', $matchday->id)
+                @endphp
 
                 @if(count($matchdayMatches)>0)
 
