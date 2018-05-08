@@ -28,8 +28,7 @@ Route::group(
         Route::get('/post/{slug}', 'HomeController@post')->name('post');
         Route::get('/team/{slug}', 'HomeController@team')->name('team');
         Route::get('/athlete/{slug}', 'HomeController@athlete')->name('athlete');
-        Route::get('/championship/', 'HomeController@championship')->name('championship');
-        Route::get('/season/', 'HomeController@season')->name('season');
+        Route::get('/standings', 'HomeController@standings')->name('standings');
         Route::post('/comment/store', 'HomeController@storeComment')->name('post.comment.store');
 
         // Admin first page

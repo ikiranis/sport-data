@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Athlete;
 use App\Championship;
 use App\Comment;
+use App\Match;
 use App\Post;
 use App\Season;
 use App\Sport;
+use App\src\Standings;
 use App\Team;
 use Illuminate\Http\Request;
 
@@ -104,33 +106,45 @@ class HomeController extends Controller
 
     /**
      *
-     * Display championship home index page with seasons
+     * Display standings home index page
      *
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function championship(Request $request)
+    public function standings(Request $request, Standings $standings)
     {
-        $championship = Championship::whereId($request->championship_id)->firstOrFail();
-        $seasons = Season::whereChampionshipId($championship->id)->all();
+        if ($request->has('_token')) { // If there are request data do filter
+            $standings->setMatches(
+                Match::whereChampionshipId($request->championship_id)->
+                whereSeasonId($request->season_id)->
+                orderBy('match_date', 'desc')->get()
+            );
 
-        return view('public.championship', compact('championship', 'seasons'));
+            $standings->setTeams(
+                Team::whereChampionshipId($request->championship_id)->get()
+            );
+
+            // Pass rules as object
+            $rules = json_decode(
+                Championship::whereId($request->championship_id)->
+                firstOrFail()->
+                rule->
+                description,
+                false);
+            $standings->setRules($rules);
+
+            $teamsStandings = $standings->getStandings();
+
+        } else {
+            $matches = null;
+            $teamsStandings = null;
+            $request = null;
+        }
+
+
+        return view('public.standings', compact('teamsStandings'));
+
     }
-
-    /**
-     *
-     * Display season home index page
-     *
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function season(Request $request)
-    {
-        $season = Season::whereId($request->season_id)->firstOrFail();
-
-        return view('public.season', compact('season'));
-    }
-
 
     /**
      * Store a comment
