@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.20 on 2018-05-07 22:32:28.
+ * Generated for Laravel 5.6.21 on 2018-05-08 22:56:41.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -10689,6 +10689,18 @@ namespace Illuminate\Support\Facades {
         public static function getDefaultCloudDriver()
         {
             return \Illuminate\Filesystem\FilesystemManager::getDefaultCloudDriver();
+        }
+        
+        /**
+         * Unset the given disk instances.
+         *
+         * @param array|string $disk
+         * @return $this 
+         * @static 
+         */ 
+        public static function forgetDisk($disk)
+        {
+            return \Illuminate\Filesystem\FilesystemManager::forgetDisk($disk);
         }
         
         /**

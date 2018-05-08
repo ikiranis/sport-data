@@ -136,9 +136,7 @@ class HomeController extends Controller
             $teamsStandings = $standings->getStandings();
 
         } else {
-            $matches = null;
             $teamsStandings = null;
-            $request = null;
         }
 
 
