@@ -116,15 +116,17 @@ class HomeController extends Controller
     {
         if ($request->has('_token')) { // If there are request data do filter
 
+            $championship = Championship::whereId($request->championship_id)->firstOrFail();
+            $season = Season::whereId($request->season_id)->firstOrFail();
+
             $matches = Match::whereChampionshipId($request->championship_id)->
                 whereSeasonId($request->season_id)->
                 orderBy('match_date', 'desc')->get();
 
             $standings->setMatches($matches);
 
-            $standings->setTeams(
-                Team::whereChampionshipId($request->championship_id)->get()
-            );
+            $teams = Team::whereChampionshipId($request->championship_id)->get();
+            $standings->setTeams($teams);
 
             // Pass rules as object
             $rules = json_decode(
@@ -140,13 +142,14 @@ class HomeController extends Controller
             $matchdays = Matchday::whereSeasonId($request->season_id)->all();
 
         } else {
+            $championship = null;
+            $season = null;
             $teamsStandings = null;
             $matches = null;
             $matchdays = null;
         }
 
-
-        return view('public.standings', compact('teamsStandings', 'matches', 'matchdays'));
+        return view('public.standings', compact('teamsStandings', 'matches', 'matchdays', 'championship', 'season'));
 
     }
 

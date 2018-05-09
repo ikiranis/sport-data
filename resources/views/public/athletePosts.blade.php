@@ -1,10 +1,15 @@
 @extends('layouts.app')
 
+@section('siteTitle')
+    {{ config('app.name', 'Laravel') }} : {{$athlete->fullname}}
+@endsection
+
 @section('content')
 
-    <h1>{{$athlete->fullname}}</h1>
-
     <div class="container">
+
+        <h1>{{$athlete->fullname}}</h1>
+
         @if(count($posts)>0)
 
             @foreach($posts as $post)

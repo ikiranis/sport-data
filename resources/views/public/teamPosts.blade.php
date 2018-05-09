@@ -2,9 +2,10 @@
 
 @section('content')
 
-    <h1>{{$team->name}}</h1>
-
     <div class="container">
+
+        <h1>{{$team->name}}</h1>
+
         @if(count($posts)>0)
 
             @foreach($posts as $post)
