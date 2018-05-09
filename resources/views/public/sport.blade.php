@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('siteTitle')
+    {{ config('app.name', 'Laravel') }} : {{$sport->name}}
+@endsection
+
 @section('content')
     <h1>{{$sport->name}}</h1>
 

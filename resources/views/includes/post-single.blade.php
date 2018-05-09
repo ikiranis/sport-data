@@ -1,8 +1,12 @@
+@section('siteTitle')
+    {{ config('app.name', 'Laravel') }} : {{$post->title}}
+@endsection
+
 <div class="col-12 my-3">
 
     <div class="row">
         <div class="col-12">
-            <h2><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h2>
+            <h2 class="text-center"><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h2>
             <span title="{{$post->created_at}}">{{$post->created_at->diffForHumans()}}</span>
         </div>
     </div>

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('siteTitle')
+    {{ config('app.name', 'Laravel') }} : Αποτελέσματα/Βαθμολογίες
+@endsection
+
 @section('content')
 
     @if($teamsStandings)

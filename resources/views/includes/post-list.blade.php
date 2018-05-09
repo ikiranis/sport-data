@@ -1,3 +1,7 @@
+@section('siteTitle')
+    {{ config('app.name', 'Laravel') }} : Home
+@endsection
+
 <div class="col-12 my-3">
     <div class="card">
         <div class="card-header row no-gutters">
