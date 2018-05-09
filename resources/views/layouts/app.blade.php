@@ -14,15 +14,17 @@
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
 
-    <!-- Scripts -->
-    @include('includes.footer')
+<div id="app">
+    @include('includes.header')
+    <main class="py-4">
+        @yield('content')
+    </main>
+</div>
 
-    @yield('scripts')
+<!-- Scripts -->
+@include('includes.footer')
+
+@yield('scripts')
 </body>
 </html>
