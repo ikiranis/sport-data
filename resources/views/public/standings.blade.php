@@ -24,6 +24,7 @@
                         <th scope="col" class="text-center">Ήττες</th>
                         <th scope="col" class="text-center">Υπέρ</th>
                         <th scope="col" class="text-center">Κατά</th>
+                        <th scope="col" class="text-center">Διαφορά</th>
                         <th scope="col" class="text-center">Βαθμολογία</th>
                     </tr>
                     </thead>
@@ -39,6 +40,7 @@
                             <td class="text-center">{{$team->loses}}</td>
                             <td class="text-center">{{$team->scoreFor}}</td>
                             <td class="text-center">{{$team->scoreAgainst}}</td>
+                            <td class="text-center">{{$team->scoreFor - $team->scoreAgainst}}</td>
                             <td class="text-center">{{$team->points}}</td>
                         </tr>
                     @endforeach
@@ -73,6 +75,7 @@
                         <table class="table">
                             <thead>
                             <tr>
+                                <th scope="col" class="text-center">Ημερομηνία</th>
                                 <th scope="col" class="text-center">Αγώνας</th>
                                 <th scope="col" class="text-center">Σκορ</th>
                             </tr>
@@ -81,6 +84,7 @@
 
                             @foreach($matchdayMatches as $match)
                                 <tr>
+                                    <td>{{$match->match_date ?? null}}</td>
                                     <td>{{$match->teams}}</td>
                                     <td class="text-center">{{$match->first_team_score}} - {{$match->second_team_score}}</td>
                                 </tr>
