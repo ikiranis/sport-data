@@ -27,24 +27,24 @@ class SportsTableSeeder extends Seeder
                 'slug' => str_slug($sport)
             ]);
 
-            factory(App\Championship::class, 5)->create([
-                'sport_id' => $this->id
-            ])->each(function ($championship) {
-
-                factory(App\Season::class)->create([
-                    'championship_id' => $championship->id
-                ])->each(function ($season) {
-                    factory(App\Matchday::class, 10)->create([
-                        'season_id' => $season->id
-                    ]);
-                });
-
-                factory(App\Team::class, 8)->create([
-                    'sport_id' => $this->id,
-                    'championship_id' => $championship->id
-                ]);
-
-            });
+//            factory(App\Championship::class, 5)->create([
+//                'sport_id' => $this->id
+//            ])->each(function ($championship) {
+//
+//                factory(App\Season::class)->create([
+//                    'championship_id' => $championship->id
+//                ])->each(function ($season) {
+//                    factory(App\Matchday::class, 10)->create([
+//                        'season_id' => $season->id
+//                    ]);
+//                });
+//
+//                factory(App\Team::class, 8)->create([
+//                    'sport_id' => $this->id,
+//                    'championship_id' => $championship->id
+//                ]);
+//
+//            });
 
 
 
