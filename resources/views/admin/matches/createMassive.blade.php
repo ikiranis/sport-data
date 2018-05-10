@@ -66,8 +66,7 @@
                             <td>
                                 <div class="input-group mb-3 no-gutters">
                                     <label class="sr-only" for="match_date">{{__('messages.date')}}</label>
-                                    <input type="date" class="form-control col-10 px-2" id="match_date"
-                                           name="match_date">
+                                    <input v-model="match_date['{{$key}}']" type="date" class="form-control col-10 px-2" id="match_date">
                                 </div>
 
                             </td>
@@ -148,6 +147,7 @@
                 season_id: '{!! $data->season_id ?? 0 !!}',
                 matchday_id: '{!! $data->matchday_id ?? 0 !!}',
                 stadiumSelected: [],
+                match_date: [],
                 isSaved: [],
                 match_id: []
             },
@@ -200,7 +200,8 @@
                         matchday_id: this.matchday_id,
                         first_team_id: this.firstTeamSelected[key],
                         second_team_id: this.secondTeamSelected[key],
-                        stadium_id: this.stadiumSelected[key]
+                        stadium_id: this.stadiumSelected[key],
+                        match_date: this.match_date[key]
                     };
 
                     if(this.isSaved[key]) { // Update data
