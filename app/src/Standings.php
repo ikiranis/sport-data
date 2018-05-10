@@ -204,19 +204,23 @@ class Standings
      */
     private function setTeamsPoints($match)
     {
+        // Check if there is a score on match
+        if(!$match->first_team_score == null && !$match->second_team_score == null) {
 
-        $scoreDifference = $this->getScoreDifference($match->first_team_score, $match->second_team_score);
+            $scoreDifference = $this->getScoreDifference($match->first_team_score, $match->second_team_score);
 
-        // Array with teams, depends on who wins
-        $firstTeamWinsTeams = [$match->first_team->name, $match->second_team->name];
-        $secondTeamWinsTeams = [$match->second_team->name, $match->first_team->name];
+            // Array with teams, depends on who wins
+            $firstTeamWinsTeams = [$match->first_team->name, $match->second_team->name];
+            $secondTeamWinsTeams = [$match->second_team->name, $match->first_team->name];
 
-        $this->setTeamsScore($firstTeamWinsTeams, [$match->first_team_score, $match->second_team_score]);
+            $this->setTeamsScore($firstTeamWinsTeams, [$match->first_team_score, $match->second_team_score]);
 
-        if(isset($this->rules->winnerPoints)) { // Points by winner
-            $this->setPointsByWinner($firstTeamWinsTeams, $secondTeamWinsTeams, $scoreDifference);
-        } elseif(isset($this->rules->winWith1Set)) {  // Points by score difference
-            $this->setPointsByScore($firstTeamWinsTeams, $secondTeamWinsTeams, $scoreDifference);
+            if (isset($this->rules->winnerPoints)) { // Points by winner
+                $this->setPointsByWinner($firstTeamWinsTeams, $secondTeamWinsTeams, $scoreDifference);
+            } elseif (isset($this->rules->winWith1Set)) {  // Points by score difference
+                $this->setPointsByScore($firstTeamWinsTeams, $secondTeamWinsTeams, $scoreDifference);
+            }
+
         }
     }
 
