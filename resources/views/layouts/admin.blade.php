@@ -186,7 +186,7 @@
 
 
 <!-- Scripts -->
-@include('includes.footer')
+    @include('includes.run-scripts')
 
 @yield('scripts')
 

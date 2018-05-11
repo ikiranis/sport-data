@@ -25,8 +25,11 @@
     </main>
 </div>
 
-<!-- Scripts -->
+{{--Footer--}}
 @include('includes.footer')
+
+<!-- Scripts -->
+@include('includes.run-scripts')
 
 @yield('scripts')
 </body>
