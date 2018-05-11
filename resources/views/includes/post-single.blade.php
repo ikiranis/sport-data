@@ -40,7 +40,7 @@
                     @endif
                     @if($post->reference!==null)
                         <li class="list-group-item list-group-item-action"><a
-                                    href="{{$post->reference}}">{{$post->reference}}</a></li>
+                                    href="{{$post->reference}}" title="{{$post->reference}}">Πηγή</a></li>
                     @endif
                 </ul>
 

@@ -12,7 +12,7 @@
 
         @if($teamsStandings)
 
-            <h3>Βαθμολογία</h3>
+            <h3 class="text-center">Βαθμολογία</h3>
 
             <div id="teams">
                 <table class="table">
@@ -34,7 +34,7 @@
 
                     @foreach($teamsStandings as $key=>$team)
                         <tr>
-                            <td><a href="{{route('team', $team->data->slug)}}">{{$key}}</a></td>
+                            <td class="font-weight-bold"><a href="{{route('team', $team->data->slug)}}">{{$key}}</a></td>
                             <td class="text-center">{{$team->matches}}</td>
                             <td class="text-center">{{$team->wins}}</td>
                             <td class="text-center">{{$team->draws}}</td>
@@ -42,7 +42,7 @@
                             <td class="text-center">{{$team->scoreFor}}</td>
                             <td class="text-center">{{$team->scoreAgainst}}</td>
                             <td class="text-center">{{$team->scoreFor - $team->scoreAgainst}}</td>
-                            <td class="text-center">{{$team->points}}</td>
+                            <td class="text-center font-weight-bold">{{$team->points}}</td>
                         </tr>
                     @endforeach
 
@@ -59,7 +59,7 @@
 
         @if($matches)
 
-            <h3>Αποτελέσματα</h3>
+            <h3 class="text-center">Αποτελέσματα</h3>
 
             <div id="matches">
 

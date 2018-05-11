@@ -14,7 +14,7 @@
         </div>
 
         <div class="card-body">
-            <div class="col-12 text-center font-weight-bold my-3">
+            <div class="col-12 font-weight-bold my-3">
                 <h4>{{$post->description}}</h4>
             </div>
 
@@ -43,7 +43,7 @@
                         @endif
                         @if($post->reference!==null)
                             <li class="list-group-item list-group-item-action"><a
-                                        href="{{$post->reference}}">{{$post->reference}}</a></li>
+                                        href="{{$post->reference}}" title="{{$post->reference}}">Πηγή</a></li>
                         @endif
 
                             @php $approvedComments = count($post->comments->where('approved', 1)) @endphp
@@ -60,11 +60,6 @@
                     @php ($moreButton = ' [...] <p><a href="'. route('post', $post->slug). '"><span class="btn btn-secondary">more</span></a></p>')
 
                     {!! Str::words($post->body, 200, $moreButton) !!}
-                </div>
-            </div>
-            <div class="row my-1">
-                <div class="col-12 text-right">
-                    <a href="{{$post->reference}}">{{$post->reference}}</a>
                 </div>
             </div>
         </div>
