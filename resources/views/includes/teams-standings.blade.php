@@ -1,7 +1,7 @@
 <h3 class="text-center">Βαθμολογία</h3>
 
 <div id="teams">
-    <table class="table">
+    <table class="table table-responsive">
         <thead>
         <tr>
             <th scope="col" class="text-center">Ομάδα</th>

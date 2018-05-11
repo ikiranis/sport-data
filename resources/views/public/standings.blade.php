@@ -36,7 +36,7 @@
 
                         <h5 class="text-center font-weight-bold">Αγωνιστική {{$matchday->matchday}}</h5>
 
-                        <table class="table">
+                        <table class="table table-responsive">
                             <thead>
                             <tr>
                                 <th scope="col" class="text-center">Ημερομηνία</th>
