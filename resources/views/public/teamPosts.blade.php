@@ -4,7 +4,19 @@
 
     <div class="container">
 
-        <h1>{{$team->name}}</h1>
+        <div class="row col-12">
+            <div class="col">
+                @if(isset($team->logo->fullPathName))
+                    <div id="teamLogo">
+                        <img src="{{$team->logo->fullPathName}}">
+                    </div>
+                @endif
+            </div>
+
+            <div class="col">
+                <h1 class="text-right">{{$team->name}}</h1>
+            </div>
+        </div>
 
         @if(count($posts)>0)
 

@@ -5,10 +5,10 @@
 <div class="col-12 my-3">
     <div class="card">
         <div class="card-header row no-gutters">
-            <div class="col-6 my-auto">
+            <div class="col-lg-9 col-12 my-auto">
                 <h3><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h3>
             </div>
-            <div class="col-6 ml-auto text-right my-auto">
+            <div class="col-lg-3 col-12 ml-auto text-right my-auto">
                 <span title="{{$post->created_at}}">{{$post->created_at->diffForHumans()}}</span>
             </div>
         </div>
