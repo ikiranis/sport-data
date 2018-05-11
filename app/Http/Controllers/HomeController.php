@@ -49,7 +49,7 @@ class HomeController extends Controller
     {
         $sport = Sport::whereSlug($slug)->firstOrFail();
         $posts = Post::whereSportId($sport->id)->whereApproved(1)->orderBy('created_at', 'desc')->paginate(5);
-        $championships = Championship::whereSportId($sport->id)->all();
+        $championships = Championship::whereSportId($sport->id)->get();
 
         return view('public.sport', compact('sport', 'posts', 'championships'));
     }
