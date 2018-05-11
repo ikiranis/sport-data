@@ -95,19 +95,19 @@
 
             <div class="input-group mb-3 no-gutters">
                 <label class="sr-only" for="author">{{__('messages.name')}}</label>
-                <div class="input-group-prepend col-2">
-                    <span class="input-group-text w-100">{{__('messages.name')}}</span>
+                <div class="input-group-prepend col-3">
+                    <span class="input-group-text w-100 px-3">{{__('messages.name')}}</span>
                 </div>
-                <input type="text" class="form-control col-10 px-2" id="author" name="author"
+                <input type="text" class="form-control col-9 px-2" id="author" name="author"
                        value="{{old('author')}}">
             </div>
 
             <div class="input-group mb-3 no-gutters">
                 <label class="sr-only" for="email">email</label>
-                <div class="input-group-prepend col-2">
-                    <span class="input-group-text w-100">email</span>
+                <div class="input-group-prepend col-3">
+                    <span class="input-group-text w-100 px-3">email</span>
                 </div>
-                <input type="text" class="form-control col-10 px-2" id="email" name="email"
+                <input type="text" class="form-control col-9 px-2" id="email" name="email"
                        value="{{old('email')}}">
             </div>
 
