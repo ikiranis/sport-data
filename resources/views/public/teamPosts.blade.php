@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('siteTitle')
+    {{ config('app.name', 'Laravel') }} : {{$team->name}}
+@endsection
+
 @section('content')
 
     <div class="container">
