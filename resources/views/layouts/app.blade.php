@@ -13,15 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-487374-20"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-487374-20');
-    </script>
+    @include('includes.google-analytics')
 
 </head>
 <body>
