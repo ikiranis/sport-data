@@ -14,7 +14,7 @@
 
         @foreach($matchdayMatches as $match)
             <tr>
-                <td>{{ $match->match_date ? $match->match_date->format('d / m / Y') : 'TBA' }}</td>
+                <td>{{ $match->match_date ? $match->match_date->format('d/m/Y') : 'TBA' }}</td>
                 <td class="col-8">{{ $match->teams }}</td>
                 <td class="col-4 text-center font-weight-bold">{{$match->first_team_score}} - {{$match->second_team_score}}</td>
             </tr>
