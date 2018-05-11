@@ -7,11 +7,12 @@
 @section('content')
 
     <div class="container">
-        <h1 class="text-center">{{ $championship->name }} : {{ $season->name }}</h1>
+        <h1 class="text-center">{{ $championship->name }}</h1>
+        <h3 class="text-center">{{ $season->name }}</h3>
 
         @if($teamsStandings)
 
-            <h3 class="text-right">Βαθμολογία</h3>
+            <h3>Βαθμολογία</h3>
 
             <div id="teams">
                 <table class="table">
@@ -58,7 +59,7 @@
 
         @if($matches)
 
-            <h3 class="text-right">Αποτελέσματα</h3>
+            <h3>Αποτελέσματα</h3>
 
             <div id="matches">
 
@@ -70,7 +71,7 @@
 
                     @if(count($matchdayMatches)>0)
 
-                        <h5 class="text-center">Αγωνιστική {{$matchday->matchday}}</h5>
+                        <h5 class="text-center font-weight-bold">Αγωνιστική {{$matchday->matchday}}</h5>
 
                         <table class="table">
                             <thead>
