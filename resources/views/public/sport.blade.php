@@ -95,7 +95,9 @@
                     axios.get('/api/seasons/' + this.championshipSelected)
                         .then(response => {
                             this.seasons = response.data;
-                            this.seasonSelected = this.seasons[0].id;
+                            if(this.seasons.length>0) {
+                                this.seasonSelected = this.seasons[0].id;
+                            }
                         })
                         .catch(e => console.log(e));
                 }
