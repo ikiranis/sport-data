@@ -108,7 +108,7 @@ class HomeController extends Controller
 
             $teamsStandingsArray[] = $standings->getStandings();
 
-            $matchdays = Matchday::whereSeasonId($season->id)->all();
+            $matchdays = Matchday::whereSeasonId($season->id)->get();
         }
 
         return view('public.teamPosts', compact('team', 'posts', 'teamsStandingsArray', 'seasons', 'matches', 'matchdays'));
@@ -146,6 +146,7 @@ class HomeController extends Controller
         if ($request->has('_token')) { // If there are request data do filter
 
             $championship = Championship::whereId($request->championship_id)->firstOrFail();
+
             $season = Season::whereId($request->season_id)->firstOrFail();
 
             $matches = Match::whereChampionshipId($request->championship_id)->
@@ -168,7 +169,7 @@ class HomeController extends Controller
 
             $teamsStandings = $standings->getStandings();
 
-            $matchdays = Matchday::whereSeasonId($request->season_id)->all();
+            $matchdays = Matchday::whereSeasonId($request->season_id)->get();
 
         } else {
             $championship = null;

@@ -83,8 +83,8 @@
             delimiters: ['{%', '%}'],
             el: "#searchContainer",
             data: {
-                championshipSelected: '{!! $request->championship_id ?? 0 !!}',
-                seasonSelected: '{!! $request->season_id ?? 0 !!}',
+                championshipSelected: 0,
+                seasonSelected: 0,
                 seasons: ''
             },
             mounted: function () {
@@ -95,6 +95,7 @@
                     axios.get('/api/seasons/' + this.championshipSelected)
                         .then(response => {
                             this.seasons = response.data;
+                            this.seasonSelected = this.seasons[0].id;
                         })
                         .catch(e => console.log(e));
                 }
