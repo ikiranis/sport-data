@@ -1,7 +1,7 @@
 <h3 class="text-center">Βαθμολογία</h3>
 
-<div id="teams">
-    <table class="table table-responsive">
+<div class="teams">
+    <table class="table table-responsive table-sm table-hover">
         <thead>
         <tr>
             <th scope="col" class="text-center">Ομάδα</th>
@@ -20,15 +20,15 @@
 
         @foreach($teamsStandings as $key=>$team)
             <tr>
-                <td class="font-weight-bold"><a href="{{route('team', $team->data->slug)}}">{{$key}}</a></td>
-                <td class="text-center">{{$team->matches}}</td>
-                <td class="text-center">{{$team->wins}}</td>
-                <td class="text-center">{{$team->draws}}</td>
-                <td class="text-center">{{$team->loses}}</td>
-                <td class="text-center">{{$team->scoreFor}}</td>
-                <td class="text-center">{{$team->scoreAgainst}}</td>
-                <td class="text-center">{{$team->scoreFor - $team->scoreAgainst}}</td>
-                <td class="text-center font-weight-bold">{{$team->points}}</td>
+                <td class="col font-weight-bold"><a href="{{route('team', $team->data->slug)}}">{{$key}}</a></td>
+                <td class="col text-center">{{$team->matches}}</td>
+                <td class="col text-center">{{$team->wins}}</td>
+                <td class="col text-center">{{$team->draws}}</td>
+                <td class="col text-center">{{$team->loses}}</td>
+                <td class="col text-center">{{$team->scoreFor}}</td>
+                <td class="col text-center">{{$team->scoreAgainst}}</td>
+                <td class="col text-center">{{$team->scoreFor - $team->scoreAgainst}}</td>
+                <td class="col text-center font-weight-bold">{{$team->points}}</td>
             </tr>
         @endforeach
 

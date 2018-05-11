@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('siteTitle')
-    {{ config('app.name', 'Laravel') }} : {{$team->name}}
+    {{ config('app.name', 'laravel') }} : {{$team->name}}
 @endsection
 
 @section('content')
