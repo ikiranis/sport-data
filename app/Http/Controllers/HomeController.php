@@ -82,15 +82,15 @@ class HomeController extends Controller
         // Get all the posts of $team_id
         $posts = $team->posts()->orderBy('created_at', 'desc')->paginate(5);
 
-        $seasons = Season::whereChampionshipId($team->championship_id)->all();
+        $seasons = Season::whereChampionshipId($team->championship_id)->get();
 
         $teamsStandingsArray = [];
 
         foreach ($seasons as $season) {
 
             $matches = Match::whereChampionshipId($team->championship_id)->
-            whereSeasonId($season->id)->
-            orderBy('match_date', 'desc')->get();
+                whereSeasonId($season->id)->
+                orderBy('match_date', 'desc')->get();
 
             $standings->setMatches($matches);
 
@@ -107,9 +107,11 @@ class HomeController extends Controller
             $standings->setRules($rules);
 
             $teamsStandingsArray[] = $standings->getStandings();
+
+            $matchdays = Matchday::whereSeasonId($season->id)->all();
         }
 
-        return view('public.teamPosts', compact('team', 'posts', 'teamsStandingsArray', 'seasons'));
+        return view('public.teamPosts', compact('team', 'posts', 'teamsStandingsArray', 'seasons', 'matches', 'matchdays'));
 
     }
 

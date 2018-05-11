@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <h1>{{$sport->name}}</h1>
+    <h1 class="text-center">{{$sport->name}}</h1>
 
     <div class="container">
 

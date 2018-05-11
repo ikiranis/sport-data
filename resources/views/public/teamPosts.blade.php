@@ -54,6 +54,30 @@
 
         @endif
 
+        @if($matches)
+
+            <h3 class="text-center">Αποτελέσματα</h3>
+
+            @foreach($matchdays as $matchday)
+
+                @php
+                    $matchdayMatches = $matches->where('matchday_id', $matchday->id)
+                @endphp
+
+                @if(count($matchdayMatches)>0)
+
+                    @include('includes.teams-results')
+
+                @endif
+
+            @endforeach
+
+        @else
+
+            <h1>Δεν υπάρχουν αποτελέσματα</h1>
+
+        @endif
+
 
     </div>
 
