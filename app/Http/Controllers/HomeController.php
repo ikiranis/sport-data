@@ -73,7 +73,7 @@ class HomeController extends Controller
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function team($slug)
+    public function team($slug, Standings $standings)
     {
 
         // Get the team with $slug
@@ -82,7 +82,34 @@ class HomeController extends Controller
         // Get all the posts of $team_id
         $posts = $team->posts()->orderBy('created_at', 'desc')->paginate(5);
 
-        return view('public.teamPosts', compact('team', 'posts'));
+        $seasons = Season::whereChampionshipId($team->championship_id)->all();
+
+        $teamsStandingsArray = [];
+
+        foreach ($seasons as $season) {
+
+            $matches = Match::whereChampionshipId($team->championship_id)->
+            whereSeasonId($season->id)->
+            orderBy('match_date', 'desc')->get();
+
+            $standings->setMatches($matches);
+
+            $teams = Team::whereChampionshipId($team->championship_id)->get();
+            $standings->setTeams($teams);
+
+            // Pass rules as object
+            $rules = json_decode(
+                Championship::whereId($team->championship_id)->
+                firstOrFail()->
+                rule->
+                description,
+                false);
+            $standings->setRules($rules);
+
+            $teamsStandingsArray[] = $standings->getStandings();
+        }
+
+        return view('public.teamPosts', compact('team', 'posts', 'teamsStandingsArray', 'seasons'));
 
     }
 

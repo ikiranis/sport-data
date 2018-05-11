@@ -33,6 +33,24 @@
             </div>
 
         @endif
+
+        @if(isset($teamsStandingsArray))
+
+            @foreach($teamsStandingsArray as $key=>$teamsStandings)
+
+                <h3>{{$seasons[$key]->name}}</h3>
+
+                @include('includes.teams-standings')
+
+            @endforeach
+
+        @else
+
+            <h1>Δεν υπάρχει βαθμολογία</h1>
+
+        @endif
+
+
     </div>
 
 @endsection
