@@ -13,6 +13,11 @@
 
 // @source for localization https://github.com/mcamara/laravel-localization
 
+if (env('APP_ENV') === 'production') {
+    URL::forceSchema('https');
+}
+
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
