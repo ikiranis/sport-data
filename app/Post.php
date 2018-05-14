@@ -125,7 +125,8 @@ class Post extends Model implements Feedable
     public function rssBody()
     {
         return "<p><strong>{$this->description}</strong></p>
-            <div style='padding: 2em'><img src='{$this->photo->full_path_name}' width='350' align='left'>{$this->body}</div>";
+            <img src='{$this->photo->full_path_name}' width='350' align='left'>
+            <div style='padding: 2em'>{$this->body}</div>";
     }
 
     /**
