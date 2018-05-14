@@ -31,7 +31,7 @@
                                 <select class="form-control col-10 px-2" id="season_id" name="season_id">
                                     @foreach($seasons as $season)
                                         <option value="{{$season->id}}" {{$season->id==$matchday->season_id ? 'selected' : ''}}>
-                                            {{$season->name}}
+                                            {{ $season->name }} : {{ $season->championship->name }}
                                         </option>
                                     @endforeach
                                 </select>
