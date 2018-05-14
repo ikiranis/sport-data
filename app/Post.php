@@ -101,9 +101,9 @@ class Post extends Model implements Feedable
         return FeedItem::create()
             ->id($this->slug)
             ->title($this->title)
-            ->summary('<p><strong>' . $this->description . '</strong></p>' . $this->body)
+            ->summary($this->rssBody())
             ->updated($this->created_at)
-            ->link('/post/' . $this->slug)
+            ->link($this->rssLink())
             ->author('WMSports');
     }
 
@@ -115,6 +115,26 @@ class Post extends Model implements Feedable
     public static function getFeedItems()
     {
         return self::all();
+    }
+
+    /**
+     * Get the RSS body text
+     *
+     * @return string
+     */
+    public function rssBody()
+    {
+        return "<p><img src='{$this->photo->full_path_name}' width='100' align='left'><strong>{$this->description} </strong></p>{$this->body}";
+    }
+
+    /**
+     * Get rss post link
+     *
+     * @return string
+     */
+    public function rssLink()
+    {
+        return '/post/' . $this->slug;
     }
 
     /**
