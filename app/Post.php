@@ -124,7 +124,7 @@ class Post extends Model implements Feedable
      */
     public function rssBody()
     {
-        return "<p><img src='{$this->photo->full_path_name}' width='100' align='left'><strong>{$this->description} </strong></p>{$this->body}";
+        return "<p><img src='{$this->photo->full_path_name}' width='350' align='left'><strong>{$this->description} </strong></p>{$this->body}";
     }
 
     /**
