@@ -25,7 +25,7 @@
                 <tr>
                     <th scope="row">{{$season->id}}</th>
                     <td><a href="{{route('seasons.edit', $season->id)}}">{{$season->name}}</a></td>
-                    <td>{{ $season->championship->name }}/td>
+                    <td>{{ $season->championship->name }}</td>
                     <td>
                         <form method="POST" action="{{route('seasons.destroy', $season->id)}}">
                             <input name="_method" type="hidden" value="DELETE">
