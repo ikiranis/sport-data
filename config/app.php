@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'WM Sports'),
+    'name' => env('APP_NAME', 'West Macedonia Sports'),
 
     /*
     |--------------------------------------------------------------------------

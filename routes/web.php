@@ -13,6 +13,7 @@
 
 // @source for localization https://github.com/mcamara/laravel-localization
 
+// Force to load pages in https in production mode
 if (env('APP_ENV') === 'production') {
     URL::forceScheme('https');
 }
