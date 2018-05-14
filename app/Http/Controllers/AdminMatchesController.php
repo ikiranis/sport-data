@@ -84,7 +84,7 @@ class AdminMatchesController extends Controller
             $matches = count($matches);
         }
 
-        $stadia = Stadium::orderBy('name', 'asc')->all();
+        $stadia = Stadium::orderBy('name', 'asc')->get();
         $teams = Team::whereChampionshipId($request->championship_id)->orderBy('name', 'asc')->get();
         $data = $request;
 
