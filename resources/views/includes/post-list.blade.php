@@ -37,10 +37,6 @@
                             <li class="list-group-item list-group-item-action"><a
                                         href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a></li>
                         @endif
-                        @if($post->reference!==null)
-                            <li class="list-group-item list-group-item-action"><a
-                                        href="{{$post->reference}}" title="{{$post->reference}}">Πηγή</a></li>
-                        @endif
 
                             @php $approvedComments = count($post->comments->where('approved', 1)) @endphp
 
@@ -53,9 +49,11 @@
 
                 </div>
                 <div class="col-md-9 col-12">
-                    @php ($moreButton = ' [...] <p><a href="'. route('post', $post->slug). '"><span class="btn btn-secondary">more</span></a></p>')
+                    @php ($moreButton = ' [...] <div class="row"><a href="'. route('post', $post->slug). '" class="ml-auto mx-5"><span class="btn btn-outline-secondary">Συνέχεια...</span></a></div>')
 
                     {!! Str::words($post->body, 200, $moreButton) !!}
+
+                    @include('includes.reference-link')
                 </div>
             </div>
         </div>

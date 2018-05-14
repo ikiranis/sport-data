@@ -38,17 +38,20 @@
                         <li class="list-group-item list-group-item-action"><a
                                     href="{{route('sport', $post->sport->slug)}}">{{$post->sport->name}}</a></li>
                     @endif
-                    @if($post->reference!==null)
-                        <li class="list-group-item list-group-item-action"><a
-                                    href="{{$post->reference}}" title="{{$post->reference}}">Πηγή</a></li>
-                    @endif
                 </ul>
 
             </div>
             <div class="col-md-8 col-12 text-justify">
                 {!! $post->body !!}
+
+                @include('includes.reference-link')
+
             </div>
+
         </div>
+
+
+
     </div>
 
     @if(session('commentSaved'))
