@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use App\Traits\Uuids;
+use Spatie\Feed\FeedItem;
+use Spatie\Feed\Feedable;
 
 /**
  * App\Post
@@ -49,7 +51,7 @@ use App\Traits\Uuids;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Post whereApproved($value)
  */
-class Post extends Model
+class Post extends Model implements Feedable
 {
     use Sluggable;
     use Uuids;
@@ -84,6 +86,34 @@ class Post extends Model
                 'source'    => 'title'
             ]
         ];
+    }
+
+    // RSS Feed settings and methods
+
+    /**
+     * Fields for RSS feed
+     *
+     * @return $this|array|FeedItem
+     */
+    public function toFeedItem()
+    {
+        return FeedItem::create()
+            ->id($this->slug)
+            ->title($this->title)
+            ->summary('<p><strong>' . $this->description . '</strong></p>' . $this->body)
+            ->updated($this->created_at)
+            ->link('/post/' . $this->slug)
+            ->author('WMSports');
+    }
+
+    /**
+     * Method to return posts for RSS feed
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public static function getFeedItems()
+    {
+        return self::all();
     }
 
     /**

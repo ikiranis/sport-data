@@ -18,6 +18,8 @@ if (env('APP_ENV') === 'production') {
     URL::forceScheme('https');
 }
 
+// RSS feeds
+Route::feeds();
 
 Route::group(
     [

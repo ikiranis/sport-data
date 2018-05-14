@@ -13,6 +13,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
+    @include('feed::links')
+
     @include('includes.google-analytics')
 
 </head>
