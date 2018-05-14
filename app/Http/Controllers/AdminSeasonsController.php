@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Championship;
 use App\Http\Resources\SeasonResource;
+use App\Matchday;
 use App\Season;
 use Illuminate\Http\Request;
 
@@ -67,7 +68,11 @@ class AdminSeasonsController extends Controller
 
         $input = $request->all();
 
-        Season::create($input);
+        $season = Season::create($input);
+
+        for($counter=1; $counter<=$input['matchdays_number']; $counter++) {
+            Matchday::create(['season_id' => $season->id, 'matchday' => $counter]);
+        }
 
         return redirect(route('seasons.index'));
     }

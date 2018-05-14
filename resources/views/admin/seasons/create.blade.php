@@ -19,7 +19,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.name')}}</span>
                                 </div>
-                                <input type="text" max="255" class="form-control col-10" id="name" name="name">
+                                <input type="text" max="255" class="form-control col-10 px-2" id="name" name="name">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -33,6 +33,20 @@
                                             {{$championship->name}}
                                         </option>
                                     @endforeach
+                                </select>
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="matchdays_number" class="sr-only">Αγωνιστικές</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">Αγωνιστικές</span>
+                                </div>
+                                <select class="form-control col-10 px-2" id="matchdays_number" name="matchdays_number">
+                                    @for($counter=1; $counter<40; $counter++)
+                                        <option value="{{ $counter }}">
+                                            {{ $counter }}
+                                        </option>
+                                    @endfor
                                 </select>
                             </div>
 
