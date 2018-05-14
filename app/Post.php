@@ -126,7 +126,7 @@ class Post extends Model implements Feedable
     {
         return "<p><strong>{$this->description}</strong></p>
             <img src='{$this->photo->full_path_name}' width='350' align='left'>
-            <div style='padding: 2em'>{$this->body}</div>";
+            <div>{$this->body}</div>";
     }
 
     /**
