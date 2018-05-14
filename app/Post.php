@@ -89,6 +89,7 @@ class Post extends Model implements Feedable
     }
 
     // RSS Feed settings and methods
+    // @source https://github.com/spatie/laravel-feed
 
     /**
      * Fields for RSS feed

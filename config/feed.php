@@ -19,7 +19,7 @@ return [
              */
             'url' => '/feed',
 
-            'title' => 'WMSports feed',
+            'title' => 'West Macedonia Sports news feed',
         ],
     ],
 
