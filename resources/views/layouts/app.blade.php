@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" itemscope itemtype="http://schema.org/Article">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +16,8 @@
     @include('feed::links')
 
     @include('includes.google-analytics')
+
+    @yield('shareMetaTags')
 
 </head>
 <body>
