@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('siteTitle')
-    {{ config('app.name', 'Laravel') }} : Αποτελέσματα/Βαθμολογίες
+    {{ config('app.name', 'Laravel') }} : {{ $championship->name }} {{ $season->name }}
 @endsection
 
 @section('content')
