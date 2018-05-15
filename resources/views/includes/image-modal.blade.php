@@ -15,7 +15,7 @@
             </div>
 
             <div class="modal-footer row w-100 no-gutters">
-
+                <a href="{{ $post->photo ? $post->photo->reference : ''}}">{{ $post->photo ? $post->photo->reference : ''}}</a>
             </div>
         </div>
     </div>
