@@ -2,6 +2,8 @@
     {{ config('app.name', 'Laravel') }} : {{$post->title}}
 @endsection
 
+@include('includes.image-modal')
+
 <div class="col-12 my-3">
 
     <div class="row">
@@ -19,7 +21,7 @@
         <div class="row my-3">
             <div class="col-md-4 col-12">
                 <img src="{{$post->photo ? $post->photo->fullPathName : 'http://via.placeholder.com/350x150'}}"
-                     class="card-img">
+                     class="card-img btn" data-toggle="modal" data-target="#imageModal">
 
                 <ul class="list-group my-2">
                     @if(count($post->teams()->get())>0)
