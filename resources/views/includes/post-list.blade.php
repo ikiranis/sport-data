@@ -19,7 +19,7 @@
             <div class="row my-3">
                 <div class="col-md-3 col-12">
                     <img src="{{$post->photo ? $post->photo->fullPathName : 'http://via.placeholder.com/350x150'}}"
-                         class="card-img btn" data-toggle="modal" data-target="#imageModal">
+                         class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $post->id }}">
 
                     <ul class="list-group my-2">
                         @if(count($post->teams()->get())>0)

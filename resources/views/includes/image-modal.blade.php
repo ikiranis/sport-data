@@ -1,4 +1,4 @@
-<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+<div class="modal fade" id="imageModal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="imageModal{{ $post->id }}" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,10 +9,8 @@
             </div>
             <div class="modal-body">
 
-
                 <img src="{{$post->photo ? $post->photo->fullPathName : 'http://via.placeholder.com/350x150'}}"
                      width="100%">
-
 
             </div>
 
