@@ -5,17 +5,17 @@
 @endsection
 
 @section('shareMetaTags')
-    <meta name="description" content="Βαθμολογίες και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}"/>
+    <meta name="description" content="Βαθμολογία και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}"/>
 
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="{{ $championship->name }} : {{ $season->name }}">
-    <meta itemprop="description" content="Βαθμολογίες και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}">
+    <meta itemprop="description" content="Βαθμολογία και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}">
     <meta itemprop="image" content="">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="">
     <meta name="twitter:title" content="{{ $championship->name }} : {{ $season->name }}">
-    <meta name="twitter:description" content="Βαθμολογίες και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}">
+    <meta name="twitter:description" content="Βαθμολογία και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}">
     <!-- Twitter summary card with large image must be at least 280x150px -->
     <meta name="twitter:image:src" content="">
 
@@ -23,7 +23,7 @@
     <meta property="og:title" content="{{ $championship->name }} : {{ $season->name }}"/>
     <meta property="og:type" content="data"/>
     <meta property="og:image" content=""/>
-    <meta property="og:description" content="Βαθμολογίες και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}"/>
+    <meta property="og:description" content="Βαθμολογία και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}"/>
     <meta property="og:site_name" content="West Macedonia Sports"/>
 @endsection
 
