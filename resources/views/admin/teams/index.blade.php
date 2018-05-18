@@ -13,9 +13,10 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">{{__('messages.name')}}</th>
                 <th scope="col">{{__('messages.city')}}</th>
+                <th scope="col">Πρωτάθλημα</th>
+                <th scope="col">Άθλημα</th>
                 <th scope="col">{{__('messages.division')}}</th>
                 <th scope="col">{{__('messages.action')}}</th>
             </tr>
@@ -24,9 +25,10 @@
 
             @foreach($teams as $team)
                 <tr>
-                    <th scope="row">{{$team->id}}</th>
                     <td><a href="{{route('teams.edit', $team->id)}}">{{$team->name}}</a></td>
                     <td>{{$team->city}}</td>
+                    <td>{{$team->championship->name}}</td>
+                    <td>{{$team->sport->name}}</td>
                     <td>{{$team->division->name}}</td>
                     <td>
                         <form method="POST" action="{{route('teams.destroy', $team->id)}}">

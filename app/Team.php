@@ -91,4 +91,14 @@ class Team extends Model
     {
         return $this->belongsTo('App\Championship');
     }
+
+    /**
+     * Relation with sports
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function sport()
+    {
+        return $this->belongsTo('App\Sport');
+    }
 }
