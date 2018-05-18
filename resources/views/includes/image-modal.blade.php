@@ -1,4 +1,5 @@
-<div class="modal fade" id="imageModal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="imageModal{{ $post->id }}" aria-hidden="true">
+<div class="modal fade" id="imageModal{{ $post->id }}" tabindex="-1" role="dialog"
+     aria-labelledby="imageModal{{ $post->id }}" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -14,9 +15,15 @@
 
             </div>
 
-            <div class="modal-footer row w-100 no-gutters">
-                <a href="{{ $post->photo ? $post->photo->reference : ''}}">{{ $post->photo ? $post->photo->reference : ''}}</a>
-            </div>
+            @if(isset($post->photo->reference))
+                <div class="modal-footer row w-100 no-gutters">
+                    <span>Πηγή:
+                        <a href="{{ $post->photo->reference }}">
+                            {{ parse_url($post->photo->reference)['host'] }}
+                        </a>
+                    </span>
+                </div>
+            @endif
         </div>
     </div>
 </div>
