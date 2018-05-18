@@ -205,7 +205,7 @@ class Standings
     private function setTeamsPoints($match)
     {
         // Check if there is a score on match
-        if(!$match->first_team_score == null && !$match->second_team_score == null) {
+        if( isset($match->first_team_score)  && isset($match->second_team_score) ) {
 
             $scoreDifference = $this->getScoreDifference($match->first_team_score, $match->second_team_score);
 
