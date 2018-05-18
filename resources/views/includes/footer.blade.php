@@ -18,6 +18,9 @@
                 </span>
             </div>
 
+
         </div>
+
+        <div class="text-center font-weight-bold">Δοκιμαστική λειτουργία</div>
     </div>
 </div>
