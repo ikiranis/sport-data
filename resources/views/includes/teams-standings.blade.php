@@ -4,6 +4,7 @@
     <table class="table table-responsive table-sm table-hover">
         <thead>
         <tr>
+            <th scope="row">#</th>
             <th scope="col" class="text-center">Ομάδα</th>
             <th scope="col" class="text-center">Αγώνες</th>
             <th scope="col" class="text-center">Νίκες</th>
@@ -18,8 +19,11 @@
         <tbody>
 
 
+        @php ($position = 1)
+
         @foreach($teamsStandings as $key=>$team)
             <tr>
+                <td scope="row">{{$position}}</td>
                 <td class="col font-weight-bold"><a href="{{route('team', $team->data->slug)}}">{{$key}}</a></td>
                 <td class="col text-center">{{$team->matches}}</td>
                 <td class="col text-center">{{$team->wins}}</td>
@@ -30,6 +34,7 @@
                 <td class="col text-center">{{$team->scoreFor - $team->scoreAgainst}}</td>
                 <td class="col text-center font-weight-bold">{{$team->points}}</td>
             </tr>
+            @php ($position++)
         @endforeach
 
         </tbody>
