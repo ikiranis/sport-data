@@ -86,11 +86,12 @@ class AdminMatchesController extends Controller
 
         $stadia = Stadium::orderBy('name', 'asc')->get();
         $teams = Team::whereChampionshipId($request->championship_id)->orderBy('name', 'asc')->get();
+        $matchday = Matchday::whereId($request->matchday_id)->firstOrFail();
         $data = $request;
 
         $userApiToken = Auth::user()->api_token;
 
-        return view('admin/matches/createMassive', compact('stadia', 'teams', 'data', 'matches', 'userApiToken'));
+        return view('admin/matches/createMassive', compact('stadia', 'teams', 'data', 'matches', 'userApiToken', 'matchday'));
     }
 
     /**
