@@ -40,6 +40,7 @@
 
 @endsection
 
+
 @include('includes.image-modal')
 
 <div class="col-12 my-3">
