@@ -4,6 +4,29 @@
     {{ config('app.name', 'laravel') }} : {{$team->name}}
 @endsection
 
+@section('shareMetaTags')
+    <meta name="description" content="Σελίδα της ομάδας: {{$team->name}}"/>
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="{{$team->name}}">
+    <meta itemprop="description" content="Σελίδα της ομάδας: {{$team->name}}">
+    <meta itemprop="image" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="">
+    <meta name="twitter:title" content="{{$team->name}}">
+    <meta name="twitter:description" content="Σελίδα της ομάδας: {{$team->name}}">
+    <!-- Twitter summary card with large image must be at least 280x150px -->
+    <meta name="twitter:image:src" content="">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{$team->name}}"/>
+    <meta property="og:type" content="category"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:description" content="Σελίδα της ομάδας: {{$team->name}}"/>
+    <meta property="og:site_name" content="West Macedonia Sports"/>
+@endsection
+
 @section('content')
 
     <div class="container">
