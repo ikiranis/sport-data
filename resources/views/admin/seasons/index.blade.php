@@ -16,6 +16,7 @@
                 <th scope="col">#</th>
                 <th scope="col">{{__('messages.name')}}</th>
                 <th scope="col" class="text-center">Πρωτάθλημα</th>
+                <th scope="col">Άθλημα</th>
                 <th scope="col">{{__('messages.action')}}</th>
             </tr>
             </thead>
@@ -26,6 +27,7 @@
                     <th scope="row">{{$season->id}}</th>
                     <td><a href="{{route('seasons.edit', $season->id)}}">{{$season->name}}</a></td>
                     <td>{{ $season->championship->name }}</td>
+                    <td>{{ $season->championship->sport->name }}</td>
                     <td>
                         <form method="POST" action="{{route('seasons.destroy', $season->id)}}">
                             <input name="_method" type="hidden" value="DELETE">
