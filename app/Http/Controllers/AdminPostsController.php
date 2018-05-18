@@ -165,6 +165,10 @@ class AdminPostsController extends Controller
             } else {
                 return 'problem';
             }
+        } else {
+            $photo = Photo::findOrFail($post->photo_id);
+
+            $photo->update(['reference' => $request->photo_reference]);
         }
 
         $post->update($input);

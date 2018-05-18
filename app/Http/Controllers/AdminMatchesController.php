@@ -86,7 +86,7 @@ class AdminMatchesController extends Controller
 
         $stadia = Stadium::orderBy('name', 'asc')->get();
         $teams = Team::whereChampionshipId($request->championship_id)->orderBy('name', 'asc')->get();
-        $matchday = Matchday::whereId($request->matchday_id)->firstOrFail();
+        $matchday = Matchday::findOrFail($request->matchday_id);
         $data = $request;
 
         $userApiToken = Auth::user()->api_token;
