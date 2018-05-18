@@ -23,8 +23,6 @@ mix.scripts([
 ], 'public/js/ckeditor.js');
 
 
-
-
 // mix.styles([
 //     'resources/assets/css/app.css',
 //     'resources/assets/css/admin.css'

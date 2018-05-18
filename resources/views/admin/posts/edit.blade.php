@@ -159,11 +159,17 @@
     </div>
 
     <script>
+
         ClassicEditor
-            .create(document.querySelector('#body'))
+            .create( document.querySelector('#body'), {
+
+            })
             .catch(error => {
                 console.error(error);
             });
+
+        console.log(ClassicEditor.build.plugins.map( plugin => plugin.pluginName ));
+
     </script>
 
 
