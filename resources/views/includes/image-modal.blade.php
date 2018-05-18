@@ -18,7 +18,7 @@
             @if(isset($post->photo->reference))
                 <div class="modal-footer row w-100 no-gutters">
                     <span>Πηγή:
-                        <a href="{{ $post->photo->reference }}">
+                        <a href="{{ $post->photo->reference }}" class="font-weight-bold">
                             {{ parse_url($post->photo->reference)['host'] }}
                         </a>
                     </span>
