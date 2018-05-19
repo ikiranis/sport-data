@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6fb5e6547caccfd71ac8bc59da089d9e",
+    "content-hash": "91eb41839f64a352f64d9374b88f24f0",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1024,16 +1024,16 @@
         },
         {
             "name": "genealabs/laravel-model-caching",
-            "version": "0.2.56",
+            "version": "0.2.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GeneaLabs/laravel-model-caching.git",
-                "reference": "d45a4177bbc6a5b121cfd24a3b18145e9338569b"
+                "reference": "b9494ef4a576cc241f1e3f6e7de9834bdbd0a517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GeneaLabs/laravel-model-caching/zipball/d45a4177bbc6a5b121cfd24a3b18145e9338569b",
-                "reference": "d45a4177bbc6a5b121cfd24a3b18145e9338569b",
+                "url": "https://api.github.com/repos/GeneaLabs/laravel-model-caching/zipball/b9494ef4a576cc241f1e3f6e7de9834bdbd0a517",
+                "reference": "b9494ef4a576cc241f1e3f6e7de9834bdbd0a517",
                 "shasum": ""
             },
             "require": {
@@ -1083,7 +1083,7 @@
                 }
             ],
             "description": "Automatic caching for Eloquent models.",
-            "time": "2018-05-13T03:05:19+00:00"
+            "time": "2018-05-19T17:20:13+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

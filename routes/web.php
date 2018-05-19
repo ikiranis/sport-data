@@ -30,6 +30,11 @@ Route::group(
 
         Auth::routes();
 
+        // Admin first page
+        Route::get('/admin', function () {
+            return view('admin.index');
+        })->middleware('auth')->name('admin');
+
         // Public pages
         Route::get('/', 'HomeController@index')->name('home');
         Route::get('/sport/{slug}', 'HomeController@sport')->name('sport');
@@ -38,11 +43,6 @@ Route::group(
         Route::get('/athlete/{slug}', 'HomeController@athlete')->name('athlete');
         Route::get('/standings', 'HomeController@standings')->name('standings');
         Route::post('/comment/store', 'HomeController@storeComment')->name('post.comment.store');
-
-        // Admin first page
-        Route::get('/admin', function () {
-            return view('admin.index');
-        })->middleware('auth')->name('admin');
 
         // If user is admin
         Route::group(['middleware' => 'admin'], function () {
