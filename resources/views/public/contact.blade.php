@@ -17,9 +17,9 @@
                 <div class="card-body">
 
                     <p>Στείλτε μας οτιδήποτε μπορεί να ενδιαφέρει το <strong>wmsports.gr</strong>, για δημοσίευση.
-                        Ειδήσεις, δεδομένα, στατιστικά κοκ.</p>
+                        Ειδήσεις, δεδομένα, στατιστικά κοκ, αλλά και παρατηρήσεις για το site</p>
 
-                    <p>email επικοινωνίας: <strong>rocean74 (at) gmail.com</strong></p>
+                    <p>e-mail: <strong>rocean74 (at) gmail.com</strong></p>
 
                 </div>
 
