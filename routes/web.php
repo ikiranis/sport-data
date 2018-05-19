@@ -38,10 +38,11 @@ Route::group(
         // Public pages
         Route::get('/', 'HomeController@index')->name('home');
         Route::get('/sport/{slug}', 'HomeController@sport')->name('sport');
+        Route::get('/post/{slug}', 'HomeController@post')->name('post');
         Route::get('/{slug}', 'HomeController@post')->name('post');
         Route::get('/team/{slug}', 'HomeController@team')->name('team');
         Route::get('/athlete/{slug}', 'HomeController@athlete')->name('athlete');
-        Route::get('/standings', 'HomeController@standings')->name('standings');
+        Route::get('/standings/{championship_id}/{season_id}', 'HomeController@standings')->name('standings');
         Route::post('/comment/store', 'HomeController@storeComment')->name('post.comment.store');
 
         // If user is admin

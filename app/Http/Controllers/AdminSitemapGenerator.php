@@ -10,7 +10,8 @@ class AdminSitemapGenerator extends Controller
 
     public function run()
     {
-        SitemapGenerator::create('https://wmsports.gr')->writeToFile($this->path);
+        SitemapGenerator::create('https://wmsports.gr')
+            ->writeToFile($this->path);
 
         return 'Sitemap created';
     }

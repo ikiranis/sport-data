@@ -89,8 +89,8 @@ class HomeController extends Controller
         foreach ($seasons as $season) {
 
             $matches = Match::whereChampionshipId($team->championship_id)->
-                whereSeasonId($season->id)->
-                orderBy('match_date', 'desc')->get();
+            whereSeasonId($season->id)->
+            orderBy('match_date', 'desc')->get();
 
             $standings->setMatches($matches);
 
@@ -141,43 +141,34 @@ class HomeController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function standings(Request $request, Standings $standings)
+    public function standings($championship_id, $season_id, Standings $standings)
     {
-        if ($request->has('_token')) { // If there are request data do filter
 
-            $championship = Championship::whereId($request->championship_id)->firstOrFail();
+        $championship = Championship::whereId($championship_id)->firstOrFail();
 
-            $season = Season::whereId($request->season_id)->firstOrFail();
+        $season = Season::whereId($season_id)->firstOrFail();
 
-            $matches = Match::whereChampionshipId($request->championship_id)->
-                whereSeasonId($request->season_id)->
-                orderBy('match_date', 'desc')->get();
+        $matches = Match::whereChampionshipId($championship_id)->
+            whereSeasonId($season_id)->
+            orderBy('match_date', 'desc')->get();
 
-            $standings->setMatches($matches);
+        $standings->setMatches($matches);
 
-            $teams = Team::whereChampionshipId($request->championship_id)->get();
-            $standings->setTeams($teams);
+        $teams = Team::whereChampionshipId($championship_id)->get();
+        $standings->setTeams($teams);
 
-            // Pass rules as object
-            $rules = json_decode(
-                Championship::whereId($request->championship_id)->
-                firstOrFail()->
-                rule->
-                description,
-                false);
-            $standings->setRules($rules);
+        // Pass rules as object
+        $rules = json_decode(
+            Championship::whereId($championship_id)->
+            firstOrFail()->
+            rule->
+            description,
+            false);
+        $standings->setRules($rules);
 
-            $teamsStandings = $standings->getStandings();
+        $teamsStandings = $standings->getStandings();
 
-            $matchdays = Matchday::whereSeasonId($request->season_id)->get();
-
-        } else {
-            $championship = null;
-            $season = null;
-            $teamsStandings = null;
-            $matches = null;
-            $matchdays = null;
-        }
+        $matchdays = Matchday::whereSeasonId($season_id)->get();
 
         return view('public.standings', compact('teamsStandings', 'matches', 'matchdays', 'championship', 'season'));
 

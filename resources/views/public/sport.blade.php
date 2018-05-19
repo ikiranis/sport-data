@@ -36,7 +36,7 @@
 
         @if(count($championships)>0)
 
-            <form method="GET" action="{{route('standings')}}">
+            <form method="GET">
 
                 @csrf
 
@@ -67,9 +67,10 @@
                         </div>
 
                         <div class="col-lg-4 col-12 my-1">
-                            <button type="submit" class="btn btn-info w-100">
+                            <a type="submit" class="btn btn-info w-100"
+                                    :href="'{{ route('standings', ['', '']) }}/' + championshipSelected + '/' + seasonSelected">
                                 Βαθμολογία / Αποτελέσματα
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
