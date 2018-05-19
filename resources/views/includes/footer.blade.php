@@ -2,11 +2,6 @@
     <div class="card">
         <div class="card-body row align-middle">
 
-            <div class="col my-auto">
-                <a href="{{ url('/feed') }}"><img src="{{url('images/site/RSS.png')}}" width="30"
-                                                       title="RSS News Feed"></a>
-            </div>
-
             <div class="col text-center font-weight-bold">Δοκιμαστική λειτουργία</div>
 
             <div class="col text-right my-auto">
