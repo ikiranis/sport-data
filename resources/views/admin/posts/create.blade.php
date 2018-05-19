@@ -149,17 +149,9 @@
         </div>
     </div>
 
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#body'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
+    @include('includes.editor')
 
 @endsection
-
-@include('includes.editor')
 
 @section('scripts')
 

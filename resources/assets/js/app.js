@@ -5,8 +5,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import Heading from '@ckeditor/ckeditor5-heading/src/heading';
-
 require('./bootstrap');
 
 window.Vue = require('vue');

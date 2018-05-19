@@ -33,7 +33,8 @@
 
                             <div class="form-group">
                                 <label class="form-check-label" for="body">{{__('messages.text')}}</label>
-                                <textarea class="form-control ckeditor" id="body" name="body">{{$post->body}}</textarea>
+                                <div id="toolbar-container"></div>
+                                <textarea class="form-control ckeditor" id="body" name="body">{{ $post->body }}</textarea>
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -158,24 +159,10 @@
         </div>
     </div>
 
-    <script>
-
-        ClassicEditor
-            .create( document.querySelector('#body'), {
-
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-        console.log(ClassicEditor.build.plugins.map( plugin => plugin.pluginName ));
-
-    </script>
-
+    @include('includes.editor')
 
 @endsection
 
-@include('includes.editor')
 
 @section('scripts')
 
