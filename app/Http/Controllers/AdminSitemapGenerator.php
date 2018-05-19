@@ -6,7 +6,7 @@ use Spatie\Sitemap\SitemapGenerator;
 
 class AdminSitemapGenerator extends Controller
 {
-    private $path = 'sitemap.xml';
+    private $path = 'sitemaps/sitemap.xml';
 
     public function run()
     {
