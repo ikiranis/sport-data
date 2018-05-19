@@ -35,8 +35,9 @@ class HomeController extends Controller
     {
         $sports = Sport::all();
         $posts = Post::whereApproved(1)->orderBy('created_at', 'desc')->paginate(5);
+        $seasons = Season::all();
 
-        return view('public.home', compact('sports', 'posts'));
+        return view('public.home', compact('sports', 'posts', 'seasons'));
     }
 
     /**

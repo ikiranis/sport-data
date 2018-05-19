@@ -7,17 +7,20 @@
 @endsection
 
 @section('shareMetaTags')
-    <meta name="description" content="Ο ομαδικός ερασιτεχνικός αθλητισμός στην Δυτική Μακεδονία. Ειδήσεις, αποτελέσματα, βαθμολογίες, στατιστικά"/>
+    <meta name="description"
+          content="Ο ομαδικός ερασιτεχνικός αθλητισμός στην Δυτική Μακεδονία. Ειδήσεις, αποτελέσματα, βαθμολογίες, στατιστικά"/>
 
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="{{ config('app.name', 'Laravel') }}">
-    <meta itemprop="description" content="Ο ομαδικός ερασιτεχνικός αθλητισμός στην Δυτική Μακεδονία. Ειδήσεις, αποτελέσματα, βαθμολογίες, στατιστικά">
+    <meta itemprop="description"
+          content="Ο ομαδικός ερασιτεχνικός αθλητισμός στην Δυτική Μακεδονία. Ειδήσεις, αποτελέσματα, βαθμολογίες, στατιστικά">
     <meta itemprop="image" content="">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="">
     <meta name="twitter:title" content="{{ config('app.name', 'Laravel') }}">
-    <meta name="twitter:description" content="Ο ομαδικός ερασιτεχνικός αθλητισμός στην Δυτική Μακεδονία. Ειδήσεις, αποτελέσματα, βαθμολογίες, στατιστικά">
+    <meta name="twitter:description"
+          content="Ο ομαδικός ερασιτεχνικός αθλητισμός στην Δυτική Μακεδονία. Ειδήσεις, αποτελέσματα, βαθμολογίες, στατιστικά">
     <!-- Twitter summary card with large image must be at least 280x150px -->
     <meta name="twitter:image:src" content="">
 
@@ -25,7 +28,8 @@
     <meta property="og:title" content="{{ config('app.name', 'Laravel') }}"/>
     <meta property="og:type" content="home"/>
     <meta property="og:image" content=""/>
-    <meta property="og:description" content="Ο ομαδικός ερασιτεχνικός αθλητισμός στην Δυτική Μακεδονία. Ειδήσεις, αποτελέσματα, βαθμολογίες, στατιστικά"/>
+    <meta property="og:description"
+          content="Ο ομαδικός ερασιτεχνικός αθλητισμός στην Δυτική Μακεδονία. Ειδήσεις, αποτελέσματα, βαθμολογίες, στατιστικά"/>
     <meta property="og:site_name" content="West Macedonia Sports"/>
 @endsection
 
@@ -54,22 +58,39 @@
     </div>
 
 
+
+
+
     <div class="container">
-        @if(count($posts)>0)
 
-            @foreach($posts as $post)
+        <div class="row no-gutters">
 
-                @include('includes.post-list')
+            <div class="container col-lg-10 col-12">
+                @if(count($posts)>0)
 
-            @endforeach
+                    @foreach($posts as $post)
 
-            <div class="row">
-                <div class="ml-auto mr-auto">
-                    {{ $posts->links() }}
-                </div>
+                        @include('includes.post-list')
+
+                    @endforeach
+
+                    <div class="row">
+                        <div class="ml-auto mr-auto">
+                            {{ $posts->links() }}
+                        </div>
+                    </div>
+
+                @endif
             </div>
 
-        @endif
+            <div class="container col-lg-2 col-12 my-3">
+                @if(count($seasons)>0)
+                    @include('includes.standings-list')
+                @endif
+            </div>
+
+        </div>
+
     </div>
 
 @endsection

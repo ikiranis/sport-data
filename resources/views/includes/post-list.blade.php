@@ -17,7 +17,7 @@
             </div>
 
             <div class="row my-3">
-                <div class="col-md-3 col-12">
+                <div class="col-md-4 col-12">
                     <img src="{{$post->photo ? $post->photo->fullPathName : 'http://via.placeholder.com/350x150'}}"
                          class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $post->id }}">
 
@@ -54,7 +54,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-9 col-12">
+                <div class="col-md-8 col-12">
                     @php ($moreButton = ' [...] <div class="row"><a href="'. route('post', $post->slug). '" class="mx-5 btn btn-sm btn-outline-secondary">Συνέχεια...</a></div>')
 
                     {!! Str::words($post->body, 200, $moreButton) !!}

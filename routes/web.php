@@ -38,7 +38,7 @@ Route::group(
         // Public pages
         Route::get('/', 'HomeController@index')->name('home');
         Route::get('/sport/{slug}', 'HomeController@sport')->name('sport');
-        Route::get('/post/{slug}', 'HomeController@post')->name('post');
+        Route::get('/post/{slug}', 'HomeController@post')->name('post'); // TODO remove after a while
         Route::get('/{slug}', 'HomeController@post')->name('post');
         Route::get('/team/{slug}', 'HomeController@team')->name('team');
         Route::get('/athlete/{slug}', 'HomeController@athlete')->name('athlete');
