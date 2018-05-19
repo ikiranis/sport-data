@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('includes.social-buttons-javascript')
+
 @section('siteTitle')
     {{ config('app.name', 'Laravel') }}
 @endsection

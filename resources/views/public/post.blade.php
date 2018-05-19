@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('includes.social-buttons-javascript')
+
 @section('content')
 
     <div class="container">
@@ -11,7 +13,6 @@
 @endsection
 
 @section('scripts')
-
 
     @if(count($post->teams()->get())>0)
         @include('includes.teams-container-javascript')
