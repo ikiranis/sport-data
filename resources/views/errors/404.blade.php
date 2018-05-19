@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('siteTitle')
+    {{ config('app.name', 'Laravel') }} : 404 Page
+@endsection
+
 @section('content')
 
     <div class="container">
