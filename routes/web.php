@@ -34,7 +34,6 @@ Route::group(
         Route::get('/', 'HomeController@index')->name('home');
         Route::get('/sport/{slug}', 'HomeController@sport')->name('sport');
         Route::get('/{slug}', 'HomeController@post')->name('post');
-        Route::get('/post/{slug}', 'HomeController@post')->name('post'); // remove it after a while
         Route::get('/team/{slug}', 'HomeController@team')->name('team');
         Route::get('/athlete/{slug}', 'HomeController@athlete')->name('athlete');
         Route::get('/standings', 'HomeController@standings')->name('standings');
