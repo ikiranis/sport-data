@@ -5,9 +5,6 @@
         selector:'#body',
         height: 500,
         theme: 'modern',
-        plugins: "media mediaembed",
-        init_instance_callback : function() {
-            $("head").append("<style> .mce-tooltip{ display: none; } </style>");
-        },
+        plugins: "media mediaembed"
     });
 </script>
