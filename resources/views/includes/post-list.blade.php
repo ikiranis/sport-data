@@ -51,7 +51,7 @@
 
                 </div>
                 <div class="col-md-9 col-12">
-                    @php ($moreButton = ' [...] <div class="row"><a href="'. route('post', $post->slug). '" class="ml-auto mx-5"><span class="btn btn-sm btn-outline-secondary">Συνέχεια...</span></a></div>')
+                    @php ($moreButton = ' [...] <div class="row"><a href="'. route('post', $post->slug). '" class="ml-auto mx-5 btn btn-sm btn-outline-secondary">Συνέχεια...</a></div>')
 
                     {!! Str::words($post->body, 200, $moreButton) !!}
 
