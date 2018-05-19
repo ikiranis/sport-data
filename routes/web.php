@@ -35,6 +35,10 @@ Route::group(
             return view('admin.index');
         })->middleware('auth')->name('admin');
 
+        // Static pages
+        Route::get('/about', function () { return view('public.about'); })->name('about');
+        Route::get('/contact', function () { return view('public.contact'); })->name('contact');
+
         // Public pages
         Route::get('/', 'HomeController@index')->name('home');
         Route::get('/sport/{slug}', 'HomeController@sport')->name('sport');

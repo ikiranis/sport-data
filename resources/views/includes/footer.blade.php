@@ -2,14 +2,12 @@
     <div class="card">
         <div class="card-body row align-middle">
 
-            <div class="col text-left my-auto">
-                    <div>Επικοινωνία: <span class="font-weight-bold">rocean74 (at) gmail.com</span></div>
-            </div>
-
-            <div class="col text-center my-auto">
+            <div class="col my-auto">
                 <a href="{{ url('/feed') }}"><img src="{{url('images/site/RSS.png')}}" width="30"
                                                        title="RSS News Feed"></a>
             </div>
+
+            <div class="col text-center font-weight-bold">Δοκιμαστική λειτουργία</div>
 
             <div class="col text-right my-auto">
                 <span>
@@ -21,6 +19,5 @@
 
         </div>
 
-        <div class="text-center font-weight-bold">Δοκιμαστική λειτουργία</div>
     </div>
 </div>
