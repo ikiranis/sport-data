@@ -1,8 +1,15 @@
-<div class="container-fluid bg-dark text-white px-5">
-    <div class="text-center" id="siteTitle">
-        <a href="{{ url('/') }}"><span class="mdi mdi-24px mdi-home-outline"></span></a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <a href="{{ route('about') }}">About</a>
-        <a href="{{ route('contact') }}">Επικοινωνία</a>
-    </div>
-</div>
+    <a class="navbar-brand" href="{{ route('home') }}"><span class="mdi mdi-home-outline"></span>WMSports</a>
+
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('about') }}">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('contact') }}">Επικοινωνία</a>
+        </li>
+
+    </ul>
+
+</nav>
