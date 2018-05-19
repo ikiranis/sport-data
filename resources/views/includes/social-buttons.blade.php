@@ -11,8 +11,10 @@
     </div>
 
     <a class="twitter-share-button col"
-       href="https://twitter.com/intent/tweet?text={{ urlencode($post->title) }}"
-       data-size="large">
-        Tweet</a>
+       href="https://twitter.com/intent/tweet?text={{ urlencode($post->title) }}&hashtags=wmsports"
+       data-size="large">Tweet</a>
+
+    <link rel="canonical"
+          href="{{ secure_url('/' . $post->slug) }}">
 
 </div>
