@@ -8,4 +8,4 @@ yarn-error.log
 .env
 /node_modules
 /vendor
-/public/sitemap.xml
+/public/sitemaps/sitemap.xml
