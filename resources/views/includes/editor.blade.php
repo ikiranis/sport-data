@@ -1,14 +1,18 @@
-<script src="{{asset('js/ckeditor.js')}}"></script>
+{{--<script src="{{asset('js/ckeditor.js')}}"></script>--}}
 
-<script>
+{{--<script>--}}
 
-    ClassicEditor
-        .create(document.querySelector('#body'))
-        .catch(error => {
-            console.error(error);
-        });
+    {{--ClassicEditor--}}
+        {{--.create(document.querySelector('#body'))--}}
+        {{--.catch(error => {--}}
+            {{--console.error(error);--}}
+        {{--});--}}
 
-</script>
+{{--</script>--}}
+
+
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=1azfr0zhlf5i17ungsfoyb11cc6cu4abmnizwww1wtamncu8"></script>
+<script>tinymce.init({ selector:'#body' });</script>
 
 
 {{--<script src="https://cdn.ckeditor.com/ckeditor5/10.0.0/decoupled-document/ckeditor.js"></script>--}}
