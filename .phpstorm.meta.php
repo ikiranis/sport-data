@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-05-18 17:15:03.
+    * Generated on 2018-05-19 18:22:54.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -40,6 +40,7 @@ namespace PHPSTORM_META {
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Cviebrock\EloquentSluggable\SluggableObserver' => \Cviebrock\EloquentSluggable\SluggableObserver::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'Mcamara\LaravelLocalization\LaravelLocalization' => \Mcamara\LaravelLocalization\LaravelLocalization::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'command.backup:run' => \Spatie\Backup\Commands\BackupCommand::class,
@@ -182,6 +183,7 @@ namespace PHPSTORM_META {
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Cviebrock\EloquentSluggable\SluggableObserver' => \Cviebrock\EloquentSluggable\SluggableObserver::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'Mcamara\LaravelLocalization\LaravelLocalization' => \Mcamara\LaravelLocalization\LaravelLocalization::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'command.backup:run' => \Spatie\Backup\Commands\BackupCommand::class,
@@ -324,6 +326,7 @@ namespace PHPSTORM_META {
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Cviebrock\EloquentSluggable\SluggableObserver' => \Cviebrock\EloquentSluggable\SluggableObserver::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'Mcamara\LaravelLocalization\LaravelLocalization' => \Mcamara\LaravelLocalization\LaravelLocalization::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'command.backup:run' => \Spatie\Backup\Commands\BackupCommand::class,
@@ -466,6 +469,7 @@ namespace PHPSTORM_META {
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Cviebrock\EloquentSluggable\SluggableObserver' => \Cviebrock\EloquentSluggable\SluggableObserver::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'Mcamara\LaravelLocalization\LaravelLocalization' => \Mcamara\LaravelLocalization\LaravelLocalization::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'command.backup:run' => \Spatie\Backup\Commands\BackupCommand::class,
@@ -608,6 +612,7 @@ namespace PHPSTORM_META {
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Cviebrock\EloquentSluggable\SluggableObserver' => \Cviebrock\EloquentSluggable\SluggableObserver::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'Mcamara\LaravelLocalization\LaravelLocalization' => \Mcamara\LaravelLocalization\LaravelLocalization::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'command.backup:run' => \Spatie\Backup\Commands\BackupCommand::class,
@@ -750,6 +755,7 @@ namespace PHPSTORM_META {
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Cviebrock\EloquentSluggable\SluggableObserver' => \Cviebrock\EloquentSluggable\SluggableObserver::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'Mcamara\LaravelLocalization\LaravelLocalization' => \Mcamara\LaravelLocalization\LaravelLocalization::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'command.backup:run' => \Spatie\Backup\Commands\BackupCommand::class,
@@ -892,6 +898,7 @@ namespace PHPSTORM_META {
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Cviebrock\EloquentSluggable\SluggableObserver' => \Cviebrock\EloquentSluggable\SluggableObserver::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'Mcamara\LaravelLocalization\LaravelLocalization' => \Mcamara\LaravelLocalization\LaravelLocalization::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'command.backup:run' => \Spatie\Backup\Commands\BackupCommand::class,

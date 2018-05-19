@@ -61,6 +61,8 @@ Route::group(
             Route::resource('admin/matches', 'AdminMatchesController');
             Route::get('admin/matches/create/massive', 'AdminMatchesController@createMassive')->name('matches.create.massive');
             Route::get('admin/standings', 'AdminStandingsController@index')->name('standings.index');
+
+            Route::get('admin/sitemap', 'AdminSitemapGenerator@run')->name('sitemap');
         });
 
     });

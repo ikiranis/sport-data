@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.22 on 2018-05-18 17:15:02.
+ * Generated for Laravel 5.6.22 on 2018-05-19 18:22:53.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -13559,6 +13559,66 @@ namespace Webpatser\Uuid {
  
 }
 
+namespace Intervention\Image\Facades { 
+
+    class Image {
+        
+        /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @static 
+         */ 
+        public static function configure($config = array())
+        {
+            return \Intervention\Image\ImageManager::configure($config);
+        }
+        
+        /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function make($data)
+        {
+            return \Intervention\Image\ImageManager::make($data);
+        }
+        
+        /**
+         * Creates an empty image canvas
+         *
+         * @param integer $width
+         * @param integer $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function canvas($width, $height, $background = null)
+        {
+            return \Intervention\Image\ImageManager::canvas($width, $height, $background);
+        }
+        
+        /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param integer $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
+         * @static 
+         */ 
+        public static function cache($callback, $lifetime = null, $returnObj = false)
+        {
+            return \Intervention\Image\ImageManager::cache($callback, $lifetime, $returnObj);
+        }
+         
+    }
+ 
+}
+
 namespace Mcamara\LaravelLocalization\Facades { 
 
     class LaravelLocalization {
@@ -16163,6 +16223,8 @@ namespace  {
     class Str extends \Illuminate\Support\Str {}
 
     class Uuid extends \Webpatser\Uuid\Uuid {}
+
+    class Image extends \Intervention\Image\Facades\Image {}
 
     class LaravelLocalization extends \Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
  
