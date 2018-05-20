@@ -49,10 +49,6 @@
                         @endif
                     </ul>
 
-                    <div class="row my-2">
-                        @include('includes.social-buttons')
-                    </div>
-
                 </div>
                 <div class="col-md-8 col-12">
                     @php ($moreButton = ' [...] <div class="row"><a href="'. route('post', $post->slug). '" class="mx-5 btn btn-sm btn-outline-secondary">Συνέχεια...</a></div>')

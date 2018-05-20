@@ -24,6 +24,7 @@
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="{{ secure_url('/' . $post->slug) }}"/>
     <meta property="og:image" content="{{ $post->photo ? secure_url($post->photo->full_path_name) : ''}}"/>
+    <meta property="og:image:width" content="282">
     <meta property="og:description" content="{{ $post->description }}"/>
     <meta property="og:site_name" content="West Macedonia Sports"/>
     <meta property="article:published_time" content="{{ $post->created_at }}"/>

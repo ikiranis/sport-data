@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@include('includes.social-buttons-javascript')
-
 @section('siteTitle')
     {{ config('app.name', 'Laravel') }} : {{$sport->name}}
 @endsection
@@ -12,19 +10,20 @@
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="{{$sport->name}}">
     <meta itemprop="description" content="Σελίδα της άθλημα: {{$sport->name}}">
-    <meta itemprop="image" content="">
+    <meta itemprop="image" content="{{ secure_url('/images/site/logo.png') }}">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="">
     <meta name="twitter:title" content="{{$sport->name}}">
     <meta name="twitter:description" content="Σελίδα της άθλημα: {{$sport->name}}">
     <!-- Twitter summary card with large image must be at least 280x150px -->
-    <meta name="twitter:image:src" content="">
+    <meta name="twitter:image:src" content="{{ secure_url('/images/site/logo.png') }}">
 
     <!-- Open Graph data -->
     <meta property="og:title" content="{{$sport->name}}"/>
     <meta property="og:type" content="category"/>
-    <meta property="og:image" content=""/>
+    <meta property="og:image" content="{{ secure_url('/images/site/logo.png') }}"/>
+    <meta property="og:image:width" content="282">
     <meta property="og:description" content="Σελίδα της άθλημα: {{$sport->name}}"/>
     <meta property="og:site_name" content="West Macedonia Sports"/>
 @endsection
