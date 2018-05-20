@@ -5,6 +5,6 @@
         selector:'#body',
         height: 500,
         theme: 'modern',
-        plugins: "media mediaembed"
+        plugins: "media mediaembed link"
     });
 </script>
