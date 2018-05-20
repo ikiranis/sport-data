@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('siteTitle')
+    {{ config('app.name', 'Laravel') }} : {{ $post->title }}
+@endsection
+
 @section('shareMetaTags')
     <meta name="description" content="{{ $post->description }}"/>
 
@@ -39,8 +43,6 @@
 
 @endsection
 
-@include('includes.social-buttons-javascript')
-
 @section('content')
 
     <div class="container">
@@ -53,9 +55,10 @@
 
 @section('scripts')
 
+    @include('includes.social-buttons-javascript')
+
     @if(count($post->teams()->get())>0)
         @include('includes.teams-container-javascript')
     @endif
-
 
 @endsection
