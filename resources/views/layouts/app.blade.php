@@ -12,14 +12,14 @@
 
     <title>@yield('siteTitle')</title>
 
+    @yield('shareMetaTags')
+
     <!-- Styles -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
     @include('feed::links')
 
     @include('includes.google-analytics')
-
-    @yield('shareMetaTags')
 
 </head>
 <body>
