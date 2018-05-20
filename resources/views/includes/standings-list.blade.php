@@ -10,7 +10,7 @@
 
             @foreach($seasons as $season)
 
-                <li class="list-group-item p-1">
+                <li class="list-group-item list-group-item-action p-1">
                     <a href="{{ route('standings', [$season->championship->id, $season->id]) }}">
                         {{ $season->championship->sport->name }} / {{ $season->championship->name }}
                         / {{ $season->name }}

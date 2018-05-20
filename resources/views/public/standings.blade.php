@@ -10,19 +10,20 @@
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="{{ $championship->name }} : {{ $season->name }}">
     <meta itemprop="description" content="Βαθμολογία και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}">
-    <meta itemprop="image" content="">
+    <meta itemprop="image" content="{{ secure_url('/images/site/logo.png') }}">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="">
     <meta name="twitter:title" content="{{ $championship->name }} : {{ $season->name }}">
     <meta name="twitter:description" content="Βαθμολογία και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}">
     <!-- Twitter summary card with large image must be at least 280x150px -->
-    <meta name="twitter:image:src" content="">
+    <meta name="twitter:image:src" content="{{ secure_url('/images/site/logo.png') }}">
 
     <!-- Open Graph data -->
     <meta property="og:title" content="{{ $championship->name }} : {{ $season->name }}"/>
     <meta property="og:type" content="data"/>
-    <meta property="og:image" content=""/>
+    <meta property="og:image" content="{{ secure_url('/images/site/logo.png') }}"/>
+    <meta property="og:image:width" content="282">
     <meta property="og:description" content="Βαθμολογία και αποτελέσματα: {{ $championship->name }} : {{ $season->name }}"/>
     <meta property="og:site_name" content="West Macedonia Sports"/>
 @endsection
