@@ -19,7 +19,7 @@
                     <p>Στείλτε μας οτιδήποτε μπορεί να ενδιαφέρει το <strong>wmsports.gr</strong>, για δημοσίευση.
                         Ειδήσεις, δεδομένα, στατιστικά κοκ, αλλά και παρατηρήσεις για το site</p>
 
-                    <p>e-mail: <strong>rocean74 (at) gmail.com</strong></p>
+                    <p>e-mail: <strong>west.macedonia.sports@gmail.com</strong></p>
 
                 </div>
 
