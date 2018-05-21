@@ -14,7 +14,7 @@
                     <h1>About</h1>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body article">
 
                     <p>Το <strong>WM Sports (West Macedonia Sports)</strong> είναι ένα site για τον ερασιτεχνικό
                         αθλητισμό στη <strong>Δυτική Μακεδονία</strong> (και όχι μόνο). Περιέχει σχετική ειδησεογραφία,
