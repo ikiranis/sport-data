@@ -16,8 +16,16 @@
                 <a class="nav-link" href="{{ route('contact') }}">Επικοινωνία</a>
             </li>
             <li class="nav-item my-auto text-center">
-                <a href="{{ secure_url('/feed') }}">
+                <a href="{{ secure_url('/feed') }}" class="mx-1">
                     <img src="/images/site/RSS.png" width="25" title="RSS News Feed">
+                </a>
+
+                <a href="https://twitter.com/wmsports1" class="mx-1">
+                    <img src="/images/site/twitter-logo.png" width="25" title="Twitter Page">
+                </a>
+
+                <a href="https://facebook.com/west.macedonia.sports" class="mx-1">
+                    <img src="/images/site/facebook-logo.png" width="25" title="Facebook Page">
                 </a>
             </li>
 
