@@ -13,7 +13,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">{{__('messages.title')}}</th>
                 <th scope="col">{{__('messages.user')}}</th>
                 <th scope="col">{{__('messages.athlete')}}</th>
@@ -27,7 +26,6 @@
 
             @foreach($posts as $post)
                 <tr>
-                    <th scope="row">{{$post->id}}</th>
                     <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->athlete->fullName ?? ''}}</td>
