@@ -114,7 +114,7 @@ class Post extends Model implements Feedable
      */
     public static function getFeedItems()
     {
-        return self::all();
+        return self::whereApproved(1)->orderBy('created_at', 'desc')->limit(15)->get();
     }
 
     /**
@@ -136,7 +136,7 @@ class Post extends Model implements Feedable
      */
     public function rssLink()
     {
-        return '/post/' . $this->slug;
+        return '/' . $this->slug;
     }
 
     /**
