@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Athlete;
+use App\Championship;
+use App\Division;
 use App\Photo;
 use App\Post;
 use App\Sport;
@@ -35,9 +37,13 @@ class AdminPostsController extends Controller
         $teams = Team::all();
         $athletes = Athlete::all();
         $sports = Sport::all();
+        $championships = Championship::all();
+        $divisions = Division::all();
         $user_id = Auth::id();
 
-        return view('admin.posts.create', compact('teams', 'athletes', 'user_id', 'sports'));
+        $userApiToken = Auth::user()->api_token;
+
+        return view('admin.posts.create', compact('teams', 'athletes', 'user_id', 'sports', 'championships', 'divisions', 'userApiToken'));
     }
 
     /**

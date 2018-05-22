@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth:api'], function() {
     Route::patch('match', 'AdminMatchesController@updateScore');
     Route::post('match', 'AdminMatchesController@storeFromMassive');
+    Route::post('team', 'AdminTeamsController@storeTeam');
 });
 
 

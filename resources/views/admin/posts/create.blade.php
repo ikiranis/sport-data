@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.apiToken')
+
     @include('includes.error')
 
     <div class="container">
@@ -46,22 +48,23 @@
                                        value="{{old('reference')}}">
                             </div>
 
-                            <div class="input-group mb-3 no-gutters">
-                                <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">{{__('messages.sport')}}</span>
-                                </div>
-                                <select class="form-control col-10 px-2" id="sport_id" name="sport_id">
-                                    <option value="0"></option>
-                                    @foreach($sports as $sport)
-                                        <option value="{{$sport->id}}">
-                                            {{$sport->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
                             <div id="teamsContainer">
+                                <div class="input-group mb-3 no-gutters">
+                                    <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
+                                    <div class="input-group-prepend col-2">
+                                        <span class="input-group-text w-100">{{__('messages.sport')}}</span>
+                                    </div>
+                                    <select class="form-control col-10 px-2" v-model="sportSelected" id="sport_id" name="sport_id">
+                                        <option value="0"></option>
+                                        @foreach($sports as $sport)
+                                            <option value="{{$sport->id}}">
+                                                {{$sport->name}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+
                                 <div class="input-group mb-3 no-gutters">
                                     <label for="teams_selected" class="sr-only">{{__('messages.team')}}</label>
                                     <div class="input-group-prepend col-2">
@@ -72,7 +75,7 @@
                                            :value="team.id">
                                     <select multiple class="form-control col-10 px-2" v-model="teamsSelected"
                                             ref="teamSelector"
-                                            id="teams_selected">
+                                            id="teams_selected" size="15">
                                         <option value="0" disabled></option>
                                         <option v-for="team in teams" :value="{id:team.id, text: team.name}"
                                                 @mousedown.prevent="toggleOption">
@@ -80,6 +83,66 @@
                                         </option>
                                     </select>
                                 </div>
+
+                                <div class="card-body">
+
+                                        <div class="input-group mb-3 no-gutters">
+                                            <label class="sr-only" for="name">{{__('messages.name')}}</label>
+                                            <div class="input-group-prepend col-2">
+                                                <span class="input-group-text w-100">{{__('messages.name')}}</span>
+                                            </div>
+                                            <input type="text" max="255" class="form-control col-10 px-2" v-model="team" id="name" name="name">
+                                        </div>
+
+                                        <div class="input-group mb-3 no-gutters">
+                                            <label class="sr-only" for="city">{{__('messages.city')}}</label>
+                                            <div class="input-group-prepend col-2">
+                                                <span class="input-group-text w-100">{{__('messages.city')}}</span>
+                                            </div>
+                                            <input type="text" max="255" class="form-control col-10 px-2" id="city" name="city">
+                                        </div>
+
+                                        <div class="input-group mb-3 no-gutters">
+                                            <label for="championship_id" class="sr-only">{{__('messages.championship')}}</label>
+                                            <div class="input-group-prepend col-2">
+                                                <span class="input-group-text w-100">{{__('messages.championship')}}</span>
+                                            </div>
+                                            <select class="form-control col-10 px-2" v-model="championshipSelected" id="championship_id" name="championship_id">
+                                                @foreach($championships as $championship)
+                                                    <option value="{{$championship->id}}">
+                                                        {{$championship->name}} : {{ $championship->sport->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="input-group mb-3 no-gutters">
+                                            <label for="division_id" class="sr-only">{{__('messages.division')}}</label>
+                                            <div class="input-group-prepend col-2">
+                                                <span class="input-group-text w-100">{{__('messages.division')}}</span>
+                                            </div>
+                                            <select class="form-control col-10 px-2" v-model="divisionSelected" id="division_id" name="division_id">
+                                                @foreach($divisions as $division)
+                                                    <option value="{{$division->id}}">
+                                                        {{$division->name}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <span class="btn btn-success col-2" v-on:click="insertNewTeam">Προσθήκη</span>
+
+                                </div>
+
+                                {{--<div class="input-group mb-3 no-gutters">--}}
+                                    {{--<label class="sr-only" for="newTeam">Νέα ομάδα</label>--}}
+                                    {{--<div class="input-group-prepend col-2">--}}
+                                        {{--<span class="input-group-text w-100">Νέα ομάδα</span>--}}
+                                    {{--</div>--}}
+                                    {{--<input type="text" max="255" v-model="team" class="form-control col-8 px-2"--}}
+                                           {{--id="newTeam" name="newTeam">--}}
+                                    {{----}}
+                                {{--</div>--}}
 
                                 <div class="my-2 row">
                                     <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="team in teamsSelected">{% team.text %}</span>
@@ -162,13 +225,35 @@
             delimiters: ['{%', '%}'],
             data: {
                 teams: {!! json_encode($teams) !!},
-                teamsSelected: []
+                sportSelected: 0,
+                championshipSelected: '',
+                divisionSelected: 0,
+                teamsSelected: [],
+                team: ''
             },
             methods: {
                 toggleOption(e) {
                     this.$refs.teamSelector.focus();
                     e.target.selected = !e.target.selected;
                     e.target.parentElement.dispatchEvent(new Event('change'));
+                },
+                insertNewTeam(e) {
+                    if(this.sportSelected !== 0) {
+                        let myData = {
+                            name: this.team,
+                            sport_id: this.sportSelected,
+                            championship_id: this.championshipSelected,
+                            division_id: this.divisionSelected
+                        };
+
+                        axios.post('/api/team', myData)
+                            .then(response => {
+                                this.teams.push({id: response.data.id, name: response.data.name});
+                                this.teamsSelected.push({id: response.data.id, text: response.data.name});
+                                this.team = '';
+                            })
+                            .catch(e => console.log(e));
+                    }
                 }
             }
         });

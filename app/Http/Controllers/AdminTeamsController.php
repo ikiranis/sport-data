@@ -8,6 +8,7 @@ use App\Http\Resources\TeamResource;
 use App\Logo;
 use App\Sport;
 use App\Team;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -96,6 +97,25 @@ class AdminTeamsController extends Controller
         Team::create($input);
 
         return redirect(route('teams.index'));
+    }
+
+    /**
+     * Api call to store a team
+     *
+     * @param Request $request
+     * @return TeamResource
+     */
+    public function storeTeam(Request $request)
+    {
+        $input = $request->all();
+
+        if ($team = Team::create($input)) {
+            return new TeamResource($team);
+        } else {
+            return response()->json([
+                'message' => 'Cant create team'
+            ], 403);
+        }
     }
 
     /**
