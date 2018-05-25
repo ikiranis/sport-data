@@ -54,7 +54,8 @@
                                     <div class="input-group-prepend col-2">
                                         <span class="input-group-text w-100">{{__('messages.sport')}}</span>
                                     </div>
-                                    <select class="form-control col-10 px-2" v-model="sportSelected" id="sport_id" name="sport_id">
+                                    <select class="form-control col-10 px-2" v-model="sportSelected" id="sport_id"
+                                            name="sport_id">
                                         <option value="0"></option>
                                         @foreach($sports as $sport)
                                             <option value="{{$sport->id}}">
@@ -84,56 +85,6 @@
                                     </select>
                                 </div>
 
-                                <div class="card-body">
-
-                                        <div class="input-group mb-3 no-gutters">
-                                            <label class="sr-only" for="name">{{__('messages.name')}}</label>
-                                            <div class="input-group-prepend col-2">
-                                                <span class="input-group-text w-100">{{__('messages.name')}}</span>
-                                            </div>
-                                            <input type="text" max="255" class="form-control col-10 px-2" v-model="team" id="name" name="name">
-                                        </div>
-
-                                        <div class="input-group mb-3 no-gutters">
-                                            <label class="sr-only" for="city">{{__('messages.city')}}</label>
-                                            <div class="input-group-prepend col-2">
-                                                <span class="input-group-text w-100">{{__('messages.city')}}</span>
-                                            </div>
-                                            <input type="text" max="255" class="form-control col-10 px-2" id="city" name="city">
-                                        </div>
-
-                                        <div class="input-group mb-3 no-gutters">
-                                            <label for="championship_id" class="sr-only">{{__('messages.championship')}}</label>
-                                            <div class="input-group-prepend col-2">
-                                                <span class="input-group-text w-100">{{__('messages.championship')}}</span>
-                                            </div>
-                                            <select class="form-control col-10 px-2" v-model="championshipSelected" id="championship_id" name="championship_id">
-                                                @foreach($championships as $championship)
-                                                    <option value="{{$championship->id}}">
-                                                        {{$championship->name}} : {{ $championship->sport->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="input-group mb-3 no-gutters">
-                                            <label for="division_id" class="sr-only">{{__('messages.division')}}</label>
-                                            <div class="input-group-prepend col-2">
-                                                <span class="input-group-text w-100">{{__('messages.division')}}</span>
-                                            </div>
-                                            <select class="form-control col-10 px-2" v-model="divisionSelected" id="division_id" name="division_id">
-                                                @foreach($divisions as $division)
-                                                    <option value="{{$division->id}}">
-                                                        {{$division->name}}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <span class="btn btn-success col-2" v-on:click="insertNewTeam">Προσθήκη</span>
-
-                                </div>
-
                                 {{--<div class="input-group mb-3 no-gutters">--}}
                                     {{--<label class="sr-only" for="newTeam">Νέα ομάδα</label>--}}
                                     {{--<div class="input-group-prepend col-2">--}}
@@ -141,69 +92,68 @@
                                     {{--</div>--}}
                                     {{--<input type="text" max="255" v-model="team" class="form-control col-8 px-2"--}}
                                            {{--id="newTeam" name="newTeam">--}}
-                                    {{----}}
+
+                                    {{--<span class="btn btn-success col-2" v-on:click="insertNewTeam">Προσθήκη</span>--}}
+
                                 {{--</div>--}}
 
-                                <div class="my-2 row">
-                                    <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="team in teamsSelected">{% team.text %}</span>
-                                </div>
-                            </div>
 
-
-                            <div class="input-group mb-3 no-gutters">
-                                <label for="athlete_id" class="sr-only">{{__('messages.athlete')}}</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">{{__('messages.athlete')}}</span>
-                                </div>
-                                <select class="form-control col-10 px-2" id="athlete_id" name="athlete_id">
-                                    <option value="0"></option>
-                                    @foreach($athletes as $athlete)
-                                        <option value="{{$athlete->id}}">
-                                            {{$athlete->fullName}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="row my-3 border">
-
-                                <div class="form-group my-3 col-lg-6 col-12">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="uploadFile" id="uploadFile"
-                                               accept='image/*'>
-                                        <label class="custom-file-label"
-                                               for="customFile">{{__('messages.picture')}}</label>
+                                <div class="input-group mb-3 no-gutters">
+                                    <label for="athlete_id" class="sr-only">{{__('messages.athlete')}}</label>
+                                    <div class="input-group-prepend col-2">
+                                        <span class="input-group-text w-100">{{__('messages.athlete')}}</span>
                                     </div>
+                                    <select class="form-control col-10 px-2" id="athlete_id" name="athlete_id">
+                                        <option value="0"></option>
+                                        @foreach($athletes as $athlete)
+                                            <option value="{{$athlete->id}}">
+                                                {{$athlete->fullName}}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
-                                <div class="input-group my-3 col-lg-6 col-12">
-                                    <label class="sr-only" for="photo_reference">{{__('messages.reference')}}</label>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">{{__('messages.reference')}}</span>
+                                <div class="row my-3 border">
+
+                                    <div class="form-group my-3 col-lg-6 col-12">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="uploadFile"
+                                                   id="uploadFile"
+                                                   accept='image/*'>
+                                            <label class="custom-file-label"
+                                                   for="customFile">{{__('messages.picture')}}</label>
+                                        </div>
                                     </div>
-                                    <input type="text" max="255" class="form-control" id="photo_reference"
-                                           name="photo_reference"
-                                           value="{{old('photo_reference')}}">
+
+                                    <div class="input-group my-3 col-lg-6 col-12">
+                                        <label class="sr-only"
+                                               for="photo_reference">{{__('messages.reference')}}</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">{{__('messages.reference')}}</span>
+                                        </div>
+                                        <input type="text" max="255" class="form-control" id="photo_reference"
+                                               name="photo_reference"
+                                               value="{{old('photo_reference')}}">
+                                    </div>
+
                                 </div>
 
-                            </div>
-
-                            <div class="input-group mb-3 no-gutters my-2">
-                                <label for="approved" class="sr-only">{{__('messages.approve')}}</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100 bg-warning">{{__('messages.approve')}}</span>
+                                <div class="input-group mb-3 no-gutters my-2">
+                                    <label for="approved" class="sr-only">{{__('messages.approve')}}</label>
+                                    <div class="input-group-prepend col-2">
+                                        <span class="input-group-text w-100 bg-warning">{{__('messages.approve')}}</span>
+                                    </div>
+                                    <select class="form-control col-10 px-2" id="approved" name="approved">
+                                        <option value="0">{{__('messages.inactive')}}</option>
+                                        <option value="1" selected>{{__('messages.active')}}</option>
+                                    </select>
                                 </div>
-                                <select class="form-control col-10 px-2" id="approved" name="approved">
-                                    <option value="0">{{__('messages.inactive')}}</option>
-                                    <option value="1" selected>{{__('messages.active')}}</option>
-                                </select>
-                            </div>
 
-                            <div class="form-group row">
-                                <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
-                                    {{__('messages.insert')}}
-                                </button>
-                            </div>
+                                <div class="form-group row">
+                                    <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
+                                        {{__('messages.insert')}}
+                                    </button>
+                                </div>
 
                         </form>
                     </div>
@@ -238,7 +188,7 @@
                     e.target.parentElement.dispatchEvent(new Event('change'));
                 },
                 insertNewTeam(e) {
-                    if(this.sportSelected !== 0) {
+                    if (this.sportSelected !== 0) {
                         let myData = {
                             name: this.team,
                             sport_id: this.sportSelected,
