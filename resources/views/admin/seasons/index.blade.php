@@ -13,7 +13,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">{{__('messages.name')}}</th>
                 <th scope="col" class="text-center">Πρωτάθλημα</th>
                 <th scope="col">Άθλημα</th>
@@ -24,7 +23,6 @@
 
             @foreach($seasons as $season)
                 <tr>
-                    <th scope="row">{{$season->id}}</th>
                     <td><a href="{{route('seasons.edit', $season->id)}}">{{$season->name}}</a></td>
                     <td>{{ $season->championship->name }}</td>
                     <td>{{ $season->championship->sport->name }}</td>

@@ -13,7 +13,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">{{__('messages.name')}}</th>
                 <th scope="col">{{__('messages.action')}}</th>
             </tr>
@@ -22,7 +21,6 @@
 
             @foreach($sports as $sport)
                 <tr>
-                    <th scope="row">{{$sport->id}}</th>
                     <td><a href="{{route('sports.edit', $sport->id)}}">{{$sport->name}}</a></td>
                     <td>
                         <form method="POST" action="{{route('sports.destroy', $sport->id)}}">

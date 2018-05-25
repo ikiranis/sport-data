@@ -13,7 +13,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">{{trans_choice('messages.matchdays',1)}}</th>
                 <th scope="col" class="text-center">Season</th>
                 <th scope="col">{{__('messages.action')}}</th>
@@ -23,7 +22,6 @@
 
             @foreach($matchdays as $matchday)
                 <tr>
-                    <th scope="row">{{$matchday->id}}</th>
                     <td><a href="{{route('matchdays.edit', $matchday->id)}}">{{$matchday->matchday}}</a></td>
                     <td>{{$matchday->season->name}} : {{ $matchday->season->championship->name }}</td>
                     <td>

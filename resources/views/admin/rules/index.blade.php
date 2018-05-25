@@ -13,7 +13,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">{{trans_choice('messages.rules',1)}}</th>
                 <th scope="col">{{__('messages.action')}}</th>
             </tr>
@@ -22,7 +21,6 @@
 
             @foreach($rules as $rule)
                 <tr>
-                    <th scope="row">{{$rule->id}}</th>
                     <td><a href="{{route('rules.edit', $rule->id)}}">{{$rule->name}}</a></td>
                     <td>
                         <form method="POST" action="{{route('rules.destroy', $rule->id)}}">

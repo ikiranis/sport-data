@@ -13,7 +13,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">{{__('messages.name')}}</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">{{__('messages.role')}}</th>
@@ -25,7 +24,6 @@
 
             @foreach($users as $user)
                 <tr>
-                    <th scope="row">{{$user->id}}</th>
                     <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>

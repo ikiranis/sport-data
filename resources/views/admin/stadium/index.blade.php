@@ -13,7 +13,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">{{__('messages.name')}}</th>
                 <th scope="col">{{__('messages.city')}}</th>
                 <th scope="col">{{__('messages.action')}}</th>
@@ -23,7 +22,6 @@
 
             @foreach($stadia as $stadium)
                 <tr>
-                    <th scope="row">{{$stadium->id}}</th>
                     <td><a href="{{route('stadium.edit', $stadium->id)}}">{{$stadium->name}}</a></td>
                     <td>{{$stadium->city}}</td>
                     <td>
