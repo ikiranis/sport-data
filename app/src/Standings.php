@@ -84,6 +84,10 @@ class Standings
                 'loses' => 0,
                 'scoreFor' => 0,
                 'scoreAgainst' => 0,
+                'scoreForIn' => 0,
+                'scoreAgainstIn' => 0,
+                'scoreForOut' => 0,
+                'scoreAgainstOut' => 0,
                 'points' => 0
             ];
         }
@@ -219,6 +223,14 @@ class Standings
 
             $this->teams[$team]->scoreFor += $score[$key];
             $this->teams[$team]->scoreAgainst += $score[$otherKey];
+
+            if($key==0) {
+                $this->teams[$team]->scoreForIn += $score[$key];
+                $this->teams[$team]->scoreAgainstIn += $score[$otherKey];
+            } else {
+                $this->teams[$team]->scoreForOut += $score[$key];
+                $this->teams[$team]->scoreAgainstOut += $score[$otherKey];
+            }
         }
     }
 
