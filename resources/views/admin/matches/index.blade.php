@@ -102,7 +102,6 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">{{trans_choice('messages.matches',1)}}</th>
                     <th scope="col">{{__('messages.score')}}</th>
                     <th scope="col">{{__('messages.action')}}</th>
@@ -113,7 +112,6 @@
 
                 @foreach($matches as $key=>$match)
                     <tr>
-                        <th scope="row" class="align-middle">{{$match->id}}</th>
                         <td class="align-middle"><a href="{{route('matches.edit', $match->id)}}">{{$match->teams}}</a></td>
 
                         <td class="align-middle">
