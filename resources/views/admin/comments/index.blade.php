@@ -7,7 +7,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">email</th>
                 <th scope="col">{{__('messages.name')}}</th>
                 <th scope="col">{{__('messages.approve')}}</th>
                 <th scope="col">{{__('messages.date')}}</th>
@@ -18,8 +17,7 @@
 
             @foreach($comments as $comment)
                 <tr>
-                    <td><a href="{{route('comments.edit', $comment->id)}}">{{$comment->email}}</a></td>
-                    <td>{{$comment->author}}</td>
+                    <td><a href="{{route('comments.edit', $comment->id)}}">{{$comment->author}}</a></td>
                     <td>{{$comment->approved==1 ? __('messages.active') : __('messages.inactive')}}</td>
                     <td>{{$comment->created_at->diffForHumans()}}</td>
 

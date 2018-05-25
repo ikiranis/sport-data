@@ -179,11 +179,12 @@ class HomeController extends Controller
     {
         $validatedData = $request->validate([
             'body' => 'required',
-            'author' => 'required|max:255',
-            'email' => 'required|email'
+            'author' => 'required|max:255'
         ]);
 
         $input = $request->all();
+
+        $input['email'] = 'null';
 
         Comment::create($input);
 

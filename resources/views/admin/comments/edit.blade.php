@@ -25,14 +25,6 @@
                                 <input type="text" max="255" class="form-control col-10 px-2" id="author" name="author" value="{{$comment->author}}">
                             </div>
 
-                            <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="email">email</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">email</span>
-                                </div>
-                                <input type="email" class="form-control col-10 px-2" id="email" name="email" value="{{$comment->email}}">
-                            </div>
-
                             <div class="form-group">
                                 <label class="form-check-label" for="body">{{__('messages.text')}}</label>
                                 <textarea class="form-control" id="body" name="body" rows="5">{{$comment->body}}</textarea>
