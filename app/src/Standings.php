@@ -88,7 +88,9 @@ class Standings
                 'scoreAgainstIn' => 0,
                 'scoreForOut' => 0,
                 'scoreAgainstOut' => 0,
-                'points' => 0
+                'points' => 0,
+                'pointsIn' => 0,
+                'pointsOut' => 0
             ];
         }
     }
@@ -111,10 +113,26 @@ class Standings
      * @param $firstTeamPoints
      * @param $secondTeamPoints
      */
-    private function setTeamPoints($teams, $points)
+    private function setTeamPoints($teams, $points, $winner)
     {
+        switch($winner) {
+            case '1':
+                $this->teams[$teams[0]]->pointsIn += $points[0];
+                $this->teams[$teams[1]]->pointsOut += $points[1];
+                break;
+            case '2':
+                $this->teams[$teams[0]]->pointsIn += $points[0];
+                $this->teams[$teams[1]]->pointsOut += $points[1];
+                break;
+            case 'X':
+                $this->teams[$teams[0]]->pointsIn += $points[0];
+                $this->teams[$teams[1]]->pointsIn += $points[1];
+                break;
+        }
+
         foreach ($teams as $key=>$team) {
             $this->teams[$team]->points += $points[$key];
+
             $this->teams[$team]->matches ++;
 
             if($points[0] !== $points[1]) {
@@ -174,11 +192,11 @@ class Standings
         $drawPoints = [$this->rules->drawPoints, $this->rules->drawPoints];
 
         if($scoreDifference > 0) { // First team wins
-            $this->setTeamPoints($firstTeamWinsTeams, $pointsByTheWinner);
+            $this->setTeamPoints($firstTeamWinsTeams, $pointsByTheWinner, '1');
         } elseif($scoreDifference < 0) { // Second team wins
-            $this->setTeamPoints($secondTeamWinsTeams, $pointsByTheWinner);
+            $this->setTeamPoints($secondTeamWinsTeams, $pointsByTheWinner, '2');
         } else { // Draw
-            $this->setTeamPoints($firstTeamWinsTeams, $drawPoints);
+            $this->setTeamPoints($firstTeamWinsTeams, $drawPoints, 'X');
         }
     }
 
@@ -197,15 +215,15 @@ class Standings
 
         if($scoreDifference > 0) { // First team wins
             if ($scoreDifference > 1) { // Score bigger than 1 set difference
-                $this->setTeamPoints($firstTeamWinsTeams, $pointsByScoreDifferenceWith2Sets);
+                $this->setTeamPoints($firstTeamWinsTeams, $pointsByScoreDifferenceWith2Sets, '1');
             } else { // Score with 1 set difference
-                $this->setTeamPoints($firstTeamWinsTeams, $pointsByScoreDifferenceWith1Set);
+                $this->setTeamPoints($firstTeamWinsTeams, $pointsByScoreDifferenceWith1Set, '1');
             }
         } else { // Second team wins
             if ($scoreDifference < -1) { // Score bigger than 1 set difference
-                $this->setTeamPoints($secondTeamWinsTeams, $pointsByScoreDifferenceWith2Sets);
+                $this->setTeamPoints($secondTeamWinsTeams, $pointsByScoreDifferenceWith2Sets, '2');
             } else { // Score with 1 set difference
-                $this->setTeamPoints($secondTeamWinsTeams, $pointsByScoreDifferenceWith1Set);
+                $this->setTeamPoints($secondTeamWinsTeams, $pointsByScoreDifferenceWith1Set, '2');
             }
         }
     }

@@ -18,6 +18,8 @@
             <th scope="col" class="text-center align-middle">Κατά Εκτός</th>
             <th scope="col" class="text-center align-middle">Διαφορά</th>
             <th scope="col" class="text-center align-middle">Βαθμολογία</th>
+            <th scope="col" class="text-center align-middle">Βαθμ. Εντός</th>
+            <th scope="col" class="text-center align-middle">Βαθμ. Εκτός</th>
         </tr>
         </thead>
         <tbody>
@@ -41,6 +43,8 @@
                 <td class="col text-center">{{$team->scoreAgainstOut}}</td>
                 <td class="col text-center">{{$team->scoreFor - $team->scoreAgainst}}</td>
                 <td class="col text-center font-weight-bold">{{$team->points}}</td>
+                <td class="col text-center">{{$team->pointsIn}}</td>
+                <td class="col text-center">{{$team->pointsOut}}</td>
             </tr>
             @php ($position++)
         @endforeach

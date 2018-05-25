@@ -206,6 +206,8 @@ class StandingsTest extends TestCase
 
         $teamsStandings = $standings2->getStandings();
 
+//        dd($teamsStandings);
+
         $this->assertEquals(1, $teamsStandings['PAOK']->matches);
         $this->assertEquals(3, $teamsStandings['PAOK']->points);
         $this->assertEquals(1, $teamsStandings['PAO']->matches);
@@ -216,8 +218,12 @@ class StandingsTest extends TestCase
         $this->assertEquals(1, $teamsStandings['OLYMPIAKOS']->points);
         $this->assertEquals(1, $teamsStandings['AEK']->matches);
         $this->assertEquals(1, $teamsStandings['AEK']->points);
+        $this->assertEquals(1, $teamsStandings['AEK']->pointsIn);
+        $this->assertEquals(0, $teamsStandings['AEK']->pointsOut);
         $this->assertEquals(1, $teamsStandings['IRAKLIS']->matches);
         $this->assertEquals(2, $teamsStandings['IRAKLIS']->points);
+        $this->assertEquals(0, $teamsStandings['IRAKLIS']->pointsIn);
+        $this->assertEquals(2, $teamsStandings['IRAKLIS']->pointsOut);
         $this->assertEquals(1, $teamsStandings['EORDAIKOS']->matches);
         $this->assertEquals(3, $teamsStandings['EORDAIKOS']->points);
         $this->assertEquals(1, $teamsStandings['KOZANI']->matches);
