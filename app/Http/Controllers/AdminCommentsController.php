@@ -78,11 +78,12 @@ class AdminCommentsController extends Controller
             'post_id' => 'required',
             'body' => 'required',
             'author' => 'required|max:255',
-            'email' => 'required|email',
             'approved' => 'nullable'
         ]);
 
         $input = $request->all();
+
+        $input['email'] = 'null';
 
         $comment = Comment::findOrFail($id);
 
