@@ -20,6 +20,7 @@ class Standings
 {
     private $teams = array();
     private $matches = array();
+    private $championshipTeams = array();
     private $rules;
 
     /**
@@ -41,14 +42,40 @@ class Standings
     }
 
     /**
+     * Teams getter
+     *
+     * @return array
+     */
+    public function getChampionshipTeams()
+    {
+        return $this->championshipTeams;
+    }
+
+    /**
+     * Teams generator from matches
+     */
+    public function getChampionshipTeamsFromMatches()
+    {
+        foreach ($this->matches as $match) {
+            $teams = [$match->first_team, $match->second_team];
+
+            foreach ($teams as $team) {
+                if(!in_array($team->name, $this->championshipTeams)) {
+                    $this->championshipTeams[] = $team;
+                }
+            }
+        }
+    }
+
+
+    /**
      * Teams setter
      *
-     * @param array $teams
      */
-    public function setTeams($teams)
+    public function setTeams()
     {
         // construct $this->teams array of objects, with names and 0 points
-        foreach ($teams as $team) {
+        foreach ($this->championshipTeams as $team) {
             $this->teams[$team->name] = (object) [
                 'data' => $team,
                 'matches' => 0,
@@ -229,6 +256,9 @@ class Standings
      */
     private function compute()
     {
+        $this->getChampionshipTeamsFromMatches(); // Generate teams from matches
+        $this->setTeams();  // Set Teams with data fields
+
         foreach ($this->matches as $match) {
             $this->setTeamsPoints($match);
         }

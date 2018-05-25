@@ -30,11 +30,6 @@ class AdminStandingsController extends Controller
                 orderBy('match_date', 'desc')->get()
             );
 
-            $standings->setTeams(
-                Team::whereSportId($request->sport_id)->
-                whereChampionshipId($request->championship_id)->get()
-            );
-
             // Pass rules as object
             $rules = json_decode(
                         Championship::whereId($request->championship_id)->

@@ -5,8 +5,6 @@ namespace Tests\Unit;
 use App\src\Standings;
 use ReflectionClass;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class StandingsTest extends TestCase
 {
@@ -122,7 +120,6 @@ class StandingsTest extends TestCase
     {
         // Test football matches
         $standings = new Standings();
-        $standings->setTeams($this->getTeams());
         $standings->setMatches($this->getMatches()[0]);
         $standings->setRules($this->getRules()[0]);
 
@@ -196,7 +193,6 @@ class StandingsTest extends TestCase
 
         // Test volley matches
         $standings2 = new Standings();
-        $standings2->setTeams($this->getTeams());
         $standings2->setMatches($this->getMatches()[1]);
         $standings2->setRules($this->getRules()[1]);
 
@@ -218,6 +214,23 @@ class StandingsTest extends TestCase
         $this->assertEquals(3, $teamsStandings['EORDAIKOS']->points);
         $this->assertEquals(1, $teamsStandings['KOZANI']->matches);
         $this->assertEquals(0, $teamsStandings['KOZANI']->points);
+    }
+
+    /**
+     * Test Championship teams generator
+     */
+    public function testSetTeams()
+    {
+        $standings = new Standings();
+        $standings->setMatches($this->getMatches()[0]);
+        $standings->getChampionshipTeamsFromMatches();
+
+        $teams = $standings->getChampionshipTeams();
+
+        $this->assertEquals('PAOK', $teams[0]->name);
+        $this->assertEquals('PAO', $teams[1]->name);
+        $this->assertEquals('ARIS', $teams[2]->name);
+        $this->assertEquals('OLYMPIAKOS', $teams[3]->name);
     }
 
     /**

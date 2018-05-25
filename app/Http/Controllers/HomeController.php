@@ -95,9 +95,6 @@ class HomeController extends Controller
 
             $standings->setMatches($matches);
 
-            $teams = Team::whereChampionshipId($team->championship_id)->get();
-            $standings->setTeams($teams);
-
             // Pass rules as object
             $rules = json_decode(
                 Championship::whereId($team->championship_id)->
@@ -154,9 +151,6 @@ class HomeController extends Controller
             orderBy('match_date', 'desc')->get();
 
         $standings->setMatches($matches);
-
-        $teams = Team::whereChampionshipId($championship_id)->get();
-        $standings->setTeams($teams);
 
         // Pass rules as object
         $rules = json_decode(
