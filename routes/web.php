@@ -49,6 +49,7 @@ Route::group(
         Route::post('/comment/store', 'HomeController@storeComment')->name('post.comment.store');
         Route::get('/', 'HomeController@index')->name('home');
 
+
         // If user is admin
         Route::group(['middleware' => 'admin'], function () {
             Route::resource('admin/users', 'AdminUsersController');
