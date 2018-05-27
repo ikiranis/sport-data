@@ -47,7 +47,10 @@
                 </div>
             </div>
 
+        @else
+            <h3 class="text-center my-5">Δεν βρέθηκαν δημοσιεύματα</h3>
         @endif
+
     </div>
 
 @endsection

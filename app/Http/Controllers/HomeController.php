@@ -193,6 +193,12 @@ class HomeController extends Controller
         return redirect(route('post', $request->post_slug));
     }
 
+    /**
+     * Search posts
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(Request $request)
     {
         $search = $request->search;
@@ -205,8 +211,6 @@ class HomeController extends Controller
             })
             ->orderBy('created_at', 'desc')
             ->paginate(5);
-
-
 
         return view('public.search', compact('search', 'posts'));
     }
