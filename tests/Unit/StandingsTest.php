@@ -127,6 +127,8 @@ class StandingsTest extends TestCase
 
         $this->assertEquals(1, $teamsStandings['PAOK']->matches);
         $this->assertEquals(3, $teamsStandings['PAOK']->points);
+        $this->assertEquals(3, $teamsStandings['PAOK']->pointsIn);
+        $this->assertEquals(0, $teamsStandings['PAOK']->pointsOut);
         $this->assertEquals(1, $teamsStandings['PAOK']->matches);
         $this->assertEquals(1, $teamsStandings['PAOK']->wins);
         $this->assertEquals(0, $teamsStandings['PAOK']->loses);
@@ -140,6 +142,8 @@ class StandingsTest extends TestCase
 
         $this->assertEquals(1, $teamsStandings['PAO']->matches);
         $this->assertEquals(0, $teamsStandings['PAO']->points);
+        $this->assertEquals(0, $teamsStandings['PAO']->pointsIn);
+        $this->assertEquals(0, $teamsStandings['PAO']->pointsOut);
         $this->assertEquals(0, $teamsStandings['PAO']->wins);
         $this->assertEquals(1, $teamsStandings['PAO']->loses);
         $this->assertEquals(0, $teamsStandings['PAO']->draws);
@@ -185,6 +189,8 @@ class StandingsTest extends TestCase
 
         $this->assertEquals(1, $teamsStandings['EORDAIKOS']->matches);
         $this->assertEquals(1, $teamsStandings['EORDAIKOS']->points);
+        $this->assertEquals(1, $teamsStandings['EORDAIKOS']->pointsIn);
+        $this->assertEquals(0, $teamsStandings['EORDAIKOS']->pointsOut);
         $this->assertEquals(0, $teamsStandings['EORDAIKOS']->wins);
         $this->assertEquals(0, $teamsStandings['EORDAIKOS']->loses);
         $this->assertEquals(1, $teamsStandings['EORDAIKOS']->draws);
@@ -193,6 +199,8 @@ class StandingsTest extends TestCase
 
         $this->assertEquals(1, $teamsStandings['KOZANI']->matches);
         $this->assertEquals(1, $teamsStandings['KOZANI']->points);
+        $this->assertEquals(0, $teamsStandings['KOZANI']->pointsIn);
+        $this->assertEquals(1, $teamsStandings['KOZANI']->pointsOut);
         $this->assertEquals(0, $teamsStandings['KOZANI']->wins);
         $this->assertEquals(0, $teamsStandings['KOZANI']->loses);
         $this->assertEquals(1, $teamsStandings['KOZANI']->draws);
