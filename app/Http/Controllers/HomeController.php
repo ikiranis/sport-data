@@ -204,7 +204,7 @@ class HomeController extends Controller
                     ->orWhere('description', 'LIKE', "%$search%");
             })
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->paginate(5);
 
 
 
