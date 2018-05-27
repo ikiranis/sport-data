@@ -33,7 +33,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sports = Sport::all();
+        $sports = Sport::whereMainpage(1)->orderBy('name', 'asc')->get();
         $posts = Post::whereApproved(1)->orderBy('created_at', 'desc')->paginate(5);
         $seasons = Season::all();
 

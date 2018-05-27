@@ -23,6 +23,16 @@
                                        value="{{old('name')}}">
                             </div>
 
+                            <div class="input-group mb-3">
+                                <label for="mainpage" class="sr-only">Κεντρική σελίδα</label>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Κεντρική σελίδα</span>
+                                </div>
+                                <select class="form-control px-2" id="mainpage" name="mainpage">
+                                    <option value="0">Απόκρυψη</option>
+                                    <option value="1" selected>Εμφάνιση</option>
+                                </select>
+                            </div>
 
                             <div class="row my-3 border">
 

@@ -135,8 +135,6 @@ class AdminSportsController extends Controller
             }
         }
 
-
-
         $sport->update($input);
 
         return redirect(route('sports.index'));

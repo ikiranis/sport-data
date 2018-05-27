@@ -23,6 +23,17 @@
                                 <input type="text" max="255" class="form-control" id="name" name="name" value="{{$sport->name}}">
                             </div>
 
+                            <div class="input-group mb-3">
+                                <label for="mainpage" class="sr-only">Κεντρική σελίδα</label>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Κεντρική σελίδα</span>
+                                </div>
+                                <select class="form-control px-2" id="mainpage" name="mainpage">
+                                    <option value="0" {{$sport->mainpage==0 ? 'selected' : ''}}>Απόκρυψη</option>
+                                    <option value="1" {{$sport->mainpage==1 ? 'selected' : ''}}>Εμφάνιση</option>
+                                </select>
+                            </div>
+
                             <div class="row border p-2">
 
                                 <div class="col-lg-5">
