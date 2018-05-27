@@ -115,16 +115,17 @@ class Standings
      */
     private function setTeamPoints($teams, $points, $winner)
     {
+        // Calculate points in/out
         switch($winner) {
-            case '1':
+            case '1':  // for home team
                 $this->teams[$teams[0]]->pointsIn += $points[0];
                 $this->teams[$teams[1]]->pointsOut += $points[1];
                 break;
-            case '2':
+            case '2':  // for away team
                 $this->teams[$teams[1]]->pointsIn += $points[1];
                 $this->teams[$teams[0]]->pointsOut += $points[0];
                 break;
-            case 'X':
+            case 'X':  // for draw
                 $this->teams[$teams[0]]->pointsIn += $points[0];
                 $this->teams[$teams[1]]->pointsOut += $points[1];
                 break;

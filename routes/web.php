@@ -40,14 +40,14 @@ Route::group(
         Route::get('/contact', function () { return view('public.contact'); })->name('contact');
 
         // Public pages
-        Route::get('/', 'HomeController@index')->name('home');
+        Route::get('/search', 'HomeController@search')->name('search');
         Route::get('/sport/{slug}', 'HomeController@sport')->name('sport');
-        Route::get('/post/{slug}', 'HomeController@post')->name('post'); // TODO remove after a while
         Route::get('/{slug}', 'HomeController@post')->name('post');
         Route::get('/team/{slug}', 'HomeController@team')->name('team');
         Route::get('/athlete/{slug}', 'HomeController@athlete')->name('athlete');
         Route::get('/standings/{championship_id}/{season_id}', 'HomeController@standings')->name('standings');
         Route::post('/comment/store', 'HomeController@storeComment')->name('post.comment.store');
+        Route::get('/', 'HomeController@index')->name('home');
 
         // If user is admin
         Route::group(['middleware' => 'admin'], function () {

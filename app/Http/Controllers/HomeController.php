@@ -192,4 +192,22 @@ class HomeController extends Controller
 
         return redirect(route('post', $request->post_slug));
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+        $posts = Post::whereApproved(1)
+            ->where(function($query) use ($search) {
+                $query->where('body', 'LIKE', "%$search%")
+                    ->orWhere('title', 'LIKE', "%$search%")
+                    ->orWhere('description', 'LIKE', "%$search%");
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
+
+
+
+        return view('public.search', compact('search', 'posts'));
+    }
 }
