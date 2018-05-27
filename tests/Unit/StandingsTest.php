@@ -214,8 +214,12 @@ class StandingsTest extends TestCase
         $this->assertEquals(0, $teamsStandings['PAO']->points);
         $this->assertEquals(1, $teamsStandings['ARIS']->matches);
         $this->assertEquals(2, $teamsStandings['ARIS']->points);
+        $this->assertEquals(2, $teamsStandings['ARIS']->pointsIn);
+        $this->assertEquals(0, $teamsStandings['ARIS']->pointsOut);
         $this->assertEquals(1, $teamsStandings['OLYMPIAKOS']->matches);
         $this->assertEquals(1, $teamsStandings['OLYMPIAKOS']->points);
+        $this->assertEquals(0, $teamsStandings['OLYMPIAKOS']->pointsIn);
+        $this->assertEquals(1, $teamsStandings['OLYMPIAKOS']->pointsOut);
         $this->assertEquals(1, $teamsStandings['AEK']->matches);
         $this->assertEquals(1, $teamsStandings['AEK']->points);
         $this->assertEquals(1, $teamsStandings['AEK']->pointsIn);
@@ -226,8 +230,12 @@ class StandingsTest extends TestCase
         $this->assertEquals(2, $teamsStandings['IRAKLIS']->pointsOut);
         $this->assertEquals(1, $teamsStandings['EORDAIKOS']->matches);
         $this->assertEquals(3, $teamsStandings['EORDAIKOS']->points);
+        $this->assertEquals(0, $teamsStandings['EORDAIKOS']->pointsIn);
+        $this->assertEquals(3, $teamsStandings['EORDAIKOS']->pointsOut);
         $this->assertEquals(1, $teamsStandings['KOZANI']->matches);
         $this->assertEquals(0, $teamsStandings['KOZANI']->points);
+        $this->assertEquals(0, $teamsStandings['KOZANI']->pointsIn);
+        $this->assertEquals(0, $teamsStandings['KOZANI']->pointsOut);
     }
 
     /**

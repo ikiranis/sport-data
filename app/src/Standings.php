@@ -121,8 +121,8 @@ class Standings
                 $this->teams[$teams[1]]->pointsOut += $points[1];
                 break;
             case '2':
-                $this->teams[$teams[0]]->pointsIn += $points[0];
-                $this->teams[$teams[1]]->pointsOut += $points[1];
+                $this->teams[$teams[1]]->pointsIn += $points[1];
+                $this->teams[$teams[0]]->pointsOut += $points[0];
                 break;
             case 'X':
                 $this->teams[$teams[0]]->pointsIn += $points[0];
