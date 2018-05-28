@@ -42,7 +42,7 @@
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.reference')}}</span>
                                 </div>
-                                <input type="text" max="255" class="form-control col-10 px-2" id="reference"
+                                <input type="text" max="800" class="form-control col-10 px-2" id="reference"
                                        name="reference" value="{{$post->reference}}">
                             </div>
 
@@ -126,7 +126,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">{{__('messages.reference')}}</span>
                                         </div>
-                                        <input type="text" max="255" class="form-control"
+                                        <input type="text" max="800" class="form-control"
                                                id="photo_reference" name="photo_reference"
                                                value="{{$post->photo ? $post->photo->reference : ''}}">
                                     </div>
