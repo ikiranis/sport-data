@@ -60,5 +60,8 @@
     @if(count($post->teams()->get())>0)
         @include('includes.teams-container-javascript')
     @endif
+    @if(count($post->tags()->get())>0)
+        @include('includes.tags-container-javascript')
+    @endif
 
 @endsection

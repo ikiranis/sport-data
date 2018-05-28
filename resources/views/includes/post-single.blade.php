@@ -27,6 +27,13 @@
                             </li>
                         </div>
                     @endif
+                    @if(count($post->tags()->get())>0)
+                        <div id="tagsContainer{{$post->id}}">
+                            <li class="list-group-item list-group-item-action">
+                                @include('includes.tags-list')
+                            </li>
+                        </div>
+                    @endif
                     @if($post->athlete!==null)
                         <li class="list-group-item list-group-item-action"><a
                                     href="{{route('athlete', $post->athlete->slug)}}">{{$post->athlete->fullName}}</a>
