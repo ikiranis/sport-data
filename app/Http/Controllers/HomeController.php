@@ -11,6 +11,7 @@ use App\Post;
 use App\Season;
 use App\Sport;
 use App\src\Standings;
+use App\Tag;
 use App\Team;
 use Illuminate\Http\Request;
 
@@ -213,5 +214,16 @@ class HomeController extends Controller
             ->paginate(5);
 
         return view('public.search', compact('search', 'posts'));
+    }
+
+    public function tag($slug)
+    {
+        // Get the team with $slug
+        $tag = Tag::whereSlug($slug)->firstOrFail();
+
+        // Get all the posts of $team_id
+        $posts = $tag->posts()->orderBy('created_at', 'desc')->paginate(5);
+
+        return view('public.tagPosts', compact('tag', 'posts'));
     }
 }

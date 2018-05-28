@@ -44,6 +44,7 @@ Route::group(
         Route::get('/sport/{slug}', 'HomeController@sport')->name('sport');
         Route::get('/{slug}', 'HomeController@post')->name('post');
         Route::get('/team/{slug}', 'HomeController@team')->name('team');
+        Route::get('/tag/{slug}', 'HomeController@tag')->name('tag');
         Route::get('/athlete/{slug}', 'HomeController@athlete')->name('athlete');
         Route::get('/standings/{championship_id}/{season_id}', 'HomeController@standings')->name('standings');
         Route::post('/comment/store', 'HomeController@storeComment')->name('post.comment.store');
