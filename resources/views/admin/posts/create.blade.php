@@ -85,75 +85,87 @@
                                     </select>
                                 </div>
 
-                                {{--<div class="input-group mb-3 no-gutters">--}}
-                                    {{--<label class="sr-only" for="newTeam">Νέα ομάδα</label>--}}
-                                    {{--<div class="input-group-prepend col-2">--}}
-                                        {{--<span class="input-group-text w-100">Νέα ομάδα</span>--}}
-                                    {{--</div>--}}
-                                    {{--<input type="text" max="255" v-model="team" class="form-control col-8 px-2"--}}
-                                           {{--id="newTeam" name="newTeam">--}}
-
-                                    {{--<span class="btn btn-success col-2" v-on:click="insertNewTeam">Προσθήκη</span>--}}
-
-                                {{--</div>--}}
-
+                                <div class="my-2 row">
+                                    <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="team in teamsSelected">{% team.text %}</span>
+                                </div>
 
                                 <div class="input-group mb-3 no-gutters">
-                                    <label for="athlete_id" class="sr-only">{{__('messages.athlete')}}</label>
+                                    <label class="sr-only" for="tag">Tag</label>
                                     <div class="input-group-prepend col-2">
-                                        <span class="input-group-text w-100">{{__('messages.athlete')}}</span>
+                                        <span class="input-group-text w-100">Tag</span>
                                     </div>
-                                    <select class="form-control col-10 px-2" id="athlete_id" name="athlete_id">
-                                        <option value="0"></option>
-                                        @foreach($athletes as $athlete)
-                                            <option value="{{$athlete->id}}">
-                                                {{$athlete->fullName}}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                    <input type="text" max="255" v-model="tag" class="form-control col-8 px-2"
+                                           id="tag" name="tag">
 
-                                <div class="row my-3 border">
+                                    <span class="btn btn-success col-2" v-on:click="insertTag">Προσθήκη</span>
 
-                                    <div class="form-group my-3 col-lg-6 col-12">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="uploadFile"
-                                                   id="uploadFile"
-                                                   accept='image/*'>
-                                            <label class="custom-file-label"
-                                                   for="customFile">{{__('messages.picture')}}</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="input-group my-3 col-lg-6 col-12">
-                                        <label class="sr-only"
-                                               for="photo_reference">{{__('messages.reference')}}</label>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">{{__('messages.reference')}}</span>
-                                        </div>
-                                        <input type="text" max="800" class="form-control" id="photo_reference"
-                                               name="photo_reference"
-                                               value="{{old('photo_reference')}}">
-                                    </div>
+                                    <input type="hidden" v-for="tag in tags" name="tags[]" :value="tag.id">
 
                                 </div>
 
-                                <div class="input-group mb-3 no-gutters my-2">
-                                    <label for="approved" class="sr-only">{{__('messages.approve')}}</label>
-                                    <div class="input-group-prepend col-2">
-                                        <span class="input-group-text w-100 bg-warning">{{__('messages.approve')}}</span>
-                                    </div>
-                                    <select class="form-control col-10 px-2" id="approved" name="approved">
-                                        <option value="0">{{__('messages.inactive')}}</option>
-                                        <option value="1" selected>{{__('messages.active')}}</option>
-                                    </select>
+                                <div class="my-2 row">
+                                    <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="tag in tags">{% tag.name %}</span>
                                 </div>
 
-                                <div class="form-group row">
-                                    <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
-                                        {{__('messages.insert')}}
-                                    </button>
+                            </div>
+
+
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="athlete_id" class="sr-only">{{__('messages.athlete')}}</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">{{__('messages.athlete')}}</span>
                                 </div>
+                                <select class="form-control col-10 px-2" id="athlete_id" name="athlete_id">
+                                    <option value="0"></option>
+                                    @foreach($athletes as $athlete)
+                                        <option value="{{$athlete->id}}">
+                                            {{$athlete->fullName}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="row my-3 border">
+
+                                <div class="form-group my-3 col-lg-6 col-12">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="uploadFile"
+                                               id="uploadFile"
+                                               accept='image/*'>
+                                        <label class="custom-file-label"
+                                               for="customFile">{{__('messages.picture')}}</label>
+                                    </div>
+                                </div>
+
+                                <div class="input-group my-3 col-lg-6 col-12">
+                                    <label class="sr-only"
+                                           for="photo_reference">{{__('messages.reference')}}</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">{{__('messages.reference')}}</span>
+                                    </div>
+                                    <input type="text" max="800" class="form-control" id="photo_reference"
+                                           name="photo_reference"
+                                           value="{{old('photo_reference')}}">
+                                </div>
+
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters my-2">
+                                <label for="approved" class="sr-only">{{__('messages.approve')}}</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100 bg-warning">{{__('messages.approve')}}</span>
+                                </div>
+                                <select class="form-control col-10 px-2" id="approved" name="approved">
+                                    <option value="0">{{__('messages.inactive')}}</option>
+                                    <option value="1" selected>{{__('messages.active')}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group row">
+                                <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
+                                    {{__('messages.insert')}}
+                                </button>
+                            </div>
 
                         </form>
                     </div>
@@ -179,7 +191,8 @@
                 championshipSelected: '',
                 divisionSelected: 0,
                 teamsSelected: [],
-                team: ''
+                tags: [],
+                tag: ''
             },
             methods: {
                 toggleOption(e) {
@@ -187,23 +200,19 @@
                     e.target.selected = !e.target.selected;
                     e.target.parentElement.dispatchEvent(new Event('change'));
                 },
-                insertNewTeam(e) {
-                    if (this.sportSelected !== 0) {
-                        let myData = {
-                            name: this.team,
-                            sport_id: this.sportSelected,
-                            championship_id: this.championshipSelected,
-                            division_id: this.divisionSelected
-                        };
+                insertTag(e) {
 
-                        axios.post('/api/team', myData)
-                            .then(response => {
-                                this.teams.push({id: response.data.id, name: response.data.name});
-                                this.teamsSelected.push({id: response.data.id, text: response.data.name});
-                                this.team = '';
-                            })
-                            .catch(e => console.log(e));
-                    }
+                    let myData = {
+                        name: this.tag
+                    };
+
+                    axios.post('/api/tag', myData)
+                        .then(response => {
+                            this.tags.push({id: response.data.id, name: response.data.name});
+                            this.tag = '';
+                        })
+                        .catch(e => console.log(e));
+
                 }
             }
         });

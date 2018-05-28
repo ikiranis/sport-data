@@ -8,6 +8,7 @@ use App\Division;
 use App\Photo;
 use App\Post;
 use App\Sport;
+use App\Tag;
 use App\Team;
 use Auth;
 use Carbon\Carbon;
@@ -54,7 +55,6 @@ class AdminPostsController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'slug' => 'nullable',
             'team_selected' => 'nullable',
@@ -69,8 +69,6 @@ class AdminPostsController extends Controller
             'reference' => 'nullable|url|max:800',
             'approved' => 'nullable'
         ]);
-
-        // TODO δεν δέχεται το required του body. Για κάποιον λόγο γίνεται και το κενό validated
 
         $input = $request->all();
 
@@ -96,6 +94,7 @@ class AdminPostsController extends Controller
         $post = Post::create($input);
 
         $post->teams()->attach($request->teams_selected); // Insert teams relation with pivot table
+        $post->tags()->attach($request->tags); // Insert tags relation with pivot table
 
         return redirect(route('posts.index'));
     }
@@ -124,7 +123,9 @@ class AdminPostsController extends Controller
         $athletes = Athlete::all();
         $sports = Sport::all();
 
-        return view ('admin/posts/edit', compact('post', 'teams', 'athletes', 'sports'));
+        $userApiToken = Auth::user()->api_token;
+
+        return view ('admin/posts/edit', compact('post', 'teams', 'athletes', 'sports', 'userApiToken'));
     }
 
     /**
@@ -180,6 +181,7 @@ class AdminPostsController extends Controller
         $post->update($input);
 
         $post->teams()->sync($request->teams_selected); // Sync teams relation with pivot table
+        $post->tags()->sync($request->tags); // Sync tags relation with pivot table
 
         return redirect(route('posts.index'));
     }

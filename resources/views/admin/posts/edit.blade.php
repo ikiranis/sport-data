@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.apiToken')
+
     @include('includes.error')
 
     <div class="container">
@@ -83,6 +85,24 @@
 
                                 <div class="my-2 row">
                                     <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="team in teamsSelected">{% team.text %}</span>
+                                </div>
+
+                                <div class="input-group mb-3 no-gutters">
+                                    <label class="sr-only" for="tag">Tag</label>
+                                    <div class="input-group-prepend col-2">
+                                        <span class="input-group-text w-100">Tag</span>
+                                    </div>
+                                    <input type="text" max="255" v-model="tag" class="form-control col-8 px-2"
+                                           id="tag" name="tag">
+
+                                    <span class="btn btn-success col-2" v-on:click="insertTag">Προσθήκη</span>
+
+                                    <input type="hidden" v-for="tag in tags" name="tags[]" :value="tag.id">
+
+                                </div>
+
+                                <div class="my-2 row">
+                                    <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="tag in tags">{% tag.name %}</span>
                                 </div>
                             </div>
 
@@ -177,13 +197,33 @@
                     json_encode($post->teams()->get()->map(function($item) {
                         return ['id' => $item->id, 'text' => $item->name];
                     }))
-                !!}
+                !!},
+                tags: {!!
+                    json_encode($post->tags()->get()->map(function($item) {
+                        return ['id' => $item->id, 'name' => $item->name];
+                    }))
+                !!},
+                tag: ''
             },
             methods: {
                 toggleOption(e) {
                     this.$refs.teamSelector.focus();
                     e.target.selected = !e.target.selected;
                     e.target.parentElement.dispatchEvent(new Event('change'));
+                },
+                insertTag(e) {
+
+                    let myData = {
+                        name: this.tag
+                    };
+
+                    axios.post('/api/tag', myData)
+                        .then(response => {
+                            this.tags.push({id: response.data.id, name: response.data.name});
+                            this.tag = '';
+                        })
+                        .catch(e => console.log(e));
+
                 }
             }
         });

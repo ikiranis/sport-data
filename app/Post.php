@@ -147,6 +147,13 @@ class Post extends Model implements Feedable
     }
 
     /**
+     * Relation to tags
+     */
+    public function tags() {
+        return $this->belongsToMany('App\Tag')->withTimestamps();
+    }
+
+    /**
      * Relation to photos
      */
     public function photo() {
