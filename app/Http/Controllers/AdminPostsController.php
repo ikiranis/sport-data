@@ -66,7 +66,7 @@ class AdminPostsController extends Controller
             'title' => 'required|max:255',
             'description' => 'nullable|max:500',
             'body' => 'required',
-            'reference' => 'nullable|max:800',
+            'reference' => 'nullable|url|max:800',
             'approved' => 'nullable'
         ]);
 
@@ -146,7 +146,7 @@ class AdminPostsController extends Controller
             'title' => 'required|max:255',
             'description' => 'nullable|max:500',
             'body' => 'required',
-            'reference' => 'nullable|max:800',
+            'reference' => 'nullable|url|max:800',
             'approved' => 'nullable'
         ]);
 
