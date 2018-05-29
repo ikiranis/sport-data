@@ -19,7 +19,7 @@
 
     @include('feed::links')
 
-
+    @include('includes.google-analytics')
 
 </head>
 <body>
@@ -38,8 +38,6 @@
 @include('includes.run-scripts')
 
 @yield('scripts')
-
-@include('includes.google-analytics')
 
 </body>
 </html>

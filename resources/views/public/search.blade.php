@@ -41,11 +41,7 @@
 
             @endforeach
 
-            <div class="row">
-                <div class="ml-auto mr-auto">
-                    {{ $posts->links() }}
-                </div>
-            </div>
+            @include('includes.paging')
 
         @else
             <h3 class="text-center my-5">Δεν βρέθηκαν δημοσιεύματα</h3>

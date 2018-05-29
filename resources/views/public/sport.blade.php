@@ -67,7 +67,7 @@
 
                         <div class="col-lg-4 col-12 my-1">
                             <a type="submit" class="btn btn-info w-100"
-                                    :href="'{{ route('standings', ['', '']) }}/' + championshipSelected + '/' + seasonSelected">
+                               :href="'{{ route('standings', ['', '']) }}/' + championshipSelected + '/' + seasonSelected">
                                 Βαθμολογία / Αποτελέσματα
                             </a>
                         </div>
@@ -86,11 +86,7 @@
 
             @endforeach
 
-            <div class="row">
-                <div class="ml-auto mr-auto">
-                    {{ $posts->links() }}
-                </div>
-            </div>
+            @include('includes.paging')
 
         @endif
     </div>

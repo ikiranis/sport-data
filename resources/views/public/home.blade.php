@@ -59,11 +59,7 @@
 
                     @endforeach
 
-                    <div class="row">
-                        <div class="ml-auto mr-auto">
-                            {{ $posts->links() }}
-                        </div>
-                    </div>
+                    @include('includes.paging')
 
                 @endif
             </div>
