@@ -35,7 +35,7 @@ class HomeController extends Controller
     public function index()
     {
         $sports = Sport::whereMainpage(1)->orderBy('name', 'asc')->get();
-        $posts = Post::whereApproved(1)->orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::whereApproved(1)->orderBy('created_at', 'desc')->simplePaginate(5);
         $seasons = Season::all();
 
         return view('public.home', compact('sports', 'posts', 'seasons'));
@@ -50,7 +50,7 @@ class HomeController extends Controller
     public function sport($slug)
     {
         $sport = Sport::whereSlug($slug)->firstOrFail();
-        $posts = Post::whereSportId($sport->id)->whereApproved(1)->orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::whereSportId($sport->id)->whereApproved(1)->orderBy('created_at', 'desc')->simplePaginate(5);
         $championships = Championship::whereSportId($sport->id)->get();
 
         return view('public.sport', compact('sport', 'posts', 'championships'));
@@ -82,7 +82,7 @@ class HomeController extends Controller
         $team = Team::whereSlug($slug)->firstOrFail();
 
         // Get all the posts of $team_id
-        $posts = $team->posts()->orderBy('created_at', 'desc')->paginate(5);
+        $posts = $team->posts()->orderBy('created_at', 'desc')->simplePaginate(5);
 
         $seasons = Season::whereChampionshipId($team->championship_id)->get();
 
@@ -127,7 +127,7 @@ class HomeController extends Controller
         $athlete = Athlete::whereSlug($slug)->firstOrFail();
 
         // Get all the posts of $athlete->id
-        $posts = Post::whereAthleteId($athlete->id)->orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::whereAthleteId($athlete->id)->orderBy('created_at', 'desc')->simplePaginate(5);
 
         return view('public.athletePosts', compact('athlete', 'posts'));
 
@@ -211,7 +211,7 @@ class HomeController extends Controller
                     ->orWhere('description', 'LIKE', "%$search%");
             })
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->simplePaginate(5);
 
         return view('public.search', compact('search', 'posts'));
     }
@@ -222,7 +222,7 @@ class HomeController extends Controller
         $tag = Tag::whereSlug($slug)->firstOrFail();
 
         // Get all the posts of $team_id
-        $posts = $tag->posts()->orderBy('created_at', 'desc')->paginate(5);
+        $posts = $tag->posts()->orderBy('created_at', 'desc')->simplePaginate(5);
 
         return view('public.tagPosts', compact('tag', 'posts'));
     }
