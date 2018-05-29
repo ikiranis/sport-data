@@ -38,7 +38,8 @@ class Team extends Model
         'city',
         'sport_id',
         'championship_id',
-        'division_id'
+        'division_id',
+        'link'
     ];
 
     /**

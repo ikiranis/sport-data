@@ -32,6 +32,15 @@
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
+                                <label class="sr-only" for="link">Site</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">Site</span>
+                                </div>
+                                <input type="text" max="255" class="form-control col-10 px-2" id="link" name="link"
+                                       value="{{$team->link}}">
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
                                 <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">{{__('messages.sport')}}</span>

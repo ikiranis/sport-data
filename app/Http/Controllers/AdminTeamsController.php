@@ -70,7 +70,8 @@ class AdminTeamsController extends Controller
         $validatedData = $request->validate([
             'logo_id' => 'nullable',
             'name' => 'required|max:255',
-            'city' => 'nullable|max:255'
+            'city' => 'nullable|max:255',
+            'link' => 'nullable|url|max:255'
         ]);
 
         $input = $request->all();
@@ -157,7 +158,8 @@ class AdminTeamsController extends Controller
         $validatedData = $request->validate([
             'logo_id' => 'nullable',
             'name' => 'required|max:255',
-            'city' => 'nullable|max:255'
+            'city' => 'nullable|max:255',
+            'link' => 'nullable|url|max:255'
         ]);
 
         $input = $request->all();
