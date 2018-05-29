@@ -33,7 +33,7 @@
 
     <div class="container">
 
-        <div class="row col-12">
+        <div class="row col-12 no-gutters">
             <div class="col">
                 @if(isset($team->logo->fullPathName))
                     <div id="teamLogo">
@@ -44,6 +44,11 @@
 
             <div class="col">
                 <h1 class="text-right">{{$team->name}}</h1>
+                @if(isset($team->link))
+                    <div class="text-right websiteLink">
+                        <a href="{{ $team->link }}">{{ parse_url($team->link)['host'] }}</a>
+                    </div>
+                @endif
             </div>
         </div>
 
