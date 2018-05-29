@@ -50,3 +50,11 @@
     </div>
 
 @endsection
+
+@section('scripts')
+
+    @if(count($post->teams()->get())>0)
+        @include('includes.teams-container-javascript')
+    @endif
+
+@endsection
