@@ -263,13 +263,16 @@ class StandingsTest extends TestCase
         $this->assertEquals('OLYMPIAKOS', $teams[3]->name);
     }
 
+    /**
+     * test findEqualTeams method
+     */
     public function testFindEqualTeams()
     {
         $standings = new Standings();
         $standings->setMatches($this->getMatches()[0]);
         $standings->setRules($this->getRules()[0]);
 
-        $standings->getStandings();
+        $teamsStanding = $standings->getStandings();
 
         $equalTeams = $standings->findEqualTeams();
 
@@ -277,6 +280,22 @@ class StandingsTest extends TestCase
         $this->assertEquals(['KOZANI', 'EORDAIKOS'], $equalTeams[1]);
         $this->assertEquals(['AEK', 'OLYMPIAKOS', 'PAO'], $equalTeams[0]);
 
+    }
+
+    /**
+     * Test sorting teams by general score difference
+     */
+    public function testSortByGeneralScoreDifference()
+    {
+        $standings = new Standings();
+        $standings->setMatches($this->getMatches()[0]);
+        $standings->setRules($this->getRules()[0]);
+
+        $teamsStanding = $standings->getStandings();
+
+        $this->assertEquals(['PAOK', 'ARIS', 'IRAKLIS'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams()[3]));
+        $this->assertEquals(['EORDAIKOS', 'KOZANI'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams()[1]));
+        $this->assertEquals(['OLYMPIAKOS', 'AEK', 'PAO'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams()[0]));
     }
 
     /**

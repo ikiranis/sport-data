@@ -309,8 +309,34 @@ class Standings
     private function sortStandings()
     {
         $this->teams = array_reverse(array_sort($this->teams, 'points'));
+//        $equalTeams = $this->findEqualTeams();
     }
 
+    /**
+     * Sort teams by general score difference
+     *
+     * @param $equalTeams
+     * @return array
+     */
+    public function sortByGeneralScoreDifference($equalTeams)
+    {
+        $sortTeams = array();
+
+        foreach ($equalTeams as $equalTeam) {
+            $scoreDifference = $this->teams[$equalTeam]->scoreFor - $this->teams[$equalTeam]->scoreAgainst;
+            $sortTeams[$equalTeam] = $scoreDifference;
+        }
+
+        $sortTeams = array_reverse(array_sort($sortTeams));
+
+        return array_keys($sortTeams);
+    }
+
+    /**
+     * Find equal teams with same points
+     *
+     * @return array
+     */
     public function findEqualTeams()
     {
         $equalTeams = array();
