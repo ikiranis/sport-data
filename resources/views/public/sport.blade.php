@@ -5,17 +5,17 @@
 @endsection
 
 @section('shareMetaTags')
-    <meta name="description" content="Σελίδα της άθλημα: {{$sport->name}}"/>
+    <meta name="description" content="Σελίδα του αθλήματος: {{$sport->name}}"/>
 
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="{{$sport->name}}">
-    <meta itemprop="description" content="Σελίδα της άθλημα: {{$sport->name}}">
+    <meta itemprop="description" content="Σελίδα του αθλήματος: {{$sport->name}}">
     <meta itemprop="image" content="{{ url($sport->photo->full_path_name) }}">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="">
     <meta name="twitter:title" content="{{$sport->name}}">
-    <meta name="twitter:description" content="Σελίδα της άθλημα: {{$sport->name}}">
+    <meta name="twitter:description" content="Σελίδα του αθλήματος: {{$sport->name}}">
     <!-- Twitter summary card with large image must be at least 280x150px -->
     <meta name="twitter:image:src" content="{{ url($sport->photo->full_path_name) }}">
 
@@ -24,12 +24,20 @@
     <meta property="og:type" content="category"/>
     <meta property="og:image" content="{{ url($sport->photo->full_path_name) }}"/>
     <meta property="og:image:width" content="282">
-    <meta property="og:description" content="Σελίδα της άθλημα: {{$sport->name}}"/>
+    <meta property="og:description" content="Σελίδα του αθλήματος: {{$sport->name}}"/>
     <meta property="og:site_name" content="West Macedonia Sports"/>
 @endsection
 
 @section('content')
+
+
     <h1 class="text-center">{{$sport->name}}</h1>
+
+    {{--@if(isset($sport->photo))--}}
+        {{--<div class="text-center my-3 sportImage">--}}
+            {{--<img src="{{ $sport->photo->full_path_name }}">--}}
+        {{--</div>--}}
+    {{--@endif--}}
 
     <div class="container">
 
