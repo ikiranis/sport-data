@@ -263,6 +263,22 @@ class StandingsTest extends TestCase
         $this->assertEquals('OLYMPIAKOS', $teams[3]->name);
     }
 
+    public function testFindEqualTeams()
+    {
+        $standings = new Standings();
+        $standings->setMatches($this->getMatches()[0]);
+        $standings->setRules($this->getRules()[0]);
+
+        $standings->getStandings();
+
+        $equalTeams = $standings->findEqualTeams();
+
+        $this->assertEquals(['IRAKLIS', 'ARIS', 'PAOK'], $equalTeams[3]);
+        $this->assertEquals(['KOZANI', 'EORDAIKOS'], $equalTeams[1]);
+        $this->assertEquals(['AEK', 'OLYMPIAKOS', 'PAO'], $equalTeams[0]);
+
+    }
+
     /**
      * Call protected/private method of a class.
      *

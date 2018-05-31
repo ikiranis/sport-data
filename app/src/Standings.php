@@ -60,7 +60,7 @@ class Standings
             $teams = [$match->first_team, $match->second_team];
 
             foreach ($teams as $team) {
-                if(!in_array($team->name, $this->championshipTeams)) {
+                if (!in_array($team->name, $this->championshipTeams)) {
                     $this->championshipTeams[] = $team;
                 }
             }
@@ -76,7 +76,7 @@ class Standings
     {
         // construct $this->teams array of objects, with names and 0 points
         foreach ($this->championshipTeams as $team) {
-            $this->teams[$team->name] = (object) [
+            $this->teams[$team->name] = (object)[
                 'data' => $team,
                 'matches' => 0,
                 'wins' => 0,
@@ -116,7 +116,7 @@ class Standings
     private function setTeamPoints($teams, $points, $winner)
     {
         // Calculate points in/out
-        switch($winner) {
+        switch ($winner) {
             case '1':  // for home team
                 $this->teams[$teams[0]]->pointsIn += $points[0];
                 $this->teams[$teams[1]]->pointsOut += $points[1];
@@ -131,12 +131,12 @@ class Standings
                 break;
         }
 
-        foreach ($teams as $key=>$team) {
+        foreach ($teams as $key => $team) {
             $this->teams[$team]->points += $points[$key];
 
-            $this->teams[$team]->matches ++;
+            $this->teams[$team]->matches++;
 
-            if($points[0] !== $points[1]) {
+            if ($points[0] !== $points[1]) {
                 switch ($key) {
                     case 0;
                         $this->setTeamResult($team, 'win');
@@ -160,9 +160,15 @@ class Standings
     private function setTeamResult($team, $result)
     {
         switch ($result) {
-            case 'win': $this->teams[$team]->wins ++; break;
-            case 'lose': $this->teams[$team]->loses ++; break;
-            case 'draw': $this->teams[$team]->draws ++; break;
+            case 'win':
+                $this->teams[$team]->wins++;
+                break;
+            case 'lose':
+                $this->teams[$team]->loses++;
+                break;
+            case 'draw':
+                $this->teams[$team]->draws++;
+                break;
         }
 
     }
@@ -192,9 +198,9 @@ class Standings
         $pointsByTheWinner = [$this->rules->winnerPoints, $this->rules->loserPoints];
         $drawPoints = [$this->rules->drawPoints, $this->rules->drawPoints];
 
-        if($scoreDifference > 0) { // First team wins
+        if ($scoreDifference > 0) { // First team wins
             $this->setTeamPoints($firstTeamWinsTeams, $pointsByTheWinner, '1');
-        } elseif($scoreDifference < 0) { // Second team wins
+        } elseif ($scoreDifference < 0) { // Second team wins
             $this->setTeamPoints($secondTeamWinsTeams, $pointsByTheWinner, '2');
         } else { // Draw
             $this->setTeamPoints($firstTeamWinsTeams, $drawPoints, 'X');
@@ -214,7 +220,7 @@ class Standings
         $pointsByScoreDifferenceWith2Sets = [$this->rules->winWith2Sets, $this->rules->loseWith2Sets];
         $pointsByScoreDifferenceWith1Set = [$this->rules->winWith1Set, $this->rules->loseWith1Set];
 
-        if($scoreDifference > 0) { // First team wins
+        if ($scoreDifference > 0) { // First team wins
             if ($scoreDifference > 1) { // Score bigger than 1 set difference
                 $this->setTeamPoints($firstTeamWinsTeams, $pointsByScoreDifferenceWith2Sets, '1');
             } else { // Score with 1 set difference
@@ -237,13 +243,13 @@ class Standings
      */
     private function setTeamsScore($teams, $score)
     {
-        foreach ($teams as $key=>$team) {
-            $otherKey = ($key==0) ? 1 : 0;
+        foreach ($teams as $key => $team) {
+            $otherKey = ($key == 0) ? 1 : 0;
 
             $this->teams[$team]->scoreFor += $score[$key];
             $this->teams[$team]->scoreAgainst += $score[$otherKey];
 
-            if($key==0) {
+            if ($key == 0) {
                 $this->teams[$team]->scoreForIn += $score[$key];
                 $this->teams[$team]->scoreAgainstIn += $score[$otherKey];
             } else {
@@ -263,7 +269,7 @@ class Standings
     private function setTeamsPoints($match)
     {
         // Check if there is a score on match
-        if( isset($match->first_team_score)  && isset($match->second_team_score) ) {
+        if (isset($match->first_team_score) && isset($match->second_team_score)) {
 
             $scoreDifference = $this->getScoreDifference($match->first_team_score, $match->second_team_score);
 
@@ -293,6 +299,27 @@ class Standings
         foreach ($this->matches as $match) {
             $this->setTeamsPoints($match);
         }
+
+        $this->sortStandings();
+    }
+
+    /**
+     * Sort array $this->team
+     */
+    private function sortStandings()
+    {
+        $this->teams = array_reverse(array_sort($this->teams, 'points'));
+    }
+
+    public function findEqualTeams()
+    {
+        $equalTeams = array();
+
+        foreach ($this->teams as $team) {
+            $equalTeams[$team->points][] = $team->data->name;
+        }
+
+        return $equalTeams;
     }
 
     /**
@@ -304,7 +331,7 @@ class Standings
     {
         $this->compute();
 
-        return collect($this->teams)->sortBy('points')->reverse()->all();
+        return collect($this->teams)->all();
     }
 
 
