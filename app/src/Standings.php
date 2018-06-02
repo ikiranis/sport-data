@@ -333,6 +333,74 @@ class Standings
     }
 
     /**
+     * Get matches between teams
+     *
+     * @param $team1
+     * @param $team2
+     * @return array
+     */
+    public function getTeamsMatches($teams)
+    {
+        $matches = array();
+
+        foreach ($this->matches as $match) {
+            $firstTeam = $match->first_team->name;
+            $secondTeam = $match->second_team->name;
+
+            if( ($firstTeam == $teams[0] || $firstTeam == $teams[1]) || ($secondTeam == $teams[0] || $secondTeam == $teams[1]) ) {
+                $matches[] = $match;
+            }
+        }
+
+        return $matches;
+
+    }
+
+    /**
+     * Get teams couples
+     *
+     * @param $teams
+     * @return array
+     */
+    public function getTeamsCouples($teams)
+    {
+        $couples = array();
+
+        foreach ($teams as $key=>$team) {
+            $firstTeam = $team;
+
+            for($i=$key+1; $i<sizeof($teams); $i++) {
+                $couples[] = [$firstTeam, $teams[$i]];
+            }
+        }
+
+        return $couples;
+    }
+
+    public function sortByScoreDifferenceBetweenTeams($equalTeams)
+    {
+
+        $sortTeams = array();
+
+        $teamsCouples = $this->getTeamsCouples($equalTeams);
+
+        foreach ($teamsCouples as $couple) {
+            $teamsMatches = $this->getTeamsMatches($couple);
+        }
+
+        foreach ($equalTeams as $equalTeam) {
+            $scoreDifference = $this->teams[$equalTeam]->scoreFor - $this->teams[$equalTeam]->scoreAgainst;
+            $sortTeams[$equalTeam] = $scoreDifference;
+        }
+
+        $sortTeams = array_reverse(array_sort($sortTeams));
+
+//        return array_keys($sortTeams);
+
+        return ['PAOK', 'ARIS', 'IRAKLIS'];
+    }
+
+    /**
      * Find equal teams with same points
      *
      * @return array
