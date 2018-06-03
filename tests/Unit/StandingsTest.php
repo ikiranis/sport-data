@@ -139,8 +139,52 @@ class StandingsTest extends TestCase
                     'first_team' => (object)['name' => 'ARIS'],
                     'second_team' => (object)['name' => 'OLYMPIAKOS'],
                     'first_team_score' => '3',
+                    'second_team_score' => '1'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'second_team' => (object)['name' => 'ARIS'],
+                    'first_team_score' => '5',
+                    'second_team_score' => '3'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'AEK'],
+                    'second_team' => (object)['name' => 'IRAKLIS'],
+                    'first_team_score' => '5',
                     'second_team_score' => '2'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'IRAKLIS'],
+                    'second_team' => (object)['name' => 'AEK'],
+                    'first_team_score' => '6',
+                    'second_team_score' => '4'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'second_team' => (object)['name' => 'AEK'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'AEK'],
+                    'second_team' => (object)['name' => 'ARIS'],
+                    'first_team_score' => '3',
+                    'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'ARIS'],
+                    'second_team' => (object)['name' => 'IRAKLIS'],
+                    'first_team_score' => '6',
+                    'second_team_score' => '1'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'IRAKLIS'],
+                    'second_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'first_team_score' => '1',
+                    'second_team_score' => '0'
                 ]
+
+
             ]
         ];
     }
@@ -336,16 +380,13 @@ class StandingsTest extends TestCase
     public function testSortByScoreDifferenceBetweenTeams()
     {
         $standings = new Standings();
-        $standings->setMatches($this->getMatches()[0]);
+        $standings->setMatches($this->getMatches()[2]);
         $standings->setRules($this->getRules()[0]);
 
         $teamsStanding = $standings->getStandings();
 
-        dd($teamsStanding);
-
-        $this->assertEquals(['PAOK', 'ARIS', 'IRAKLIS'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams()[3]));
-//        $this->assertEquals(['EORDAIKOS', 'KOZANI'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams()[1]));
-//        $this->assertEquals(['OLYMPIAKOS', 'AEK', 'PAO'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams()[0]));
+//        $this->assertEquals(['PAOK', 'PAO'], $standings->sortByScoreDifferenceBetweenTeams($standings->findEqualTeams()[5]));
+        $this->assertEquals(['ARIS', 'AEK', 'OLYMPIAKOS', 'IRAKLIS'], $standings->sortByScoreDifferenceBetweenTeams($standings->findEqualTeams()[6]));
     }
 
     /**
@@ -374,7 +415,7 @@ class StandingsTest extends TestCase
         $this->assertEquals('ARIS', $teamsMatches[0]->first_team->name);
         $this->assertEquals('OLYMPIAKOS', $teamsMatches[0]->second_team->name);
         $this->assertEquals('3', $teamsMatches[0]->first_team_score);
-        $this->assertEquals('2', $teamsMatches[0]->second_team_score);
+        $this->assertEquals('1', $teamsMatches[0]->second_team_score);
     }
 
     /**
