@@ -213,9 +213,18 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->simplePaginate(5);
 
+        // Append search text for next pages
+        $posts->appends(['search' => $search]);
+
         return view('public.search', compact('search', 'posts'));
     }
 
+    /**
+     * Tag posts
+     *
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function tag($slug)
     {
         // Get the team with $slug
