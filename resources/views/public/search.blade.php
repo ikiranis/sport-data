@@ -53,8 +53,10 @@
 
 @section('scripts')
 
-    @if(count($post->teams()->get())>0)
-        @include('includes.teams-container-javascript')
+    @if(count($posts)>0)
+        @if(count($post->teams()->get())>0)
+            @include('includes.teams-container-javascript')
+        @endif
     @endif
 
 @endsection

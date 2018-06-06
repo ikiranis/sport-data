@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-05-28 20:46:36.
+    * Generated on 2018-06-06 15:31:43.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -112,6 +112,7 @@ namespace PHPSTORM_META {
         'command.model.make' => \Illuminate\Foundation\Console\ModelMakeCommand::class,
         'command.notification.make' => \Illuminate\Foundation\Console\NotificationMakeCommand::class,
         'command.notification.table' => \Illuminate\Notifications\Console\NotificationTableCommand::class,
+        'command.observer.make' => \Illuminate\Foundation\Console\ObserverMakeCommand::class,
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
@@ -255,6 +256,7 @@ namespace PHPSTORM_META {
         'command.model.make' => \Illuminate\Foundation\Console\ModelMakeCommand::class,
         'command.notification.make' => \Illuminate\Foundation\Console\NotificationMakeCommand::class,
         'command.notification.table' => \Illuminate\Notifications\Console\NotificationTableCommand::class,
+        'command.observer.make' => \Illuminate\Foundation\Console\ObserverMakeCommand::class,
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
@@ -398,6 +400,7 @@ namespace PHPSTORM_META {
         'command.model.make' => \Illuminate\Foundation\Console\ModelMakeCommand::class,
         'command.notification.make' => \Illuminate\Foundation\Console\NotificationMakeCommand::class,
         'command.notification.table' => \Illuminate\Notifications\Console\NotificationTableCommand::class,
+        'command.observer.make' => \Illuminate\Foundation\Console\ObserverMakeCommand::class,
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
@@ -541,6 +544,7 @@ namespace PHPSTORM_META {
         'command.model.make' => \Illuminate\Foundation\Console\ModelMakeCommand::class,
         'command.notification.make' => \Illuminate\Foundation\Console\NotificationMakeCommand::class,
         'command.notification.table' => \Illuminate\Notifications\Console\NotificationTableCommand::class,
+        'command.observer.make' => \Illuminate\Foundation\Console\ObserverMakeCommand::class,
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
@@ -684,6 +688,7 @@ namespace PHPSTORM_META {
         'command.model.make' => \Illuminate\Foundation\Console\ModelMakeCommand::class,
         'command.notification.make' => \Illuminate\Foundation\Console\NotificationMakeCommand::class,
         'command.notification.table' => \Illuminate\Notifications\Console\NotificationTableCommand::class,
+        'command.observer.make' => \Illuminate\Foundation\Console\ObserverMakeCommand::class,
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
@@ -827,6 +832,7 @@ namespace PHPSTORM_META {
         'command.model.make' => \Illuminate\Foundation\Console\ModelMakeCommand::class,
         'command.notification.make' => \Illuminate\Foundation\Console\NotificationMakeCommand::class,
         'command.notification.table' => \Illuminate\Notifications\Console\NotificationTableCommand::class,
+        'command.observer.make' => \Illuminate\Foundation\Console\ObserverMakeCommand::class,
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
@@ -970,6 +976,7 @@ namespace PHPSTORM_META {
         'command.model.make' => \Illuminate\Foundation\Console\ModelMakeCommand::class,
         'command.notification.make' => \Illuminate\Foundation\Console\NotificationMakeCommand::class,
         'command.notification.table' => \Illuminate\Notifications\Console\NotificationTableCommand::class,
+        'command.observer.make' => \Illuminate\Foundation\Console\ObserverMakeCommand::class,
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
