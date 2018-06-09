@@ -133,7 +133,7 @@ class StandingsTest extends TestCase
                     'first_team' => (object)['name' => 'PAOK'],
                     'second_team' => (object)['name' => 'PAO'],
                     'first_team_score' => '2',
-                    'second_team_score' => '2'
+                    'second_team_score' => '1'
                 ],
                 (object)[
                     'first_team' => (object)['name' => 'ARIS'],
@@ -434,6 +434,67 @@ class StandingsTest extends TestCase
         $this->assertEquals(['PAO', 'OLYMPIAKOS'], $teamsCouples[4]);
         $this->assertEquals(['ARIS', 'OLYMPIAKOS'], $teamsCouples[5]);
     }
+
+    /**
+     * Test which team is better method
+     */
+    public function testWhoIsBetter()
+    {
+        $standings = new Standings();
+        $standings->setMatches($this->getMatches()[2]);
+
+        $betterTeam = $standings->whoIsBetter(['PAOK', 'PAO']);
+
+        $this->assertEquals('PAOK', $betterTeam);
+
+        $betterTeam = $standings->whoIsBetter(['ARIS', 'OLYMPIAKOS']);
+
+        $this->assertEquals('draw', $betterTeam);
+
+        $betterTeam = $standings->whoIsBetter(['AEK', 'IRAKLIS']);
+
+        $this->assertEquals('draw', $betterTeam);
+
+        $betterTeam = $standings->whoIsBetter(['AEK', 'OLYMPIAKOS']);
+
+        $this->assertEquals('OLYMPIAKOS', $betterTeam);
+
+        $betterTeam = $standings->whoIsBetter(['ARIS', 'AEK']);
+
+        $this->assertEquals('AEK', $betterTeam);
+
+        $betterTeam = $standings->whoIsBetter(['ARIS', 'IRAKLIS']);
+
+        $this->assertEquals('ARIS', $betterTeam);
+
+        $betterTeam = $standings->whoIsBetter(['OLYMPIAKOS', 'IRAKLIS']);
+
+        $this->assertEquals('IRAKLIS', $betterTeam);
+
+    }
+
+    /**
+     * Test getTeamsStats method
+     */
+    public function testGetTeamsStats()
+    {
+        $standings = new Standings();
+        $standings->setMatches($this->getMatches()[2]);
+
+        $teams = ['PAOK', 'PAO'];
+
+        $teamMatches = $standings->getTeamsMatches($teams);
+
+        $teamsGoalDifference = $standings->getTeamsStats($teams, $teamMatches);
+
+        $this->assertEquals(2, $teamsGoalDifference['PAOK']->wins);
+        $this->assertEquals(1, $teamsGoalDifference['PAOK']->loses);
+        $this->assertEquals(1, $teamsGoalDifference['PAOK']->draws);
+        $this->assertEquals(1, $teamsGoalDifference['PAO']->wins);
+        $this->assertEquals(2, $teamsGoalDifference['PAO']->loses);
+        $this->assertEquals(1, $teamsGoalDifference['PAO']->draws);
+    }
+
 
     /**
      * Call protected/private method of a class.

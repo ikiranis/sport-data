@@ -433,6 +433,84 @@ class Standings
     }
 
     /**
+     * Return which of the two teams is better in wins
+     *
+     * @param $teams
+     * @param $priorities
+     * @return string
+     */
+    public function whoIsBetter($teams)
+    {
+
+        $teamMatches = $this->getTeamsMatches($teams);
+
+        $teamsStats = $this->getTeamsStats($teams, $teamMatches);
+
+        if($teamsStats[$teams[0]]->wins > $teamsStats[$teams[1]]->wins) {
+            return $teams[0];
+        } elseif($teamsStats[$teams[0]]->wins < $teamsStats[$teams[1]]->wins) {
+            return $teams[1];
+        } else {
+            return 'draw';
+        }
+    }
+
+    /**
+     * Init the $sortTeams objects array with wanted properties
+     *
+     * @param $teams
+     * @return array
+     */
+    private function initSortTeamsArray($teams)
+    {
+        $sortTeams = array();
+
+        foreach ($teams as $team) {
+            $sortTeams[$team] = (object)[
+                'wins' => 0,
+                'loses' => 0,
+                'draws' => 0
+            ];
+        }
+
+        return $sortTeams;
+    }
+
+    /**
+     * Return $teans stats from $matches
+     *
+     * @param $teams
+     * @param $matches
+     * @return array
+     */
+    public function getTeamsStats($teams, $matches)
+    {
+
+        $sortTeams = $this->initSortTeamsArray($teams);
+
+        // Set wins/loses/draws for every team
+        foreach ($matches as $match) {
+            $firstTeam = $match->first_team->name;
+            $secondTeam = $match->second_team->name;
+
+            if($match->first_team_score > $match->second_team_score) {
+                $sortTeams[$firstTeam]->wins++;
+                $sortTeams[$secondTeam]->loses++;
+            } elseif ($match->first_team_score < $match->second_team_score) {
+                $sortTeams[$secondTeam]->wins++;
+                $sortTeams[$firstTeam]->loses++;
+            } else {
+                $sortTeams[$secondTeam]->draws++;
+                $sortTeams[$firstTeam]->draws++;
+            }
+
+        }
+
+        return $sortTeams;
+    }
+
+
+    /**
      * Find equal teams with same points
      *
      * @return array
