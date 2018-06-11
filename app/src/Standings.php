@@ -22,6 +22,7 @@ class Standings
     private $matches = array();
     private $championshipTeams = array();
     private $rules;
+    private $sortTeams = array();
 
     /**
      * Standings constructor
@@ -335,8 +336,7 @@ class Standings
     /**
      * Get matches between teams
      *
-     * @param $team1
-     * @param $team2
+     * @param $teams
      * @return array
      */
     public function getTeamsMatches($teams)
@@ -377,24 +377,17 @@ class Standings
         return $couples;
     }
 
+    // TODO function to sort every possible equality rule
+
     /**
-     * Sort teams by score difference between them
+     * Calculate stats for matches between equal teams
      *
      * @param $equalTeams
      * @return array
      */
-    public function sortByScoreDifferenceBetweenTeams($equalTeams)
+    public function calculateEqualTeamsStats($equalTeams)
     {
-
-        $sortTeams = array();
-
-        foreach ($equalTeams as $equalTeam) {
-            $sortTeams[$equalTeam] = (object)[
-                'scoreFor' => 0,
-                'scoreAgainst' => 0,
-                'scoreDifference' => 0
-            ];
-        }
+        $matches = array();
 
         // Get the couples of teams
         $teamsCouples = $this->getTeamsCouples($equalTeams);
@@ -403,31 +396,27 @@ class Standings
         foreach ($teamsCouples as $couple) {
             $teamsMatches = $this->getTeamsMatches($couple);
 
-            // Set score For/Against and difference for every team
-            foreach ($teamsMatches as $match) {
-                $firstTeam = $match->first_team->name;
-                $secondTeam = $match->second_team->name;
-
-                $sortTeams[$firstTeam]->scoreFor += $match->first_team_score;
-                $sortTeams[$firstTeam]->scoreAgainst += $match->second_team_score;
-
-                $sortTeams[$secondTeam]->scoreFor += $match->second_team_score;
-                $sortTeams[$secondTeam]->scoreAgainst += $match->first_team_score;
-
-                $sortTeams[$firstTeam]->scoreDifference = $sortTeams[$firstTeam]->scoreFor - $sortTeams[$firstTeam]->scoreAgainst;
-                $sortTeams[$secondTeam]->scoreDifference = $sortTeams[$secondTeam]->scoreFor - $sortTeams[$secondTeam]->scoreAgainst;
+            foreach ($teamsMatches as $teamsMatch) {
+                $matches[] = $teamsMatch;
             }
 
         }
 
+        $sortTeams = $this->getTeamsStats($equalTeams, $matches);
 
+        return $sortTeams;
+    }
 
+    /**
+     * Sort teams by score difference between them
+     *
+     * @param $equalTeams
+     * @return array
+     */
+    public function sortByScoreDifferenceBetweenTeams($sortTeams)
+    {
 
         $sortTeams = array_reverse(array_sort($sortTeams, 'scoreDifference'));
-//        $sortTeams = array_reverse(array_sort($sortTeams, 'scoreFor'));
-
-//        dd($sortTeams);
-
 
         return array_keys($sortTeams);
     }
@@ -467,9 +456,10 @@ class Standings
 
         foreach ($teams as $team) {
             $sortTeams[$team] = (object)[
-                'wins' => 0,
-                'loses' => 0,
-                'draws' => 0
+                'points' => 0,
+                'scoreFor' => 0,
+                'scoreAgainst' => 0,
+                'scoreDifference' => 0
             ];
         }
 
@@ -477,7 +467,7 @@ class Standings
     }
 
     /**
-     * Return $teans stats from $matches
+     * Return $teams stats from $matches
      *
      * @param $teams
      * @param $matches
@@ -488,21 +478,30 @@ class Standings
 
         $sortTeams = $this->initSortTeamsArray($teams);
 
-        // Set wins/loses/draws for every team
+        // Set stats for every team
         foreach ($matches as $match) {
             $firstTeam = $match->first_team->name;
             $secondTeam = $match->second_team->name;
 
             if($match->first_team_score > $match->second_team_score) {
-                $sortTeams[$firstTeam]->wins++;
-                $sortTeams[$secondTeam]->loses++;
+                $sortTeams[$firstTeam]->points += $this->rules->winnerPoints;
+                $sortTeams[$secondTeam]->points += $this->rules->loserPoints;
             } elseif ($match->first_team_score < $match->second_team_score) {
-                $sortTeams[$secondTeam]->wins++;
-                $sortTeams[$firstTeam]->loses++;
+                $sortTeams[$secondTeam]->points += $this->rules->winnerPoints;
+                $sortTeams[$firstTeam]->points += $this->rules->loserPoints;
             } else {
-                $sortTeams[$secondTeam]->draws++;
-                $sortTeams[$firstTeam]->draws++;
+                $sortTeams[$secondTeam]->points += $this->rules->drawPoints;
+                $sortTeams[$firstTeam]->points += $this->rules->drawPoints;
             }
+
+            $sortTeams[$firstTeam]->scoreFor += $match->first_team_score;
+            $sortTeams[$firstTeam]->scoreAgainst += $match->second_team_score;
+
+            $sortTeams[$secondTeam]->scoreFor += $match->second_team_score;
+            $sortTeams[$secondTeam]->scoreAgainst += $match->first_team_score;
+
+            $sortTeams[$firstTeam]->scoreDifference = $sortTeams[$firstTeam]->scoreFor - $sortTeams[$firstTeam]->scoreAgainst;
+            $sortTeams[$secondTeam]->scoreDifference = $sortTeams[$secondTeam]->scoreFor - $sortTeams[$secondTeam]->scoreAgainst;
 
         }
 
