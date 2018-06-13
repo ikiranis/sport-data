@@ -408,15 +408,18 @@ class Standings
     }
 
     /**
-     * Sort teams by score difference between them
+     * Sort group of teams by matches betwwen them, by $sortField
      *
-     * @param $equalTeams
+     * @param $sortTeams
+     * @param $sortField
      * @return array
      */
-    public function sortByScoreDifferenceBetweenTeams($sortTeams)
+    public function sortByGroupTeams($sortTeams, $sortField)
     {
+        $sortTeams = array_reverse(array_sort($sortTeams, $sortField));
 
-        $sortTeams = array_reverse(array_sort($sortTeams, 'scoreDifference'));
+        print_r($sortField);
+        print_r($sortTeams);
 
         return array_keys($sortTeams);
     }

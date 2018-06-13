@@ -375,9 +375,9 @@ class StandingsTest extends TestCase
     }
 
     /**
-     * Test sorting teams by score difference between teams
+     * Test sorting group of teams by matches betwwen them, by $sortField
      */
-    public function testSortByScoreDifferenceBetweenTeams()
+    public function testSortByGroupTeams()
     {
         $standings = new Standings();
         $standings->setMatches($this->getMatches()[2]);
@@ -387,7 +387,12 @@ class StandingsTest extends TestCase
 
         $equalTeamsStats = $standings->calculateEqualTeamsStats($standings->findEqualTeams()[6]);
 
-        $this->assertEquals(['ARIS', 'AEK', 'OLYMPIAKOS', 'IRAKLIS'], $standings->sortByScoreDifferenceBetweenTeams($equalTeamsStats));
+//        dd($equalTeamsStats);
+
+        $this->assertEquals(['ARIS', 'AEK', 'OLYMPIAKOS', 'IRAKLIS'], $standings->sortByGroupTeams($equalTeamsStats, 'scoreDifference'));
+        $this->assertEquals(['ARIS', 'OLYMPIAKOS', 'AEK', 'IRAKLIS'], $standings->sortByGroupTeams($equalTeamsStats, 'points'));
+        $this->assertEquals(['ARIS', 'AEK', 'IRAKLIS', 'OLYMPIAKOS'], $standings->sortByGroupTeams($equalTeamsStats, 'scoreFor'));
+        $this->assertEquals(['IRAKLIS', 'ARIS', 'AEK', 'OLYMPIAKOS'], $standings->sortByGroupTeams($equalTeamsStats, 'scoreAgainst'));
     }
 
     /**
