@@ -418,8 +418,8 @@ class Standings
     {
         $sortTeams = array_reverse(array_sort($sortTeams, $sortField));
 
-        print_r($sortField);
-        print_r($sortTeams);
+//        print_r($sortField);
+//        print_r($sortTeams);
 
         return array_keys($sortTeams);
     }
@@ -462,7 +462,10 @@ class Standings
                 'points' => 0,
                 'scoreFor' => 0,
                 'scoreAgainst' => 0,
-                'scoreDifference' => 0
+                'scoreDifference' => 0,
+                'generalScoreDifference' => $this->teams[$team]->scoreFor - $this->teams[$team]->scoreAgainst,
+                'generalScoreFor' => $this->teams[$team]->scoreFor,
+                'generalScoreAgainst' => $this->teams[$team]->scoreAgainst
             ];
         }
 

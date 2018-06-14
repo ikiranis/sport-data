@@ -182,6 +182,24 @@ class StandingsTest extends TestCase
                     'second_team' => (object)['name' => 'OLYMPIAKOS'],
                     'first_team_score' => '1',
                     'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAOK'],
+                    'second_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'first_team_score' => '1',
+                    'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAO'],
+                    'second_team' => (object)['name' => 'IRAKLIS'],
+                    'first_team_score' => '3',
+                    'second_team_score' => '1'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAOK'],
+                    'second_team' => (object)['name' => 'AEK'],
+                    'first_team_score' => '5',
+                    'second_team_score' => '1'
                 ]
 
 
@@ -509,6 +527,8 @@ class StandingsTest extends TestCase
         $standings->setMatches($this->getMatches()[2]);
         $standings->setRules($this->getRules()[0]);
 
+        $teamStandings = $standings->getStandings();
+
         $teams = ['PAOK', 'PAO'];
 
         $teamMatches = $standings->getTeamsMatches($teams);
@@ -518,11 +538,17 @@ class StandingsTest extends TestCase
         $this->assertEquals(7, $teamsStats['PAOK']->points);
         $this->assertEquals(4, $teamsStats['PAO']->points);
         $this->assertEquals(8, $teamsStats['PAOK']->scoreFor);
+        $this->assertEquals(14, $teamsStats['PAOK']->generalScoreFor);
         $this->assertEquals(4, $teamsStats['PAO']->scoreFor);
+        $this->assertEquals(7, $teamsStats['PAO']->generalScoreFor);
         $this->assertEquals(4, $teamsStats['PAOK']->scoreAgainst);
+        $this->assertEquals(5, $teamsStats['PAOK']->generalScoreAgainst);
         $this->assertEquals(8, $teamsStats['PAO']->scoreAgainst);
+        $this->assertEquals(9, $teamsStats['PAO']->generalScoreAgainst);
         $this->assertEquals(4, $teamsStats['PAOK']->scoreDifference);
+        $this->assertEquals(9, $teamsStats['PAOK']->generalScoreDifference);
         $this->assertEquals(-4, $teamsStats['PAO']->scoreDifference);
+        $this->assertEquals(-2, $teamsStats['PAO']->generalScoreDifference);
 
     }
 
