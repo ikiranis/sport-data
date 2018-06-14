@@ -350,7 +350,7 @@ class StandingsTest extends TestCase
 
         $teamsStanding = $standings->getStandings();
 
-        $equalTeams = $standings->findEqualTeams();
+        $equalTeams = $standings->findEqualTeams('points');
 
         $this->assertEquals(['IRAKLIS', 'ARIS', 'PAOK'], $equalTeams[3]);
         $this->assertEquals(['KOZANI', 'EORDAIKOS'], $equalTeams[1]);
@@ -369,9 +369,9 @@ class StandingsTest extends TestCase
 
         $teamsStanding = $standings->getStandings();
 
-        $this->assertEquals(['PAOK', 'ARIS', 'IRAKLIS'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams()[3]));
-        $this->assertEquals(['EORDAIKOS', 'KOZANI'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams()[1]));
-        $this->assertEquals(['OLYMPIAKOS', 'AEK', 'PAO'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams()[0]));
+        $this->assertEquals(['PAOK', 'ARIS', 'IRAKLIS'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams('points')[3]));
+        $this->assertEquals(['EORDAIKOS', 'KOZANI'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams('points')[1]));
+        $this->assertEquals(['OLYMPIAKOS', 'AEK', 'PAO'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams('points')[0]));
     }
 
     /**
@@ -385,7 +385,7 @@ class StandingsTest extends TestCase
 
         $teamsStanding = $standings->getStandings();
 
-        $equalTeamsStats = $standings->calculateEqualTeamsStats($standings->findEqualTeams()[6]);
+        $equalTeamsStats = $standings->calculateEqualTeamsStats($standings->findEqualTeams('points')[6]);
 
 //        dd($equalTeamsStats);
 
@@ -406,7 +406,7 @@ class StandingsTest extends TestCase
 
         $teamsStanding = $standings->getStandings();
 
-        $equalTeams = $standings->findEqualTeams()[6];
+        $equalTeams = $standings->findEqualTeams('points')[6];
 
         $equalTeamsStats = $standings->calculateEqualTeamsStats($equalTeams);
 

@@ -513,16 +513,18 @@ class Standings
 
 
     /**
-     * Find equal teams with same points
+     * Find equal teams with same $sortField (e.g points)
      *
+     * @param $sortField
      * @return array
      */
-    public function findEqualTeams()
+    public function findEqualTeams($sortField)
     {
+
         $equalTeams = array();
 
         foreach ($this->teams as $team) {
-            $equalTeams[$team->points][] = $team->data->name;
+            $equalTeams[$team->$sortField][] = $team->data->name;
         }
 
         return $equalTeams;
