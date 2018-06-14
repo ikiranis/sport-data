@@ -9,6 +9,8 @@ use Tests\TestCase;
 class StandingsTest extends TestCase
 {
 
+    private $smallTeamsArray = ['AEK', 'ARIS', 'OLYMPIAKOS'];
+
     /**
      * Teams Data
      *
@@ -509,6 +511,28 @@ class StandingsTest extends TestCase
         $this->assertEquals(9, $teamsStats['PAOK']->generalScoreDifference);
         $this->assertEquals(-4, $teamsStats['PAO']->scoreDifference);
         $this->assertEquals(-2, $teamsStats['PAO']->generalScoreDifference);
+
+    }
+
+    public function testReplacePieceOfArrayWithNewSortedPiece()
+    {
+        $standings = new Standings();
+
+        $teams = $this->getTeams();
+
+        $newSortedArray = $standings->replacePieceOfArrayWithNewSortedPiece($teams, $this->smallTeamsArray);
+
+        $this->assertEquals([
+            (object)['name' => 'PAOK'],
+            (object)['name' => 'PAO'],
+            (object)['name' => 'AEK'],
+            (object)['name' => 'ARIS'],
+            (object)['name' => 'OLYMPIAKOS'],
+            (object)['name' => 'IRAKLIS'],
+            (object)['name' => 'EORDAIKOS'],
+            (object)['name' => 'KOZANI']
+        ], $newSortedArray);
+
 
     }
 

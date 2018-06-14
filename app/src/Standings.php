@@ -377,7 +377,26 @@ class Standings
 
     }
 
-    // TODO να κάνω μέθοδο που να περνάει το νέο σορταρισμένο group στην γενική βαθμολογία με το νέο σορτάρισμα
+    /**
+     * Replace a small piece of items in array, with new sorted items from small array
+     *
+     * @param $mainArray
+     * @param $smallArray
+     * @return mixed
+     */
+    public function replacePieceOfArrayWithNewSortedPiece($mainArray, $smallArray)
+    {
+        $counter = 0;
+
+        foreach ($mainArray as $item) {
+            if (in_array($item->name, $smallArray)) {
+                $item->name = $smallArray[$counter];
+                $counter++;
+            }
+        }
+
+        return $mainArray;
+    }
 
     /**
      * Sort teams by general score difference
