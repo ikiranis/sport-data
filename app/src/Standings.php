@@ -386,16 +386,27 @@ class Standings
      */
     public function replacePieceOfArrayWithNewSortedPiece($mainArray, $smallArray)
     {
+
+        $newMainArray = array();
         $counter = 0;
 
-        foreach ($mainArray as $item) {
-            if (in_array($item->name, $smallArray)) {
-                $item->name = $smallArray[$counter];
+        // Only the keys of $mainArray
+        $mainArrayKeys = array_keys($mainArray);
+
+        // Combine $smallArray in $mainArrayKeys with new sort order
+        foreach ($mainArrayKeys as $key=>$item) {
+            if (in_array($item, $smallArray)) {
+                $mainArrayKeys[$key] = $smallArray[$counter];
                 $counter++;
             }
         }
 
-        return $mainArray;
+        // Create new mainArray with new sort order
+        foreach ($mainArrayKeys as $item) {
+            $newMainArray[$item] = $mainArray[$item];
+        }
+
+        return $newMainArray;
     }
 
     /**

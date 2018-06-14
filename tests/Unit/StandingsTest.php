@@ -9,7 +9,38 @@ use Tests\TestCase;
 class StandingsTest extends TestCase
 {
 
+    private $mainTeams = array();
     private $smallTeamsArray = ['AEK', 'ARIS', 'OLYMPIAKOS'];
+
+    public function setMainTeams()
+    {
+        return [
+            'PAOK' => (object)[
+                'data' => (object)['name' => 'PAOK']
+            ],
+            'PAO' => (object)[
+                'data' => (object)['name' => 'PAO']
+            ],
+            'ARIS' => (object)[
+                'data' => (object)['name' => 'ARIS']
+            ],
+            'OLYMPIAKOS' => (object)[
+                'data' => (object)['name' => 'OLYMPIAKOS']
+            ],
+            'AEK' => (object)[
+                'data' => (object)['name' => 'AEK']
+            ],
+            'IRAKLIS' => (object)[
+                'data' => (object)['name' => 'IRAKLIS']
+            ],
+            'EORDAIKOS' => (object)[
+                'data' => (object)['name' => 'EORDAIKOS']
+            ],
+            'KOZANI' => (object)[
+                'data' => (object)['name' => 'KOZANI']
+            ]
+        ];
+    }
 
     /**
      * Teams Data
@@ -518,19 +549,35 @@ class StandingsTest extends TestCase
     {
         $standings = new Standings();
 
-        $teams = $this->getTeams();
+        $mainTeams = $this->setMainTeams();
 
-        $newSortedArray = $standings->replacePieceOfArrayWithNewSortedPiece($teams, $this->smallTeamsArray);
+        $newSortedArray = $standings->replacePieceOfArrayWithNewSortedPiece($mainTeams, $this->smallTeamsArray);
 
         $this->assertEquals([
-            (object)['name' => 'PAOK'],
-            (object)['name' => 'PAO'],
-            (object)['name' => 'AEK'],
-            (object)['name' => 'ARIS'],
-            (object)['name' => 'OLYMPIAKOS'],
-            (object)['name' => 'IRAKLIS'],
-            (object)['name' => 'EORDAIKOS'],
-            (object)['name' => 'KOZANI']
+            'PAOK' => (object)[
+                'data' => (object)['name' => 'PAOK']
+            ],
+            'PAO' => (object)[
+                'data' => (object)['name' => 'PAO']
+            ],
+            'AEK' => (object)[
+                'data' => (object)['name' => 'AEK']
+            ],
+            'ARIS' => (object)[
+                'data' => (object)['name' => 'ARIS']
+            ],
+            'OLYMPIAKOS' => (object)[
+                'data' => (object)['name' => 'OLYMPIAKOS']
+            ],
+            'IRAKLIS' => (object)[
+                'data' => (object)['name' => 'IRAKLIS']
+            ],
+            'EORDAIKOS' => (object)[
+                'data' => (object)['name' => 'EORDAIKOS']
+            ],
+            'KOZANI' => (object)[
+                'data' => (object)['name' => 'KOZANI']
+            ]
         ], $newSortedArray);
 
 
