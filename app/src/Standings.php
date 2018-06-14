@@ -22,7 +22,7 @@ class Standings
     private $matches = array();
     private $championshipTeams = array();
     private $rules;
-    private $sortTeams = array();
+    private $sortRules = array();
 
     /**
      * Standings constructor
@@ -40,6 +40,16 @@ class Standings
     public function setRules($rules)
     {
         $this->rules = $rules;
+    }
+
+    /**
+     * sortRules setter
+     *
+     * @param $rules
+     */
+    public function setSortRules($rules)
+    {
+        $this->sortRules = $rules;
     }
 
     /**
@@ -310,8 +320,64 @@ class Standings
     private function sortStandings()
     {
         $this->teams = array_reverse(array_sort($this->teams, 'points'));
-//        $equalTeams = $this->findEqualTeams();
+
+        $this->setSortRules([
+            'points',
+            'scoreDifference',
+            'scoreFor',
+            'generalScoreDifference',
+            'generalScoreFor',
+            'generalScoreAgainst'
+        ]);
+
+        $equalGroups = $this->findEqualTeams($this->teams, 'points');
+
+//        foreach ($equalGroups as $equalGroup) {
+//            $this->sortEqualGroup($equalGroup);
+//        }
+
     }
+
+    /**
+     * Sort a group of equal teams by $this->sortRules
+     *
+     * @param $group
+     * @return array
+     */
+    public function sortEqualGroup($group)
+    {
+        // Sorting with first method
+        $sortTeams = array_reverse(array_sort($group, $this->sortRules[0]));
+
+        // Find new equal groups
+        $equalGroups = $this->findEqualTeams($sortTeams, $this->sortRules[0]);
+
+        if(sizeOf($equalGroups)>0) { // If equal groups exist
+
+            $counter = 1; // sortRules counter
+            $newEqualGroupExist = true;
+
+            while($newEqualGroupExist) { // Sort for every sortRule method until no newEqualGroupExist
+
+                foreach ($equalGroups as $equalGroup) { // Sort every equal group
+                    // Sort the group with new sort method
+                    $newSortTeams = array_reverse(array_sort($equalGroup, $this->sortRules[$counter]));
+
+                    // Find if there is new equal group
+                    $newEqualGroups = $this->findEqualTeams($newSortTeams, $this->sortRules[0]);
+                }
+
+                $newEqualGroupExist = false;
+            }
+
+
+        }
+
+        return array_keys($sortTeams);
+
+    }
+
+    // TODO να κάνω μέθοδο που να περνάει το νέο σορταρισμένο group στην γενική βαθμολογία με το νέο σορτάρισμα
 
     /**
      * Sort teams by general score difference
@@ -377,8 +443,6 @@ class Standings
         return $couples;
     }
 
-    // TODO function to sort every possible equality rule
-
     /**
      * Calculate stats for matches between equal teams
      *
@@ -418,33 +482,7 @@ class Standings
     {
         $sortTeams = array_reverse(array_sort($sortTeams, $sortField));
 
-//        print_r($sortField);
-//        print_r($sortTeams);
-
         return array_keys($sortTeams);
-    }
-
-    /**
-     * Return which of the two teams is better in wins
-     *
-     * @param $teams
-     * @param $priorities
-     * @return string
-     */
-    public function whoIsBetter($teams)
-    {
-
-        $teamMatches = $this->getTeamsMatches($teams);
-
-        $teamsStats = $this->getTeamsStats($teams, $teamMatches);
-
-        if($teamsStats[$teams[0]]->wins > $teamsStats[$teams[1]]->wins) {
-            return $teams[0];
-        } elseif($teamsStats[$teams[0]]->wins < $teamsStats[$teams[1]]->wins) {
-            return $teams[1];
-        } else {
-            return 'draw';
-        }
     }
 
     /**
@@ -521,12 +559,12 @@ class Standings
      * @param $sortField
      * @return array
      */
-    public function findEqualTeams($sortField)
+    public function findEqualTeams($teams, $sortField)
     {
 
         $equalTeams = array();
 
-        foreach ($this->teams as $team) {
+        foreach ($teams as $team) {
             $equalTeams[$team->$sortField][] = $team->data->name;
         }
 

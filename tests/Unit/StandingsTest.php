@@ -368,7 +368,7 @@ class StandingsTest extends TestCase
 
         $teamsStanding = $standings->getStandings();
 
-        $equalTeams = $standings->findEqualTeams('points');
+        $equalTeams = $standings->findEqualTeams($teamsStanding, 'points');
 
         $this->assertEquals(['IRAKLIS', 'ARIS', 'PAOK'], $equalTeams[3]);
         $this->assertEquals(['KOZANI', 'EORDAIKOS'], $equalTeams[1]);
@@ -387,9 +387,9 @@ class StandingsTest extends TestCase
 
         $teamsStanding = $standings->getStandings();
 
-        $this->assertEquals(['PAOK', 'ARIS', 'IRAKLIS'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams('points')[3]));
-        $this->assertEquals(['EORDAIKOS', 'KOZANI'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams('points')[1]));
-        $this->assertEquals(['OLYMPIAKOS', 'AEK', 'PAO'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams('points')[0]));
+        $this->assertEquals(['PAOK', 'ARIS', 'IRAKLIS'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams($teamsStanding, 'points')[3]));
+        $this->assertEquals(['EORDAIKOS', 'KOZANI'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams($teamsStanding, 'points')[1]));
+        $this->assertEquals(['OLYMPIAKOS', 'AEK', 'PAO'], $standings->sortByGeneralScoreDifference($standings->findEqualTeams($teamsStanding, 'points')[0]));
     }
 
     /**
@@ -403,9 +403,7 @@ class StandingsTest extends TestCase
 
         $teamsStanding = $standings->getStandings();
 
-        $equalTeamsStats = $standings->calculateEqualTeamsStats($standings->findEqualTeams('points')[6]);
-
-//        dd($equalTeamsStats);
+        $equalTeamsStats = $standings->calculateEqualTeamsStats($standings->findEqualTeams($teamsStanding, 'points')[6]);
 
         $this->assertEquals(['ARIS', 'AEK', 'OLYMPIAKOS', 'IRAKLIS'], $standings->sortByGroupTeams($equalTeamsStats, 'scoreDifference'));
         $this->assertEquals(['ARIS', 'OLYMPIAKOS', 'AEK', 'IRAKLIS'], $standings->sortByGroupTeams($equalTeamsStats, 'points'));
@@ -424,7 +422,7 @@ class StandingsTest extends TestCase
 
         $teamsStanding = $standings->getStandings();
 
-        $equalTeams = $standings->findEqualTeams('points')[6];
+        $equalTeams = $standings->findEqualTeams($teamsStanding, 'points')[6];
 
         $equalTeamsStats = $standings->calculateEqualTeamsStats($equalTeams);
 
@@ -479,44 +477,6 @@ class StandingsTest extends TestCase
         $this->assertEquals(['PAO', 'OLYMPIAKOS'], $teamsCouples[4]);
         $this->assertEquals(['ARIS', 'OLYMPIAKOS'], $teamsCouples[5]);
     }
-
-    /**
-     * Test which team is better method
-     */
-//    public function testWhoIsBetter()
-//    {
-//        $standings = new Standings();
-//        $standings->setMatches($this->getMatches()[2]);
-//
-//        $betterTeam = $standings->whoIsBetter(['PAOK', 'PAO']);
-//
-//        $this->assertEquals('PAOK', $betterTeam);
-//
-//        $betterTeam = $standings->whoIsBetter(['ARIS', 'OLYMPIAKOS']);
-//
-//        $this->assertEquals('draw', $betterTeam);
-//
-//        $betterTeam = $standings->whoIsBetter(['AEK', 'IRAKLIS']);
-//
-//        $this->assertEquals('draw', $betterTeam);
-//
-//        $betterTeam = $standings->whoIsBetter(['AEK', 'OLYMPIAKOS']);
-//
-//        $this->assertEquals('OLYMPIAKOS', $betterTeam);
-//
-//        $betterTeam = $standings->whoIsBetter(['ARIS', 'AEK']);
-//
-//        $this->assertEquals('AEK', $betterTeam);
-//
-//        $betterTeam = $standings->whoIsBetter(['ARIS', 'IRAKLIS']);
-//
-//        $this->assertEquals('ARIS', $betterTeam);
-//
-//        $betterTeam = $standings->whoIsBetter(['OLYMPIAKOS', 'IRAKLIS']);
-//
-//        $this->assertEquals('IRAKLIS', $betterTeam);
-//
-//    }
 
     /**
      * Test getTeamsStats method
