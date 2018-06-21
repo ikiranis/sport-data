@@ -18,9 +18,8 @@
                 <td style="width:10%;">{{ $match->match_date ? $match->match_date->format('d/m/Y') : 'TBA' }}</td>
                 <td style="width:20%;">{{ $match->stadium ? $match->stadium->name : ''}}</td>
                 <td style="width:70%;">{{ $match->teams }}</td>
-                <td style="width:10%;" class="text-right font-weight-bold">
-                    {{$match->first_team_score}}-{{$match->second_team_score}}
-                    {{ $match->halfScores ?? '' }}
+                <td style="width:10%;" class="text-right">
+                    <span class="font-weight-bold">{{$match->first_team_score}}-{{$match->second_team_score}}</span><span>&nbsp;{{ $match->halfScores ?? '' }}</span>
                 </td>
             </tr>
         @endforeach
