@@ -66,9 +66,14 @@
 
             <div class="container col-lg-2 col-12 my-3">
                 @if(count($seasons)>0)
-                    @include('includes.standings-list')
+                    @include('includes.plugins.standings-list')
+                @endif
+
+                @if(count($lastMatches)>0)
+                    @include('includes.plugins.last-matches-list')
                 @endif
             </div>
+
 
         </div>
 

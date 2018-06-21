@@ -401,7 +401,7 @@ class Standings
             }
         }
 
-        // Create new mainArray with new sort order
+        // Copy data of mainArray to newMainArray
         foreach ($mainArrayKeys as $item) {
             $newMainArray[$item] = $mainArray[$item];
         }

@@ -13,6 +13,7 @@ use App\Sport;
 use App\src\Standings;
 use App\Tag;
 use App\Team;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,9 +37,10 @@ class HomeController extends Controller
     {
         $sports = Sport::whereMainpage(1)->orderBy('name', 'asc')->get();
         $posts = Post::whereApproved(1)->orderBy('created_at', 'desc')->simplePaginate(5);
-        $seasons = Season::all();
+        $seasons = Season::limit(5)->get();
+        $lastMatches = Match::limit(5)->orderBy('updated_at', 'desc')->get();
 
-        return view('public.home', compact('sports', 'posts', 'seasons'));
+        return view('public.home', compact('sports', 'posts', 'seasons', 'lastMatches'));
     }
 
     /**
