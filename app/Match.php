@@ -156,8 +156,7 @@ class Match extends Model
                 $counter++;
             }
 
-            $halfScores = rtrim($halfScores, ',');
-            $halfScores .= ')';
+            $halfScores = rtrim($halfScores, ',') . ')';
 
             return  $halfScores;
         }
