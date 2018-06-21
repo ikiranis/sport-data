@@ -2,7 +2,7 @@
 
     <h5 class="text-center font-weight-bold">Αγωνιστική {{$matchday->matchday}}</h5>
 
-    <table class="table table-responsive table-sm table-hover" >
+    <table class="table table-responsive table-sm table-hover">
         <thead>
         <tr>
             <th scope="col" class="text-center">Ημερομηνία</th>
@@ -18,7 +18,10 @@
                 <td style="width:10%;">{{ $match->match_date ? $match->match_date->format('d/m/Y') : 'TBA' }}</td>
                 <td style="width:20%;">{{ $match->stadium ? $match->stadium->name : ''}}</td>
                 <td style="width:70%;">{{ $match->teams }}</td>
-                <td style="width:10%;" class="text-right font-weight-bold">{{$match->first_team_score}}-{{$match->second_team_score}}</td>
+                <td style="width:10%;" class="text-right font-weight-bold">
+                    {{$match->first_team_score}}-{{$match->second_team_score}}
+                    {{ $match->halfScores ?? '' }}
+                </td>
             </tr>
         @endforeach
 

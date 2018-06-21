@@ -139,5 +139,31 @@ class Match extends Model
         return $this->first_team->name . ' VS ' . $this->second_team->name;
     }
 
+    /**
+     * Get all the half scores
+     *
+     * @return null|string
+     */
+    public function getHalfScoresAttribute()
+    {
+        if($this->first_team_score_1 !== null) {
+            $halfScores = '(';
+            $counter = 1;
+
+            while ($this->{"first_team_score_" . $counter} !== null) {
+                $halfScores .= "{$this->{"first_team_score_" . $counter}}-{$this->{"second_team_score_" . $counter}},";
+
+                $counter++;
+            }
+
+            $halfScores = rtrim($halfScores, ',');
+            $halfScores .= ')';
+
+            return  $halfScores;
+        }
+
+        return null;
+    }
+
 
 }
