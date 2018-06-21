@@ -1,7 +1,7 @@
 <div class="card mb-2">
 
     <div class="card-header">
-        <h5 class="text-center">Βαθμολογίες</h5>
+        <h6 class="text-center">Βαθμολογίες</h6>
     </div>
 
     <div class="card-body p-0">

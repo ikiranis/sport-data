@@ -72,6 +72,10 @@
                 @if(count($lastMatches)>0)
                     @include('includes.plugins.last-matches-list')
                 @endif
+
+                @if(count($nextMatches)>0)
+                    @include('includes.plugins.next-matches-list')
+                @endif
             </div>
 
 
