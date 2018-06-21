@@ -11,11 +11,11 @@
             @foreach($lastMatches as $match)
 
                 <li class="list-group-item list-group-item-action p-1 small">
-                    {{--<a href="">--}}
+                    <a href="{{ route('standings', [$match->season->championship->id, $match->season->id]) }}"
+                       title="{{ $match->season->championship->name }}">
                         {{ $match->first_team->name }} - {{ $match->second_team->name }}
                         <strong>{{ $match->first_team_score }}-{{ $match->second_team_score }}</strong>
-                        ({{ $match->match_date->format('d/m') }})
-                    {{--</a>--}}
+                    </a>
                 </li>
 
             @endforeach

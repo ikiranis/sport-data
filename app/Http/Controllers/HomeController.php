@@ -37,7 +37,7 @@ class HomeController extends Controller
     {
         $sports = Sport::whereMainpage(1)->orderBy('name', 'asc')->get();
         $posts = Post::whereApproved(1)->orderBy('created_at', 'desc')->simplePaginate(5);
-        $seasons = Season::limit(5)->get();
+        $seasons = Season::all();
         $lastMatches = Match::where('match_date', '<', Carbon::now())
             ->where('first_team_score', '<>', null)
             ->orderBy('match_date', 'desc')
