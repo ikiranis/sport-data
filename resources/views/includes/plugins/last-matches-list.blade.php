@@ -14,7 +14,9 @@
                     <a href="{{ route('standings', [$match->season->championship->id, $match->season->id]) }}"
                        title="{{ $match->season->championship->name }}">
                         {{ $match->first_team->name }} - {{ $match->second_team->name }}
-                        <strong>{{ $match->first_team_score }}-{{ $match->second_team_score }}</strong>
+                        <span class="font-weight-bold" title="{{ $match->halfScores ?? '' }}">
+                            {{ $match->first_team_score }}-{{ $match->second_team_score }}
+                        </span>
                     </a>
                 </li>
 
