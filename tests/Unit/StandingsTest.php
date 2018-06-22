@@ -12,6 +12,11 @@ class StandingsTest extends TestCase
     private $mainTeams = array();
     private $smallTeamsArray = ['AEK', 'ARIS', 'OLYMPIAKOS'];
 
+    /**
+     * get teams array
+     *
+     * @return array
+     */
     public function setMainTeams()
     {
         return [
@@ -43,6 +48,72 @@ class StandingsTest extends TestCase
     }
 
     /**
+     * Some mock teams stats
+     *
+     * @return array
+     */
+    public function getTeamStats()
+    {
+        return [
+            'PAOK' => (object)[
+                'points' => 7,
+                'scoreFor' => 8,
+                'scoreAgainst' => 4,
+                'scoreDifference' => 4,
+                'generalScoreDifference' => 9,
+                'generalScoreFor' => 14,
+                'generalScoreAgainst' => 5
+            ],
+            'PAO' => (object)[
+                'points' => 7,
+                'scoreFor' => 8,
+                'scoreAgainst' => 4,
+                'scoreDifference' => 4,
+                'generalScoreDifference' => 9,
+                'generalScoreFor' => 14,
+                'generalScoreAgainst' => 5
+            ],
+            'AEK' => (object)[
+                'points' => 7,
+                'scoreFor' => 8,
+                'scoreAgainst' => 4,
+                'scoreDifference' => 4,
+                'generalScoreDifference' => 9,
+                'generalScoreFor' => 14,
+                'generalScoreAgainst' => 5
+            ],
+            'OLYMPIAKOS' => (object)[
+                'points' => 7,
+                'scoreFor' => 8,
+                'scoreAgainst' => 4,
+                'scoreDifference' => 4,
+                'generalScoreDifference' => 9,
+                'generalScoreFor' => 14,
+                'generalScoreAgainst' => 5
+            ],
+            'KOZANI' => (object)[
+                'points' => 7,
+                'scoreFor' => 8,
+                'scoreAgainst' => 4,
+                'scoreDifference' => 4,
+                'generalScoreDifference' => 9,
+                'generalScoreFor' => 14,
+                'generalScoreAgainst' => 5
+            ],
+            'EORDAIKOS' => (object)[
+                'points' => 7,
+                'scoreFor' => 8,
+                'scoreAgainst' => 4,
+                'scoreDifference' => 4,
+                'generalScoreDifference' => 9,
+                'generalScoreFor' => 14,
+                'generalScoreAgainst' => 5
+            ]
+        ];
+
+    }
+
+    /**
      * Teams Data
      *
      * @return array
@@ -59,6 +130,16 @@ class StandingsTest extends TestCase
             (object)['name' => 'EORDAIKOS'],
             (object)['name' => 'KOZANI']
         ];
+    }
+
+    /**
+     * Get group of teams
+     *
+     * @return array
+     */
+    public function getTeamsGroup()
+    {
+        return ['PAOK', 'PAO', 'AEK', 'OLYMPIAKOS', 'KOZANI', 'EORDAIKOS'];
     }
 
     /**
@@ -545,6 +626,9 @@ class StandingsTest extends TestCase
 
     }
 
+    /**
+     * Test the replacePieceOfArrayWithNewSortedPiece method
+     */
     public function testReplacePieceOfArrayWithNewSortedPiece()
     {
         $standings = new Standings();
@@ -579,6 +663,27 @@ class StandingsTest extends TestCase
                 'data' => (object)['name' => 'KOZANI']
             ]
         ], $newSortedArray);
+
+
+    }
+
+    public function testSortEqualGroup()
+    {
+        $standings = new Standings();
+        $standings->setSortRules([
+            'points',
+            'scoreDifference',
+            'scoreFor',
+            'generalScoreDifference',
+            'generalScoreFor',
+            'generalScoreAgainst'
+        ]);
+
+        // TODO κάνω ένα πολύ λεπτομερές array με matches για ισοβαθμίες
+
+        $group = $this->getTeamsGroup();
+
+        $sortedTeams = $standings->sortEqualGroup($group);
 
 
     }

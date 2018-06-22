@@ -346,25 +346,48 @@ class Standings
      */
     public function sortEqualGroup($group)
     {
+        // Get the teams stats
+        $teamMatches = $this->getTeamsMatches($group);
+        $teamsStats = $this->getTeamsStats($group, $teamMatches);
+
+        dd($teamsStats);
+
         // Sorting with first method
         $sortTeams = array_reverse(array_sort($group, $this->sortRules[0]));
 
+        dd($sortTeams);
+
         // Find new equal groups
         $equalGroups = $this->findEqualTeams($sortTeams, $this->sortRules[0]);
+
+//        dd($equalGroups);
 
         if(sizeOf($equalGroups)>0) { // If equal groups exist
 
             $counter = 1; // sortRules counter
             $newEqualGroupExist = true;
 
+            $newEqualGroups = array(); // Every new equal groups that founded
+            $newEqualGroups[0] = $equalGroups; // The started equal groups
+
             while($newEqualGroupExist) { // Sort for every sortRule method until no newEqualGroupExist
 
-                foreach ($equalGroups as $equalGroup) { // Sort every equal group
+                foreach ($newEqualGroups[$counter-1] as $equalGroup) { // Sort every equal group
+
+
                     // Sort the group with new sort method
                     $newSortTeams = array_reverse(array_sort($equalGroup, $this->sortRules[$counter]));
 
+                    // Concat new sorted groups with main group
+                    $newSortedArray = $this->replacePieceOfArrayWithNewSortedPiece($sortTeams, $newSortTeams);
+
                     // Find if there is new equal group
-                    $newEqualGroups = $this->findEqualTeams($newSortTeams, $this->sortRules[0]);
+                    $newEqualGroups[$counter] = $this->findEqualTeams($newSortedArray, $this->sortRules[$counter]);
+
+                    // Get new stats for the new group of teams
+                    $equalTeamsStats = $this->calculateEqualTeamsStats($newEqualGroups);
+
+
                 }
 
                 $newEqualGroupExist = false;
