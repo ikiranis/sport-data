@@ -61,6 +61,8 @@
 
                     @include('includes.paging')
 
+                    @include('includes.ads.homepage-google-ad')
+
                 @endif
             </div>
 

@@ -49,7 +49,11 @@
 
         @include('includes.post-single')
 
+        @include('includes.ads.post-google-ad')
+
     </div>
+
+
 
 @endsection
 

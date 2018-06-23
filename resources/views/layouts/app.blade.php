@@ -21,6 +21,7 @@
 
     @include('includes.google-analytics')
 
+
 </head>
 <body>
 
