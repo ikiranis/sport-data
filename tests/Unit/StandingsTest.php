@@ -133,16 +133,6 @@ class StandingsTest extends TestCase
     }
 
     /**
-     * Get group of teams
-     *
-     * @return array
-     */
-    public function getTeamsGroup()
-    {
-        return ['PAOK', 'PAO', 'AEK', 'OLYMPIAKOS', 'KOZANI', 'EORDAIKOS'];
-    }
-
-    /**
      * Rules Data
      *
      * @return array
@@ -844,6 +834,10 @@ class StandingsTest extends TestCase
     public function testSortEqualGroup()
     {
         $standings = new Standings();
+        $standings->setMatches($this->getMatches()[3]);
+        $standings->setRules($this->getRules()[0]);
+
+        // Rules to sort
         $standings->setSortRules([
             'points',
             'scoreDifference',
@@ -853,11 +847,15 @@ class StandingsTest extends TestCase
             'generalScoreAgainst'
         ]);
 
-        // TODO κάνω ένα πολύ λεπτομερές array με matches για ισοβαθμίες
+//        $teams = ['ARIS', 'IRAKLIS', 'OLYMPIAKOS', 'KOZANI', 'EORDAIKOS', 'PAO', 'AEK', 'PAOK'];
 
-        $group = $this->getTeamsGroup();
+        $teamStandings = $standings->getStandings();
 
-        $sortedTeams = $standings->sortEqualGroup($group);
+        $group = $standings->findEqualTeams($teamStandings, 'points')[10]; // Find the group of equal teams. Array of team names
+
+        $sortedGroup = $standings->sortEqualGroup($group); // Sort the group
+
+        $this->assertEquals(['ARIS', 'IRAKLIS', 'OLYMPIAKOS', 'KOZANI', 'EORDAIKOS', 'PAO', 'AEK', 'PAOK'], $sortedGroup);
 
 
     }
