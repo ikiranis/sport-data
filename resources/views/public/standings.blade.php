@@ -44,6 +44,8 @@
 
         @endif
 
+        @include('includes.ads.results-google-ad')
+
         @if($matches)
 
             <h3 class="text-center">Αποτελέσματα</h3>
