@@ -172,7 +172,7 @@ class StandingsTest extends TestCase
     public function getMatches()
     {
         return [
-            [  // football matches
+            [  // 0 football matches
                 (object)[
                     'first_team' => (object)['name' => 'PAOK'],
                     'second_team' => (object)['name' => 'PAO'],
@@ -197,7 +197,7 @@ class StandingsTest extends TestCase
                     'first_team_score' => '2',
                     'second_team_score' => '2'
                 ]
-            ],
+            ], // 1
             [ // volley matches
                 (object)[
                     'first_team' => (object)['name' => 'PAOK'],
@@ -224,7 +224,7 @@ class StandingsTest extends TestCase
                     'second_team_score' => '3'
                 ]
             ],
-            [
+            [ // 2
                 (object)[
                     'first_team' => (object)['name' => 'PAOK'],
                     'second_team' => (object)['name' => 'PAO'],
@@ -315,8 +315,182 @@ class StandingsTest extends TestCase
                     'first_team_score' => '5',
                     'second_team_score' => '1'
                 ]
-
-
+            ],
+            [ // 3 Multiple equal points
+                (object)[
+                    'first_team' => (object)['name' => 'PAOK'],
+                    'second_team' => (object)['name' => 'AEK'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '1'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAO'],
+                    'second_team' => (object)['name' => 'EORDAIKOS'],
+                    'first_team_score' => '4',
+                    'second_team_score' => '2'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'KOZANI'],
+                    'second_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'first_team_score' => '0',
+                    'second_team_score' => '1'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'IRAKLIS'],
+                    'second_team' => (object)['name' => 'ARIS'],
+                    'first_team_score' => '1',
+                    'second_team_score' => '1'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'AEK'],
+                    'second_team' => (object)['name' => 'PAO'],
+                    'first_team_score' => '3',
+                    'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'second_team' => (object)['name' => 'PAOK'],
+                    'first_team_score' => '3',
+                    'second_team_score' => '3'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'EORDAIKOS'],
+                    'second_team' => (object)['name' => 'KOZANI'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '1'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'ARIS'],
+                    'second_team' => (object)['name' => 'IRAKLIS'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '3'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'IRAKLIS'],
+                    'second_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '2'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'KOZANI'],
+                    'second_team' => (object)['name' => 'PAOK'],
+                    'first_team_score' => '1',
+                    'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'EORDAIKOS'],
+                    'second_team' => (object)['name' => 'ARIS'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '4'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAO'],
+                    'second_team' => (object)['name' => 'AEK'],
+                    'first_team_score' => '3',
+                    'second_team_score' => '3'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'AEK'],
+                    'second_team' => (object)['name' => 'PAOK'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'ARIS'],
+                    'second_team' => (object)['name' => 'KOZANI'],
+                    'first_team_score' => '0',
+                    'second_team_score' => '2'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAOK'],
+                    'second_team' => (object)['name' => 'PAO'],
+                    'first_team_score' => '1',
+                    'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'IRAKLIS'],
+                    'second_team' => (object)['name' => 'EORDAIKOS'],
+                    'first_team_score' => '0',
+                    'second_team_score' => '5'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAO'],
+                    'second_team' => (object)['name' => 'KOZANI'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '1'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'KOZANI'],
+                    'second_team' => (object)['name' => 'ARIS'],
+                    'first_team_score' => '1',
+                    'second_team_score' => '3'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'EORDAIKOS'],
+                    'second_team' => (object)['name' => 'IRAKLIS'],
+                    'first_team_score' => '3',
+                    'second_team_score' => '3'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAOK'],
+                    'second_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '4'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAOK'],
+                    'second_team' => (object)['name' => 'IRAKLIS'],
+                    'first_team_score' => '3',
+                    'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAO'],
+                    'second_team' => (object)['name' => 'AEK'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '5'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'KOZANI'],
+                    'second_team' => (object)['name' => 'EORDAIKOS'],
+                    'first_team_score' => '0',
+                    'second_team_score' => '1'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'ARIS'],
+                    'second_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'first_team_score' => '3',
+                    'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAO'],
+                    'second_team' => (object)['name' => 'ARIS'],
+                    'first_team_score' => '1',
+                    'second_team_score' => '0'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'second_team' => (object)['name' => 'KOZANI'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '2'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'IRAKLIS'],
+                    'second_team' => (object)['name' => 'EORDAIKOS'],
+                    'first_team_score' => '3',
+                    'second_team_score' => '2'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'PAOK'],
+                    'second_team' => (object)['name' => 'KOZANI'],
+                    'first_team_score' => '2',
+                    'second_team_score' => '4'
+                ],
+                (object)[
+                    'first_team' => (object)['name' => 'IRAKLIS'],
+                    'second_team' => (object)['name' => 'OLYMPIAKOS'],
+                    'first_team_score' => '3',
+                    'second_team_score' => '3'
+                ]
             ]
         ];
     }
