@@ -45,9 +45,9 @@
                     @endif
                 </ul>
 
-                <div class="row my-2">
-                    @include('includes.social-buttons')
-                </div>
+                {{--<div class="row my-2">--}}
+                    {{--@include('includes.social-buttons')--}}
+                {{--</div>--}}
 
             </div>
             <div class="col-md-8 col-12 text-justify article">

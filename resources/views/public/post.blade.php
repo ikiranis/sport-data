@@ -59,7 +59,7 @@
 
 @section('scripts')
 
-    @include('includes.social-buttons-javascript')
+    {{--@include('includes.social-buttons-javascript')--}}
 
     @if(count($post->teams()->get())>0)
         @include('includes.teams-container-javascript')
