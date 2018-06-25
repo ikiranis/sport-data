@@ -60,6 +60,7 @@
 
         </div>
 
+        @include('includes.ads.post-google-ad')
 
     </div>
 

@@ -43,6 +43,8 @@
 
             @include('includes.paging')
 
+            @include('includes.ads.homepage-google-ad')
+
         @else
             <h3 class="text-center my-5">Δεν βρέθηκαν δημοσιεύματα</h3>
         @endif

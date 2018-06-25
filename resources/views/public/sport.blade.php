@@ -34,9 +34,9 @@
     <h1 class="text-center">{{$sport->name}}</h1>
 
     {{--@if(isset($sport->photo))--}}
-        {{--<div class="text-center my-3 sportImage">--}}
-            {{--<img src="{{ $sport->photo->full_path_name }}">--}}
-        {{--</div>--}}
+    {{--<div class="text-center my-3 sportImage">--}}
+    {{--<img src="{{ $sport->photo->full_path_name }}">--}}
+    {{--</div>--}}
     {{--@endif--}}
 
     <div class="container">
@@ -95,6 +95,8 @@
             @endforeach
 
             @include('includes.paging')
+
+            @include('includes.ads.homepage-google-ad')
 
         @endif
     </div>
