@@ -78,6 +78,8 @@
                 @if(count($seasons)>0)
                     @include('includes.plugins.standings-list')
                 @endif
+
+                @include('includes.ads.sidebar-google-ad')
             </div>
 
 
