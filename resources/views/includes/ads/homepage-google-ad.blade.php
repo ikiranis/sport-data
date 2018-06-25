@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row w-100 ml-auto mr-auto">
+    <div class="row text-center">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- wmsports_home_page -->
         <ins class="adsbygoogle"
