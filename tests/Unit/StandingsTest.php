@@ -855,7 +855,7 @@ class StandingsTest extends TestCase
 
         $sortedGroup = $standings->sortEqualGroup($group); // Sort the group
 
-        $this->assertEquals(['ARIS', 'IRAKLIS', 'OLYMPIAKOS', 'KOZANI', 'EORDAIKOS', 'PAO', 'AEK', 'PAOK'], $sortedGroup);
+        $this->assertEquals(['PAOK', 'AEK', 'PAO', 'EORDAIKOS', 'KOZANI', 'OLYMPIAKOS', 'IRAKLIS', 'ARIS'], $sortedGroup);
 
 
     }

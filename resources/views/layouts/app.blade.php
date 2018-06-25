@@ -26,14 +26,14 @@
 <body>
 
 <div id="app">
-    @include('includes.header')
+    @include('includes.page.header')
     <main class="py-4">
         @yield('content')
     </main>
 </div>
 
 {{--Footer--}}
-@include('includes.footer')
+@include('includes.page.footer')
 
 <!-- Scripts -->
 @include('includes.run-scripts')

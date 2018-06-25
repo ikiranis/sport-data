@@ -36,7 +36,7 @@
 
         @if($teamsStandings)
 
-            @include('includes.teams-standings')
+            @include('includes.teams.teams-standings')
 
         @else
 
@@ -58,7 +58,7 @@
 
                 @if(count($matchdayMatches)>0)
 
-                    @include('includes.teams-results')
+                    @include('includes.teams.teams-results')
 
                 @endif
 

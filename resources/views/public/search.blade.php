@@ -57,7 +57,7 @@
 
     @if(count($posts)>0)
         @if(count($post->teams()->get())>0)
-            @include('includes.teams-container-javascript')
+            @include('includes.teams.teams-container-javascript')
         @endif
     @endif
 

@@ -25,7 +25,7 @@
                         @if(count($post->teams()->get())>0)
                             <div id="teamsContainer{{$post->id}}">
                                 <li class="list-group-item list-group-item-action">
-                                    @include('includes.teams-list')
+                                    @include('includes.teams.teams-list')
                                 </li>
                             </div>
 

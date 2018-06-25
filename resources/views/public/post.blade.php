@@ -60,10 +60,10 @@
     {{--@include('includes.social-buttons-javascript')--}}
 
     @if(count($post->teams()->get())>0)
-        @include('includes.teams-container-javascript')
+        @include('includes.teams.teams-container-javascript')
     @endif
     @if(count($post->tags()->get())>0)
-        @include('includes.tags-container-javascript')
+        @include('includes.tags.tags-container-javascript')
     @endif
 
 @endsection

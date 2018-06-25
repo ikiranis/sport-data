@@ -72,7 +72,7 @@
 
                 <h3>{{$seasons[$key]->name}}</h3>
 
-                @include('includes.teams-standings')
+                @include('includes.teams.teams-standings')
 
             @endforeach
 
@@ -94,7 +94,7 @@
 
                 @if(count($matchdayMatches)>0)
 
-                    @include('includes.teams-results')
+                    @include('includes.teams.teams-results')
 
                 @endif
 
@@ -116,7 +116,7 @@
     @if(count($posts)>0)
         @foreach($posts as $post)
             @if(count($post->teams()->get())>0)
-                @include('includes.teams-container-javascript')
+                @include('includes.teams.teams-container-javascript')
             @endif
         @endforeach
     @endif

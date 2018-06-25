@@ -352,48 +352,55 @@ class Standings
         // Sorting with first method. Get array with original $teamsStats data, sorted
         $sortTeams = array_reverse(array_sort($teamsStats, $this->sortRules[0]));
 
-        // Find new equal groups. Get arrays of groups, of  team names array
+        // Find new equal groups. Get arrays of groups, of team names array
         $equalGroups = $this->findEqualTeamsAtSortedTeams($sortTeams, $this->sortRules[0]);
 
-        // TODO continue from here
-//
-//        if(sizeOf($equalGroups)>0) { // If equal groups exist
-//
-//            $counter = 1; // sortRules counter
-//            $newEqualGroupExist = true;
-//
-//            $newEqualGroups = array(); // Every new equal groups that founded
-//            $newEqualGroups[0] = $equalGroups; // The started equal groups
-//
-//            while($newEqualGroupExist) { // Sort for every sortRule method until no newEqualGroupExist
-//
-//                foreach ($newEqualGroups[$counter-1] as $equalGroup) { // Sort every equal group
-//
-//
-//                    // Sort the group with new sort method
-//                    $newSortTeams = array_reverse(array_sort($equalGroup, $this->sortRules[$counter]));
-//
-//                    // Concat new sorted groups with main group
-//                    $newSortedArray = $this->replacePieceOfArrayWithNewSortedPiece($sortTeams, $newSortTeams);
-//
-//                    // Find if there is new equal group
-//                    $newEqualGroups[$counter] = $this->findEqualTeams($newSortedArray, $this->sortRules[$counter]);
-//
-//                    // Get new stats for the new group of teams
-//                    $equalTeamsStats = $this->calculateEqualTeamsStats($newEqualGroups);
-//
-//
-//                }
-//
-//                $newEqualGroupExist = false;
-//            }
-//
-//
-//        }
+        print_r($equalGroups);
 
-        return ['ARIS', 'IRAKLIS', 'OLYMPIAKOS', 'KOZANI', 'EORDAIKOS', 'PAO', 'AEK', 'PAOK'];
+        if(sizeOf($equalGroups)>0) { // If equal groups exist
 
-//        return array_keys($sortTeams);
+            $counter = 1; // sortRules counter
+            $newEqualGroupExist = true;
+
+            $newEqualGroups = array(); // Every new equal groups that founded
+            $newEqualGroups[0] = $equalGroups; // The started equal groups
+
+            while($newEqualGroupExist) { // Sort for every sortRule method until no newEqualGroupExist
+
+                foreach ($equalGroups as $equalGroup) { // Sort every equal group
+
+                    // Get the teams stats. Array of object with teams data stats
+                    $newTeamsStats = $this->calculateEqualTeamsStats($equalGroup);
+
+                    // Sorting with first method. Get array with original $teamsStats data, sorted
+                    $newSortTeams = array_reverse(array_sort($newTeamsStats, $this->sortRules[$counter]));
+
+                    // Find new equal groups. Get arrays of groups, of team names array
+                    $newEqualGroups = $this->findEqualTeamsAtSortedTeams($newSortTeams, $this->sortRules[$counter]);
+
+                    if(sizeof($newEqualGroups)==0) {
+                        $newEqualGroupExist = false;
+
+                        // Concat new sorted groups with main group
+                        $newSortedArray = $this->replacePieceOfArrayWithNewSortedPiece($sortTeams, $newSortTeams);
+
+                        $sortTeams = $newSortedArray;
+                    }
+
+                }
+
+
+            }
+
+
+        }
+
+        print_r($sortTeams);
+
+//        print_r(array_keys($sortTeams));
+//        return ['ARIS', 'IRAKLIS', 'OLYMPIAKOS', 'KOZANI', 'EORDAIKOS', 'PAO', 'AEK', 'PAOK'];
+
+        return array_keys($sortTeams);
 
     }
 

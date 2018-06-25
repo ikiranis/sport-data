@@ -23,14 +23,14 @@
                     @if(count($post->teams()->get())>0)
                         <div id="teamsContainer{{$post->id}}">
                             <li class="list-group-item list-group-item-action">
-                                @include('includes.teams-list')
+                                @include('includes.teams.teams-list')
                             </li>
                         </div>
                     @endif
                     @if(count($post->tags()->get())>0)
                         <div id="tagsContainer{{$post->id}}">
                             <li class="list-group-item list-group-item-action">
-                                @include('includes.tags-list')
+                                @include('includes.tags.tags-list')
                             </li>
                         </div>
                     @endif

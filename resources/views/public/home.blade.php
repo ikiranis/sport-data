@@ -66,21 +66,7 @@
                 @endif
             </div>
 
-            <div class="container col-lg-2 col-12 my-3">
-                @if(count($lastMatches)>0)
-                    @include('includes.plugins.last-matches-list')
-                @endif
-
-                @if(count($nextMatches)>0)
-                    @include('includes.plugins.next-matches-list')
-                @endif
-
-                @if(count($seasons)>0)
-                    @include('includes.plugins.standings-list')
-                @endif
-
-                @include('includes.ads.sidebar-google-ad')
-            </div>
+            @include('includes.page.sidebar')
 
 
         </div>
@@ -94,7 +80,7 @@
     @if(count($posts)>0)
         @foreach($posts as $post)
             @if(count($post->teams()->get())>0)
-                @include('includes.teams-container-javascript')
+                @include('includes.teams.teams-container-javascript')
             @endif
         @endforeach
     @endif
