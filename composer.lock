@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "3e2498a08a53c6797b73ee796ab225e1",
@@ -2120,23 +2120,24 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.15",
+            "version": "v2.99.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09"
+                "reference": "35469243ebbb9be5086cff57538cac6da2c36852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/10bcb46e8f3d365170f6de9d05245aa066b81f09",
-                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/35469243ebbb9be5086cff57538cac6da2c36852",
+                "reference": "35469243ebbb9be5086cff57538cac6da2c36852",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.0"
+                "php": "^7"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
@@ -2165,7 +2166,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-06-08T15:26:40+00:00"
+            "time": "2018-06-06T05:12:00+00:00"
         },
         {
             "name": "psr/container",
@@ -2854,16 +2855,16 @@
         },
         {
             "name": "spatie/laravel-feed",
-            "version": "2.0.2",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-feed.git",
-                "reference": "9f8d2adca406a1c050014aedf2203875c49bd248"
+                "reference": "894fa0ed59ee6ac6bf5f7e25df69f2d80b831203"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-feed/zipball/9f8d2adca406a1c050014aedf2203875c49bd248",
-                "reference": "9f8d2adca406a1c050014aedf2203875c49bd248",
+                "url": "https://api.github.com/repos/spatie/laravel-feed/zipball/894fa0ed59ee6ac6bf5f7e25df69f2d80b831203",
+                "reference": "894fa0ed59ee6ac6bf5f7e25df69f2d80b831203",
                 "shasum": ""
             },
             "require": {
@@ -2921,7 +2922,7 @@
                 "rss",
                 "spatie"
             ],
-            "time": "2018-02-08T10:22:33+00:00"
+            "time": "2018-06-24T20:59:09+00:00"
         },
         {
             "name": "spatie/laravel-sitemap",
