@@ -36,6 +36,8 @@ class HomeController extends Controller
     public function index()
     {
         $sports = Sport::whereMainpage(1)->orderBy('name', 'asc')->get();
+        $otherSports = Sport::whereMainpage(0)->orderBy('name', 'asc')->get();
+
         $posts = Post::whereApproved(1)->orderBy('created_at', 'desc')->simplePaginate(5);
         $seasons = Season::all();
         $lastMatches = Match::where('match_date', '<', Carbon::now())
@@ -49,7 +51,8 @@ class HomeController extends Controller
             ->limit(5)
             ->get();
 
-        return view('public.home', compact('sports', 'posts', 'seasons', 'lastMatches', 'nextMatches'));
+
+        return view('public.home', compact('sports', 'otherSports', 'posts', 'seasons', 'lastMatches', 'nextMatches'));
     }
 
     /**

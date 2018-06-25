@@ -1,4 +1,9 @@
 <div class="container col-lg-2 col-12 my-3">
+
+    @if(count($otherSports)>0)
+        @include('includes.plugins.other-sports-list')
+    @endif
+
     @if(count($lastMatches)>0)
         @include('includes.plugins.last-matches-list')
     @endif
