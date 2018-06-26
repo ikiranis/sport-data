@@ -1,5 +1,5 @@
 <div class="row p-2">
-    <div class="col-6 ml-auto mr-auto">
+    <div class="col ml-auto mr-auto">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- wmsports_homepage -->
         <ins class="adsbygoogle"
