@@ -355,11 +355,9 @@ class Standings
         // Find new equal groups. Get arrays of groups, of team names array
         $equalGroups = $this->findEqualTeamsAtSortedTeams($sortTeams, $this->sortRules[0]);
 
-        print_r($equalGroups);
-
         if(sizeOf($equalGroups)>0) { // If equal groups exist
 
-            $counter = 1; // sortRules counter
+            $counter = 0; // sortRules counter
             $newEqualGroupExist = true;
 
             $newEqualGroups = array(); // Every new equal groups that founded
@@ -367,27 +365,40 @@ class Standings
 
             while($newEqualGroupExist) { // Sort for every sortRule method until no newEqualGroupExist
 
-                foreach ($equalGroups as $equalGroup) { // Sort every equal group
+                foreach ($newEqualGroups[$counter] as $equalGroup) { // Sort every equal group
+
+                    echo $counter . ' ' . $this->sortRules[$counter] . ' ';
+                    print_r($equalGroup);
 
                     // Get the teams stats. Array of object with teams data stats
                     $newTeamsStats = $this->calculateEqualTeamsStats($equalGroup);
 
-                    // Sorting with first method. Get array with original $teamsStats data, sorted
+//                    print_r($newTeamsStats);
+
+                    // Sorting with $counter method. Get array with original $newTeamsStats data, sorted
                     $newSortTeams = array_reverse(array_sort($newTeamsStats, $this->sortRules[$counter]));
 
+                    print_r($newSortTeams);
+
                     // Find new equal groups. Get arrays of groups, of team names array
-                    $newEqualGroups = $this->findEqualTeamsAtSortedTeams($newSortTeams, $this->sortRules[$counter]);
+                    $newEqualGroups[$counter+1] = $this->findEqualTeamsAtSortedTeams($newSortTeams, $this->sortRules[$counter+1]);
 
-                    if(sizeof($newEqualGroups)==0) {
-                        $newEqualGroupExist = false;
+                    // Concat new sorted groups with main group
+                    $newSortedArray = $this->replacePieceOfArrayWithNewSortedPiece($sortTeams, array_keys($newSortTeams));
 
-                        // Concat new sorted groups with main group
-                        $newSortedArray = $this->replacePieceOfArrayWithNewSortedPiece($sortTeams, $newSortTeams);
+//                    print_r(array_keys($newSortedArray));
 
-                        $sortTeams = $newSortedArray;
-                    }
+                    $sortTeams = $newSortedArray;
+
+//                    print_r($sortTeams);
 
                 }
+
+                if(sizeof($newEqualGroups[$counter+1])==0) {
+                    $newEqualGroupExist = false;
+                }
+
+                $counter++;
 
 
             }
@@ -395,7 +406,7 @@ class Standings
 
         }
 
-        print_r($sortTeams);
+//        print_r($sortTeams);
 
 //        print_r(array_keys($sortTeams));
 //        return ['ARIS', 'IRAKLIS', 'OLYMPIAKOS', 'KOZANI', 'EORDAIKOS', 'PAO', 'AEK', 'PAOK'];

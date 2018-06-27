@@ -443,7 +443,7 @@ class StandingsTest extends TestCase
                     'first_team' => (object)['name' => 'KOZANI'],
                     'second_team' => (object)['name' => 'EORDAIKOS'],
                     'first_team_score' => '0',
-                    'second_team_score' => '1'
+                    'second_team_score' => '2'
                 ],
                 (object)[
                     'first_team' => (object)['name' => 'ARIS'],
@@ -839,6 +839,7 @@ class StandingsTest extends TestCase
 
         // Rules to sort
         $standings->setSortRules([
+            'points',
             'points',
             'scoreDifference',
             'scoreFor',
