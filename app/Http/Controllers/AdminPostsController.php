@@ -42,7 +42,7 @@ class AdminPostsController extends Controller
 
         $userApiToken = Auth::user()->api_token;
 
-        return view('admin.posts.create', compact('teams', 'athletes', 'user_id', 'sports', 'championships', 'divisions', 'userApiToken'));
+        return view('admin.posts.create', compact('teams', 'athletes', 'user_id', 'sports', 'userApiToken'));
     }
 
     /**
