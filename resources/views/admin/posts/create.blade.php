@@ -188,8 +188,8 @@
             data: {
                 teams: {!! json_encode($teams) !!},
                 sportSelected: 0,
-                championshipSelected: '',
-                divisionSelected: 0,
+                // championshipSelected: '',
+                // divisionSelected: 0,
                 teamsSelected: [],
                 tags: [],
                 tag: ''

@@ -35,11 +35,9 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        $teams = Team::all();
-        $athletes = Athlete::all();
-        $sports = Sport::all();
-        $championships = Championship::all();
-        $divisions = Division::all();
+        $teams = Team::orderBy('name', 'asc')->get();
+        $athletes = Athlete::orderBy('lname', 'asc')->get();
+        $sports = Sport::orderBy('name', 'asc')->get();
         $user_id = Auth::id();
 
         $userApiToken = Auth::user()->api_token;
@@ -119,9 +117,9 @@ class AdminPostsController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        $teams = Team::all();
-        $athletes = Athlete::all();
-        $sports = Sport::all();
+        $teams = Team::orderBy('name', 'asc')->get();
+        $athletes = Athlete::orderBy('lname', 'asc')->get();
+        $sports = Sport::orderBy('name', 'asc')->get();
 
         $userApiToken = Auth::user()->api_token;
 
