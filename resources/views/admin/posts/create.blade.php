@@ -74,7 +74,7 @@
 
                                     <input type="hidden" v-for="team in teamsSelected" name="teams_selected[]"
                                            :value="team.id">
-                                    <select multiple class="form-control col-10 px-2" v-model="teamsSelected"
+                                    <select multiple class="form-control col-10 px-2" v-model="teamsSelected" style="height: 20em"
                                             ref="teamSelector"
                                             id="teams_selected" size="15">
                                         <option value="0" disabled></option>
