@@ -37,6 +37,18 @@
                                 </select>
                             </div>
 
+                            <div class="input-group mb-3 no-gutters my-2">
+                                <label for="has_standings" class="sr-only">Βαθμολογία</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">Βαθμολογία</span>
+                                </div>
+
+                                <select class="form-control col-10 px-2" id="has_standings" name="has_standings">
+                                    <option value="0" {{$championship->has_standings==0 ? 'selected' : ''}}>Όχι</option>
+                                    <option value="1" {{$championship->has_standings==1 ? 'selected' : ''}}>Ναι</option>
+                                </select>
+                            </div>
+
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     {{__('messages.update')}}
