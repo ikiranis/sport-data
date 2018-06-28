@@ -28,8 +28,7 @@ class Championship extends Model
     // The attributes that are mass assignable
     protected $fillable = [
         'name',
-        'sport_id',
-        'rule_id'
+        'sport_id'
     ];
 
     // Don't write timestamps at factory
@@ -45,13 +44,4 @@ class Championship extends Model
         return $this->belongsTo('App\Sport');
     }
 
-    /**
-     * Relation with rules
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function rule()
-    {
-        return $this->belongsTo('App\Rule');
-    }
 }

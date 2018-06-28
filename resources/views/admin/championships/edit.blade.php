@@ -37,20 +37,6 @@
                                 </select>
                             </div>
 
-                            <div class="input-group mb-3 no-gutters">
-                                <label for="rule_id" class="sr-only">{{__('messages.sport')}}</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">{{__('messages.sport')}}</span>
-                                </div>
-                                <select class="form-control col-10 px-2" id="rule_id" name="rule_id">
-                                    @foreach($rules as $rule)
-                                        <option value="{{$rule->id}}" {{$rule->id==$championship->rule_id ? 'selected' : ''}}>
-                                            {{$rule->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     {{__('messages.update')}}

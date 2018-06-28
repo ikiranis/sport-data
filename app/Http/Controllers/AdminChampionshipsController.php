@@ -50,9 +50,8 @@ class AdminChampionshipsController extends Controller
     public function create()
     {
         $sports = Sport::orderBy('name', 'asc')->get();
-        $rules = Rule::orderBy('name', 'asc')->get();
 
-        return view('admin.championships.create', compact('sports', 'rules'));
+        return view('admin.championships.create', compact('sports'));
     }
 
     /**
@@ -96,9 +95,8 @@ class AdminChampionshipsController extends Controller
     {
         $championship = Championship::findOrFail($id);
         $sports = Sport::orderBy('name', 'asc')->get();
-        $rules = Rule::orderBy('name', 'asc')->get();
 
-        return view ('admin/championships/edit', compact('championship', 'sports', 'rules'));
+        return view ('admin/championships/edit', compact('championship', 'sports'));
     }
 
     /**
