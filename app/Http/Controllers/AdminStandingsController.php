@@ -32,7 +32,7 @@ class AdminStandingsController extends Controller
 
             // Pass rules as object
             $rules = json_decode(
-                        Championship::whereId($request->championship_id)->
+                        Season::whereChampionshipId($request->championship_id)->
                         firstOrFail()->
                         rule->
                         description,

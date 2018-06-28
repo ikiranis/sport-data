@@ -112,7 +112,7 @@ class HomeController extends Controller
 
             // Pass rules as object
             $rules = json_decode(
-                Championship::whereId($team->championship_id)->
+                Season::whereChampionshipId($team->championship_id)->
                 firstOrFail()->
                 rule->
                 description,
@@ -169,7 +169,7 @@ class HomeController extends Controller
 
         // Pass rules as object
         $rules = json_decode(
-            Championship::whereId($championship_id)->
+            Season::whereChampionshipId($championship_id)->
             firstOrFail()->
             rule->
             description,
