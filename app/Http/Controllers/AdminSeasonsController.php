@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Championship;
 use App\Http\Resources\SeasonResource;
 use App\Matchday;
+use App\Rule;
 use App\Season;
 use Illuminate\Http\Request;
 
@@ -49,8 +50,9 @@ class AdminSeasonsController extends Controller
     public function create()
     {
         $championships = Championship::all();
+        $rules = Rule::orderBy('name', 'asc')->get();
 
-        return view('admin.seasons.create', compact('championships'));
+        return view('admin.seasons.create', compact('championships', 'rules'));
     }
 
     /**
@@ -98,8 +100,9 @@ class AdminSeasonsController extends Controller
     {
         $season = Season::findOrFail($id);
         $championships = Championship::all();
+        $rules = Rule::orderBy('name', 'asc')->get();
 
-        return view ('admin/seasons/edit', compact('season', 'championships'));
+        return view ('admin/seasons/edit', compact('season', 'championships', 'rules'));
     }
 
     /**
