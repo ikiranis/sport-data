@@ -38,10 +38,6 @@
 
             @include('includes.teams.teams-standings')
 
-        @else
-
-            <h1>Δεν υπάρχει βαθμολογία</h1>
-
         @endif
 
         @include('includes.ads.results-google-ad')

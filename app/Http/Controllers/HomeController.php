@@ -105,10 +105,12 @@ class HomeController extends Controller
         foreach ($seasons as $season) {
 
             $matches = Match::whereChampionshipId($team->championship_id)->
-            whereSeasonId($season->id)->
-            orderBy('match_date', 'desc')->get();
+                whereSeasonId($season->id)->
+                orderBy('match_date', 'desc')->get();
 
             $standings->setMatches($matches);
+
+            $championship = Championship::whereId($team->championship_id);
 
             // Pass rules as object
             $rules = json_decode(
@@ -119,7 +121,10 @@ class HomeController extends Controller
                 false);
             $standings->setRules($rules);
 
-            $teamsStandingsArray[] = $standings->getStandings();
+            $teamsStandingsArray = null;
+            if($championship->has_standings) {
+                $teamsStandingsArray = $standings->getStandings();
+            }
 
             $matchdays = Matchday::whereSeasonId($season->id)->get();
         }
@@ -176,7 +181,10 @@ class HomeController extends Controller
             false);
         $standings->setRules($rules);
 
-        $teamsStandings = $standings->getStandings();
+        $teamsStandings = null;
+        if($championship->has_standings) {
+            $teamsStandings = $standings->getStandings();
+        }
 
         $matchdays = Matchday::whereSeasonId($season_id)->get();
 
