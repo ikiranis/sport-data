@@ -106,7 +106,7 @@ class HomeController extends Controller
 
             $matches = Match::
                 whereSeasonId($season->id)->
-                orderBy('match_date', 'desc')->get();
+                orderBy('match_date', 'asc')->get();
 
             $standings->setMatches($matches);
 
@@ -126,8 +126,6 @@ class HomeController extends Controller
             $matchdays = Matchday::whereSeasonId($season->id)->get();
 
         }
-
-
 
         return view('public.teamPosts', compact('team', 'posts', 'teamsStandingsArray', 'seasons', 'matches', 'matchdays'));
 
@@ -168,7 +166,7 @@ class HomeController extends Controller
 
         $matches = Match::whereChampionshipId($championship_id)->
             whereSeasonId($season_id)->
-            orderBy('match_date', 'desc')->get();
+            orderBy('match_date', 'asc')->get();
 
         $standings->setMatches($matches);
 
