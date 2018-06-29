@@ -74,6 +74,7 @@
                                     <span class="input-group-text w-100">{{__('messages.stadium')}}</span>
                                 </div>
                                 <select class="form-control col-10 px-2" id="stadium_id" name="stadium_id">
+                                    <option value=""></option>
                                     @foreach($stadia as $stadium)
                                         <option value="{{$stadium->id}}" {{$stadium->id==$match->stadium_id ? 'selected' : ''}}>
                                             {{$stadium->name}}
