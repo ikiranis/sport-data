@@ -255,4 +255,9 @@ class HomeController extends Controller
 
         return view('public.tagPosts', compact('tag', 'posts'));
     }
+
+    public function writePost()
+    {
+        return view('public.writePost');
+    }
 }

@@ -49,6 +49,7 @@ Route::group(
         Route::get('/standings/{championship_id}/{season_id}', 'HomeController@standings')->name('standings');
         Route::post('/comment/store', 'HomeController@storeComment')->name('post.comment.store');
         Route::get('/', 'HomeController@index')->name('home');
+        Route::get('/post/write', 'HomeController@writePost')->name('writePost');
 
 
         // If user is admin
