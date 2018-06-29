@@ -98,13 +98,13 @@ class HomeController extends Controller
         // Get all the posts of $team_id
         $posts = $team->posts()->orderBy('created_at', 'desc')->simplePaginate(5);
 
-        $seasons = Season::whereChampionshipId($team->championship_id)->get();
+        $seasons = $team->seasons;
 
         $teamsStandingsArray = [];
 
         foreach ($seasons as $season) {
 
-            $matches = Match::whereChampionshipId($team->championship_id)->
+            $matches = Match::
                 whereSeasonId($season->id)->
                 orderBy('match_date', 'desc')->get();
 
@@ -112,20 +112,22 @@ class HomeController extends Controller
 
             // Pass rules as object
             $rules = json_decode(
-                Season::whereChampionshipId($team->championship_id)->
+                Season::whereId($season->id)->
                 firstOrFail()->
                 rule->
                 description,
                 false);
             $standings->setRules($rules);
 
-//            $teamsStandingsArray[] = null;
             if($season->championship->has_standings == 1) {
                 $teamsStandingsArray[] = $standings->getStandings();
             }
 
             $matchdays = Matchday::whereSeasonId($season->id)->get();
+
         }
+
+
 
         return view('public.teamPosts', compact('team', 'posts', 'teamsStandingsArray', 'seasons', 'matches', 'matchdays'));
 

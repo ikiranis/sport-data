@@ -94,6 +94,34 @@ class Team extends Model
     }
 
     /**
+     * Return seasons for a team
+     *
+     * @return array
+     */
+    public function getSeasonsAttribute()
+    {
+        $teamMatches = Match::whereFirstTeamId($this->id)
+            ->orWhere('second_team_id', '=', $this->id)
+            ->get();
+
+        $seasonsId = array();
+        $seasons = array();
+
+        foreach($teamMatches as $match) {
+            $seasonsId[] = $match->season_id;
+        }
+
+        $seasonsId = array_unique($seasonsId);
+
+        foreach (array_unique($seasonsId) as $seasonId) {
+            $seasons[] = Season::whereId($seasonId)->first();
+        }
+
+        return $seasons;
+
+    }
+
+    /**
      * Relation with sports
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

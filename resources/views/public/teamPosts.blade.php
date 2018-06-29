@@ -70,9 +70,13 @@
 
             @foreach($teamsStandingsArray as $key=>$teamsStandings)
 
-                <h3>{{$seasons[$key]->name}}</h3>
+                @if($teamsStandings)
 
-                @include('includes.teams.teams-standings')
+                    <h3>{{$seasons[$key]->name}}</h3>
+
+                    @include('includes.teams.teams-standings')
+
+                @endif
 
             @endforeach
 
@@ -84,13 +88,17 @@
 
             @foreach($matchdays as $matchday)
 
-                @php
-                    $matchdayMatches = $matches->where('matchday_id', $matchday->id)
-                @endphp
+                @if($matchday)
 
-                @if(count($matchdayMatches)>0)
+                    @php
+                        $matchdayMatches = $matches->where('matchday_id', $matchday->id)
+                    @endphp
 
-                    @include('includes.teams.teams-results')
+                    @if(count($matchdayMatches)>0)
+
+                        @include('includes.teams.teams-results')
+
+                    @endif
 
                 @endif
 
