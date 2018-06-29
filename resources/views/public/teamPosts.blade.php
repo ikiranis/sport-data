@@ -76,10 +76,6 @@
 
             @endforeach
 
-        @else
-
-            <h1>Δεν υπάρχει βαθμολογία</h1>
-
         @endif
 
         @if($matches)

@@ -110,8 +110,6 @@ class HomeController extends Controller
 
             $standings->setMatches($matches);
 
-            $championship = Championship::whereId($team->championship_id);
-
             // Pass rules as object
             $rules = json_decode(
                 Season::whereChampionshipId($team->championship_id)->
@@ -121,9 +119,9 @@ class HomeController extends Controller
                 false);
             $standings->setRules($rules);
 
-            $teamsStandingsArray = null;
-            if($championship->has_standings) {
-                $teamsStandingsArray = $standings->getStandings();
+//            $teamsStandingsArray[] = null;
+            if($season->championship->has_standings == 1) {
+                $teamsStandingsArray[] = $standings->getStandings();
             }
 
             $matchdays = Matchday::whereSeasonId($season->id)->get();
