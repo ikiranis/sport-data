@@ -257,6 +257,11 @@ class HomeController extends Controller
         return view('public.tagPosts', compact('tag', 'posts'));
     }
 
+    /**
+     * Display guest page to post something
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function writePost()
     {
         $sports = Sport::orderBy('name', 'asc')->get();
@@ -264,6 +269,12 @@ class HomeController extends Controller
         return view('public.writePost', compact('sports'));
     }
 
+    /**
+     * Store guest post
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function storePost(Request $request)
     {
         $user = User::whereName('guest')->first();
@@ -282,7 +293,11 @@ class HomeController extends Controller
         $input['user_id'] = $user->id;
         $input['approved'] = '0';
 
-        $post = Post::create($input);
+        if($post = Post::create($input)) {
+            $request->session()->flash('postSaved', 'Ευχαριστούμε! Η είδηση σου καταχωρήθηκε και θα εμφανιστεί μόλις εγκριθεί από τον διαχειριστή');
+        } else {
+            $request->session()->flash('postNotSaved', 'Υπήρξε κάποιο πρόβλημα με την καταχώρηση της είδησης');
+        }
 
         return redirect(route('home'));
     }

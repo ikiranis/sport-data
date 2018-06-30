@@ -46,6 +46,8 @@
 
     @include('includes.search-text')
 
+    @include('includes.posts.guest-post-message')
+
     <div class="container">
 
         <div class="row no-gutters">

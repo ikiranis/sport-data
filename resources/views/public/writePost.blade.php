@@ -6,6 +6,8 @@
 
 @section('content')
 
+    @include('includes.error')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -27,7 +29,7 @@
 
                             <div class="form-group">
                                 <label class="form-check-label" for="body">{{__('messages.text')}}</label>
-                                <textarea class="form-control" id="body" name="body" rows="15"></textarea>
+                                <textarea class="form-control" id="body" name="body" rows="15">{{old('body')}}</textarea>
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
