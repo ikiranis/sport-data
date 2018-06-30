@@ -50,6 +50,7 @@ Route::group(
         Route::post('/comment/store', 'HomeController@storeComment')->name('post.comment.store');
         Route::get('/', 'HomeController@index')->name('home');
         Route::get('/post/write', 'HomeController@writePost')->name('writePost');
+        Route::post('/post/store', 'HomeController@storePost')->name('storePost');
 
 
         // If user is admin

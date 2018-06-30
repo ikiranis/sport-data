@@ -13,6 +13,7 @@ use App\Sport;
 use App\src\Standings;
 use App\Tag;
 use App\Team;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -258,6 +259,31 @@ class HomeController extends Controller
 
     public function writePost()
     {
-        return view('public.writePost');
+        $sports = Sport::orderBy('name', 'asc')->get();
+
+        return view('public.writePost', compact('sports'));
+    }
+
+    public function storePost(Request $request)
+    {
+        $user = User::whereName('guest')->first();
+
+        $validatedData = $request->validate([
+            'slug' => 'nullable',
+            'user_id' => 'nullable',
+            'sport_id' => 'required',
+            'title' => 'required|max:255',
+            'body' => 'required',
+            'reference' => 'nullable|url|max:800',
+        ]);
+
+        $input = $request->all();
+
+        $input['user_id'] = $user->id;
+        $input['approved'] = '0';
+
+        $post = Post::create($input);
+
+        return redirect(route('home'));
     }
 }

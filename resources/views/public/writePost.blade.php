@@ -13,10 +13,8 @@
                     <div class="card-header">Αποστολή είδησης</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('storePost') }}">
                             @csrf
-
-                            <input type="hidden" id="user_id" name="user_id" value="0">
 
                             <div class="input-group mb-3 no-gutters">
                                 <label class="sr-only" for="title">{{__('messages.title')}}</label>
@@ -40,6 +38,22 @@
                                 <input type="text" max="800" class="form-control col-10 px-2" id="reference"
                                        name="reference"
                                        value="{{old('reference')}}">
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
+                                <label for="sport_id" class="sr-only">{{__('messages.sport')}}</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">{{__('messages.sport')}}</span>
+                                </div>
+                                <select class="form-control col-10 px-2" v-model="sportSelected" id="sport_id"
+                                        name="sport_id">
+                                    <option value="0"></option>
+                                    @foreach($sports as $sport)
+                                        <option value="{{$sport->id}}">
+                                            {{$sport->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group row">
