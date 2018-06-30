@@ -29,7 +29,17 @@
 
                             <div class="form-group">
                                 <label class="form-check-label" for="body">{{__('messages.text')}}</label>
-                                <textarea class="form-control" id="body" name="body" rows="15">{{old('body')}}</textarea>
+                                <textarea class="form-control" id="body" name="body" rows="10">{{old('body')}}</textarea>
+                            </div>
+
+                            <div class="input-group mb-3 no-gutters">
+                                <label class="sr-only" for="author">Όνομα</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">Όνομα</span>
+                                </div>
+                                <input type="text" max="25" class="form-control col-10 px-2" id="author"
+                                       name="author"
+                                       value="{{old('author')}}">
                             </div>
 
                             <div class="input-group mb-3 no-gutters">

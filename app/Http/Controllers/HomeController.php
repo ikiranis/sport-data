@@ -286,6 +286,7 @@ class HomeController extends Controller
             'title' => 'required|max:255',
             'body' => 'required',
             'reference' => 'nullable|url|max:800',
+            'author' => 'nullable|max:25',
         ]);
 
         $input = $request->all();

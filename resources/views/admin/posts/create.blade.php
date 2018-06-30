@@ -150,6 +150,16 @@
 
                             </div>
 
+                            <div class="input-group mb-3 no-gutters">
+                                <label class="sr-only" for="author">Όνομα</label>
+                                <div class="input-group-prepend col-2">
+                                    <span class="input-group-text w-100">Όνομα</span>
+                                </div>
+                                <input type="text" max="25" class="form-control col-10 px-2" id="author"
+                                       name="author"
+                                       value="{{old('author')}}">
+                            </div>
+
                             <div class="input-group mb-3 no-gutters my-2">
                                 <label for="approved" class="sr-only">{{__('messages.approve')}}</label>
                                 <div class="input-group-prepend col-2">

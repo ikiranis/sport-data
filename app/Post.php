@@ -70,7 +70,8 @@ class Post extends Model implements Feedable
         'description',
         'body',
         'reference',
-        'approved'
+        'approved',
+        'author'
     ];
 
     /**
