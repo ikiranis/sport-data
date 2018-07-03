@@ -19,6 +19,9 @@
                     <p>Στείλτε μας οτιδήποτε μπορεί να ενδιαφέρει το <strong>wmsports.gr</strong>, για δημοσίευση.
                         Ειδήσεις, δεδομένα, στατιστικά κοκ, αλλά και παρατηρήσεις για το site</p>
 
+                    <p>Μπορείτε να στείλετε απευθείας από την <a href="{{ route('writePost') }}"><strong>ειδική φόρμα</strong></a>, είτε με κάποιον από τους
+                    παρακάτω τρόπους.</p>
+
                     <p>e-mail: <strong><a href="mailto:west.macedonia.sports@gmail.com">west.macedonia.sports@gmail.com</a></strong></p>
 
                     <p>Twitter account: <strong><a href="https://twitter.com/wmsports1">twitter.com/wmsports1</a></strong></p>
