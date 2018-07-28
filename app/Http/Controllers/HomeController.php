@@ -39,7 +39,7 @@ class HomeController extends Controller
         $sports = Sport::whereMainpage(1)->orderBy('name', 'asc')->get();
         $otherSports = Sport::whereMainpage(0)->orderBy('name', 'asc')->get();
 
-        $posts = Post::whereApproved(1)->orderBy('created_at', 'desc')->simplePaginate(5);
+        $posts = Post::whereApproved(1)->orderBy('updated_at', 'desc')->simplePaginate(5);
         $seasons = Season::all();
         $lastMatches = Match::where('match_date', '<', Carbon::now())
             ->where('first_team_score', '<>', null)
@@ -97,7 +97,7 @@ class HomeController extends Controller
         $team = Team::whereSlug($slug)->firstOrFail();
 
         // Get all the posts of $team_id
-        $posts = $team->posts()->orderBy('created_at', 'desc')->simplePaginate(5);
+        $posts = $team->posts()->orderBy('updated_at', 'desc')->simplePaginate(5);
 
         $seasons = $team->seasons;
 
@@ -145,7 +145,7 @@ class HomeController extends Controller
         $athlete = Athlete::whereSlug($slug)->firstOrFail();
 
         // Get all the posts of $athlete->id
-        $posts = Post::whereAthleteId($athlete->id)->orderBy('created_at', 'desc')->simplePaginate(5);
+        $posts = Post::whereAthleteId($athlete->id)->orderBy('updated_at', 'desc')->simplePaginate(5);
 
         return view('public.athletePosts', compact('athlete', 'posts'));
 
@@ -231,7 +231,7 @@ class HomeController extends Controller
                     ->orWhere('title', 'LIKE', "%$search%")
                     ->orWhere('description', 'LIKE', "%$search%");
             })
-            ->orderBy('created_at', 'desc')
+            ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
 
         // Append search text for next pages
@@ -252,7 +252,7 @@ class HomeController extends Controller
         $tag = Tag::whereSlug($slug)->firstOrFail();
 
         // Get all the posts of $team_id
-        $posts = $tag->posts()->orderBy('created_at', 'desc')->simplePaginate(5);
+        $posts = $tag->posts()->orderBy('updated_at', 'desc')->simplePaginate(5);
 
         return view('public.tagPosts', compact('tag', 'posts'));
     }

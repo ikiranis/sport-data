@@ -6,7 +6,7 @@
         <div class="col-12 text-right">
             <h2 class="text-center"><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h2>
             <div>{{ $post->author !== null ? 'Από: '. $post->author : '' }}</div>
-            <div title="{{$post->created_at}}">{{$post->created_at->diffForHumans()}}</div>
+            <div title="{{$post->updated_at}}">Τελευταία ενημέρωση: {{$post->updated_at->diffForHumans()}}</div>
         </div>
 
     </div>
