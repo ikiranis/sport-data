@@ -5,8 +5,10 @@
     <div class="row">
         <div class="col-12 text-right">
             <h2 class="text-center"><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h2>
-            <span title="{{$post->created_at}}">{{$post->created_at->diffForHumans()}}</span>
+            <div>{{ $post->author !== null ? 'Από: '. $post->author : '' }}</div>
+            <div title="{{$post->created_at}}">{{$post->created_at->diffForHumans()}}</div>
         </div>
+
     </div>
 
     <div>

@@ -7,7 +7,8 @@
                 <h3><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h3>
             </div>
             <div class="col-lg-3 col-12 ml-auto text-right my-auto">
-                <span title="{{$post->created_at}}">{{$post->created_at->diffForHumans()}}</span>
+                <div>{{ $post->author !== null ? 'Από: '. $post->author : '' }}</div>
+                <div title="{{$post->created_at}}">{{$post->created_at->diffForHumans()}}</div>
             </div>
         </div>
 
