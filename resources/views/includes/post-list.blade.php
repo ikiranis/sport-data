@@ -8,7 +8,7 @@
             </div>
             <div class="col-lg-3 col-12 ml-auto text-right my-auto">
                 <div>{{ $post->author !== null ? 'Από: '. $post->author : '' }}</div>
-                <div title="{{$post->updated_at}}">Τελευταία ενημέρωση: {{$post->updated_at->diffForHumans()}}</div>
+                <div title="Τελευταία ενημέρωση: {{$post->updated_at}}">{{$post->updated_at->diffForHumans()}}</div>
             </div>
         </div>
 
